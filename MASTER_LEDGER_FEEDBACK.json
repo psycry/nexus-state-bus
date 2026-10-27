@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "timestamp": "2026-10-27T17:15:42Z",
+  "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
+  "latest_milestone": "T-013",
+  "status": "COMPLETED",
+  "completed_milestones": [
+    "T-001",
+    "T-002",
+    "T-003",
+    "T-004",
+    "T-005",
+    "T-006",
+    "T-007",
+    "T-008",
+    "T-009",
+    "T-010",
+    "T-011",
+    "T-012",
+    "T-013"
+  ],
+  "total_staged_pipeline_usd": 600500.0,
+  "staged_leads": [
+    {
+      "id": 9,
+      "external_id": "MCP-RUST-ORCH-2026-01",
+      "lane": "FAST_CASHFLOW",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5971,
+      "estimated_value_usd": 8500.0,
+      "anchor": "agent_smith",
+      "stage": "DOSSIER_READY",
+      "submission_pkg": ""
+    },
+    {
+      "id": 17,
+      "external_id": "SBIR-2026-CIVIC-SHELTER-01",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5949,
+      "estimated_value_usd": 275000.0,
+      "anchor": "shelter_source",
+      "stage": "DOSSIER_READY",
+      "submission_pkg": ""
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.4527,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "DOSSIER_READY",
+      "submission_pkg": ""
+    },
+    {
+      "id": 10,
+      "external_id": "QUANT-STREAM-OFI-2026-02",
+      "lane": "FAST_CASHFLOW",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.422,
+      "estimated_value_usd": 12000.0,
+      "anchor": "phronarch",
+      "stage": "DOSSIER_READY",
+      "submission_pkg": ""
+    }
+  ],
+  "recent_workforce_tasks": [
+    {
+      "id": 6,
+      "assigned_agent": "operator",
+      "title": "T-012: Full Queue Submission Staging, engine/notify.py & Systemd Sweep Timer",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-27 17:09:02.156499+00"
+    },
+    {
+      "id": 5,
+      "assigned_agent": "operator",
+      "title": "T-011: Boot Sync, MCP Health Check & Submission Package Staging",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-27 16:48:31.904667+00"
+    },
+    {
+      "id": 4,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: QUANT-STREAM-OFI-2026-02",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-26 18:11:46.210236+00"
+    },
+    {
+      "id": 3,
+      "assigned_agent": "architect",
+      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: NSF-SBIR-2026-AGENTIC-AI",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-26 18:11:24.534346+00"
+    },
+    {
+      "id": 2,
+      "assigned_agent": "architect",
+      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: SBIR-2026-CIVIC-SHELTER-01",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-26 18:10:58.604693+00"
+    },
+    {
+      "id": 1,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: MCP-RUST-ORCH-2026-01",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-26 18:10:13.686071+00"
+    }
+  ],
+  "note": "Automated two-way feedback bridge sync completed via engine.ledger_sync.",
+  "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)"
+}

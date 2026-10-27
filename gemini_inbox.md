@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-012 Staging & Automation -> T-013 Active: Two-Way Feedback Loop)
+* Active Phase: Phase 5 (T-013 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -49,46 +49,35 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Execution Telemetry — `T-012` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-013` (`COMPLETED`)
 
-- **Timestamp:** `2026-10-27T13:09:30-04:00`
+- **Auto-Sync Timestamp:** `2026-10-27T17:15:42Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Directive Executed:** `T-012` (Full Queue Submission Staging for `NSF-SBIR-2026-AGENTIC-AI` & `QUANT-STREAM-OFI-2026-02`, PostgreSQL `STAGED_T012` Metadata Update, `engine/notify.py` Alert Dispatcher, and `agent-smith-sweep.timer` Systemd Automation)
+- **Latest Milestone Flip:** `T-013` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013`)
+- **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
+- **Total Staged Pipeline Valuation:** **`$600,500.00`** (`4/4 DOSSIER_READY` leads staged)
 - **Runtime Blockers:** `NONE`
 
-## 1. Staged Submission Packages (`4/4 DOSSIER_READY Leads Staged — \$600,500.00 Pipeline`)
+## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-1. **`NSF-SBIR-2026-AGENTIC-AI` (`HIGH_TICKET_GRANT_RFP` — `\$305,000.00`):**
-   - **Paths:** `submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` & `submissions/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md`
-   - **Contents:** NSF SBIR Phase I technical abstract, Specific Aims 1–3 TRL-6 $\rightarrow$ TRL-8 KPI matrix (`agent_smith` hybrid router, `SandboxConfig::resolve_safe_path` 10,000-payload adversarial fuzzing verification, 768-dim `pgvector` collective memory), and `\$305,000` 6-month budget breakdown.
-2. **`QUANT-STREAM-OFI-2026-02` (`FAST_CASHFLOW` — `\$12,000.00`):**
-   - **Paths:** `submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` & `submissions/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md`
-   - **Contents:** Executive outreach email, `\$12,000` 14-day fixed-scope SOW (30%/40%/30% milestone payment schedule: `\$3,600` / `\$4,800` / `\$3,600`), and reference architecture brief leveraging **Phronarch v2.2.0** (Go sub-10ms L2 WebSocket ingestor $\rightarrow$ Redis 7 Pub/Sub $\rightarrow$ TypeScript OFI/VWAP/6-stage Bayesian engine + Lightweight Charts v5 UI).
+- **`T-009`** (Phase 4 — `2026-10-26 14:36`): Wire Rust `claw-mcp-server` MCP tool bindings (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`) + 2-way Google Doc Master Ledger poller (`poll_bus.py`) $\rightarrow$ **`DONE`**
+- **`T-010`** (Phase 4 — `2026-10-26 15:24`): Verify bidirectional communication ping across Google Doc Master Ledger (`INSTANT_TXT`) and GitHub State Bus (`nexus-state-bus.service`) $\rightarrow$ **`DONE`**
+- **`T-011`** (Phase 5 — `2026-10-27 12:49`): Execute boot sync, run `claw-mcp-server` health check (`list_ranked_leads`), stage submission packages for `MCP-RUST-ORCH-2026-01` & `SBIR-2026-CIVIC-SHELTER-01`, and install persistent `SessionStart` boot memory $\rightarrow$ **`DONE`**
+- **`T-012`** (Phase 5 — `2026-10-27 13:09`): Stage `NSF-SBIR-2026-AGENTIC-AI` (`\$305,000`) & `QUANT-STREAM-OFI-2026-02` (`\$12,000`) submission packages, update DB `raw_metadata` to `STAGED_T012`, build `engine/notify.py` with no-op Discord fallback, and enable `agent-smith-sweep.timer` $\rightarrow$ **`DONE`**
+- **`T-013`** (Phase 5 — `2026-10-27 13:14`): Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus` $\rightarrow$ **`DONE`**
 
-## 2. PostgreSQL `opportunity_leads` Verification (`STAGED_T011` & `STAGED_T012`)
+## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
-```text
- id |        external_id         |         lane          |    status     | fit_score |    stage    |                                        pkg                                         
-----+----------------------------+-----------------------+---------------+-----------+-------------+------------------------------------------------------------------------------------
-  9 | MCP-RUST-ORCH-2026-01      | FAST_CASHFLOW         | DOSSIER_READY |    0.5971 | STAGED_T011 | submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md
- 17 | SBIR-2026-CIVIC-SHELTER-01 | HIGH_TICKET_GRANT_RFP | DOSSIER_READY |    0.5949 | STAGED_T011 | submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md
- 18 | NSF-SBIR-2026-AGENTIC-AI   | HIGH_TICKET_GRANT_RFP | DOSSIER_READY |    0.4527 | STAGED_T012 | submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md
- 10 | QUANT-STREAM-OFI-2026-02   | FAST_CASHFLOW         | DOSSIER_READY |    0.4220 | STAGED_T012 | submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md
-```
+| ID | External ID | Lane | Fit Score | Anchor | Valuation | Stage | Submission Package |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `#09` | `MCP-RUST-ORCH-2026-01` | `FAST_CASHFLOW` | `0.5971` | `agent_smith` | `$8,500.00` | `DOSSIER_READY` | `` |
+| `#17` | `SBIR-2026-CIVIC-SHELTER-01` | `HIGH_TICKET_GRANT_RFP` | `0.5949` | `shelter_source` | `$275,000.00` | `DOSSIER_READY` | `` |
+| `#18` | `NSF-SBIR-2026-AGENTIC-AI` | `HIGH_TICKET_GRANT_RFP` | `0.4527` | `agent_smith` | `$305,000.00` | `DOSSIER_READY` | `` |
+| `#10` | `QUANT-STREAM-OFI-2026-02` | `FAST_CASHFLOW` | `0.4220` | `phronarch` | `$12,000.00` | `DOSSIER_READY` | `` |
 
-## 3. Notification Dispatcher (`engine/notify.py`) & Systemd Sweep Timer (`agent-smith-sweep.timer`)
+## 3. Machine-Readable Ledger Feedback Endpoint
 
-- **`python -m engine.notify --min-score 0.40` Execution Output:**
-  ```text
-  === ENGINE.NOTIFY [NO_OP_FALLBACK (DISCORD_WEBHOOK_URL unset)] ===
-  🚨 **Digital Nomad LLC — Autonomous Business Engine Alert (2026-10-27T17:09:03Z)**
-  Active `DOSSIER_READY` / Staged Leads (`count=4`):
-  - **`MCP-RUST-ORCH-2026-01`** [`FAST_CASHFLOW` | `STAGED_T011`] fit=`0.5971` | anchor=`agent_smith` | val=`$8,500.00` | artifact=`submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md`
-  - **`SBIR-2026-CIVIC-SHELTER-01`** [`HIGH_TICKET_GRANT_RFP` | `STAGED_T011`] fit=`0.5949` | anchor=`shelter_source` | val=`$275,000.00` | artifact=`submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md`
-  - **`NSF-SBIR-2026-AGENTIC-AI`** [`HIGH_TICKET_GRANT_RFP` | `STAGED_T012`] fit=`0.4527` | anchor=`agent_smith` | val=`$305,000.00` | artifact=`submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md`
-  - **`QUANT-STREAM-OFI-2026-02`** [`FAST_CASHFLOW` | `STAGED_T012`] fit=`0.4220` | anchor=`phronarch` | val=`$12,000.00` | artifact=`submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md`
-  **Total Staged Pipeline Valuation:** `$600,500.00`
-  ```
-- **Systemd Timer Enabled:** `~/.config/systemd/user/agent-smith-sweep.timer` (`OnBootSec=5min`, `OnUnitActiveSec=6h`, `Persistent=true`) and `agent-smith-sweep.service` are active and mirrored under `systemd/` on `psycry/nexus-state-bus`.
+- **JSON Telemetry Packet:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/MASTER_LEDGER_FEEDBACK.json`
+- **Sanitized Inbox Mirror:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md`
+- **Sanitized Sync Packet:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md`
 <!-- ANTIGRAVITY_TELEMETRY_END -->
-
