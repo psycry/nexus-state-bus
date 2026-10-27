@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "timestamp": "2026-10-27T17:16:17Z",
+  "timestamp": "2026-10-27T17:16:25Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-013",
   "status": "COMPLETED",
@@ -29,8 +29,8 @@
       "fit_score": 0.5971,
       "estimated_value_usd": 8500.0,
       "anchor": "agent_smith",
-      "stage": "DOSSIER_READY",
-      "submission_pkg": ""
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md"
     },
     {
       "id": 17,
@@ -40,8 +40,8 @@
       "fit_score": 0.5949,
       "estimated_value_usd": 275000.0,
       "anchor": "shelter_source",
-      "stage": "DOSSIER_READY",
-      "submission_pkg": ""
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md"
     },
     {
       "id": 18,
@@ -51,8 +51,8 @@
       "fit_score": 0.4527,
       "estimated_value_usd": 305000.0,
       "anchor": "agent_smith",
-      "stage": "DOSSIER_READY",
-      "submission_pkg": ""
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md"
     },
     {
       "id": 10,
@@ -62,8 +62,8 @@
       "fit_score": 0.422,
       "estimated_value_usd": 12000.0,
       "anchor": "phronarch",
-      "stage": "DOSSIER_READY",
-      "submission_pkg": ""
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md"
     }
   ],
   "recent_workforce_tasks": [
