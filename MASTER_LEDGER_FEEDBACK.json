@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "timestamp": "2026-10-27T17:15:42Z",
+  "timestamp": "2026-10-27T17:15:47Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-013",
   "status": "COMPLETED",
@@ -68,6 +68,13 @@
   ],
   "recent_workforce_tasks": [
     {
+      "id": 7,
+      "assigned_agent": "operator",
+      "title": "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-27 17:15:47.083001+00"
+    },
+    {
       "id": 6,
       "assigned_agent": "operator",
       "title": "T-012: Full Queue Submission Staging, engine/notify.py & Systemd Sweep Timer",
@@ -101,13 +108,6 @@
       "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: SBIR-2026-CIVIC-SHELTER-01",
       "status": "COMPLETED",
       "updated_at": "2026-10-26 18:10:58.604693+00"
-    },
-    {
-      "id": 1,
-      "assigned_agent": "architect",
-      "title": "Draft FAST_CASHFLOW Dossier: MCP-RUST-ORCH-2026-01",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-26 18:10:13.686071+00"
     }
   ],
   "note": "Automated two-way feedback bridge sync completed via engine.ledger_sync.",
