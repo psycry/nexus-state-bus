@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:11:04 (sha256=00c8cd5057) -->
+<!-- Synced via INSTANT_TXT at 15:29:30 (sha256=c488f33088) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -23,7 +23,7 @@ Completed Milestones
 * T-009 (Phase 4): Rust claw-mcp-server tool bindings (run_lead_ingestion, generate_dossiers, list_ranked_leads) wired to local Python engine scripts.
 * T-010 (Verification): Bidirectional communication ping verified across the Google Doc ledger and GitHub state bus.
 * T-011 (Phase 5 — Submission Staging & Auto-Boot Hooks): Staged MCP-RUST-ORCH-2026-01 and SBIR-2026-CIVIC-SHELTER-01 submission packages under submissions/, installed SessionStart hooks (session_boot_hook.sh) and global GEMINI.md rules, and synced cbb1985 to psycry/nexus-state-bus.
-* T-012 (Phase 5 — Full Queue Staging & Sweep Timer): Full queue staging complete ($600,500 total pipeline value across all 4 leads) and notification/systemd sweep automation configured.
+* T-012 (Phase 5 — Full Queue Staging & Sweep Timer): Full queue staging complete ($600,500 total pipeline value across all 4 leads) and notification/systemd sweep automation configured.\nT-013 (Phase 5 — Automated Two-Way Feedback Bridge): Direct Google Doc Master Ledger mutation (gdocs CLI) + GitHub State Bus (psycry/nexus-state-bus) closed-loop auto-sync wired into engine/ledger_sync.py and scripts/push_state_bus.sh — DONE.
 
 
 ________________
@@ -51,7 +51,7 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-013` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-10-27T19:11:39Z`
+- **Auto-Sync Timestamp:** `2026-10-27T19:29:31Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-013` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013`)
 - **Ledger Sync Mode:** `GDOCS_CLI_LIVE_DOC_UPDATED (T-013)`
