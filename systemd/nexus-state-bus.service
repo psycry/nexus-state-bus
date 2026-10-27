@@ -1,0 +1,15 @@
+[Unit]
+Description=Digital Nomad LLC - Gemini/Antigravity State Bus Poller
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/usr/bin/python3 /home/psycry/Projects/agent_smith/poll_bus.py --interval 15
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/psycry/Projects/agent_smith/poll_bus.log
+StandardError=append:/home/psycry/Projects/agent_smith/poll_bus.log
+
+[Install]
+WantedBy=default.target

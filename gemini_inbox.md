@@ -51,43 +51,45 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Execution Telemetry — `T-011` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Execution Telemetry — `T-012` (`COMPLETED`)
 
-- **Timestamp:** `2026-10-27T12:49:30-04:00`
+- **Timestamp:** `2026-10-27T13:09:30-04:00`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Directive Executed:** `T-011` (Boot Sync, Non-Blocking `claw-mcp-server` Health Check, Submission Package Staging & Persistent Boot Memory)
+- **Directive Executed:** `T-012` (Full Queue Submission Staging for `NSF-SBIR-2026-AGENTIC-AI` & `QUANT-STREAM-OFI-2026-02`, PostgreSQL `STAGED_T012` Metadata Update, `engine/notify.py` Alert Dispatcher, and `agent-smith-sweep.timer` Systemd Automation)
 - **Runtime Blockers:** `NONE`
 
-## 1. Non-Blocking `claw-mcp-server` Health Check (`list_ranked_leads` & `generate_dossiers`)
+## 1. Staged Submission Packages (`4/4 DOSSIER_READY Leads Staged — \$600,500.00 Pipeline`)
 
-- **Binary:** `/home/psycry/Projects/agent_smith/target/release/claw-mcp-server` (`rmcp v1.7.0`, protocol `2024-11-05`)
-- **Database Backbone:** `agent-smith-pgvector` (`pgvector/pgvector:pg16` on `:5432`, `ONLINE`)
-- **`tools/call -> list_ranked_leads` Output:**
+1. **`NSF-SBIR-2026-AGENTIC-AI` (`HIGH_TICKET_GRANT_RFP` — `\$305,000.00`):**
+   - **Paths:** `submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` & `submissions/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md`
+   - **Contents:** NSF SBIR Phase I technical abstract, Specific Aims 1–3 TRL-6 $\rightarrow$ TRL-8 KPI matrix (`agent_smith` hybrid router, `SandboxConfig::resolve_safe_path` 10,000-payload adversarial fuzzing verification, 768-dim `pgvector` collective memory), and `\$305,000` 6-month budget breakdown.
+2. **`QUANT-STREAM-OFI-2026-02` (`FAST_CASHFLOW` — `\$12,000.00`):**
+   - **Paths:** `submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` & `submissions/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md`
+   - **Contents:** Executive outreach email, `\$12,000` 14-day fixed-scope SOW (30%/40%/30% milestone payment schedule: `\$3,600` / `\$4,800` / `\$3,600`), and reference architecture brief leveraging **Phronarch v2.2.0** (Go sub-10ms L2 WebSocket ingestor $\rightarrow$ Redis 7 Pub/Sub $\rightarrow$ TypeScript OFI/VWAP/6-stage Bayesian engine + Lightweight Charts v5 UI).
+
+## 2. PostgreSQL `opportunity_leads` Verification (`STAGED_T011` & `STAGED_T012`)
+
+```text
+ id |        external_id         |         lane          |    status     | fit_score |    stage    |                                        pkg                                         
+----+----------------------------+-----------------------+---------------+-----------+-------------+------------------------------------------------------------------------------------
+  9 | MCP-RUST-ORCH-2026-01      | FAST_CASHFLOW         | DOSSIER_READY |    0.5971 | STAGED_T011 | submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md
+ 17 | SBIR-2026-CIVIC-SHELTER-01 | HIGH_TICKET_GRANT_RFP | DOSSIER_READY |    0.5949 | STAGED_T011 | submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md
+ 18 | NSF-SBIR-2026-AGENTIC-AI   | HIGH_TICKET_GRANT_RFP | DOSSIER_READY |    0.4527 | STAGED_T012 | submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md
+ 10 | QUANT-STREAM-OFI-2026-02   | FAST_CASHFLOW         | DOSSIER_READY |    0.4220 | STAGED_T012 | submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md
+```
+
+## 3. Notification Dispatcher (`engine/notify.py`) & Systemd Sweep Timer (`agent-smith-sweep.timer`)
+
+- **`python -m engine.notify --min-score 0.40` Execution Output:**
   ```text
-  === RANKED OPPORTUNITY LEADS (PGVECTOR FIT SCORE) ===
-  #09 [FAST_CASHFLOW | DOSSIER_READY] fit=0.5971 | asset=agent_smith | est=$8500 | dossier=dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md | (b2b_ai_contracts:MCP-RUST-ORCH-2026-01) Custom Rust MCP Server & PostgreSQL pgvector RAG Pipeline Integration
-  #17 [HIGH_TICKET_GRANT_RFP | DOSSIER_READY] fit=0.5949 | asset=shelter_source | est=$275000 | dossier=dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md | (sbir_civic_rfp:SBIR-2026-CIVIC-SHELTER-01) SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform
-  #18 [HIGH_TICKET_GRANT_RFP | DOSSIER_READY] fit=0.4527 | asset=agent_smith | est=$305000 | dossier=dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md | (sbir_civic_rfp:NSF-SBIR-2026-AGENTIC-AI) NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure
-  #10 [FAST_CASHFLOW | DOSSIER_READY] fit=0.4220 | asset=phronarch | est=$12000 | dossier=dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md | (b2b_ai_contracts:QUANT-STREAM-OFI-2026-02) Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)
+  === ENGINE.NOTIFY [NO_OP_FALLBACK (DISCORD_WEBHOOK_URL unset)] ===
+  🚨 **Digital Nomad LLC — Autonomous Business Engine Alert (2026-10-27T17:09:03Z)**
+  Active `DOSSIER_READY` / Staged Leads (`count=4`):
+  - **`MCP-RUST-ORCH-2026-01`** [`FAST_CASHFLOW` | `STAGED_T011`] fit=`0.5971` | anchor=`agent_smith` | val=`$8,500.00` | artifact=`submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md`
+  - **`SBIR-2026-CIVIC-SHELTER-01`** [`HIGH_TICKET_GRANT_RFP` | `STAGED_T011`] fit=`0.5949` | anchor=`shelter_source` | val=`$275,000.00` | artifact=`submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md`
+  - **`NSF-SBIR-2026-AGENTIC-AI`** [`HIGH_TICKET_GRANT_RFP` | `STAGED_T012`] fit=`0.4527` | anchor=`agent_smith` | val=`$305,000.00` | artifact=`submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md`
+  - **`QUANT-STREAM-OFI-2026-02`** [`FAST_CASHFLOW` | `STAGED_T012`] fit=`0.4220` | anchor=`phronarch` | val=`$12,000.00` | artifact=`submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md`
+  **Total Staged Pipeline Valuation:** `$600,500.00`
   ```
-- **`tools/call -> generate_dossiers` (`min_score=0.40`, `reset_qualifying=false`) Output:**
-  ```text
-  === PYTHON WORKER PLANE: engine.dossier COMPLETED ===
-  === PHASE 3 DOSSIER GENERATOR: 0 DOSSIERS GENERATED (fit_score >= 0.40) ===
-  ```
-  *(All 4 qualifying leads with `fit_score >= 0.40` are already `DOSSIER_READY` — idempotency verified.)*
-
-## 2. Staged Actionable Submission Artifacts (`T-011`)
-
-1. **`MCP-RUST-ORCH-2026-01` (`FAST_CASHFLOW` — `\$8,500.00`):**
-   - **Artifact Path:** `submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md`
-   - **Contents:** Ready-to-send executive outreach pitch, 14-day fixed-scope Statement of Work (SOW) with 30%/40%/30% milestone payment schedule (`\$2,550` / `\$3,400` / `\$2,550`), and TRL-7 technical verification checklist linked to `dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`.
-2. **`SBIR-2026-CIVIC-SHELTER-01` (`HIGH_TICKET_GRANT_RFP` — `\$275,000.00`):**
-   - **Artifact Path:** `submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md`
-   - **Contents:** 250-word SBIR Phase I technical abstract, Specific Aims 1–3 KPI & TRL-6 prior art verification matrix (`shelter_source` & `nomad_nexus`), full `\$275,000` 9-month budget allocation table, and portal checklist linked to `dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`.
-3. **Database & State Bus Synchronization:**
-   - Updated `opportunity_leads.raw_metadata` with `submission_package_path`, `dossier_path`, and `submission_stage = "STAGED_T011"`.
-   - Upgraded `poll_bus.py` (`nexus-state-bus.service`) and `scripts/push_state_bus.sh` so `poll_bus.py` preserves this telemetry block and automatically pushes sanitized `BUSINESS_ENGINE_STATE.md`, `sync_packet.md`, `gemini_inbox.md`, and `submissions/` to `psycry/nexus-state-bus`.
-   - Installed permanent `SessionStart` lifecycle hooks (`~/.gemini/config/hooks.json` & `.agents/hooks.json`) and `GEMINI.md` rules so Antigravity automatically runs this boot/sync check on every session startup.
+- **Systemd Timer Enabled:** `~/.config/systemd/user/agent-smith-sweep.timer` (`OnBootSec=5min`, `OnUnitActiveSec=6h`, `Persistent=true`) and `agent-smith-sweep.service` are active and mirrored under `systemd/` on `psycry/nexus-state-bus`.
 <!-- ANTIGRAVITY_TELEMETRY_END -->
-

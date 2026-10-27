@@ -1,0 +1,10 @@
+[Unit]
+Description=Digital Nomad LLC - Autonomous Lead Ingestion, Dossier & Notification Sweep
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/bin/bash -lc '/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.ingest --ingest-all --top 10 --seed-anchors && /home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.dossier --min-score 0.40 && /home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.notify --min-score 0.40 && /home/psycry/Projects/agent_smith/scripts/push_state_bus.sh'
+StandardOutput=append:/home/psycry/Projects/agent_smith/sweep.log
+StandardError=append:/home/psycry/Projects/agent_smith/sweep.log
