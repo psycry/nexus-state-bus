@@ -2,8 +2,8 @@
 
 > **Entity:** Digital Nomad LLC  
 > **Primary Operator:** PsyCry (Jasper)  
-> **Last Updated:** 2026-10-26 14:36 EDT  
-> **Operational Mandate:** Read `BUSINESS_ENGINE_STATE.md` at the start of every workflow, automatically update both `BUSINESS_ENGINE_STATE.md` and `sync_packet.md` whenever milestones are completed or system architecture changes, and execute `scripts/push_state_bus.sh` to publish sanitized state to `psycry/nexus-state-bus`.
+> **Last Updated:** 2026-10-27 12:49 EDT  
+> **Operational Mandate:** Read `BUSINESS_ENGINE_STATE.md` and `gemini_inbox.md` at the start of every workflow, verify `poll_bus.py` (`nexus-state-bus.service`) is actively polling the published Google Doc ledger and syncing state packets to `psycry/nexus-state-bus`, automatically update `BUSINESS_ENGINE_STATE.md`, `sync_packet.md`, and `gemini_inbox.md` whenever milestones are completed, and resume watching `gemini_inbox.md` for incoming directives.
 
 ---
 
@@ -26,7 +26,7 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | **Routing Brain** | Local `qwen2.5-coder:1.5b` (fits in 4GB Quadro M2200 VRAM) + Cloud `gemini-2.5-flash` / `gemini-2.5-flash-lite` | [`sandbox_config.json`](file:///home/psycry/Projects/agent_smith/claw-mcp-server/sandbox_config.json) (with ENV overrides) | **ONLINE** |
 | **Worker Plane (Python)** | Python **SQLModel** + `pgvector` Ingestion (`engine/ingest.py`), Anchor Scoring (`engine/anchors.py`) & Dossier Generator (`engine/dossier.py`) | [`/home/psycry/Projects/agent_smith/engine`](file:///home/psycry/Projects/agent_smith/engine) (`.venv`) | **ONLINE** |
 | **Persistence Backbone** | **PostgreSQL 16 + `pgvector` (`0.8.7`)** (`nomad_nexus_grid`) | `postgres://smith:[REDACTED_DB_PASS]@localhost:5432/nomad_nexus_grid` (`agent-smith-pgvector`) | **ONLINE** |
-| **Bi-Directional State Bus** | **Outbound:** Git State Bus (`psycry/nexus-state-bus`)<br>**Inbound:** Google Doc Master Ledger (`poll_bus.py` -> `gemini_inbox.md`) | `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md` | **ONLINE (2-WAY)** |
+| **Bi-Directional State Bus** | **Outbound:** Git State Bus (`psycry/nexus-state-bus`)<br>**Inbound:** Google Doc Master Ledger (`poll_bus.py` -> `gemini_inbox.md`) | `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md` | **ONLINE (2-WAY AUTO-SYNC)** |
 
 ---
 
@@ -41,10 +41,11 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
    - `opportunity_leads` enforces `CONSTRAINT uq_opportunity_leads_source_ext_id UNIQUE (source, external_id)` for idempotent `ON CONFLICT (source, external_id) DO UPDATE` upserts.
 4. **Capability Anchor Matching (Zero-Token Pre-Scoring):**
    - `engine/anchors.py` seeds 3 canonical proof-of-capability profiles (`agent_smith`, `shelter_source`, `phronarch`) into `agent_memories` (`namespace = 'capability_anchors'`) and pre-scores every lead via PostgreSQL cosine similarity before any LLM generation tokens are spent.
-5. **Autonomous Proposal & Dossier Pipeline (`engine/dossier.py`):**
-   - Queries `opportunity_leads` where `fit_score >= 0.40` and `status = 'NEW'`, generates tailored Markdown dossiers in `dossiers/<lane>/<external_id>.md` via the `gemini-2.5-flash` fallback chain (or deterministic blueprint fallback), transitions `status` to `'DOSSIER_READY'`, records `dossier_path` in `raw_metadata`, and logs completion to `workforce_tasks`.
-6. **Bi-Directional State Bus (`scripts/push_state_bus.sh` + `poll_bus.py`):**
-   - Outbound updates are sanitized and pushed to `psycry/nexus-state-bus`; inbound directives from Gemini's published Google Doc Master Ledger are polled every 30s into `gemini_inbox.md`.
+5. **Autonomous Proposal, Dossier & Submission Pipeline (`engine/dossier.py` + `submissions/`):**
+   - Queries `opportunity_leads` where `fit_score >= 0.40` and `status = 'NEW'`, generates tailored Markdown dossiers in `dossiers/<lane>/<external_id>.md` via the `gemini-2.5-flash` fallback chain, transitions `status` to `'DOSSIER_READY'`, and stages actionable outreach/grant packages in `submissions/<lane>/<external_id>_SUBMISSION_PACKAGE.md`.
+6. **Bi-Directional State Bus & Boot Memory (`poll_bus.py` + `scripts/push_state_bus.sh` + `SessionStart` Hook):**
+   - `nexus-state-bus.service` runs `poll_bus.py --interval 15`, polling the Google Doc Master Ledger via `INSTANT_TXT` (`/export?format=txt`) into `gemini_inbox.md` while preserving local telemetry and automatically pushing state updates to `psycry/nexus-state-bus`.
+   - Global `SessionStart` hook (`~/.gemini/config/hooks.json`) and `GEMINI.md` rules automatically prompt Antigravity on every session boot to verify the bus and execute active directives in `gemini_inbox.md`.
 
 ---
 
@@ -63,12 +64,13 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 - [x] Create public Git State Bus (`psycry/nexus-state-bus`) and sanitizer/publisher script (`scripts/push_state_bus.sh`).
 - [x] Build `engine/dossier.py` generating tailored Markdown execution briefs (`dossiers/FAST_CASHFLOW/*.md`) and SBIR Specific Aims dossiers (`dossiers/HIGH_TICKET_GRANT_RFP/*.md`) for leads with `fit_score >= 0.40` and `status = 'NEW'`, transitioning them to `'DOSSIER_READY'`.
 
-### Phase 4: Rust MCP Worker Bindings & Autonomous Scheduling (COMPLETED — `T-009`)
-- [x] Add native MCP tool bindings in Rust `claw-mcp-server` (`src/tools/workforce.rs` & `src/main.rs`) to trigger `engine.ingest` and `engine.dossier` on demand or schedule (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`).
+### Phase 4: Rust MCP Worker Bindings & Bi-Directional Ledger Sync (COMPLETED — `T-009` & `T-010`)
+- [x] Add native MCP tool bindings in Rust `claw-mcp-server` (`src/tools/workforce.rs` & `src/main.rs`) to trigger `engine.ingest` and `engine.dossier` on demand (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`).
 - [x] Wire 2-way Google Doc Master Ledger poller (`poll_bus.py` $\rightarrow$ `gemini_inbox.md`) + Git State Bus (`scripts/push_state_bus.sh`).
 
-### Phase 5: Outbound Submission Packaging, Discord Alerts & Cron Automation (NEXT — `T-010`)
-- [ ] Add automated Discord webhook/bot notifications for new `DOSSIER_READY` leads and systemd timer / cron scheduling for recurring ingestion + dossier sweeps.
+### Phase 5: Outbound Submission Packaging & Autonomous Boot Loop (ACTIVE — `T-011` COMPLETED)
+- [x] Execute autonomous boot sync, verify `claw-mcp-server` (`list_ranked_leads` & `generate_dossiers`), and stage submission packages for `MCP-RUST-ORCH-2026-01` (`\$8,500`) and `SBIR-2026-CIVIC-SHELTER-01` (`\$275,000`).
+- [x] Persist boot/loop directive into Antigravity `SessionStart` hooks and `GEMINI.md` memory rules.
 
 ---
 
@@ -85,4 +87,5 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | `T-007` | 2026-10-26 13:53 | Phase 2 | Build Python `SQLModel` + `pgvector` worker package (`engine/`), 768-dim lock, `UNIQUE (source, external_id)` upserts, 3 Capability Anchors, and Lane 1 / Lane 2 ingestion runners | **DONE** |
 | `T-008` | 2026-10-26 14:10 | Phase 3 | Build Autonomous Proposal & Capability Dossier Generator (`engine/dossier.py`), generate dossiers under `dossiers/<lane>/<external_id>.md`, and establish `psycry/nexus-state-bus` (`scripts/push_state_bus.sh`) | **DONE** |
 | `T-009` | 2026-10-26 14:36 | Phase 4 | Wire Rust `claw-mcp-server` MCP tool bindings (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`) + 2-way Google Doc Master Ledger poller (`poll_bus.py`) | **DONE** |
-| `T-010` | — | Phase 5 | Add Discord notification alerts for `DOSSIER_READY` leads and systemd/cron autonomous sweep timer | **READY** |
+| `T-010` | 2026-10-26 15:24 | Phase 4 | Verify bidirectional communication ping across Google Doc Master Ledger (`INSTANT_TXT`) and GitHub State Bus (`nexus-state-bus.service`) | **DONE** |
+| `T-011` | 2026-10-27 12:49 | Phase 5 | Execute boot sync, run `claw-mcp-server` health check (`list_ranked_leads`), stage submission packages for `MCP-RUST-ORCH-2026-01` & `SBIR-2026-CIVIC-SHELTER-01`, and install persistent `SessionStart` boot memory | **DONE** |
