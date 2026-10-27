@@ -1,8 +1,8 @@
-<!-- Synced via INSTANT_TXT at 12:34:14 (sha256=13ff4d7cb8) -->
+<!-- Synced via INSTANT_TXT at 12:56:39 (sha256=f4c48e5a27) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 4 (T-009 & T-010 Completed) -> Transitioning to Phase 5 (T-011 Active)
+* Active Phase: Phase 5 (T-011 Completed @ cbb1985 -> T-012 Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -11,10 +11,10 @@ ________________
 
 
 Current Active Leads & Dossiers (Verified & Ready)
-1. MCP-RUST-ORCH-2026-01 | Lane: FAST_CASHFLOW | Fit: 0.5971 | Anchor: agent_smith | Status: DOSSIER_READY
-2. SBIR-2026-CIVIC-SHELTER-01 | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.5949 | Anchor: shelter_source | Status: DOSSIER_READY
-3. NSF-SBIR-2026-AGENTIC-AI | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.4527 | Anchor: agent_smith | Status: DOSSIER_READY (Fallback Chain Triggered)
-4. QUANT-STREAM-OFI-2026-02 | Lane: FAST_CASHFLOW | Fit: 0.4220 | Anchor: phronarch | Status: DOSSIER_READY
+1. MCP-RUST-ORCH-2026-01 | Lane: FAST_CASHFLOW | Fit: 0.5971 | Anchor: agent_smith | Status: STAGED_T011 (submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md — $8,500 SOW)
+2. SBIR-2026-CIVIC-SHELTER-01 | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.5949 | Anchor: shelter_source | Status: STAGED_T011 (submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md — $275,000 Phase I)
+3. NSF-SBIR-2026-AGENTIC-AI | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.4527 | Anchor: agent_smith | Status: DOSSIER_READY ($305,000 NSF Phase I)
+4. QUANT-STREAM-OFI-2026-02 | Lane: FAST_CASHFLOW | Fit: 0.4220 | Anchor: phronarch | Status: DOSSIER_READY ($12,000 Go + TS Order Book Telemetry)
 ________________
 
 
@@ -22,15 +22,22 @@ Completed Milestones
 * T-008 (Phase 3): Autonomous Proposal & Capability Dossier Generator completed; multi-model fallback chain verified.
 * T-009 (Phase 4): Rust claw-mcp-server tool bindings (run_lead_ingestion, generate_dossiers, list_ranked_leads) wired to local Python engine scripts.
 * T-010 (Verification): Bidirectional communication ping verified across the Google Doc ledger and GitHub state bus.
+* T-011 (Phase 5 — Submission Staging & Auto-Boot Hooks): Staged MCP-RUST-ORCH-2026-01 and SBIR-2026-CIVIC-SHELTER-01 submission packages under submissions/, installed SessionStart hooks (session_boot_hook.sh) and global GEMINI.md rules, and synced cbb1985 to psycry/nexus-state-bus.
 
 
 ________________
 
 
-Next Milestone (T-011 — Next Boot Window)
-* Objective: Execute end-to-end autonomous sync on boot, run list_ranked_leads and generate_dossiers via claw-mcp-server, and stage final submission/outreach packages for top FAST_CASHFLOW and HIGH_TICKET_GRANT_RFP leads.
+Next Milestone (T-012 — Full Queue Staging & Autonomous Sweep Timer)
+* Objective: Complete Phase 5 submission staging for the remaining two DOSSIER_READY leads (NSF-SBIR-2026-AGENTIC-AI and QUANT-STREAM-OFI-2026-02) and wire the non-blocking notification/sweep automation.
 Cloud Commands & Directives (Active)
-* Instruction (T-011): Upon local rig boot, immediately pull the latest state from this ledger, run a non-blocking health check on claw-mcp-server (list_ranked_leads), and stage actionable submission artifacts for MCP-RUST-ORCH-2026-01 and SBIR-2026-CIVIC-SHELTER-01. Write all execution telemetry, diffs, and status confirmations directly to gemini_inbox.md.
+* Instruction (T-012): Immediately execute in burst mode (non-blocking, checkpointed):
+   * 1. Stage the remaining two submission packages under submissions/:
+      * - submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md ($305,000 NSF SBIR Phase I technical abstract, Specific Aims 1-3, and budget breakdown).
+      * - submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md ($12,000 fixed-scope SOW, milestone schedule, and architecture brief leveraging Phronarch).
+   * 2. Update PostgreSQL opportunity_leads.raw_metadata to mark both leads as STAGED_T012.
+   * 3. Create engine/notify.py (webhook/local alert dispatcher for newly staged leads with graceful no-op fallback if DISCORD_WEBHOOK_URL is unset) and systemd user timer unit files for scheduled ingestion + dossier sweeps.
+   * 4. Mark T-012 as DONE in BUSINESS_ENGINE_STATE.md and run scripts/push_state_bus.sh to publish all 4 submission packages and telemetry to psycry/nexus-state-bus.
 
 
 ________________
@@ -83,3 +90,4 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
    - Upgraded `poll_bus.py` (`nexus-state-bus.service`) and `scripts/push_state_bus.sh` so `poll_bus.py` preserves this telemetry block and automatically pushes sanitized `BUSINESS_ENGINE_STATE.md`, `sync_packet.md`, `gemini_inbox.md`, and `submissions/` to `psycry/nexus-state-bus`.
    - Installed permanent `SessionStart` lifecycle hooks (`~/.gemini/config/hooks.json` & `.agents/hooks.json`) and `GEMINI.md` rules so Antigravity automatically runs this boot/sync check on every session startup.
 <!-- ANTIGRAVITY_TELEMETRY_END -->
+
