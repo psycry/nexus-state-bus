@@ -1,0 +1,15 @@
+[Unit]
+Description=Digital Nomad LLC - Autonomous Business Engine Command Center UI & Telemetry API (:8787)
+After=network-online.target docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.dashboard_api --serve --port 8787
+Restart=always
+RestartSec=3
+StandardOutput=append:/home/psycry/Projects/agent_smith/dashboard.log
+StandardError=append:/home/psycry/Projects/agent_smith/dashboard.log
+
+[Install]
+WantedBy=default.target
