@@ -74,6 +74,10 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 - [x] Build `engine/notify.py` (webhook/local alert dispatcher with graceful no-op fallback if `DISCORD_WEBHOOK_URL` is unset) and enable `agent-smith-sweep.timer` (`systemd --user` periodic ingestion + dossier + alert sweep).
 - [x] Build `engine/ledger_sync.py` and integrate into `scripts/push_state_bus.sh` to automatically synthesize PostgreSQL + milestone telemetry, update `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and push closed-loop feedback to `psycry/nexus-state-bus`.
 
+### Phase 6: Backend Telemetry API & Tactical Command Center UI Synchronization (COMPLETED — `T-014` & `T-015`)
+- [x] Diagnose & resolve harness stdio/IPC pipe stalls (`claw-mcp-server` concurrent async `stdout`/`stderr` drain, `Stdio::null()` stdin isolation, `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup).
+- [x] Build `engine/dashboard_api.py` (REST/JSON API `/api/state`, `/api/leads`, `/api/tasks`, `/api/anchors`, `/api/health` + `ui/dashboard_state.json` snapshot exporter) and `ui/index.html` (Tactical Command Center Dashboard) with automatic sync on every `scripts/push_state_bus.sh` commit.
+
 ---
 
 ## 5. Active Task Log
@@ -94,3 +98,4 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | `T-012` | 2026-10-27 13:09 | Phase 5 | Stage `NSF-SBIR-2026-AGENTIC-AI` (`\$305,000`) & `QUANT-STREAM-OFI-2026-02` (`\$12,000`) submission packages, update DB `raw_metadata` to `STAGED_T012`, build `engine/notify.py` with no-op Discord fallback, and enable `agent-smith-sweep.timer` | **DONE** |
 | `T-013` | 2026-10-27 13:14 | Phase 5 | Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus` | **DONE** |
 | `T-014` | 2026-10-29 11:58 | Phase 5 | Diagnose & resolve harness stdio/IPC hangs (`claw-mcp-server` concurrent async stdout/stderr drain + `Stdio::null()` stdin isolation + `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup for `agent-smith-pgvector`) | **DONE** |
+| `T-015` | 2026-10-29 12:05 | Phase 6 | Multi-agent pod execution: build Backend Telemetry API (`engine/dashboard_api.py` + `ui/dashboard_state.json`) & Tactical Command Center UI (`ui/index.html`) synchronized via `ledger_sync.py` and `push_state_bus.sh` | **DONE** |
