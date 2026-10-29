@@ -92,11 +92,11 @@ Success Criteria:
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-017` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-10-29T17:30:22Z`
+- **Auto-Sync Timestamp:** `2026-10-29T17:32:13Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-017` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
-- **Total Staged Pipeline Valuation:** **`$780,500.00`** (`7/4 DOSSIER_READY` leads staged)
+- **Total Staged Pipeline Valuation:** **`$780,500.00`** (`7/7 DOSSIER_READY` leads staged)
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)

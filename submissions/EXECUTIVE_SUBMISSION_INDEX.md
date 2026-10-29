@@ -1,6 +1,6 @@
 # 🎯 Digital Nomad LLC — Executive Submission Index (`DOSSIER_READY` Queue)
 
-- **Generated At:** `2026-10-29T17:30:23Z`
+- **Generated At:** `2026-10-29T17:32:13Z`
 - **Active Milestone:** `T-017`
 - **Total Ready-to-Submit Pipeline:** **`\$780,500.00`** across **`7` Staged Leads**
 - **Live Command Center UI:** `http://127.0.0.1:8787`
