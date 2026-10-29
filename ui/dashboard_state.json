@@ -1,0 +1,590 @@
+{
+  "schema_version": "1.2",
+  "generated_at": "2026-10-29T16:05:31Z",
+  "entity": "Digital Nomad LLC",
+  "engine_name": "Autonomous Agent Business Engine",
+  "db_online": true,
+  "db_error": null,
+  "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
+  "latest_milestone": "T-014",
+  "status": "COMPLETED",
+  "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
+  "completed_milestones": [
+    "T-001",
+    "T-002",
+    "T-003",
+    "T-004",
+    "T-005",
+    "T-006",
+    "T-007",
+    "T-008",
+    "T-009",
+    "T-010",
+    "T-011",
+    "T-012",
+    "T-013",
+    "T-014"
+  ],
+  "milestone_log": [
+    {
+      "id": "T-001",
+      "timestamp": "2026-10-26 12:47",
+      "phase": "Phase 1",
+      "description": "Migrate Windows/WSL2 credentials, SSH keys, OCI keys, and 31 repos to Garuda Linux",
+      "status": "DONE"
+    },
+    {
+      "id": "T-002",
+      "timestamp": "2026-10-26 13:09",
+      "phase": "Phase 1",
+      "description": "Audit & upgrade `oci-ampere-claimer` workflow (3 Ashburn ADs, 12-cycle loop, `--no-retry`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-003",
+      "timestamp": "2026-10-26 13:25",
+      "phase": "Phase 1",
+      "description": "Deploy `agent-smith-pgvector` (PostgreSQL 16 + `pgvector` 0.8.7) Docker backbone",
+      "status": "DONE"
+    },
+    {
+      "id": "T-004",
+      "timestamp": "2026-10-26 13:30",
+      "phase": "Phase 1",
+      "description": "Upgrade `claw-mcp-server` to v0.2.0 with `store_memory`, `recall_memory`, `dispatch_subagent`, `list_workforce_tasks`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-005",
+      "timestamp": "2026-10-26 13:31",
+      "phase": "Phase 1",
+      "description": "Establish `BUSINESS_ENGINE_STATE.md` as workspace source-of-truth",
+      "status": "DONE"
+    },
+    {
+      "id": "T-006",
+      "timestamp": "2026-10-26 13:43",
+      "phase": "Phase 1",
+      "description": "Apply 5 architectural upgrades (`psycry/agent_smith` private, `qwen2.5-coder:1.5b`, ENV overrides, `opportunity_leads` schema, OCI PAYG doc)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-007",
+      "timestamp": "2026-10-26 13:53",
+      "phase": "Phase 2",
+      "description": "Build Python `SQLModel` + `pgvector` worker package (`engine/`), 768-dim lock, `UNIQUE (source, external_id)` upserts, 3 Capability Anchors, and Lane 1 / Lane 2 ingestion runners",
+      "status": "DONE"
+    },
+    {
+      "id": "T-008",
+      "timestamp": "2026-10-26 14:10",
+      "phase": "Phase 3",
+      "description": "Build Autonomous Proposal & Capability Dossier Generator (`engine/dossier.py`), generate dossiers under `dossiers/<lane>/<external_id>.md`, and establish `psycry/nexus-state-bus` (`scripts/push_state_bus.sh`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-009",
+      "timestamp": "2026-10-26 14:36",
+      "phase": "Phase 4",
+      "description": "Wire Rust `claw-mcp-server` MCP tool bindings (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`) + 2-way Google Doc Master Ledger poller (`poll_bus.py`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-010",
+      "timestamp": "2026-10-26 15:24",
+      "phase": "Phase 4",
+      "description": "Verify bidirectional communication ping across Google Doc Master Ledger (`INSTANT_TXT`) and GitHub State Bus (`nexus-state-bus.service`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-011",
+      "timestamp": "2026-10-27 12:49",
+      "phase": "Phase 5",
+      "description": "Execute boot sync, run `claw-mcp-server` health check (`list_ranked_leads`), stage submission packages for `MCP-RUST-ORCH-2026-01` & `SBIR-2026-CIVIC-SHELTER-01`, and install persistent `SessionStart` boot memory",
+      "status": "DONE"
+    },
+    {
+      "id": "T-012",
+      "timestamp": "2026-10-27 13:09",
+      "phase": "Phase 5",
+      "description": "Stage `NSF-SBIR-2026-AGENTIC-AI` (`\\$305,000`) & `QUANT-STREAM-OFI-2026-02` (`\\$12,000`) submission packages, update DB `raw_metadata` to `STAGED_T012`, build `engine/notify.py` with no-op Discord fallback, and enable `agent-smith-sweep.timer`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-013",
+      "timestamp": "2026-10-27 13:14",
+      "phase": "Phase 5",
+      "description": "Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-014",
+      "timestamp": "2026-10-29 11:58",
+      "phase": "Phase 5",
+      "description": "Diagnose & resolve harness stdio/IPC hangs (`claw-mcp-server` concurrent async stdout/stderr drain + `Stdio::null()` stdin isolation + `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup for `agent-smith-pgvector`)",
+      "status": "DONE"
+    }
+  ],
+  "metrics": {
+    "total_leads_count": 19,
+    "staged_leads_count": 4,
+    "total_pipeline_usd": 2275500.0,
+    "total_staged_pipeline_usd": 600500.0,
+    "fast_cashflow_staged_usd": 20500.0,
+    "grant_rfp_staged_usd": 580000.0,
+    "workforce_tasks_count": 8,
+    "capability_anchors_count": 3,
+    "embedding_dimensions": 768,
+    "monthly_burn_usd": 0.0
+  },
+  "total_staged_pipeline_usd": 600500.0,
+  "staged_leads": [
+    {
+      "id": 9,
+      "external_id": "MCP-RUST-ORCH-2026-01",
+      "source": "b2b_ai_contracts",
+      "lane": "FAST_CASHFLOW",
+      "title": "Custom Rust MCP Server & PostgreSQL pgvector RAG Pipeline Integration",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5971,
+      "estimated_value_usd": 8500.0,
+      "anchor": "agent_smith",
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md"
+    },
+    {
+      "id": 17,
+      "external_id": "SBIR-2026-CIVIC-SHELTER-01",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5949,
+      "estimated_value_usd": 275000.0,
+      "anchor": "shelter_source",
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md"
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.4527,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md"
+    },
+    {
+      "id": 10,
+      "external_id": "QUANT-STREAM-OFI-2026-02",
+      "source": "b2b_ai_contracts",
+      "lane": "FAST_CASHFLOW",
+      "title": "Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.422,
+      "estimated_value_usd": 12000.0,
+      "anchor": "phronarch",
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md"
+    }
+  ],
+  "opportunity_leads": [
+    {
+      "id": 9,
+      "external_id": "MCP-RUST-ORCH-2026-01",
+      "source": "b2b_ai_contracts",
+      "lane": "FAST_CASHFLOW",
+      "title": "Custom Rust MCP Server & PostgreSQL pgvector RAG Pipeline Integration",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5971,
+      "estimated_value_usd": 8500.0,
+      "anchor": "agent_smith",
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md"
+    },
+    {
+      "id": 17,
+      "external_id": "SBIR-2026-CIVIC-SHELTER-01",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5949,
+      "estimated_value_usd": 275000.0,
+      "anchor": "shelter_source",
+      "stage": "STAGED_T011",
+      "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md"
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.4527,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md"
+    },
+    {
+      "id": 10,
+      "external_id": "QUANT-STREAM-OFI-2026-02",
+      "source": "b2b_ai_contracts",
+      "lane": "FAST_CASHFLOW",
+      "title": "Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.422,
+      "estimated_value_usd": 12000.0,
+      "anchor": "phronarch",
+      "stage": "STAGED_T012",
+      "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md"
+    },
+    {
+      "id": 3,
+      "external_id": "1137560",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Accounting and Implementation Manager (Aprio)",
+      "status": "NEW",
+      "fit_score": 0.3095,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 16,
+      "external_id": "PD-19-127Y",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[PD-19-127Y] Science of Learning and Augmented Intelligence (SL) (U.S. National Science Foundation)",
+      "status": "NEW",
+      "fit_score": 0.2581,
+      "estimated_value_usd": 150000.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 7,
+      "external_id": "1137545",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior Software Engineer (Sotheby\u00e2\u0080\u0099s)",
+      "status": "NEW",
+      "fit_score": 0.2116,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 1,
+      "external_id": "1137568",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Solutions Engineer (Onebrief)",
+      "status": "NEW",
+      "fit_score": 0.1753,
+      "estimated_value_usd": 220000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 6,
+      "external_id": "1137548",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Risk Analyst (Pavago)",
+      "status": "NEW",
+      "fit_score": 0.1707,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 2,
+      "external_id": "1137562",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior Frontend Engineer (B2spin)",
+      "status": "NEW",
+      "fit_score": 0.1654,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 4,
+      "external_id": "1137557",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior DevOps Engineer (Lemon.io)",
+      "status": "NEW",
+      "fit_score": 0.1585,
+      "estimated_value_usd": 150000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 8,
+      "external_id": "1137544",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior Backend Engineer (Rain)",
+      "status": "NEW",
+      "fit_score": 0.1338,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 55,
+      "external_id": "1137572",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior Software Engineer LATAM (Wagmo)",
+      "status": "NEW",
+      "fit_score": 0.1337,
+      "estimated_value_usd": 140000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 12,
+      "external_id": "RFA-AI-28-025",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[RFA-AI-28-025] Implementation and Evaluation of Databases to Examine AIDS (National Institutes of Health)",
+      "status": "NEW",
+      "fit_score": 0.1147,
+      "estimated_value_usd": 150000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 5,
+      "external_id": "1137551",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Senior Backend Engineer (DuckDuckGo)",
+      "status": "NEW",
+      "fit_score": 0.0983,
+      "estimated_value_usd": 190000.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 15,
+      "external_id": "HM047623BAA0001",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[HM047623BAA0001] Boosting Innovative GEOINT - Science &amp; Technology  Broad Agency Announcement (BIG-ST BAA) (National Geospatial-Intelligence Agency )",
+      "status": "NEW",
+      "fit_score": 0.0983,
+      "estimated_value_usd": 150000.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 13,
+      "external_id": "RFA-OH-27-049",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[RFA-OH-27-049] NIOSH Centers of Excellence for Total Worker Health&reg; (U19) (Centers for Disease Control and Prevention - ERA)",
+      "status": "NEW",
+      "fit_score": 0.0572,
+      "estimated_value_usd": 150000.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 11,
+      "external_id": "G27AS00079",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[G27AS00079] Cooperative Agreement for Affiliated Partner with the Great Lakes-Northern Forest Cooperative Ecosystem Studies Unit (CESU) (Geological Survey)",
+      "status": "NEW",
+      "fit_score": 0.0235,
+      "estimated_value_usd": 150000.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    },
+    {
+      "id": 14,
+      "external_id": "PDS-ATHENS-FY25-01",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[PDS-ATHENS-FY25-01] Annual Program Statement (APS) (U.S. Mission to Greece)",
+      "status": "NEW",
+      "fit_score": 0.0,
+      "estimated_value_usd": 150000.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": ""
+    }
+  ],
+  "recent_workforce_tasks": [
+    {
+      "id": 8,
+      "assigned_agent": "operator",
+      "title": "T-014: Harness IPC Diagnostic & Pipe Unblock",
+      "status": "COMPLETED",
+      "priority": 10,
+      "result": "Refactored claw-mcp-server (shell.rs, workforce.rs) with concurrent async stdout/stderr drain + Stdio::null() + timeout watchdogs; hardened ledger_sync.py headless gdocs IPC guard & boot docker.socket wakeup.",
+      "updated_at": "2026-10-29 15:59:26.049033+00"
+    },
+    {
+      "id": 7,
+      "assigned_agent": "operator",
+      "title": "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop",
+      "status": "COMPLETED",
+      "priority": 10,
+      "result": "Created engine/ledger_sync.py, integrated into scripts/push_state_bus.sh, generated MASTER_LEDGER_FEEDBACK.json + auto-flipped gemini_inbox.md telemetry, and pushed T-012/T-013 closed-loop telemetry to psycry/nexus-state-bus.",
+      "updated_at": "2026-10-27 17:15:47.083001+00"
+    },
+    {
+      "id": 6,
+      "assigned_agent": "operator",
+      "title": "T-012: Full Queue Submission Staging, engine/notify.py & Systemd Sweep Timer",
+      "status": "COMPLETED",
+      "priority": 10,
+      "result": "All 4 DOSSIER_READY leads staged ($600,500 total pipeline value); engine/notify.py verified in NO_OP_FALLBACK mode; agent-smith-sweep.timer enabled and active.",
+      "updated_at": "2026-10-27 17:09:02.156499+00"
+    },
+    {
+      "id": 5,
+      "assigned_agent": "operator",
+      "title": "T-011: Boot Sync, MCP Health Check & Submission Package Staging",
+      "status": "COMPLETED",
+      "priority": 10,
+      "result": "Verified claw-mcp-server v0.2.0 (rmcp 1.7.0) over stdio JSON-RPC; staged submissions/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md and submissions/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md; synced telemetry to gemini_inbox.md, sync_packet.md, and BUSINESS_ENGINE_STATE.md.",
+      "updated_at": "2026-10-27 16:48:31.904667+00"
+    },
+    {
+      "id": 4,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: QUANT-STREAM-OFI-2026-02",
+      "status": "COMPLETED",
+      "priority": 8,
+      "result": "Generated dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md via gemini-2.5-flash (12762 bytes).",
+      "updated_at": "2026-10-26 18:11:46.210236+00"
+    },
+    {
+      "id": 3,
+      "assigned_agent": "architect",
+      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: NSF-SBIR-2026-AGENTIC-AI",
+      "status": "COMPLETED",
+      "priority": 8,
+      "result": "Generated dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md via deterministic_blueprint_v1 (3822 bytes).",
+      "updated_at": "2026-10-26 18:11:24.534346+00"
+    },
+    {
+      "id": 2,
+      "assigned_agent": "architect",
+      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: SBIR-2026-CIVIC-SHELTER-01",
+      "status": "COMPLETED",
+      "priority": 8,
+      "result": "Generated dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md via gemini-2.5-flash (15018 bytes).",
+      "updated_at": "2026-10-26 18:10:58.604693+00"
+    },
+    {
+      "id": 1,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: MCP-RUST-ORCH-2026-01",
+      "status": "COMPLETED",
+      "priority": 8,
+      "result": "Generated dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md via gemini-2.5-flash (14066 bytes).",
+      "updated_at": "2026-10-26 18:10:13.686071+00"
+    }
+  ],
+  "capability_anchors": [
+    {
+      "id": 2,
+      "agent_role": "capability_anchor",
+      "content": "Agent Smith (Rust MCP Server & Autonomous Multi-Agent Orchestrator): Rust systems programming, Model Context Protocol (MCP) server development, autonomous AI agent orchestration, hybrid LLM routing (local Ollama + Gemini Flash), PostgreSQL pgvector semantic memory and RAG pipelines, Discord/Slack automation bots, sandboxed DevOps/CI/CD execution, workflow automation, and custom B2B AI backend infrastructure.",
+      "metadata": {
+        "title": "Agent Smith (Rust MCP Server & Autonomous Multi-Agent Orchestrator)",
+        "asset_key": "agent_smith"
+      },
+      "asset_key": "agent_smith",
+      "title": "Agent Smith (Rust MCP Server & Autonomous Multi-Agent Orchestrator)"
+    },
+    {
+      "id": 3,
+      "agent_role": "capability_anchor",
+      "content": "Shelter Source & Nomad Nexus (Flutter/Firebase Civic Tech & Geospatial Mobile/Web Platform): Cross-platform Flutter mobile and web application engineering, Firebase/Firestore real-time backends, crowdsourced humanitarian and emergency shelter resource mapping, civic technology, social impact and community assistance grants, offline-first mobile data collection, public health and housing navigation systems, and digital nomad infrastructure.",
+      "metadata": {
+        "title": "Shelter Source & Nomad Nexus (Flutter/Firebase Civic Tech & Geospatial Mobile/Web Platform)",
+        "asset_key": "shelter_source"
+      },
+      "asset_key": "shelter_source",
+      "title": "Shelter Source & Nomad Nexus (Flutter/Firebase Civic Tech & Geospatial Mobile/Web Platform)"
+    },
+    {
+      "id": 4,
+      "agent_role": "capability_anchor",
+      "content": "Phronarch (Go/TypeScript Quantitative Analytics & Bayesian Real-Time Decision Engine): High-frequency real-time streaming data ingestion in Go and TypeScript/Node.js, WebSocket telemetry pipelines, Bayesian decision networks, Order Flow Imbalance (OFI), rolling VWAP volatility envelopes, statistical anomaly detection, financial analytics, automated risk circuit breakers, and interactive real-time data visualization dashboards.",
+      "metadata": {
+        "title": "Phronarch (Go/TypeScript Quantitative Analytics & Bayesian Real-Time Decision Engine)",
+        "asset_key": "phronarch"
+      },
+      "asset_key": "phronarch",
+      "title": "Phronarch (Go/TypeScript Quantitative Analytics & Bayesian Real-Time Decision Engine)"
+    }
+  ],
+  "ipc_diagnostic": {
+    "milestone": "T-014",
+    "root_causes_identified": [
+      "1. Rust claw-mcp-server (shell.rs & workforce.rs): Child subprocesses inherited MCP stdin (fd 0) without Stdio::null() and used synchronous std::process::Command::output() / un-drained pipes without concurrent async stdout/stderr reader tasks or watchdog timeouts.",
+      "2. Headless systemd daemon (poll_bus.py -> push_state_bus.sh -> ledger_sync.py): Invoking gdocs CLI without AGY_HOST_BRIDGE_URL or stdin=DEVNULL hung for 5-25s waiting on IDE host bridge IPC.",
+      "3. Boot ordering (docker.socket lazy activation): agent-smith-pgvector container was not started until first docker socket access, causing boot-time sweep/ledger_sync to hit Connection Refused on :5432."
+    ],
+    "remediations_applied": [
+      "Refactored claw-mcp-server/src/tools/shell.rs & workforce.rs to enforce Stdio::null() on stdin, spawn dedicated concurrent tokio::spawn tasks to drain stdout and stderr simultaneously (preventing >64KB FIFO write stalls), and wrap child.wait() in tokio::time::timeout with kill_on_drop(true).",
+      "Hardened engine/ledger_sync.py and poll_bus.py with stdin=subprocess.DEVNULL, AGY_HOST_BRIDGE_URL check before gdocs CLI calls, automatic docker start agent-smith-pgvector wakeup on DB connection retry, and cached lead fallback.",
+      "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
+    ]
+  },
+  "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified."
+}

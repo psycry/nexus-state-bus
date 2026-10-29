@@ -2,7 +2,7 @@
 
 > **Entity:** Digital Nomad LLC  
 > **Primary Operator:** PsyCry (Jasper)  
-> **Last Updated:** 2026-10-29 11:58 EDT  
+> **Last Updated:** 2026-10-29 12:05 EDT  
 > **Operational Mandate:** Read `BUSINESS_ENGINE_STATE.md` and `gemini_inbox.md` at the start of every workflow, verify `poll_bus.py` (`nexus-state-bus.service`) is actively polling the published Google Doc ledger and syncing state packets to `psycry/nexus-state-bus`, automatically update `BUSINESS_ENGINE_STATE.md`, `sync_packet.md`, and `gemini_inbox.md` whenever milestones are completed, and resume watching `gemini_inbox.md` for incoming directives.
 
 ---

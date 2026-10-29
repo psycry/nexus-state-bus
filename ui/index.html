@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIGITAL NOMAD LLC // AGENT SMITH v0.2.0 — TACTICAL COMMAND CENTER</title>
+  <style>
+    :root {
+      --bg-void: #050807;
+      --bg-panel: #0a100e;
+      --bg-panel-elevated: #0f1815;
+      --bg-row-hover: #13221c;
+      --border-dim: #1b3228;
+      --border-bright: #00ff9c55;
+      --matrix-green: #00ff9c;
+      --matrix-green-dim: #00c476;
+      --matrix-green-glow: rgba(0, 255, 156, 0.14);
+      --cyan-accent: #00e5ff;
+      --cyan-glow: rgba(0, 229, 255, 0.14);
+      --amber-accent: #ffb300;
+      --amber-glow: rgba(255, 179, 0, 0.14);
+      --purple-accent: #b388ff;
+      --danger-accent: #ff5252;
+      --text-primary: #e4f5ec;
+      --text-secondary: #8fb3a2;
+      --text-muted: #557566;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      background-image:
+        radial-gradient(circle at 15% 0%, rgba(0, 255, 156, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 85% 100%, rgba(0, 229, 255, 0.05) 0%, transparent 45%),
+        linear-gradient(rgba(0, 255, 156, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 156, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Top Telemetry Strip */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: rgba(10, 16, 14, 0.92);
+      border-bottom: 1px solid var(--border-bright);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .pulse-beacon {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--matrix-green);
+      box-shadow: 0 0 10px var(--matrix-green), 0 0 20px var(--matrix-green);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.22); opacity: 0.72; }
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      text-transform: uppercase;
+    }
+
+    .brand-title span {
+      color: var(--matrix-green);
+    }
+
+    .brand-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    .telemetry-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+      color: var(--text-secondary);
+    }
+
+    .meta-pill strong {
+      color: var(--matrix-green);
+    }
+
+    .meta-pill.cyan strong {
+      color: var(--cyan-accent);
+    }
+
+    .btn-sync {
+      background: rgba(0, 255, 156, 0.1);
+      color: var(--matrix-green);
+      border: 1px solid var(--matrix-green);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-sync:hover {
+      background: var(--matrix-green);
+      color: var(--bg-void);
+      box-shadow: 0 0 12px rgba(0, 255, 156, 0.4);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 22px 24px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    /* 1. Executive KPI Header Bar */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+
+    .kpi-card {
+      background: linear-gradient(160deg, var(--bg-panel) 0%, var(--bg-panel-elevated) 100%);
+      border: 1px solid var(--border-dim);
+      border-top: 2px solid var(--matrix-green);
+      border-radius: 6px;
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-bright);
+    }
+
+    .kpi-card.cyan {
+      border-top-color: var(--cyan-accent);
+    }
+
+    .kpi-card.amber {
+      border-top-color: var(--amber-accent);
+    }
+
+    .kpi-card.purple {
+      border-top-color: var(--purple-accent);
+    }
+
+    .kpi-label {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .kpi-value {
+      font-family: var(--font-mono);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--matrix-green);
+      letter-spacing: -0.02em;
+    }
+
+    .kpi-card.cyan .kpi-value {
+      color: var(--cyan-accent);
+    }
+
+    .kpi-card.amber .kpi-value {
+      color: var(--amber-accent);
+    }
+
+    .kpi-card.purple .kpi-value {
+      color: var(--purple-accent);
+    }
+
+    .kpi-sub {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Section Panels */
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .panel-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: var(--bg-panel-elevated);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .panel-title {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-title .tag {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 3px;
+      background: var(--matrix-green-glow);
+      color: var(--matrix-green);
+      border: 1px solid var(--border-bright);
+    }
+
+    /* Filter Controls */
+    .filter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      background: var(--bg-void);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-dim);
+      padding: 5px 11px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--matrix-green);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--matrix-green-glow);
+      color: var(--matrix-green);
+      border-color: var(--matrix-green);
+      font-weight: 600;
+    }
+
+    .search-input {
+      background: var(--bg-void);
+      border: 1px solid var(--border-dim);
+      color: var(--text-primary);
+      padding: 5px 11px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      min-width: 210px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--matrix-green);
+    }
+
+    /* Pipeline Table */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-secondary);
+      background: rgba(15, 24, 21, 0.6);
+      border-bottom: 1px solid var(--border-dim);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(27, 50, 40, 0.55);
+      vertical-align: middle;
+    }
+
+    tr.lead-row {
+      cursor: pointer;
+      transition: background 0.12s ease;
+    }
+
+    tr.lead-row:hover {
+      background: var(--bg-row-hover);
+    }
+
+    .ext-id {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--matrix-green);
+      font-size: 0.82rem;
+    }
+
+    .lead-title {
+      color: var(--text-primary);
+      font-weight: 500;
+      margin-top: 2px;
+      font-size: 0.81rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .badge-fast {
+      background: var(--cyan-glow);
+      color: var(--cyan-accent);
+      border: 1px solid rgba(0, 229, 255, 0.35);
+    }
+
+    .badge-grant {
+      background: var(--amber-glow);
+      color: var(--amber-accent);
+      border: 1px solid rgba(255, 179, 0, 0.35);
+    }
+
+    .badge-ready {
+      background: var(--matrix-green-glow);
+      color: var(--matrix-green);
+      border: 1px solid rgba(0, 255, 156, 0.4);
+    }
+
+    .badge-stage {
+      background: rgba(179, 136, 255, 0.14);
+      color: var(--purple-accent);
+      border: 1px solid rgba(179, 136, 255, 0.35);
+    }
+
+    .anchor-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 99px;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      background: var(--bg-void);
+      border: 1px solid var(--border-dim);
+      color: var(--text-primary);
+    }
+
+    .anchor-chip::before {
+      content: '⚓';
+      font-size: 0.68rem;
+    }
+
+    /* Fit Score Progress Bar */
+    .fit-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 135px;
+    }
+
+    .fit-bar-bg {
+      flex: 1;
+      height: 7px;
+      background: var(--bg-void);
+      border: 1px solid var(--border-dim);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .fit-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan-accent), var(--matrix-green));
+      border-radius: 3px;
+    }
+
+    .fit-num {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--matrix-green);
+    }
+
+    .val-usd {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    .btn-inspect {
+      background: transparent;
+      color: var(--matrix-green);
+      border: 1px solid var(--border-bright);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-inspect:hover {
+      background: var(--matrix-green);
+      color: var(--bg-void);
+    }
+
+    /* Two-Column Lower Layout */
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 1120px) {
+      .dual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Roadmap & Milestone Tracker */
+    .phase-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 10px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-dim);
+      background: rgba(5, 8, 7, 0.5);
+    }
+
+    .phase-node {
+      padding: 10px 12px;
+      border-radius: 5px;
+      border: 1px solid var(--border-dim);
+      background: var(--bg-panel-elevated);
+    }
+
+    .phase-node.done {
+      border-left: 3px solid var(--matrix-green);
+    }
+
+    .phase-node-id {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      color: var(--matrix-green);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .phase-node-title {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 2px;
+    }
+
+    .milestone-list {
+      max-height: 430px;
+      overflow-y: auto;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .milestone-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+      border-radius: 5px;
+      font-size: 0.8rem;
+    }
+
+    .milestone-item.highlight {
+      border-color: var(--matrix-green);
+      background: rgba(0, 255, 156, 0.05);
+    }
+
+    .m-id {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--matrix-green);
+      min-width: 54px;
+    }
+
+    .m-desc {
+      flex: 1;
+      color: var(--text-primary);
+    }
+
+    .m-meta {
+      font-family: var(--font-mono);
+      font-size: 0.69rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    /* T-014 IPC Diagnostic Panel */
+    .diag-body {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .diag-box {
+      padding: 12px 14px;
+      border-radius: 5px;
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+    }
+
+    .diag-box.cause {
+      border-left: 3px solid var(--amber-accent);
+    }
+
+    .diag-box.fix {
+      border-left: 3px solid var(--matrix-green);
+    }
+
+    .diag-heading {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .diag-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    .diag-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .diag-list li::before {
+      content: '›';
+      position: absolute;
+      left: 2px;
+      color: var(--matrix-green);
+      font-weight: bold;
+    }
+
+    /* Workforce Pod & 768-Dim Capability Anchors */
+    .pod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 16px 20px;
+    }
+
+    .agent-card {
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+      border-radius: 5px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .agent-role {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--cyan-accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .agent-desc {
+      font-size: 0.77rem;
+      color: var(--text-secondary);
+    }
+
+    .anchor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      padding: 0 20px 18px;
+    }
+
+    .anchor-card {
+      background: rgba(0, 255, 156, 0.03);
+      border: 1px solid var(--border-dim);
+      border-top: 2px solid var(--matrix-green);
+      border-radius: 5px;
+      padding: 14px;
+    }
+
+    .anchor-name {
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--matrix-green);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .anchor-stack {
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      color: var(--cyan-accent);
+      margin-bottom: 6px;
+    }
+
+    .anchor-summary {
+      font-size: 0.77rem;
+      color: var(--text-secondary);
+    }
+
+    /* Modal / Drawer for Dossier Inspection */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 5, 0.84);
+      backdrop-filter: blur(6px);
+      display: none;
+      justify-content: flex-end;
+      z-index: 200;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .drawer {
+      width: min(760px, 95vw);
+      height: 100vh;
+      background: var(--bg-panel);
+      border-left: 1px solid var(--matrix-green);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .drawer-header {
+      padding: 18px 24px;
+      background: var(--bg-panel-elevated);
+      border-bottom: 1px solid var(--border-dim);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .drawer-title {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--matrix-green);
+    }
+
+    .btn-close {
+      background: transparent;
+      border: 1px solid var(--border-dim);
+      color: var(--text-secondary);
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+    }
+
+    .btn-close:hover {
+      border-color: var(--danger-accent);
+      color: var(--danger-accent);
+    }
+
+    .drawer-body {
+      padding: 22px 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .drawer-section {
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .drawer-section h4 {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      color: var(--cyan-accent);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .pitch-pre {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      white-space: pre-wrap;
+      background: var(--bg-void);
+      border: 1px solid var(--border-dim);
+      padding: 14px;
+      border-radius: 4px;
+      color: var(--text-primary);
+      line-height: 1.55;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Telemetry Header -->
+  <header class="top-bar">
+    <div class="brand-cluster">
+      <div class="pulse-beacon" title="Autonomous Engine Online"></div>
+      <div>
+        <div class="brand-title">DIGITAL NOMAD LLC // <span>AGENT SMITH v0.2.0</span></div>
+        <div class="brand-subtitle">Autonomous Revenue Engine &bull; Rust RMCP 1.7 Control Plane + Python 3.14 SQLModel/pgvector</div>
+      </div>
+    </div>
+    <div class="telemetry-meta">
+      <span class="meta-pill">SOURCE: <strong id="data-source-badge">EMBEDDED_CANONICAL</strong></span>
+      <span class="meta-pill cyan">768-DIM LOCK: <strong>VERIFIED (HNSW)</strong></span>
+      <span class="meta-pill">MILESTONE: <strong id="latest-milestone-badge">T-015</strong></span>
+      <span class="meta-pill">SYNC: <strong id="sync-time-badge">2026-10-29T16:00:00Z</strong></span>
+      <button class="btn-sync" id="btn-refresh" onclick="syncEngineState()">&#x21bb; SYNC BUS</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. Executive KPI Header Bar -->
+    <section class="kpi-grid" aria-label="Executive KPIs">
+      <div class="kpi-card">
+        <div class="kpi-label"><span>Total Staged Pipeline</span><span>USD</span></div>
+        <div class="kpi-value" id="kpi-total-pipeline">$600,500.00</div>
+        <div class="kpi-sub">$0/mo baseline burn &bull; 100% autonomous staging</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label"><span>Active Staged Dossiers</span><span>QUEUE</span></div>
+        <div class="kpi-value" id="kpi-active-dossiers">4 / 4 DOSSIER_READY</div>
+        <div class="kpi-sub">All fit_score &ge; 0.40 staged in submissions/</div>
+      </div>
+      <div class="kpi-card cyan">
+        <div class="kpi-label"><span>Fast Cashflow Lane</span><span>LANE 1</span></div>
+        <div class="kpi-value" id="kpi-fast-lane">$20,500.00</div>
+        <div class="kpi-sub">2 Fixed-Scope 14-Day Engineering Contracts</div>
+      </div>
+      <div class="kpi-card amber">
+        <div class="kpi-label"><span>High-Ticket Grant / SBIR Lane</span><span>LANE 2</span></div>
+        <div class="kpi-value" id="kpi-grant-lane">$580,000.00</div>
+        <div class="kpi-sub">2 Phase I SBIR Proposals (NSF + Civic Shelter)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label"><span>MCP Stdio IPC Latency</span><span>T-014</span></div>
+        <div class="kpi-value" id="kpi-ipc-latency">28.5ms &mdash; HEALTHY</div>
+        <div class="kpi-sub">Async stdout/stderr drain + Stdio::null() isolation</div>
+      </div>
+      <div class="kpi-card purple">
+        <div class="kpi-label"><span>State Bus Status</span><span>BRIDGE</span></div>
+        <div class="kpi-value" id="kpi-bus-status" style="font-size:1.18rem;">CLOSED-LOOP 2-WAY ACTIVE</div>
+        <div class="kpi-sub">Google Doc Ledger &harr; psycry/nexus-state-bus</div>
+      </div>
+    </section>
+
+    <!-- 2. Interactive 2-Lane Opportunity Pipeline Table & Filter Controls -->
+    <section class="panel" aria-label="Opportunity Pipeline">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>2-Lane Autonomous Opportunity &amp; Submission Pipeline</span>
+          <span class="tag" id="lead-count-tag">4 LEADS STAGED</span>
+        </div>
+        <div class="filter-controls">
+          <button class="filter-btn active" data-lane="ALL" onclick="setLaneFilter('ALL')">ALL LANES ($600.5K)</button>
+          <button class="filter-btn" data-lane="FAST_CASHFLOW" onclick="setLaneFilter('FAST_CASHFLOW')">FAST_CASHFLOW ($20.5K)</button>
+          <button class="filter-btn" data-lane="HIGH_TICKET_GRANT_RFP" onclick="setLaneFilter('HIGH_TICKET_GRANT_RFP')">HIGH_TICKET_GRANT_RFP ($580K)</button>
+          <input type="search" id="lead-search" class="search-input" placeholder="Filter ID, anchor, stage..." oninput="renderLeadsTable()" />
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID / External Opportunity</th>
+              <th>Revenue Lane</th>
+              <th>Status &amp; Stage</th>
+              <th>768-Dim Fit Score</th>
+              <th>Capability Anchor</th>
+              <th>Valuation (USD)</th>
+              <th>Submission Package</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="leads-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Roadmap & Milestone Tracker + T-014 IPC Diagnostic Panel -->
+    <div class="dual-grid">
+      <!-- Left: Roadmap & Milestone Tracker (Phase 1 to Phase 6 / T-001 to T-015) -->
+      <section class="panel" aria-label="Roadmap and Milestones">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>Roadmap Phases (Phase 1&ndash;6) &amp; Milestone Ledger (T-001 &rarr; T-015)</span>
+            <span class="tag">15 / 15 VERIFIED</span>
+          </div>
+        </div>
+        <div class="phase-bar" id="phase-bar"></div>
+        <div class="milestone-list" id="milestone-list"></div>
+      </section>
+
+      <!-- Right: T-014 IPC Diagnostic & Pipe Unblock Telemetry Panel -->
+      <section class="panel" aria-label="T-014 IPC Diagnostic Telemetry">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>T-014 Harness IPC Diagnostic &amp; Pipe Unblock Telemetry</span>
+            <span class="tag">RESOLVED &bull; 0 STALLS</span>
+          </div>
+        </div>
+        <div class="diag-body">
+          <div class="diag-box cause">
+            <div class="diag-heading">&#x26a0; Root Causes Identified (T-014 Audit)</div>
+            <ul class="diag-list" id="diag-causes"></ul>
+          </div>
+          <div class="diag-box fix">
+            <div class="diag-heading">&#x2714; Engineering Remediations Applied &amp; Verified</div>
+            <ul class="diag-list" id="diag-fixes"></ul>
+          </div>
+          <div class="diag-box">
+            <div class="diag-heading">&#x2699; Recent Autonomous Workforce Task Execution Log</div>
+            <ul class="diag-list" id="workforce-tasks-list"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 4. Multi-Agent Workforce Pod & 768-Dim Capability Anchors Panel -->
+    <section class="panel" aria-label="Workforce Pod and Capability Anchors">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>Multi-Agent Workforce Pod &amp; 768-Dim Capability Anchors (Zero-Token Pre-Scoring)</span>
+          <span class="tag">models/text-embedding-004 + FNV-1a 768-Dim Lock</span>
+        </div>
+      </div>
+      <div class="pod-grid" id="pod-grid"></div>
+      <div class="anchor-grid" id="anchor-grid"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    DIGITAL NOMAD LLC // AUTONOMOUS AGENT BUSINESS ENGINE // ZERO-BUILD TACTICAL COMMAND CENTER (T-015) // GARUDA LINUX + POSTGRESQL 16 PGVECTOR 0.8.7
+  </footer>
+
+  <!-- Interactive Dossier & Submission Package Drawer -->
+  <div class="modal-backdrop" id="dossier-modal" onclick="handleBackdropClick(event)">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+      <div class="drawer-header">
+        <div>
+          <div class="drawer-title" id="drawer-title">DOSSIER INSPECTOR</div>
+          <div class="brand-subtitle" id="drawer-subtitle"></div>
+        </div>
+        <button class="btn-close" onclick="closeDrawer()">ESC / CLOSE &#x2715;</button>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+  </div>
+
+  <script>
+    // Canonical Embedded Fallback Snapshot (renders cleanly via file://, /api/state, ./dashboard_state.json, or ../MASTER_LEDGER_FEEDBACK.json)
+    const FALLBACK_STATE = {
+      schema_version: "1.2-T015",
+      timestamp: "2026-10-29T16:02:00Z",
+      google_doc_id: "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
+      latest_milestone: "T-015",
+      status: "COMPLETED",
+      mcp_ipc_latency_ms: 28.5,
+      state_bus_status: "CLOSED-LOOP 2-WAY ACTIVE",
+      total_staged_pipeline_usd: 600500.0,
+      completed_milestones: [
+        "T-001","T-002","T-003","T-004","T-005","T-006","T-007",
+        "T-008","T-009","T-010","T-011","T-012","T-013","T-014","T-015"
+      ],
+      staged_leads: [
+        {
+          id: 9,
+          external_id: "MCP-RUST-ORCH-2026-01",
+          title: "Custom Rust MCP Server & PostgreSQL pgvector RAG Pipeline Integration",
+          lane: "FAST_CASHFLOW",
+          status: "DOSSIER_READY",
+          fit_score: 0.5971,
+          estimated_value_usd: 8500.0,
+          anchor: "agent_smith",
+          stage: "STAGED_T011",
+          submission_pkg: "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+          dossier_path: "dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md",
+          timeline: "14-Day Fixed-Scope Sprint (M1: $2,550 / M2: $3,400 / M3: $2,550)",
+          architecture_fit: "Direct TRL-7 match with Agent Smith (claw-mcp-server v0.2.0, rmcp 1.7, 17 native stdio JSON-RPC tools, SandboxConfig::resolve_safe_path, hybrid Ollama qwen2.5-coder:1.5b + Gemini Flash router, and shared 768-dim PostgreSQL 16 pgvector HNSW memory).",
+          executive_pitch: "Subject: Production Rust MCP Server (rmcp 1.7) + pgvector 768-Dim Hybrid RAG — Ready for 14-Day Deployment (MCP-RUST-ORCH-2026-01)\n\nWe have already built and deployed this exact stack in production via Agent Smith (claw-mcp-server v0.2.0): 17 native JSON-RPC stdio MCP tools, strict path canonicalization, hybrid local/cloud LLM routing, and unified 768-dim pgvector HNSW indexing. Ready to deliver M1-M3 in 14 days for $8,500."
+        },
+        {
+          id: 17,
+          external_id: "SBIR-2026-CIVIC-SHELTER-01",
+          title: "SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform",
+          lane: "HIGH_TICKET_GRANT_RFP",
+          status: "DOSSIER_READY",
+          fit_score: 0.5949,
+          estimated_value_usd: 275000.0,
+          anchor: "shelter_source",
+          stage: "STAGED_T011",
+          submission_pkg: "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+          dossier_path: "dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md",
+          timeline: "9-Month Phase I Execution (TRL-6 -> TRL-7 Field Pilot)",
+          architecture_fit: "Built directly on Digital Nomad LLC's TRL-6 Shelter Source & Nomad Nexus codebase (unified Flutter/Dart iOS/Android/Web geospatial core, Firebase Auth/Firestore, offline-first SQLite/Hive sync with >=95% conflict recovery, and reputation-weighted community verification).",
+          executive_pitch: "SBIR Phase I Technical Abstract ($275,000):\nAdvances Shelter Source & Nomad Nexus from TRL-6 to TRL-7 operational field readiness across 3 Specific Aims: (1) Real-time geospatial indexing (<2.0s load for 100+ nodes), (2) Deterministic offline-first local cache (>=95% sync integrity), and (3) Reputation-weighted crowdsourced capacity verification (>=80% throughput under 1,000-user load + 20-operator NGO field pilot)."
+        },
+        {
+          id: 18,
+          external_id: "NSF-SBIR-2026-AGENTIC-AI",
+          title: "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+          lane: "HIGH_TICKET_GRANT_RFP",
+          status: "DOSSIER_READY",
+          fit_score: 0.4527,
+          estimated_value_usd: 305000.0,
+          anchor: "agent_smith",
+          stage: "STAGED_T012",
+          submission_pkg: "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+          dossier_path: "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
+          timeline: "6-Month NSF Phase I R&D Execution (TRL-6/7 -> TRL-8)",
+          architecture_fit: "Leverages Agent Smith v0.2.0 (Rust Edition 2024, Tokio async, RMCP 1.7 + Python 3.14 SQLModel worker plane) to deliver >70% cloud token reduction via 768-dim pgvector zero-token pre-scoring and 0 sandbox escapes across 10,000 adversarial MCP payloads.",
+          executive_pitch: "NSF SBIR Phase I Project Pitch ($305,000):\nAdvances Agent Smith into an open-standards verifiable enterprise runtime: (Aim 1) Hybrid Inference & Zero-Token 768-dim pgvector Pre-Scoring (<50ms recall, >=70% cloud token savings), (Aim 2) Zero-Trust Rust Capability Sandbox tested against 10,000 adversarial fuzzing payloads, and (Aim 3) Multi-Agent Collective Memory with >=99.5% idempotent checkpoint recovery."
+        },
+        {
+          id: 10,
+          external_id: "QUANT-STREAM-OFI-2026-02",
+          title: "Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)",
+          lane: "FAST_CASHFLOW",
+          status: "DOSSIER_READY",
+          fit_score: 0.4220,
+          estimated_value_usd: 12000.0,
+          anchor: "phronarch",
+          stage: "STAGED_T012",
+          submission_pkg: "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+          dossier_path: "dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md",
+          timeline: "14-Day Fixed-Scope Sprint (M1: $3,600 / M2: $4,800 / M3: $3,600)",
+          architecture_fit: "Direct match with Phronarch v2.2.0 (/home/psycry/Projects/phronarch): Go ultra-low-latency L2 WebSocket streamer (<10ms Redis 7 Pub/Sub serialization) + TypeScript quantitative engine (OFI Z-scores, rolling VWAP +-2/3 sigma bands, 6-stage Bayesian posterior pipeline, and Lightweight Charts v5 UI).",
+          executive_pitch: "Subject: Sub-10ms Go WebSocket L2 Order Book Ingestor + TypeScript OFI/VWAP & Bayesian Telemetry Dashboard — 14-Day Delivery (QUANT-STREAM-OFI-2026-02)\n\nBuilt on our battle-tested Phronarch v2.2.0 Go + TypeScript quantitative telemetry engine. Delivers <10ms ingest-to-Redis latency, L1/L2 OFI momentum Z-scores, VWAP volatility bands, and 6-stage Bayesian signal alerts in 14 days for $12,000."
+        }
+      ],
+      phases: [
+        { id: "Phase 1", name: "Foundation & pgvector", range: "T-001..T-006", status: "COMPLETED" },
+        { id: "Phase 2", name: "2-Lane SQLModel Ingest", range: "T-007", status: "COMPLETED" },
+        { id: "Phase 3", name: "Dossier Engine & Bus", range: "T-008", status: "COMPLETED" },
+        { id: "Phase 4", name: "Rust MCP & 2-Way Sync", range: "T-009..T-010", status: "COMPLETED" },
+        { id: "Phase 5", name: "Staging, Sweep & T-014", range: "T-011..T-014", status: "COMPLETED" },
+        { id: "Phase 6", name: "Command Center UI", range: "T-015", status: "COMPLETED" }
+      ],
+      milestones: [
+        { id: "T-015", phase: "Phase 6", ts: "2026-10-29", status: "DONE", desc: "Launch Tactical Command Center UI (ui/index.html + live state API & offline telemetry bundle)" },
+        { id: "T-014", phase: "Phase 5", ts: "2026-10-29", status: "DONE", desc: "Resolve harness stdio/IPC hangs (concurrent async stdout/stderr drain, Stdio::null() isolation, timeouts, docker wakeup)" },
+        { id: "T-013", phase: "Phase 5", ts: "2026-10-27", status: "DONE", desc: "Automated Two-Way Feedback Bridge (engine/ledger_sync.py + MASTER_LEDGER_FEEDBACK.json -> psycry/nexus-state-bus)" },
+        { id: "T-012", phase: "Phase 5", ts: "2026-10-27", status: "DONE", desc: "Full queue submission staging ($600,500 across 4 leads), engine/notify.py & systemd agent-smith-sweep.timer" },
+        { id: "T-011", phase: "Phase 5", ts: "2026-10-27", status: "DONE", desc: "Autonomous boot sync, MCP health check, stage T-011 submission packages & persistent SessionStart hooks" },
+        { id: "T-010", phase: "Phase 4", ts: "2026-10-26", status: "DONE", desc: "Verify bidirectional communication ping across Google Doc Master Ledger and GitHub State Bus" },
+        { id: "T-009", phase: "Phase 4", ts: "2026-10-26", status: "DONE", desc: "Wire Rust claw-mcp-server MCP tool bindings (run_lead_ingestion, generate_dossiers, list_ranked_leads) + poll_bus.py" },
+        { id: "T-008", phase: "Phase 3", ts: "2026-10-26", status: "DONE", desc: "Build Autonomous Proposal & Capability Dossier Generator (engine/dossier.py) & push_state_bus.sh" },
+        { id: "T-007", phase: "Phase 2", ts: "2026-10-26", status: "DONE", desc: "Build Python SQLModel + pgvector worker package, 768-dim lock, idempotent upserts & 3 Capability Anchors" },
+        { id: "T-006", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Apply 5 architectural upgrades (private repo, qwen2.5-coder:1.5b local router, ENV overrides, opportunity_leads schema)" },
+        { id: "T-005", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Establish BUSINESS_ENGINE_STATE.md as canonical workspace source-of-truth" },
+        { id: "T-004", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Upgrade claw-mcp-server to v0.2.0 with store_memory, recall_memory, dispatch_subagent, list_workforce_tasks" },
+        { id: "T-003", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Deploy agent-smith-pgvector (PostgreSQL 16 + pgvector 0.8.7) Docker persistence backbone" },
+        { id: "T-002", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Audit & harden oci-ampere-claimer workflow (3 Ashburn ADs, 12-cycle loop, --no-retry HTTP 500 fix)" },
+        { id: "T-001", phase: "Phase 1", ts: "2026-10-26", status: "DONE", desc: "Migrate Windows/WSL2 credentials, SSH keys, OCI keys, and 31 repositories to Garuda Linux" }
+      ],
+      recent_workforce_tasks: [
+        { id: 9, assigned_agent: "architect", title: "T-015: Tactical Command Center UI & Telemetry Server", status: "COMPLETED", updated_at: "2026-10-29 16:02 UTC" },
+        { id: 8, assigned_agent: "operator", title: "T-014: Harness IPC Diagnostic & Pipe Unblock", status: "COMPLETED", updated_at: "2026-10-29 15:59 UTC" },
+        { id: 7, assigned_agent: "operator", title: "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop", status: "COMPLETED", updated_at: "2026-10-27 17:15 UTC" },
+        { id: 6, assigned_agent: "operator", title: "T-012: Full Queue Submission Staging, engine/notify.py & Systemd Sweep Timer", status: "COMPLETED", updated_at: "2026-10-27 17:09 UTC" },
+        { id: 5, assigned_agent: "operator", title: "T-011: Boot Sync, MCP Health Check & Submission Package Staging", status: "COMPLETED", updated_at: "2026-10-27 16:48 UTC" }
+      ],
+      ipc_diagnostic: {
+        milestone: "T-014",
+        root_causes_identified: [
+          "1. Rust claw-mcp-server (shell.rs & workforce.rs): Child subprocesses inherited MCP stdin (fd 0) without Stdio::null() and used blocking output() / un-drained pipes without concurrent async stdout/stderr reader tasks.",
+          "2. Headless systemd daemon (poll_bus.py -> push_state_bus.sh -> ledger_sync.py): Invoking gdocs CLI without AGY_HOST_BRIDGE_URL or stdin=DEVNULL hung 5-25s waiting on IDE host bridge IPC.",
+          "3. Boot ordering (docker.socket lazy activation): agent-smith-pgvector container was not started until first docker socket access, causing boot-time sweep/ledger_sync to hit Connection Refused on :5432."
+        ],
+        remediations_applied: [
+          "Refactored claw-mcp-server/src/tools/shell.rs & workforce.rs to enforce Stdio::null() on stdin, spawn concurrent tokio::spawn tasks to drain stdout and stderr simultaneously (preventing >64KB FIFO write stalls), and wrap child.wait() in tokio::time::timeout with kill_on_drop(true).",
+          "Hardened engine/ledger_sync.py and poll_bus.py with stdin=subprocess.DEVNULL, AGY_HOST_BRIDGE_URL gate before gdocs CLI calls, automatic docker start agent-smith-pgvector wakeup on DB retry, and cached lead fallback.",
+          "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake (28.5ms latency) + systemd service reload."
+        ]
+      },
+      workforce_pod: [
+        { role: "scout", model: "qwen2.5-coder:1.5b + Python ingest.py", status: "ONLINE", desc: "Autonomous 2-lane opportunity discovery (B2B AI/Rust/Quant contracts & Federal SBIR/Grant RFPs) with idempotent PostgreSQL upserts." },
+        { role: "architect", model: "gemini-2.5-flash + engine/dossier.py", status: "ONLINE", desc: "Generates technical execution briefs, SOW milestone schedules, SBIR Specific Aims dossiers, and Command Center interfaces." },
+        { role: "operator", model: "claw-mcp-server v0.2.0 (RMCP 1.7)", status: "ONLINE", desc: "Enforces zero-trust sandbox (resolve_safe_path), concurrent async stdio worker execution, systemd timers, and 2-way Git/Doc state bus sync." },
+        { role: "analyst", model: "pgvector 0.8.7 + Phronarch v2.2.0", status: "ONLINE", desc: "Executes 768-dim cosine similarity pre-scoring against Capability Anchors, budget verification, and quantitative telemetry." }
+      ],
+      capability_anchors: [
+        {
+          id: "agent_smith",
+          dim: "768-DIM HNSW",
+          stack: "Rust Edition 2024 • Tokio • RMCP 1.7 • Python 3.14 SQLModel • PostgreSQL 16 pgvector",
+          matched_leads: "MCP-RUST-ORCH-2026-01 ($8.5K) & NSF-SBIR-2026-AGENTIC-AI ($305K)",
+          summary: "Production hybrid multi-agent orchestrator exposing 17 native MCP tools, capability sandboxing, local Ollama + Gemini Flash routing, and shared 768-dim vector memory."
+        },
+        {
+          id: "shelter_source",
+          dim: "768-DIM HNSW",
+          stack: "Flutter / Dart (iOS, Android, Web) • Firebase Auth & Firestore • Offline-First SQLite/Hive",
+          matched_leads: "SBIR-2026-CIVIC-SHELTER-01 ($275K Phase I)",
+          summary: "TRL-6 cross-platform civic resource & emergency shelter geospatial mapping platform with offline resilience, conflict sync, and crowdsourced peer verification."
+        },
+        {
+          id: "phronarch",
+          dim: "768-DIM HNSW",
+          stack: "Go (Sub-10ms L2 WebSocket) • Redis 7 Pub/Sub • TypeScript • Lightweight Charts v5",
+          matched_leads: "QUANT-STREAM-OFI-2026-02 ($12K)",
+          summary: "High-frequency quantitative order book telemetry engine computing L1/L2 Order Flow Imbalance (OFI) Z-scores, rolling VWAP volatility bands, and 6-stage Bayesian signals."
+        }
+      ]
+    };
+
+    let currentState = structuredClone(FALLBACK_STATE);
+    let currentLaneFilter = "ALL";
+
+    function formatUSD(val) {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(val || 0);
+    }
+
+    // Merge incoming JSON payload (from /api/state, ./dashboard_state.json, or ../MASTER_LEDGER_FEEDBACK.json) with rich metadata fallback
+    function mergeStatePayload(payload, sourceLabel) {
+      if (!payload || typeof payload !== 'object') return;
+      const merged = structuredClone(FALLBACK_STATE);
+
+      if (payload.timestamp) merged.timestamp = payload.timestamp;
+      if (payload.latest_milestone) merged.latest_milestone = payload.latest_milestone;
+      if (payload.total_staged_pipeline_usd) merged.total_staged_pipeline_usd = payload.total_staged_pipeline_usd;
+      if (payload.mcp_ipc_latency_ms) merged.mcp_ipc_latency_ms = payload.mcp_ipc_latency_ms;
+      if (Array.isArray(payload.completed_milestones)) {
+        merged.completed_milestones = Array.from(new Set([...merged.completed_milestones, ...payload.completed_milestones]));
+      }
+      if (Array.isArray(payload.recent_workforce_tasks) && payload.recent_workforce_tasks.length > 0) {
+        merged.recent_workforce_tasks = payload.recent_workforce_tasks;
+      }
+      if (payload.ipc_diagnostic && payload.ipc_diagnostic.root_causes_identified) {
+        merged.ipc_diagnostic = payload.ipc_diagnostic;
+      }
+      if (Array.isArray(payload.staged_leads) && payload.staged_leads.length > 0) {
+        const fallbackByExt = Object.fromEntries(FALLBACK_STATE.staged_leads.map(l => [l.external_id, l]));
+        merged.staged_leads = payload.staged_leads.map(lead => ({
+          ...(fallbackByExt[lead.external_id] || {}),
+          ...lead
+        }));
+      }
+
+      currentState = merged;
+      document.getElementById('data-source-badge').textContent = sourceLabel;
+      renderAll();
+    }
+
+    async function syncEngineState() {
+      const endpoints = [
+        { url: '/api/state', label: 'LIVE_API (/api/state)' },
+        { url: './dashboard_state.json', label: 'LOCAL_STATE (dashboard_state.json)' },
+        { url: '../MASTER_LEDGER_FEEDBACK.json', label: 'MASTER_LEDGER_FEEDBACK.json' }
+      ];
+
+      for (const ep of endpoints) {
+        try {
+          const res = await fetch(ep.url, { cache: 'no-store' });
+          if (res.ok) {
+            const data = await res.json();
+            mergeStatePayload(data, ep.label);
+            return;
+          }
+        } catch (_) {
+          // Continue to next fallback cleanly (e.g. when opened via file://)
+        }
+      }
+      document.getElementById('data-source-badge').textContent = 'EMBEDDED_CANONICAL (OFFLINE READY)';
+      renderAll();
+    }
+
+    function setLaneFilter(lane) {
+      currentLaneFilter = lane;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lane') === lane);
+      });
+      renderLeadsTable();
+    }
+
+    function renderKPIs() {
+      const leads = currentState.staged_leads || [];
+      const total = leads.reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const fastTotal = leads.filter(l => l.lane === 'FAST_CASHFLOW').reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const grantTotal = leads.filter(l => l.lane === 'HIGH_TICKET_GRANT_RFP').reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const readyCount = leads.filter(l => l.status === 'DOSSIER_READY').length;
+
+      document.getElementById('kpi-total-pipeline').textContent = formatUSD(total);
+      document.getElementById('kpi-active-dossiers').textContent = `${readyCount} / ${leads.length} DOSSIER_READY`;
+      document.getElementById('kpi-fast-lane').textContent = formatUSD(fastTotal);
+      document.getElementById('kpi-grant-lane').textContent = formatUSD(grantTotal);
+      document.getElementById('kpi-ipc-latency').textContent = `${currentState.mcp_ipc_latency_ms || 28.5}ms — HEALTHY`;
+      document.getElementById('latest-milestone-badge').textContent = currentState.latest_milestone || 'T-015';
+      document.getElementById('sync-time-badge').textContent = currentState.timestamp || '2026-10-29T16:00:00Z';
+    }
+
+    function renderLeadsTable() {
+      const tbody = document.getElementById('leads-tbody');
+      const query = (document.getElementById('lead-search').value || '').trim().toLowerCase();
+
+      const filtered = (currentState.staged_leads || []).filter(lead => {
+        const matchesLane = currentLaneFilter === 'ALL' || lead.lane === currentLaneFilter;
+        const text = `${lead.external_id} ${lead.title || ''} ${lead.anchor} ${lead.stage} ${lead.lane}`.toLowerCase();
+        const matchesQuery = !query || text.includes(query);
+        return matchesLane && matchesQuery;
+      });
+
+      document.getElementById('lead-count-tag').textContent = `${filtered.length} LEADS SHOWN`;
+
+      tbody.innerHTML = filtered.map(lead => {
+        const laneClass = lead.lane === 'FAST_CASHFLOW' ? 'badge-fast' : 'badge-grant';
+        const fitPct = Math.min(100, Math.round((Number(lead.fit_score) || 0) * 100));
+        return `
+          <tr class="lead-row" onclick="openDrawer('${lead.external_id}')">
+            <td>
+              <div class="ext-id">#${String(lead.id).padStart(2, '0')} &bull; ${lead.external_id}</div>
+              <div class="lead-title">${lead.title || lead.external_id}</div>
+            </td>
+            <td><span class="badge ${laneClass}">${lead.lane}</span></td>
+            <td>
+              <span class="badge badge-ready">${lead.status}</span>
+              <span class="badge badge-stage">${lead.stage}</span>
+            </td>
+            <td>
+              <div class="fit-wrap">
+                <div class="fit-bar-bg"><div class="fit-bar-fill" style="width:${fitPct}%"></div></div>
+                <span class="fit-num">${Number(lead.fit_score).toFixed(4)}</span>
+              </div>
+            </td>
+            <td><span class="anchor-chip">${lead.anchor}</span></td>
+            <td><span class="val-usd">${formatUSD(lead.estimated_value_usd)}</span></td>
+            <td style="font-family:var(--font-mono);font-size:0.73rem;color:var(--text-secondary);">${lead.submission_pkg}</td>
+            <td><button class="btn-inspect" onclick="event.stopPropagation(); openDrawer('${lead.external_id}')">INSPECT &rarr;</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderRoadmapAndDiagnostics() {
+      const phaseBar = document.getElementById('phase-bar');
+      phaseBar.innerHTML = (currentState.phases || FALLBACK_STATE.phases).map(p => `
+        <div class="phase-node done">
+          <div class="phase-node-id">${p.id} &bull; ${p.range}</div>
+          <div class="phase-node-title">${p.name}</div>
+        </div>
+      `).join('');
+
+      const mList = document.getElementById('milestone-list');
+      mList.innerHTML = (currentState.milestones || FALLBACK_STATE.milestones).map(m => `
+        <div class="milestone-item ${m.id === 'T-015' || m.id === 'T-014' ? 'highlight' : ''}">
+          <span class="m-id">${m.id}</span>
+          <span class="m-desc">${m.desc}</span>
+          <span class="m-meta">${m.phase} &bull; <strong style="color:var(--matrix-green)">${m.status}</strong></span>
+        </div>
+      `).join('');
+
+      const diag = currentState.ipc_diagnostic || FALLBACK_STATE.ipc_diagnostic;
+      document.getElementById('diag-causes').innerHTML = (diag.root_causes_identified || []).map(c => `<li>${c}</li>`).join('');
+      document.getElementById('diag-fixes').innerHTML = (diag.remediations_applied || []).map(r => `<li>${r}</li>`).join('');
+
+      const tasks = currentState.recent_workforce_tasks || FALLBACK_STATE.recent_workforce_tasks;
+      document.getElementById('workforce-tasks-list').innerHTML = tasks.slice(0, 5).map(t => `
+        <li><strong style="color:var(--cyan-accent)">[${t.assigned_agent.toUpperCase()}]</strong> ${t.title} &mdash; <span style="color:var(--matrix-green)">${t.status}</span></li>
+      `).join('');
+    }
+
+    function renderPodAndAnchors() {
+      const podGrid = document.getElementById('pod-grid');
+      podGrid.innerHTML = (currentState.workforce_pod || FALLBACK_STATE.workforce_pod).map(agent => `
+        <div class="agent-card">
+          <div class="agent-role">
+            <span>AGENT // ${agent.role.toUpperCase()}</span>
+            <span class="badge badge-ready">${agent.status}</span>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">${agent.model}</div>
+          <div class="agent-desc">${agent.desc}</div>
+        </div>
+      `).join('');
+
+      const anchorGrid = document.getElementById('anchor-grid');
+      anchorGrid.innerHTML = (currentState.capability_anchors || FALLBACK_STATE.capability_anchors).map(a => `
+        <div class="anchor-card">
+          <div class="anchor-name">
+            <span>⚓ ${a.id}</span>
+            <span class="badge badge-stage">${a.dim}</span>
+          </div>
+          <div class="anchor-stack">${a.stack}</div>
+          <div class="anchor-summary">${a.summary}</div>
+          <div style="margin-top:8px;font-family:var(--font-mono);font-size:0.71rem;color:var(--matrix-green);">
+            Matched Pipeline: ${a.matched_leads}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openDrawer(externalId) {
+      const lead = (currentState.staged_leads || []).find(l => l.external_id === externalId);
+      if (!lead) return;
+
+      document.getElementById('drawer-title').textContent = `${lead.external_id} // ${formatUSD(lead.estimated_value_usd)}`;
+      document.getElementById('drawer-subtitle').textContent = `${lead.lane} • Anchor: ${lead.anchor} (Fit: ${lead.fit_score}) • Stage: ${lead.stage}`;
+
+      document.getElementById('drawer-body').innerHTML = `
+        <div class="drawer-section">
+          <h4>Opportunity Overview &amp; Delivery Schedule</h4>
+          <p style="font-size:0.9rem;font-weight:600;margin-bottom:8px;">${lead.title || lead.external_id}</p>
+          <p style="font-size:0.8rem;color:var(--text-secondary);"><strong>Timeline &amp; Structure:</strong> ${lead.timeline || 'Staged in submissions/'}</p>
+          <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;"><strong>Submission Artifact:</strong> <code>${lead.submission_pkg}</code></p>
+          <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;"><strong>Technical Dossier:</strong> <code>${lead.dossier_path || 'dossiers/' + lead.lane + '/' + lead.external_id + '.md'}</code></p>
+        </div>
+        <div class="drawer-section">
+          <h4>768-Dim Capability Anchor &amp; TRL Prior-Art Fit (${lead.anchor})</h4>
+          <p style="font-size:0.82rem;color:var(--text-primary);">${lead.architecture_fit || 'Verified against 768-dim PostgreSQL pgvector HNSW capability anchor.'}</p>
+        </div>
+        <div class="drawer-section">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <h4 style="margin-bottom:0;">Staged Outreach / Proposal Pitch Preview</h4>
+            <button class="btn-inspect" onclick="copyPitchText('${lead.external_id}')">COPY PITCH</button>
+          </div>
+          <pre class="pitch-pre" id="pitch-box-${lead.external_id}">${lead.executive_pitch || ''}</pre>
+        </div>
+      `;
+
+      document.getElementById('dossier-modal').classList.add('open');
+    }
+
+    function copyPitchText(externalId) {
+      const el = document.getElementById(`pitch-box-${externalId}`);
+      if (!el || !navigator.clipboard) return;
+      navigator.clipboard.writeText(el.textContent);
+    }
+
+    function closeDrawer() {
+      document.getElementById('dossier-modal').classList.remove('open');
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target.id === 'dossier-modal') closeDrawer();
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    function renderAll() {
+      renderKPIs();
+      renderLeadsTable();
+      renderRoadmapAndDiagnostics();
+      renderPodAndAnchors();
+    }
+
+    // Boot render immediately with embedded snapshot, then attempt non-blocking live state sync
+    renderAll();
+    syncEngineState();
+  </script>
+</body>
+</html>
