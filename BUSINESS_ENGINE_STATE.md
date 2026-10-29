@@ -2,7 +2,7 @@
 
 > **Entity:** Digital Nomad LLC  
 > **Primary Operator:** PsyCry (Jasper)  
-> **Last Updated:** 2026-10-27 13:14 EDT  
+> **Last Updated:** 2026-10-29 11:58 EDT  
 > **Operational Mandate:** Read `BUSINESS_ENGINE_STATE.md` and `gemini_inbox.md` at the start of every workflow, verify `poll_bus.py` (`nexus-state-bus.service`) is actively polling the published Google Doc ledger and syncing state packets to `psycry/nexus-state-bus`, automatically update `BUSINESS_ENGINE_STATE.md`, `sync_packet.md`, and `gemini_inbox.md` whenever milestones are completed, and resume watching `gemini_inbox.md` for incoming directives.
 
 ---
@@ -93,3 +93,4 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | `T-011` | 2026-10-27 12:49 | Phase 5 | Execute boot sync, run `claw-mcp-server` health check (`list_ranked_leads`), stage submission packages for `MCP-RUST-ORCH-2026-01` & `SBIR-2026-CIVIC-SHELTER-01`, and install persistent `SessionStart` boot memory | **DONE** |
 | `T-012` | 2026-10-27 13:09 | Phase 5 | Stage `NSF-SBIR-2026-AGENTIC-AI` (`\$305,000`) & `QUANT-STREAM-OFI-2026-02` (`\$12,000`) submission packages, update DB `raw_metadata` to `STAGED_T012`, build `engine/notify.py` with no-op Discord fallback, and enable `agent-smith-sweep.timer` | **DONE** |
 | `T-013` | 2026-10-27 13:14 | Phase 5 | Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus` | **DONE** |
+| `T-014` | 2026-10-29 11:58 | Phase 5 | Diagnose & resolve harness stdio/IPC hangs (`claw-mcp-server` concurrent async stdout/stderr drain + `Stdio::null()` stdin isolation + `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup for `agent-smith-pgvector`) | **DONE** |

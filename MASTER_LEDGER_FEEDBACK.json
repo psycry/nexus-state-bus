@@ -1,8 +1,8 @@
 {
-  "schema_version": "1.0",
-  "timestamp": "2026-10-27T19:29:31Z",
+  "schema_version": "1.1",
+  "timestamp": "2026-10-29T15:58:21Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-013",
+  "latest_milestone": "T-014",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -17,7 +17,8 @@
     "T-010",
     "T-011",
     "T-012",
-    "T-013"
+    "T-013",
+    "T-014"
   ],
   "total_staged_pipeline_usd": 600500.0,
   "staged_leads": [
@@ -110,6 +111,19 @@
       "updated_at": "2026-10-26 18:10:58.604693+00"
     }
   ],
-  "note": "Automated two-way feedback bridge sync completed via engine.ledger_sync.",
-  "gdoc_push_mode": "GDOCS_CLI_LIVE_DOC_UPDATED (T-013)"
+  "ipc_diagnostic": {
+    "milestone": "T-014",
+    "root_causes_identified": [
+      "1. Rust claw-mcp-server (shell.rs & workforce.rs): Child subprocesses inherited MCP stdin (fd 0) without Stdio::null() and used synchronous std::process::Command::output() / un-drained pipes without concurrent async stdout/stderr reader tasks or watchdog timeouts.",
+      "2. Headless systemd daemon (poll_bus.py -> push_state_bus.sh -> ledger_sync.py): Invoking gdocs CLI without AGY_HOST_BRIDGE_URL or stdin=DEVNULL hung for 5-25s waiting on IDE host bridge IPC.",
+      "3. Boot ordering (docker.socket lazy activation): agent-smith-pgvector container was not started until first docker socket access, causing boot-time sweep/ledger_sync to hit Connection Refused on :5432."
+    ],
+    "remediations_applied": [
+      "Refactored claw-mcp-server/src/tools/shell.rs & workforce.rs to enforce Stdio::null() on stdin, spawn dedicated concurrent tokio::spawn tasks to drain stdout and stderr simultaneously (preventing >64KB FIFO write stalls), and wrap child.wait() in tokio::time::timeout with kill_on_drop(true).",
+      "Hardened engine/ledger_sync.py and poll_bus.py with stdin=subprocess.DEVNULL, AGY_HOST_BRIDGE_URL check before gdocs CLI calls, automatic docker start agent-smith-pgvector wakeup on DB connection retry, and cached lead fallback.",
+      "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
+    ]
+  },
+  "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified.",
+  "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)"
 }
