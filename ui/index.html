@@ -821,8 +821,10 @@
     <div class="telemetry-meta">
       <span class="meta-pill">SOURCE: <strong id="data-source-badge">EMBEDDED_CANONICAL</strong></span>
       <span class="meta-pill cyan">768-DIM LOCK: <strong>VERIFIED (HNSW)</strong></span>
-      <span class="meta-pill">MILESTONE: <strong id="latest-milestone-badge">T-015</strong></span>
-      <span class="meta-pill">SYNC: <strong id="sync-time-badge">2026-10-29T16:00:00Z</strong></span>
+      <span class="meta-pill">MILESTONE: <strong id="latest-milestone-badge">T-016</strong></span>
+      <span class="meta-pill">SYNC: <strong id="sync-time-badge">2026-10-29T17:26:16Z</strong></span>
+      <button class="btn-sync" id="btn-sweep" onclick="triggerDashboardAction('sweep')" title="Run engine.dossier --min-score 0.20 &amp; stage submissions">&#x26a1; SWEEP DOSSIERS</button>
+      <button class="btn-sync" id="btn-push-bus" onclick="triggerDashboardAction('push-bus')" title="Publish telemetry &amp; state packet to psycry/nexus-state-bus">&#x2b06; PUSH BUS</button>
       <button class="btn-sync" id="btn-refresh" onclick="syncEngineState()">&#x21bb; SYNC BUS</button>
     </div>
   </header>
@@ -1191,6 +1193,34 @@
       }
       document.getElementById('data-source-badge').textContent = 'EMBEDDED_CANONICAL (OFFLINE READY)';
       renderAll();
+    }
+
+    async function triggerDashboardAction(action) {
+      const btnId = action === 'sweep' ? 'btn-sweep' : 'btn-push-bus';
+      const btn = document.getElementById(btnId);
+      const origText = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'RUNNING...';
+      }
+      try {
+        const res = await fetch(`/api/actions/${action}`, { method: 'POST' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.state) {
+            mergeStatePayload(data.state, `LIVE_ACTION (${action.toUpperCase()})`);
+          } else {
+            await syncEngineState();
+          }
+        }
+      } catch (_) {
+        // Ignore if opened offline via file://
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = origText;
+        }
+      }
     }
 
     function setLaneFilter(lane) {

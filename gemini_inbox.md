@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-016 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-017 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -90,22 +90,22 @@ Success Criteria:
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-016` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-017` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-10-29T17:26:13Z`
+- **Auto-Sync Timestamp:** `2026-10-29T17:29:03Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-016` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016`)
+- **Latest Milestone Flip:** `T-017` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
 - **Total Staged Pipeline Valuation:** **`$780,500.00`** (`7/4 DOSSIER_READY` leads staged)
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-012`** (Phase 5 — `2026-10-27 13:09`): Stage `NSF-SBIR-2026-AGENTIC-AI` (`\$305,000`) & `QUANT-STREAM-OFI-2026-02` (`\$12,000`) submission packages, update DB `raw_metadata` to `STAGED_T012`, build `engine/notify.py` with no-op Discord fallback, and enable `agent-smith-sweep.timer` $\rightarrow$ **`DONE`**
 - **`T-013`** (Phase 5 — `2026-10-27 13:14`): Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus` $\rightarrow$ **`DONE`**
 - **`T-014`** (Phase 5 — `2026-10-29 11:58`): Diagnose & resolve harness stdio/IPC hangs (`claw-mcp-server` concurrent async stdout/stderr drain + `Stdio::null()` stdin isolation + `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup for `agent-smith-pgvector`) $\rightarrow$ **`DONE`**
 - **`T-015`** (Phase 6 — `2026-10-29 12:05`): Multi-agent pod execution: build Backend Telemetry API (`engine/dashboard_api.py` + `ui/dashboard_state.json`) & Tactical Command Center UI (`ui/index.html`) synchronized via `ledger_sync.py` and `push_state_bus.sh` $\rightarrow$ **`DONE`**
 - **`T-016`** (Phase 6 — `2026-10-29 13:25`): Self-Issued Directive (Autonomous Discretion): Expand `engine/dossier.py` with automatic submission staging, generate 3 next-wave dossiers & submission packages (`PD-19-127Y` `\$150k`, `1137560` `\$15k`, `1137545` `\$15k` $\rightarrow$ `7` staged leads totaling `\$780,500`), and deploy persistent `agent-smith-dashboard.service` (`:8787`) $\rightarrow$ **`DONE`**
+- **`T-017`** (Phase 6 — `2026-10-29 13:28`): Self-Issued Directive (Autonomous Discretion): Add interactive `POST /api/actions/sweep` & `POST /api/actions/push-bus` controls to `engine/dashboard_api.py` + `ui/index.html` and auto-generate `submissions/EXECUTIVE_SUBMISSION_INDEX.md` $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 

@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-29T17:26:13Z",
+  "generated_at": "2026-10-29T17:29:03Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-016",
+  "latest_milestone": "T-017",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -25,7 +25,8 @@
     "T-013",
     "T-014",
     "T-015",
-    "T-016"
+    "T-016",
+    "T-017"
   ],
   "milestone_log": [
     {
@@ -138,6 +139,13 @@
       "timestamp": "2026-10-29 13:25",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Expand `engine/dossier.py` with automatic submission staging, generate 3 next-wave dossiers & submission packages (`PD-19-127Y` `\\$150k`, `1137560` `\\$15k`, `1137545` `\\$15k` $\\rightarrow$ `7` staged leads totaling `\\$780,500`), and deploy persistent `agent-smith-dashboard.service` (`:8787`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-017",
+      "timestamp": "2026-10-29 13:28",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Add interactive `POST /api/actions/sweep` & `POST /api/actions/push-bus` controls to `engine/dashboard_api.py` + `ui/index.html` and auto-generate `submissions/EXECUTIVE_SUBMISSION_INDEX.md`",
       "status": "DONE"
     }
   ],
