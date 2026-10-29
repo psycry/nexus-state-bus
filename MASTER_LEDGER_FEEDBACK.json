@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-10-29T15:58:21Z",
+  "timestamp": "2026-10-29T15:59:27Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-014",
   "status": "COMPLETED",
@@ -69,6 +69,13 @@
   ],
   "recent_workforce_tasks": [
     {
+      "id": 8,
+      "assigned_agent": "operator",
+      "title": "T-014: Harness IPC Diagnostic & Pipe Unblock",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-29 15:59:26.049033+00"
+    },
+    {
       "id": 7,
       "assigned_agent": "operator",
       "title": "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop",
@@ -102,13 +109,6 @@
       "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: NSF-SBIR-2026-AGENTIC-AI",
       "status": "COMPLETED",
       "updated_at": "2026-10-26 18:11:24.534346+00"
-    },
-    {
-      "id": 2,
-      "assigned_agent": "architect",
-      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: SBIR-2026-CIVIC-SHELTER-01",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-26 18:10:58.604693+00"
     }
   ],
   "ipc_diagnostic": {
