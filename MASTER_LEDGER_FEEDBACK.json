@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-10-29T17:18:15Z",
+  "timestamp": "2026-10-29T17:25:55Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-015",
+  "latest_milestone": "T-016",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -19,9 +19,10 @@
     "T-012",
     "T-013",
     "T-014",
-    "T-015"
+    "T-015",
+    "T-016"
   ],
-  "total_staged_pipeline_usd": 600500.0,
+  "total_staged_pipeline_usd": 780500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -66,9 +67,63 @@
       "anchor": "phronarch",
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md"
+    },
+    {
+      "id": 3,
+      "external_id": "1137560",
+      "lane": "FAST_CASHFLOW",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.3095,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "STAGED_T016",
+      "submission_pkg": "submissions/1137560_SUBMISSION_PACKAGE.md"
+    },
+    {
+      "id": 16,
+      "external_id": "PD-19-127Y",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.2581,
+      "estimated_value_usd": 150000.0,
+      "anchor": "phronarch",
+      "stage": "STAGED_T016",
+      "submission_pkg": "submissions/PD-19-127Y_SUBMISSION_PACKAGE.md"
+    },
+    {
+      "id": 7,
+      "external_id": "1137545",
+      "lane": "FAST_CASHFLOW",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.2116,
+      "estimated_value_usd": 15000.0,
+      "anchor": "shelter_source",
+      "stage": "STAGED_T016",
+      "submission_pkg": "submissions/1137545_SUBMISSION_PACKAGE.md"
     }
   ],
   "recent_workforce_tasks": [
+    {
+      "id": 12,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: 1137545",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-29 17:22:10.431216+00"
+    },
+    {
+      "id": 11,
+      "assigned_agent": "architect",
+      "title": "Draft HIGH_TICKET_GRANT_RFP Dossier: PD-19-127Y",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-29 17:21:44.676392+00"
+    },
+    {
+      "id": 10,
+      "assigned_agent": "architect",
+      "title": "Draft FAST_CASHFLOW Dossier: 1137560",
+      "status": "COMPLETED",
+      "updated_at": "2026-10-29 17:20:52.879853+00"
+    },
     {
       "id": 9,
       "assigned_agent": "architect",
@@ -89,27 +144,6 @@
       "title": "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop",
       "status": "COMPLETED",
       "updated_at": "2026-10-27 17:15:47.083001+00"
-    },
-    {
-      "id": 6,
-      "assigned_agent": "operator",
-      "title": "T-012: Full Queue Submission Staging, engine/notify.py & Systemd Sweep Timer",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-27 17:09:02.156499+00"
-    },
-    {
-      "id": 5,
-      "assigned_agent": "operator",
-      "title": "T-011: Boot Sync, MCP Health Check & Submission Package Staging",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-27 16:48:31.904667+00"
-    },
-    {
-      "id": 4,
-      "assigned_agent": "architect",
-      "title": "Draft FAST_CASHFLOW Dossier: QUANT-STREAM-OFI-2026-02",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-26 18:11:46.210236+00"
     }
   ],
   "ipc_diagnostic": {

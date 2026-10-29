@@ -1136,12 +1136,20 @@
       if (!payload || typeof payload !== 'object') return;
       const merged = structuredClone(FALLBACK_STATE);
 
-      if (payload.timestamp) merged.timestamp = payload.timestamp;
+      if (payload.timestamp || payload.generated_at) merged.timestamp = payload.timestamp || payload.generated_at;
       if (payload.latest_milestone) merged.latest_milestone = payload.latest_milestone;
       if (payload.total_staged_pipeline_usd) merged.total_staged_pipeline_usd = payload.total_staged_pipeline_usd;
       if (payload.mcp_ipc_latency_ms) merged.mcp_ipc_latency_ms = payload.mcp_ipc_latency_ms;
       if (Array.isArray(payload.completed_milestones)) {
         merged.completed_milestones = Array.from(new Set([...merged.completed_milestones, ...payload.completed_milestones]));
+      }
+      if (Array.isArray(payload.milestone_log) && payload.milestone_log.length > 0) {
+        merged.milestones = payload.milestone_log.slice(-7).map(m => ({
+          id: m.id,
+          phase: m.phase || 'Phase 5',
+          desc: m.description || m.desc || '',
+          status: m.status || 'DONE'
+        }));
       }
       if (Array.isArray(payload.recent_workforce_tasks) && payload.recent_workforce_tasks.length > 0) {
         merged.recent_workforce_tasks = payload.recent_workforce_tasks;

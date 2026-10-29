@@ -74,9 +74,10 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 - [x] Build `engine/notify.py` (webhook/local alert dispatcher with graceful no-op fallback if `DISCORD_WEBHOOK_URL` is unset) and enable `agent-smith-sweep.timer` (`systemd --user` periodic ingestion + dossier + alert sweep).
 - [x] Build `engine/ledger_sync.py` and integrate into `scripts/push_state_bus.sh` to automatically synthesize PostgreSQL + milestone telemetry, update `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and push closed-loop feedback to `psycry/nexus-state-bus`.
 
-### Phase 6: Backend Telemetry API & Tactical Command Center UI Synchronization (COMPLETED — `T-014` & `T-015`)
+### Phase 6: Backend Telemetry API & Tactical Command Center UI Synchronization (COMPLETED — `T-014`, `T-015` & `T-016`)
 - [x] Diagnose & resolve harness stdio/IPC pipe stalls (`claw-mcp-server` concurrent async `stdout`/`stderr` drain, `Stdio::null()` stdin isolation, `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup).
-- [x] Build `engine/dashboard_api.py` (REST/JSON API `/api/state`, `/api/leads`, `/api/tasks`, `/api/anchors`, `/api/health` + `ui/dashboard_state.json` snapshot exporter) and `ui/index.html` (Tactical Command Center Dashboard) with automatic sync on every `scripts/push_state_bus.sh` commit.
+- [x] Build `engine/dashboard_api.py` (REST/JSON API `/api/state`, `/api/leads`, `/api/tasks`, `/api/anchors`, `/api/health` + `ui/dashboard_state.json` snapshot exporter) and `ui/index.html` (Tactical Command Center Dashboard) with automatic sync on every `scripts/push_state_bus.sh` commit, deployed persistently via `agent-smith-dashboard.service` on `http://127.0.0.1:8787`.
+- [x] Self-Issued Directive (`T-016` — Autonomous Discretion): Expand `engine/dossier.py` with automated `stage_missing_submission_packages()` and execute next-wave dossier + submission staging (`fit_score >= 0.20` — `PD-19-127Y`, `1137560`, `1137545`), scaling ready-to-submit pipeline from `4` leads (`\$600,500`) to `7` leads (`\$780,500`).
 
 ---
 
@@ -99,3 +100,4 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | `T-013` | 2026-10-27 13:14 | Phase 5 | Upgrade `scripts/push_state_bus.sh` with `engine/ledger_sync.py` to programmatically synthesize PostgreSQL + milestone status flips into `gemini_inbox.md` and `MASTER_LEDGER_FEEDBACK.json`, and verify closed-loop push to `psycry/nexus-state-bus` | **DONE** |
 | `T-014` | 2026-10-29 11:58 | Phase 5 | Diagnose & resolve harness stdio/IPC hangs (`claw-mcp-server` concurrent async stdout/stderr drain + `Stdio::null()` stdin isolation + `tokio::time::timeout` watchdogs, headless `gdocs` IPC guard in `ledger_sync.py`, and boot-time `docker.socket` wakeup for `agent-smith-pgvector`) | **DONE** |
 | `T-015` | 2026-10-29 12:05 | Phase 6 | Multi-agent pod execution: build Backend Telemetry API (`engine/dashboard_api.py` + `ui/dashboard_state.json`) & Tactical Command Center UI (`ui/index.html`) synchronized via `ledger_sync.py` and `push_state_bus.sh` | **DONE** |
+| `T-016` | 2026-10-29 13:25 | Phase 6 | Self-Issued Directive (Autonomous Discretion): Expand `engine/dossier.py` with automatic submission staging, generate 3 next-wave dossiers & submission packages (`PD-19-127Y` `\$150k`, `1137560` `\$15k`, `1137545` `\$15k` $\rightarrow$ `7` staged leads totaling `\$780,500`), and deploy persistent `agent-smith-dashboard.service` (`:8787`) | **DONE** |
