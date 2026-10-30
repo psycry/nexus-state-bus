@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-30T16:32:39Z",
+  "generated_at": "2026-10-30T16:59:28Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-019",
+  "latest_milestone": "T-020",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -28,7 +28,8 @@
     "T-016",
     "T-017",
     "T-018",
-    "T-019"
+    "T-019",
+    "T-020"
   ],
   "milestone_log": [
     {
@@ -162,6 +163,13 @@
       "timestamp": "2026-10-30 12:33",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Wire `engine.qa` into `scripts/push_state_bus.sh` (auto-refresh each push), expose `qa_report` via `/api/state`, add Submission QA Gate panel to `ui/index.html`; dashboard service restarted and verified (7 reports served)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-020",
+      "timestamp": "2026-10-30 13:00",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Enable `nexus-state-bus.service` for auto-start on login (was disabled); make dashboard milestone header/highlight dynamic (was hardcoded T-001..T-015); ledger-watch cron (5 min) active this session",
       "status": "DONE"
     }
   ],

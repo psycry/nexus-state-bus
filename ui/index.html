@@ -904,8 +904,8 @@
       <section class="panel" aria-label="Roadmap and Milestones">
         <div class="panel-header">
           <div class="panel-title">
-            <span>Roadmap Phases (Phase 1&ndash;6) &amp; Milestone Ledger (T-001 &rarr; T-015)</span>
-            <span class="tag">15 / 15 VERIFIED</span>
+            <span>Roadmap Phases (Phase 1&ndash;6) &amp; Milestone Ledger <span id="ms-range"></span></span>
+            <span class="tag" id="ms-tag"></span>
           </div>
         </div>
         <div class="phase-bar" id="phase-bar"></div>
@@ -1312,7 +1312,7 @@
 
       const mList = document.getElementById('milestone-list');
       mList.innerHTML = (currentState.milestones || FALLBACK_STATE.milestones).map(m => `
-        <div class="milestone-item ${m.id === 'T-015' || m.id === 'T-014' ? 'highlight' : ''}">
+        <div class="milestone-item ${m.id === (currentState.latest_milestone || 'T-015') ? 'highlight' : ''}">
           <span class="m-id">${m.id}</span>
           <span class="m-desc">${m.desc}</span>
           <span class="m-meta">${m.phase} &bull; <strong style="color:var(--matrix-green)">${m.status}</strong></span>
@@ -1423,7 +1423,16 @@
       });
     }
 
+    function renderMilestoneHeader() {
+      const ids = (currentState && currentState.completed_milestones) || [];
+      const r = document.getElementById('ms-range');
+      const g = document.getElementById('ms-tag');
+      if (r && ids.length) r.textContent = `(${ids[0]} \u2192 ${ids[ids.length - 1]})`;
+      if (g) g.textContent = `${ids.length} / ${ids.length} VERIFIED`;
+    }
+
     function renderAll() {
+      renderMilestoneHeader();
       renderQA();
       renderKPIs();
       renderLeadsTable();
