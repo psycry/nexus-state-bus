@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-30T16:24:39Z",
+  "generated_at": "2026-10-30T16:32:35Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-018",
+  "latest_milestone": "T-019",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -27,7 +27,8 @@
     "T-015",
     "T-016",
     "T-017",
-    "T-018"
+    "T-018",
+    "T-019"
   ],
   "milestone_log": [
     {
@@ -154,6 +155,13 @@
       "timestamp": "2026-10-30 12:25",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Build `engine/qa.py` Submission QA Gate (lane-aware section checks, dossier link integrity, budget-math/percent validation, close-date and weak-fit flags) -> `submissions/QA_REPORT.md` + `qa_report.json`; result: 7 packages, 5 PASS / 2 WARN (weak fit: `1137545` 0.21, `PD-19-127Y` 0.26) / 0 FAIL",
+      "status": "DONE"
+    },
+    {
+      "id": "T-019",
+      "timestamp": "2026-10-30 12:33",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Wire `engine.qa` into `scripts/push_state_bus.sh` (auto-refresh each push), expose `qa_report` via `/api/state`, add Submission QA Gate panel to `ui/index.html`; dashboard service restarted and verified (7 reports served)",
       "status": "DONE"
     }
   ],
@@ -778,5 +786,59 @@
       "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
     ]
   },
+  "qa_report": [
+    {
+      "package": "1137545_SUBMISSION_PACKAGE.md",
+      "status": "WARN",
+      "fit": 0.2116,
+      "issues": [
+        [
+          "WARN",
+          "weak anchor fit 0.21 - human review of alignment advised"
+        ]
+      ]
+    },
+    {
+      "package": "1137560_SUBMISSION_PACKAGE.md",
+      "status": "PASS",
+      "fit": 0.3095,
+      "issues": []
+    },
+    {
+      "package": "MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+      "status": "PASS",
+      "fit": 0.5971,
+      "issues": []
+    },
+    {
+      "package": "NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "status": "PASS",
+      "fit": 0.4527,
+      "issues": []
+    },
+    {
+      "package": "PD-19-127Y_SUBMISSION_PACKAGE.md",
+      "status": "WARN",
+      "fit": 0.2581,
+      "issues": [
+        [
+          "WARN",
+          "weak anchor fit 0.26 - human review of alignment advised"
+        ]
+      ]
+    },
+    {
+      "package": "QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+      "status": "PASS",
+      "fit": 0.422,
+      "issues": []
+    },
+    {
+      "package": "SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+      "status": "PASS",
+      "fit": 0.5949,
+      "issues": []
+    }
+  ],
   "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified."
 }

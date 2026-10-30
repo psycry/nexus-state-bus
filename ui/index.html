@@ -937,6 +937,17 @@
       </section>
     </div>
 
+    <!-- T-019: Submission QA Gate panel -->
+    <section class="panel" aria-label="Submission QA Gate">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>Submission QA Gate (T-018)</span>
+          <span class="tag" id="qa-tag">&ndash;</span>
+        </div>
+      </div>
+      <ul class="diag-list" id="qa-list"></ul>
+    </section>
+
     <!-- 4. Multi-Agent Workforce Pod & 768-Dim Capability Anchors Panel -->
     <section class="panel" aria-label="Workforce Pod and Capability Anchors">
       <div class="panel-header">
@@ -1167,6 +1178,7 @@
         }));
       }
 
+      if (Array.isArray(payload.qa_report)) merged.qa_report = payload.qa_report;
       currentState = merged;
       document.getElementById('data-source-badge').textContent = sourceLabel;
       renderAll();
@@ -1395,7 +1407,24 @@
       if (e.key === 'Escape') closeDrawer();
     });
 
+    function renderQA() {
+      const qa = (currentState && currentState.qa_report) || [];
+      const list = document.getElementById('qa-list');
+      const tag = document.getElementById('qa-tag');
+      if (!list || !tag) return;
+      const c = s => qa.filter(r => r.status === s).length;
+      tag.textContent = qa.length ? `${c('PASS')} PASS / ${c('WARN')} WARN / ${c('FAIL')} FAIL` : 'NO REPORT';
+      list.textContent = '';
+      qa.forEach(r => {
+        const li = document.createElement('li');
+        const issues = (r.issues || []).map(i => i[1]).join('; ');
+        li.textContent = `${r.status} \u2014 ${r.package}${issues ? ' \u2014 ' + issues : ''}`;
+        list.appendChild(li);
+      });
+    }
+
     function renderAll() {
+      renderQA();
       renderKPIs();
       renderLeadsTable();
       renderRoadmapAndDiagnostics();
