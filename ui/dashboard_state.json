@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-30T16:21:47Z",
+  "generated_at": "2026-10-30T16:24:29Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-017",
+  "latest_milestone": "T-018",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -26,7 +26,8 @@
     "T-014",
     "T-015",
     "T-016",
-    "T-017"
+    "T-017",
+    "T-018"
   ],
   "milestone_log": [
     {
@@ -146,6 +147,13 @@
       "timestamp": "2026-10-29 13:28",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Add interactive `POST /api/actions/sweep` & `POST /api/actions/push-bus` controls to `engine/dashboard_api.py` + `ui/index.html` and auto-generate `submissions/EXECUTIVE_SUBMISSION_INDEX.md`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-018",
+      "timestamp": "2026-10-30 12:25",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Build `engine/qa.py` Submission QA Gate (lane-aware section checks, dossier link integrity, budget-math/percent validation, close-date and weak-fit flags) -> `submissions/QA_REPORT.md` + `qa_report.json`; result: 7 packages, 5 PASS / 2 WARN (weak fit: `1137545` 0.21, `PD-19-127Y` 0.26) / 0 FAIL",
       "status": "DONE"
     }
   ],
