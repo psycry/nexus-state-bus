@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-30T17:02:04Z",
+  "generated_at": "2026-10-30T17:04:26Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-021",
+  "latest_milestone": "T-022",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -30,7 +30,8 @@
     "T-018",
     "T-019",
     "T-020",
-    "T-021"
+    "T-021",
+    "T-022"
   ],
   "milestone_log": [
     {
@@ -178,6 +179,13 @@
       "timestamp": "2026-10-30 13:03",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Pipeline integrity audit - RemoteOK leads `1137545` (Sothebys Sr SWE) and `1137560` (Aprio Accounting Mgr) are salaried job postings with synthetic \\$15k valuations, not contract RFPs; set `ON_HOLD` (reversible, reason in `raw_metadata`), packages moved to `submissions/_held/`. Staged pipeline corrected \\$780,500 -> \\$750,500 (5 leads). `PD-19-127Y` (fit 0.26) kept, flagged for human alignment review",
+      "status": "DONE"
+    },
+    {
+      "id": "T-022",
+      "timestamp": "2026-10-30 13:06",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Root-cause fix for `T-021` - RemoteOK ingest no longer assigns salary/synthetic \\$15k as contract value (`est_val=0`, `listing_type=job_posting`); `dossier.py` excludes job postings from dossier selection and `--reset-qualifying` no longer revives `ON_HOLD` leads",
       "status": "DONE"
     }
   ],
