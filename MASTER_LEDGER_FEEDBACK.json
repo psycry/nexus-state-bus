@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-10-30T16:59:42Z",
+  "timestamp": "2026-10-30T17:01:51Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-020",
+  "latest_milestone": "T-021",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -24,9 +24,10 @@
     "T-017",
     "T-018",
     "T-019",
-    "T-020"
+    "T-020",
+    "T-021"
   ],
-  "total_staged_pipeline_usd": 780500.0,
+  "total_staged_pipeline_usd": 750500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -73,17 +74,6 @@
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md"
     },
     {
-      "id": 3,
-      "external_id": "1137560",
-      "lane": "FAST_CASHFLOW",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.3095,
-      "estimated_value_usd": 15000.0,
-      "anchor": "shelter_source",
-      "stage": "STAGED_T016",
-      "submission_pkg": "submissions/1137560_SUBMISSION_PACKAGE.md"
-    },
-    {
       "id": 16,
       "external_id": "PD-19-127Y",
       "lane": "HIGH_TICKET_GRANT_RFP",
@@ -93,17 +83,6 @@
       "anchor": "phronarch",
       "stage": "STAGED_T016",
       "submission_pkg": "submissions/PD-19-127Y_SUBMISSION_PACKAGE.md"
-    },
-    {
-      "id": 7,
-      "external_id": "1137545",
-      "lane": "FAST_CASHFLOW",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.2116,
-      "estimated_value_usd": 15000.0,
-      "anchor": "shelter_source",
-      "stage": "STAGED_T016",
-      "submission_pkg": "submissions/1137545_SUBMISSION_PACKAGE.md"
     }
   ],
   "recent_workforce_tasks": [
