@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-02T21:14:35Z",
+  "generated_at": "2026-11-02T21:54:10Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-022",
+  "latest_milestone": "T-023",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -31,7 +31,8 @@
     "T-019",
     "T-020",
     "T-021",
-    "T-022"
+    "T-022",
+    "T-023"
   ],
   "milestone_log": [
     {
@@ -186,6 +187,13 @@
       "timestamp": "2026-10-30 13:06",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Root-cause fix for `T-021` - RemoteOK ingest no longer assigns salary/synthetic \\$15k as contract value (`est_val=0`, `listing_type=job_posting`); `dossier.py` excludes job postings from dossier selection and `--reset-qualifying` no longer revives `ON_HOLD` leads",
+      "status": "DONE"
+    },
+    {
+      "id": "T-023",
+      "timestamp": "2026-11-02 16:55",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Rebuild `claw-mcp-server` v0.2.0 (release, binary at workspace `target/release/`) and run stdio MCP smoke test (initialize, tools/list, `list_ranked_leads` over pgvector - 6+ ranked leads returned, 4 DOSSIER_READY / 1 ON_HOLD); pgvector 0.8.7 healthy, poller/dashboard/sweep active. Phronarch OCI endpoint not configured locally - open blocker",
       "status": "DONE"
     }
   ],
