@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-10-30T17:22:54Z",
+  "generated_at": "2026-11-02T21:14:29Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -190,7 +190,7 @@
     }
   ],
   "metrics": {
-    "total_leads_count": 21,
+    "total_leads_count": 24,
     "staged_leads_count": 5,
     "total_pipeline_usd": 1680500.0,
     "total_staged_pipeline_usd": 750500.0,
@@ -426,6 +426,38 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.2116)."
     },
     {
+      "id": 128,
+      "external_id": "1137606",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "AWS Cloud Solutions Architect (Cloudary SAS)",
+      "status": "NEW",
+      "fit_score": 0.2051,
+      "estimated_value_usd": 0.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.2051)."
+    },
+    {
+      "id": 129,
+      "external_id": "1137604",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Online Client Support &amp; Travel Booking We Will Train You (Destination Careers)",
+      "status": "NEW",
+      "fit_score": 0.1947,
+      "estimated_value_usd": 0.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.1947)."
+    },
+    {
       "id": 1,
       "external_id": "1137568",
       "source": "remoteok_api",
@@ -520,6 +552,22 @@
       "dossier_path": "",
       "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.1337)."
+    },
+    {
+      "id": 127,
+      "external_id": "1137608",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Scientific Account Executive (Adaptyv)",
+      "status": "NEW",
+      "fit_score": 0.1162,
+      "estimated_value_usd": 0.0,
+      "anchor": "agent_smith",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.1162)."
     },
     {
       "id": 12,
