@@ -1,10 +1,11 @@
-<!-- Synced via INSTANT_TXT at 12:28:19 (sha256=586fbfc416) -->
+<!-- Synced via INSTANT_TXT at 12:23:32 (sha256=f010ed23e2) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
 * Active Phase: Phase 5 (T-036 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
+* Pipeline Valuation Split: $425,500.00 Total ($405,000.00 Live [95.2%] / $20,500.00 Projected [4.8%])
 
 
 ________________
@@ -24,10 +25,10 @@ ________________
 
 
 Current Active Leads & Dossiers (Verified & Ready)
-1. MCP-RUST-ORCH-2026-01 | Lane: FAST_CASHFLOW | Fit: 0.5971 | Anchor: agent_smith | Status: STAGED_T011 (submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md — $8,500 SOW)
-2. SBIR-2026-CIVIC-SHELTER-01 | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.5949 | Anchor: shelter_source | Status: STAGED_T011 (submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md — $275,000 Phase I)
-3. NSF-SBIR-2026-AGENTIC-AI | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.4527 | Anchor: agent_smith | Status: STAGED_T012 ($305,000 NSF Phase I)
-4. QUANT-STREAM-OFI-2026-02 | Lane: FAST_CASHFLOW | Fit: 0.4220 | Anchor: phronarch | Status: STAGED_T012 ($12,000 Go + TS Order Book Telemetry)
+1. MCP-RUST-ORCH-2026-01 | Lane: FAST_CASHFLOW | Fit: 0.7122 | Anchor: agent_smith | Status: STAGED_T036 ($8,500.00 SOW | OUTBOUND SOW • 3 OSS TARGETS: agentgateway/agentgateway #4307, #4121, #4251; modelcontextprotocol/rust-sdk #1420, #1411, #1425; 0xPlaygrounds/rig #3082, #3081, #2239)
+2. QUANT-STREAM-OFI-2026-02 | Lane: FAST_CASHFLOW | Fit: 0.6213 | Anchor: phronarch | Status: STAGED_T036 ($12,000.00 SOW | OUTBOUND SOW • 2 QUANT TARGETS: nautechsystems/nautilus_trader #5568, #5300, #5341; thrasher-corp/gocryptotrader #2507, #2500, #1764)
+3. SBIR-2026-CIVIC-SHELTER-01 | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.5949 | Anchor: shelter_source | Status: STAGED_T011 (submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md — $275,000.00 Phase I)
+4. NSF-SBIR-2026-AGENTIC-AI | Lane: HIGH_TICKET_GRANT_RFP | Fit: 0.4527 | Anchor: agent_smith | Status: STAGED_T012 ($130,000.00 / $405k Combined Live Grant Pool)
 ________________
 
 
@@ -37,18 +38,7 @@ Completed Milestones
 * T-010 (Verification): Bidirectional communication ping verified across the Google Doc ledger and GitHub state bus.
 * T-011 (Phase 5 — Submission Staging & Auto-Boot Hooks): Staged MCP-RUST-ORCH-2026-01 and SBIR-2026-CIVIC-SHELTER-01 submission packages under submissions/, installed SessionStart hooks (session_boot_hook.sh) and global GEMINI.md rules, and synced cbb1985 to psycry/nexus-state-bus.
 * T-012 (Phase 5 — Full Queue Staging & Sweep Timer): Full queue staging complete ($600,500 total pipeline value across all 4 leads) and notification/systemd sweep automation configured.\nT-013 (Phase 5 — Automated Two-Way Feedback Bridge): Direct Google Doc Master Ledger mutation (gdocs CLI) + GitHub State Bus (psycry/nexus-state-bus) closed-loop auto-sync wired into engine/ledger_sync.py and scripts/push_state_bus.sh — DONE.
-
-
-________________
-
-
-Completed Milestone (T-013 — DONE | Awaiting T-014 Directive)
-* Objective: Implement automated status-flips and ledger reporting into scripts/push_state_bus.sh so Antigravity automatically updates the Google Doc ledger and state bus upon milestone completion, eliminating manual copy-pasting.
-Cloud Commands & Directives (Active)
-* Instruction (T-013): Immediately execute in burst mode (non-blocking, checkpointed):
-   * 1. Update scripts/push_state_bus.sh and add a Python helper to programmatically update the shared Google Doc ledger / state files upon commit.
-   * 2. Test the closed-loop feedback path by pushing completion telemetry for T-012 / T-013 to psycry/nexus-state-bus.
-   * 3. Mark T-013 as DONE in BUSINESS_ENGINE_STATE.md.
+* T-036 (Phase 5 — Live B2B & Open-Source Target Queues Staged): Completed, verified (4/4 QA PASS), and pushed to psycry/nexus-state-bus (commit 4b000a8). Paired fixed-scope 14-day SOWs with verified GitHub repositories and open issues (audited via GitHub API 200 OK on 2026-11-05). Screened and quarantined honeypot/prompt-injection bounties, preserved Live ($405,000.00 / 95.2%) vs. Projected ($20,500.00 / 4.8%) split, and zeroed legacy remoteok_api inflation so total_pipeline_usd ($425,500.00) equals total_staged_pipeline_usd ($425,500.00).
 
 
 ________________
@@ -62,37 +52,23 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
 ________________
 
 
-Active Milestone: T-014 (Harness IPC Diagnostic & Pipe Unblock)
+Active Milestone: T-037 (Option A — Draft & Stage Technical Wedge PR Patches)
 * Status: READY_FOR_EXECUTION
 * Target: Antigravity (Local Garuda Rig)
-* Objective: Diagnose and resolve silent process hang between Agent Smith and Antigravity over stdio/IPC.
-Automated Terminal Action Plan (Execute on session boot):
-9. Process Triage:
-pgrep -f "agent-smith"
-pgrep -f "antigravity"
-10. Pipe & Kernel Buffer Inspection:
-# Check if pipe buffers are saturated (>64KB write stall)
-lsof -p $(pgrep -f "agent-smith" | head -n 1) 2>/dev/null | grep -E "FIFO|PIPE"
-
-
-# Check active syscall (read vs. write block)
-timeout 2 strace -p $(pgrep -f "agent-smith" | head -n 1) 2>&1 | head -n 25
-11. Log Audit:
-tail -n 50 ~/.config/antigravity/logs/latest.log
-Evaluation & Diagnostic Rules:
-12. write(1, ...) / FIFO queue saturated (>64KB): Pipe buffer overflow. Stdio not drained concurrently. Refactor Agent Smith process runner with dedicated async tasks for stdout/stderr.
-13. read(0, ...) stalled: Missing newline delimiter, un-flushed write buffer, or turn-wait deadlock. Wrap reader loops in 2500ms timeout.
-14. Cleanup: If yesterday's processes are orphaned and unresponsive, terminate with pkill -9 -f "agent-smith".
+9. Objective: Clone and inspect the three priority upstream targets into a local scratch workspace and prepare ready-to-submit upstream PR diffs to kick off the B2B technical wedge -> Outbound SOW conversion motion:
+   * 1. Target 1 (Nautech Systems — nautechsystems/nautilus_trader#5568): Fix Binance book resync emitting buffered diffs with an earlier ts_init than their snapshot so catalogs do not replay a diff before its snapshot (maps to Phronarch v2.2.0 deterministic L2 snapshot/delta watermark gating).
+   * 2. Target 2 (Official Rust MCP SDK — modelcontextprotocol/rust-sdk#1411): Return merged cache hints from list_all_* client methods (P2, T-service).
+   * 3. Target 3 (Linux Foundation / Solo.io — agentgateway/agentgateway#4307): AgentgatewayModel: support rate limits (requests/tokens) per model (maps to claw-mcp-server hybrid model router quota/backoff logic).
 Success Criteria:
-* Identify if hang was caused by OS pipe saturation (missing async drain), missing newline / flush delimiter, or turn starvation.
-* Push diagnostic findings via scripts/push_state_bus.sh to update the ledger and gemini_inbox.md.
+* Stage clean, tested PR patch diffs for all three targets locally.
+* Push T-037 completion telemetry to psycry/nexus-state-bus and gemini_inbox.md.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-036` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T17:23:28Z`
+- **Auto-Sync Timestamp:** `2026-11-05T17:23:33Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-036` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
