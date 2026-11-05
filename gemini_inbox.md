@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 12:28:42 (sha256=fb1cc44be8) -->
+<!-- Synced via INSTANT_TXT at 12:36:33 (sha256=05cd37d831) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -63,13 +63,30 @@ Success Criteria:
 * Stage clean, tested PR patch diffs for all three targets locally.
 * Push T-037 completion telemetry to psycry/nexus-state-bus and gemini_inbox.md.
 * Operational Note: Autonomous task generation is authorized within the scope of the 4 active dossiers once the primary 3 technical wedge PR patches are staged.
+________________
+
+
+Staged Next Milestone: T-038 (Phronarch Micro-Capital Edge, TFI Spoof Filtering & Markout Telemetry)
+* Status: STAGED_NEXT (Auto-Transition upon T-037 Completion)
+* Target: Antigravity (Local Garuda Rig — Phronarch Engine & QUANT-STREAM-OFI-2026-02 Dossier)
+* Anchor: QUANT-STREAM-OFI-2026-02 ($12,000.00 SOW | phronarch)
+10. Objective: Eliminate micro-capital fee drag, passive cancel-spoof churn, and single-tick round-trip givebacks while capturing empirical markout telemetry for the QUANT-STREAM-OFI-2026-02 dossier:
+   * 1. Net-Edge Breakeven Gate (Cost-Floor Filter): Convert multi-level L1–L5 OFI into expected short-horizon mid-price displacement E[Delta P] (in bps) and suppress order emission unless E[Delta P] > (2 * Fee_bps + Spread_bps + 2.0 bps safety margin). Enforce strict POST_ONLY (GTX) maker execution on entry quotes.
+   * 2. Trade-Depletion vs. Cancel-Spoof Decomposition (TFI + L2 OFI Confluence): Require Trade Flow Imbalance (TFI) confirmation from aggressive execution sweeps (aggTrade) alongside L2 book queue depletion to filter out sub-100ms HFT cancel-flicker during choppy regimes.
+   * 3. BBO Queue-Collapse Scratch Bailout: Track supporting L1 resting quantity at the entry price level after fill; if the supporting L1 queue ratio depletes below 0.25 within 3 seconds without upward tick progression, execute an immediate scratch exit to prevent -1 cent mean-reversion losses.
+   * 4. Minimum-Notional State Machine & Dust-Lock Sanitizer: Add pre-flight LOT_SIZE step rounding, fee-buffer reservation, and a strict single-slot capital state machine (FLAT -> PENDING_MAKER_ENTRY -> HOLDING_ACTIVE -> SCRATCH_OR_TP) so $20 micro-allocations never strand un-tradable fractional dust below exchange MIN_NOTIONAL limits.
+   * 5. Post-Fill Markout Telemetry (100ms / 500ms / 2s / 10s): Log mid-price markout curves at t + 100ms, 500ms, 2s, and 10s post-fill into SQLite/Parquet and auto-append summary performance metrics to submissions/QUANT-STREAM-OFI-2026-02.md.
+Success Criteria:
+* Zero taker-fee drag on maker-gated entries and zero MIN_NOTIONAL order rejection errors.
+* Positive 500ms/2s post-fill markout signature logged in local telemetry.
+* Sync T-038 completion state and empirical markout tables to psycry/nexus-state-bus and gemini_inbox.md.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-037` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T17:36:03Z`
+- **Auto-Sync Timestamp:** `2026-11-05T17:36:33Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-037` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
