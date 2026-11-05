@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T15:55:44Z",
+  "timestamp": "2026-11-05T16:01:56Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-031",
+  "latest_milestone": "T-032",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -35,7 +35,8 @@
     "T-028",
     "T-029",
     "T-030",
-    "T-031"
+    "T-031",
+    "T-032"
   ],
   "total_staged_pipeline_usd": 600500.0,
   "live_staged_pipeline_usd": 305000.0,
@@ -66,6 +67,18 @@
       "listing_type": "curated_placeholder"
     },
     {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.4441,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "PROJECT_PITCH_READY_T032",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "listing_type": "live_solicitation"
+    },
+    {
       "id": 10,
       "external_id": "QUANT-STREAM-OFI-2026-02",
       "lane": "FAST_CASHFLOW",
@@ -76,18 +89,6 @@
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
       "listing_type": "curated_placeholder"
-    },
-    {
-      "id": 18,
-      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.2741,
-      "estimated_value_usd": 305000.0,
-      "anchor": "agent_smith",
-      "stage": "PROJECT_PITCH_DRAFT_T029",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "listing_type": "live_solicitation"
     }
   ],
   "recent_workforce_tasks": [

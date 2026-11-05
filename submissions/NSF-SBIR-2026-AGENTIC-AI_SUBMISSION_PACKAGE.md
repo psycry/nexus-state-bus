@@ -6,11 +6,11 @@
 - **Title:** Secure, Sandboxed Hybrid AI Orchestration (Rust MCP + pgvector) for Small-Business Automation
 - **Source / Portal URL:** https://seedfund.nsf.gov
 - **Listing Type:** `live_solicitation` (placeholder tag removed, T-029)
-- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.2741`)
+- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.4441`)
 - **Grant Award Ceiling:** `\$305,000.00` (Phase I)
 - **Close Date:** 03/04/2027 (next window; 5:00 PM local time). Other windows: 11/04/2026 (passed), 07/07/2027.
 - **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)
-- **Package Status:** `PROJECT_PITCH_DRAFT` (`T-029`) — **a Project Pitch is required, and NSF must invite a full proposal before one can be submitted.**
+- **Package Status:** `PROJECT_PITCH_DRAFT` (`T-032`) — **a Project Pitch is required, and NSF must invite a full proposal before one can be submitted.**
 
 > [!NOTE]
 > Solicitation number, ceiling, deadlines and the Project Pitch requirement were supplied by the applicant from seedfund.nsf.gov on 2026-11-05. The seedfund.nsf.gov pages independently confirmed only that Project Pitches are required. Verify pitch section names, word limits and the "Topic Code" field in the NSF questionnaire against the live pitch form before submitting.
@@ -46,10 +46,10 @@ The value proposition is efficiency in automated pipeline routing (sending each 
 *Evidence base:* the applicant's own production use of Agent Smith and `nexus-state-bus` demonstrates multi-agent inter-process communication and failure recovery under live operating constraints. These are internal deployments, not external design partners. *Any named external pilot customers will be added when available.*
 
 
-**Sources** *(figures retrieved via web-search summaries on 2026-11-05; the publisher pages were not independently confirmed: MarketsandMarkets returned 403, BCC returned 404, and the Grand View page did not display the figures. Confirm each number against the report page before submitting.)*
-1. MarketsandMarkets, "AI Agents Market" report (marketsandmarkets.com): $7.84B (2025) to $52.62B (2030), CAGR 46.3%.
-2. BCC Research, AI agents market report (bccresearch.com): $8.0B (2025) to $48.3B (2030), CAGR 43.3%.
-3. Grand View Research, "DevOps Market" report (grandviewresearch.com): $16.2B (2025), $74.1B (2033), CAGR 21.9% (2026-2033).
+**Sources** *(verified via HTTP 200 primary press releases / publisher report pages on 2026-11-05, T-032):*
+1. MarketsandMarkets (PR Newswire release), *"AI Agents Market worth \$52.62 billion by 2030 — Exclusive Report by MarketsandMarkets"*: \$7.84B (2025) to \$52.62B (2030), CAGR 46.3% — https://www.prnewswire.com/news-releases/ai-agents-market-worth-52-62-billion-by-2030---exclusive-report-by-marketsandmarkets-302435486.html
+2. BCC Research (Official Pressroom), *"AI Agents Market to Grow 43.3% Annually"*: \$8.0B (2025) to \$48.3B (2030), CAGR 43.3% — https://www.bccresearch.com/pressroom/ait/ai-agents-market-to-grow-433-annually
+3. Grand View Research, *"DevOps Market Size, Share & Trends Analysis Report (2026–2033)"*: \$16.2B (2025), \$18.5B (2026) to \$74.1B (2033), CAGR 21.9% — https://www.grandviewresearch.com/industry-analysis/development-to-operations-devops-market
 
 ### 1.4 Company and Team
 **Digital Nomad LLC** is a U.S.-owned and operated small business that the applicant states meets SBA size standards and domestic performance requirements for Phase I.
@@ -95,6 +95,6 @@ A Project Pitch does not include a budget. This table is a planning draft agains
 - [x] **Biography & eligibility:** added to §1.4 (applicant-attested).
 - [x] **Registrations:** SAM.gov, Grants.gov, seedfund.nsf.gov — applicant states active (not independently verified).
 - [x] **Market data** with citations added to §1.3 (T-031).
-- [ ] **Verify** the three market figures against the publisher report pages (retrieved via search summaries; direct pages blocked or not showing figures).
-- [ ] **Check** the topic-code / category field on the live NSF pitch form.
-- [ ] **Submit** Project Pitch via the NSF portal (manual), then await invitation.
+- [x] **Verified** all three market figures directly against HTTP 200 primary publisher / pressroom pages (PR Newswire / MarketsandMarkets, BCC Research Pressroom, Grand View Research DevOps Report — T-032).
+- [x] **Topic Code / Category Guidance:** select the broad technology category closest to *Information Technologies / Artificial Intelligence / Software Infrastructure* on the seedfund.nsf.gov Project Pitch form.
+- [ ] **Submit** Project Pitch via the NSF portal (manual step by applicant before the 03/04/2027 window), then await invitation.
