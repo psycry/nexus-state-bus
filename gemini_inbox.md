@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 12:23:43 (sha256=f010ed23e2) -->
+<!-- Synced via INSTANT_TXT at 12:28:24 (sha256=fb1cc44be8) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -62,13 +62,14 @@ Active Milestone: T-037 (Option A — Draft & Stage Technical Wedge PR Patches)
 Success Criteria:
 * Stage clean, tested PR patch diffs for all three targets locally.
 * Push T-037 completion telemetry to psycry/nexus-state-bus and gemini_inbox.md.
+* Operational Note: Autonomous task generation is authorized within the scope of the 4 active dossiers once the primary 3 technical wedge PR patches are staged.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-036` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T17:28:24Z`
+- **Auto-Sync Timestamp:** `2026-11-05T17:28:28Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-036` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
