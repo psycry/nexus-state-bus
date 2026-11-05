@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T16:57:58Z",
+  "generated_at": "2026-11-05T16:58:09Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-035",
+  "latest_milestone": "T-036",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -44,7 +44,8 @@
     "T-032",
     "T-033",
     "T-034",
-    "T-035"
+    "T-035",
+    "T-036"
   ],
   "milestone_log": [
     {
@@ -290,6 +291,13 @@
       "timestamp": "2026-11-05 11:46",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Upgraded Tactical Command Center UI (`ui/index.html`) + `engine/dashboard_api.py` + `engine/ledger_sync.py` to render Live (**\\$405,000.00 / 95.2%**) vs. Projected (**\\$20,500.00 / 4.8%**) valuation split across KPI cards, dynamic filter buttons (`LIVE SOLICITATIONS`, `PROJECTED`), and row badges (`LIVE SOLICITATION`, `PROJECTED / CURATED`, plus solicitation & close-date pills `NSF 26-510 \u2022 03/04/2027` and `HHS-2027-ACL-NIDILRR-BISA-0308 \u2022 12/16/2026`); wired `dashboard_api --export-only` into `scripts/push_state_bus.sh` and restarted `agent-smith-dashboard.service`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-036",
+      "timestamp": "2026-11-05 11:58",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Sourced & verified live open-source PR-to-contract target queues (`200 OK` via GitHub API) for `MCP-RUST-ORCH-2026-01` (`\\$8,500` SOW -> `agentgateway/agentgateway` `#4307`/`#4121`/`#4251`, `modelcontextprotocol/rust-sdk` `#1420`/`#1411`/`#1425`, `0xPlaygrounds/rig` `#3082`/`#2239`) and `QUANT-STREAM-OFI-2026-02` (`\\$12,000` SOW -> `nautechsystems/nautilus_trader` `#5568`/`#5300`/`#5341`, `thrasher-corp/gocryptotrader` `#2507`/`#2500`/`#1764`); quarantined synthetic GitHub bounty honeypots (`WholeTroutMedia/agent-conformance-quarantine`, `SecureBananaLabs/bug-bounty`); zeroed 2 legacy `remoteok_api` \\$15k rows; updated dossiers, packages, and DB metadata (**4/4 QA PASS**)",
       "status": "DONE"
     }
   ],
