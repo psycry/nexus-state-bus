@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T16:41:53Z",
+  "generated_at": "2026-11-05T16:42:01Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-033",
+  "latest_milestone": "T-034",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -42,7 +42,8 @@
     "T-030",
     "T-031",
     "T-032",
-    "T-033"
+    "T-033",
+    "T-034"
   ],
   "milestone_log": [
     {
@@ -274,6 +275,13 @@
       "timestamp": "2026-11-05 11:36",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Upgraded 768-dim Embedding Engine from retired `models/text-embedding-004` (HTTP 404) to `models/gemini-embedding-001` (`outputDimensionality: 768`, L2-normalized, batch embedding via `batchEmbedContents`) across `engine/embeddings.py` and `claw-mcp-server/src/tools/workforce.rs` (release binary rebuilt); added dense-cone baseline calibration in `engine/anchors.py` and Grants.gov `fetchOpportunity` synopsis + `award_ceiling_usd` enrichment in `engine/ingest.py`; re-seeded 3 capability anchors and re-scored all 68 leads in `nomad_nexus_grid` (`MCP-RUST-ORCH-2026-01` `0.7122`, `SBIR-2026-CIVIC-SHELTER-01` `0.6955`, `QUANT-STREAM-OFI-2026-02` `0.6213`, `NSF-SBIR-2026-AGENTIC-AI` `0.5738`; **4/4 QA PASS**)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-034",
+      "timestamp": "2026-11-05 11:41",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Converted `SBIR-2026-CIVIC-SHELTER-01` from curated placeholder (\\$275k) to `live_solicitation` targeting **HHS ACL/NIDILRR SBIR Phase I (`HHS-2027-ACL-NIDILRR-BISA-0308`, Grants.gov ID `363966`)** \u2014 verified \\$100,000 Phase I ceiling (\\$95,000 floor, 6-month period, 11 awards, response date `12/16/2026`, contact Brian Bard `brian.bard@acl.hhs.gov`); refreshed dossier + submission package around NIDILRR disability accessibility & community-living mandate (`fit_score = 0.6444`, **4/4 QA PASS**). Staged pipeline now **\\$425,500.00** (**Live: \\$405,000.00** across 2 verified federal SBIR solicitations / **Projected: \\$20,500.00** across 2 B2B contract packages)",
       "status": "DONE"
     }
   ],
