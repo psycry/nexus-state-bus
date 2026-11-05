@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T15:34:54Z",
+  "generated_at": "2026-11-05T15:37:03Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-025",
+  "latest_milestone": "T-026",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -34,7 +34,8 @@
     "T-022",
     "T-023",
     "T-024",
-    "T-025"
+    "T-025",
+    "T-026"
   ],
   "milestone_log": [
     {
@@ -210,6 +211,13 @@
       "timestamp": "2026-11-05 10:36",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Pipeline alignment hold - `PD-19-127Y` (NSF Science of Learning grant, fit 0.26, QA WARN, Phronarch anchor weak) set `ON_HOLD` (reversible, reason in `raw_metadata`), package moved to `submissions/_held/`. Staged pipeline corrected \\$750,500 -\\> \\$600,500 (4 leads)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-026",
+      "timestamp": "2026-11-05 10:40",
+      "phase": "Phase 6",
+      "description": "Gemini Directive T-026: Verified packages MCP-RUST-ORCH-2026-01 (0.60, \\$8,500) and SBIR-2026-CIVIC-SHELTER-01 (0.59, \\$275k). Content READY_WITH_CAVEATS - QA PASS, dossier 153/132 lines match, SOW/budget sums to 100%, prior-art repos exist. Caveats: (1) both leads are hard-coded curated entries in engine/ingest.py with generic URLs (modelcontextprotocol.io, sbir.gov), not live solicitations - no real buyer, deadline or contact; (2) outreach is addressed Hi Team with no recipient; (3) dossier links in packages use ../../ and resolve outside the repo (broken); (4) TRL-7/production claims are self-asserted. Not submittable until a real counterparty/solicitation is identified",
       "status": "DONE"
     }
   ],
