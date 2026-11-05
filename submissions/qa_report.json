@@ -1,0 +1,36 @@
+[
+  {
+    "package": "MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+    "status": "PASS",
+    "fit": 0.7122,
+    "issues": []
+  },
+  {
+    "package": "NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+    "status": "PASS",
+    "fit": 0.5738,
+    "issues": [
+      [
+        "INFO",
+        "1 checklist item(s) pending (human action)"
+      ]
+    ]
+  },
+  {
+    "package": "QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+    "status": "PASS",
+    "fit": 0.6213,
+    "issues": []
+  },
+  {
+    "package": "SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+    "status": "PASS",
+    "fit": 0.6444,
+    "issues": [
+      [
+        "INFO",
+        "1 checklist item(s) pending (human action)"
+      ]
+    ]
+  }
+]
