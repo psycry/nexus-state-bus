@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-029 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-030 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -90,22 +90,22 @@ Success Criteria:
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-029` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-030` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T15:52:34Z`
+- **Auto-Sync Timestamp:** `2026-11-05T15:53:52Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-029` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029`)
+- **Latest Milestone Flip:** `T-030` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
 - **Total Staged Pipeline Valuation:** **`$600,500.00`** (`4/4 DOSSIER_READY` leads staged) — **Live:** `$305,000.00` | **Projected (curated placeholders):** `$295,500.00`
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-025`** (Phase 6 — `2026-11-05 10:36`): Self-Issued Directive (Autonomous Discretion): Pipeline alignment hold - `PD-19-127Y` (NSF Science of Learning grant, fit 0.26, QA WARN, Phronarch anchor weak) set `ON_HOLD` (reversible, reason in `raw_metadata`), package moved to `submissions/_held/`. Staged pipeline corrected \$750,500 -\> \$600,500 (4 leads) $\rightarrow$ **`DONE`**
 - **`T-026`** (Phase 6 — `2026-11-05 10:40`): Gemini Directive T-026: Verified packages MCP-RUST-ORCH-2026-01 (0.60, \$8,500) and SBIR-2026-CIVIC-SHELTER-01 (0.59, \$275k). Content READY_WITH_CAVEATS - QA PASS, dossier 153/132 lines match, SOW/budget sums to 100%, prior-art repos exist. Caveats: (1) both leads are hard-coded curated entries in engine/ingest.py with generic URLs (modelcontextprotocol.io, sbir.gov), not live solicitations - no real buyer, deadline or contact; (2) outreach is addressed Hi Team with no recipient; (3) dossier links in packages use ../../ and resolve outside the repo (broken); (4) TRL-7/production claims are self-asserted. Not submittable until a real counterparty/solicitation is identified $\rightarrow$ **`DONE`**
 - **`T-027`** (Phase 6 — `2026-11-05 10:42`): Self-Issued Directive (Autonomous Discretion): Resolve T-026 caveats - (1) `engine/dossier.py` package generator and 4 staged packages now link dossiers as `../dossiers/...` (was `../../`, broken from `submissions/`); (2) curated leads (4) tagged `raw_metadata.listing_type=curated_placeholder` in `engine/ingest.py` + DB; (3) `notify`, `ledger_sync`, `dashboard_api` now report Live vs Projected staged value. True split: **Live \$0.00 / Projected \$600,500.00**. Next: source real SBIR.gov / Grants.gov solicitations $\rightarrow$ **`DONE`**
 - **`T-028`** (Phase 6 — `2026-11-05 10:42`): Gemini Directive T-026 next_step (real solicitation search): `engine/ingest.py` Grants.gov ingest moved to `api.grants.gov/v1/api/search2` with 10 capability keyword queries; live grants valued at \$0 (no synthetic \$150k) and tagged `live_solicitation`. Result: 57 live Lane 2 leads ingested, best fit 0.30 (NSF 23-568 HNDS, 24-587 NCSES, NIH PAR-28-039) - none reach 0.40 dossier threshold, so no new dossiers; live staged value remains \$0. SBIR.gov and contract boards not yet searched $\rightarrow$ **`DONE`**
 - **`T-029`** (Phase 6 — `2026-11-05 10:53`): Self-Issued Directive (Autonomous Discretion): Converted `NSF-SBIR-2026-AGENTIC-AI` from curated placeholder to `live_solicitation` - NSF 26-510 (applicant-supplied from seedfund.nsf.gov; nsf.gov page not independently fetched): Phase I ceiling \$305,000, deadline_at 2027-03-04 (windows 2026-11-04 passed, 2027-03-04, 2027-07-07), invited Project Pitch required. Package rewritten as Project Pitch draft (6 human checklist items pending); stale lane-folder copy superseded. Re-embedding the NSF-specific text dropped fit 0.45 -> 0.27 (QA WARN, below 0.40 notify threshold). Live staged value now \$305,000 (grant is a ceiling, not an award); projected \$295,500 $\rightarrow$ **`DONE`**
+- **`T-030`** (Phase 6 — `2026-11-05 10:56`): Self-Issued Directive (Autonomous Discretion): Refreshed `dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md` to mirror the NSF 26-510 Project Pitch (4 sections, each 87-201 words, under the 500-word limit); added applicant-attested biography, eligibility and registration facts and nexus-state-bus as internal-deployment evidence (not external design partners). Package checklist 3 of 8 items pending: sourced market-size citations (none yet), topic-code check on live form, manual portal submission. QA WARN fit 0.27 unchanged $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 

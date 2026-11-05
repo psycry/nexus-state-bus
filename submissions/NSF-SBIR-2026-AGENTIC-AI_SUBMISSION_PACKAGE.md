@@ -20,26 +20,35 @@
 ## 1. Executive Project Pitch (Draft Text for the NSF Project Pitch Form)
 
 ### 1.1 Technology Innovation
-Small businesses want AI agents that act on their systems, but today's agent stacks run tools with broad host access, depend entirely on cloud models, and keep no durable shared memory. **Digital Nomad LLC** is building a secure orchestration layer that addresses all three:
+Small businesses want AI agents that act on their systems, but current agent stacks run tools with broad host access, depend entirely on cloud models, and keep no durable shared state across agents. **Digital Nomad LLC** is building a secure orchestration layer that addresses all three:
 
 - **Deterministic sandboxed tool execution (Rust):** every tool call passes path canonicalization and a command allowlist before it runs, so an agent cannot read or write outside declared roots.
 - **Hybrid inference routing:** a local model (Ollama, `qwen2.5-coder:1.5b`) handles low-cost work and cloud foundation models (Gemini Flash family) handle the rest, with automatic fallback.
 - **Collective vector memory:** PostgreSQL 16 + `pgvector` 768-dimension semantic memory shared by the Rust control plane and a Python worker plane under a fixed embedding contract.
+- **Decentralized state synchronization:** the `nexus-state-bus` architecture synchronizes state between independent agents through a shared ledger, with polling, sanitized state packets and automatic recovery.
 
-The working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools). The innovation to fund is the part that is not yet built or proven: measurable security guarantees, routing policy that optimizes cost against quality, and multi-agent coordination over shared memory.
+The working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools), operated internally in production together with `nexus-state-bus`. The innovation to fund is what is not yet built or proven: measurable security guarantees, a cost-aware routing policy, and multi-agent coordination over shared memory and state.
 
 ### 1.2 Technical Objectives and Challenges
 1. **Sandbox assurance:** define a tool-call policy model and test it with adversarial prompt-injection and path-traversal suites. Target: zero boundary violations across the test corpus.
 2. **Cost-aware routing:** learn a routing policy between local and cloud models. Target: a defined reduction in cloud-token spend at equal task success on a benchmark task set.
-3. **Multi-agent memory coordination:** concurrent agents reading and writing shared `pgvector` memory without stale or conflicting recall. Target: measured recall precision and latency under concurrent load.
+3. **Multi-agent memory and state coordination:** concurrent agents reading and writing shared `pgvector` memory and bus state without stale or conflicting results. Target: measured recall precision, synchronization latency and failure-recovery time under concurrent load.
 
-Principal technical risks: prompt-injection that survives allowlisting, and quality loss from routing to small local models. Phase I exists to quantify both.
+Principal technical risks: prompt-injection that survives allowlisting, quality loss from routing to small local models, and state divergence between agents under partial failure. Phase I exists to quantify each.
 
 ### 1.3 Market Opportunity
-Customers are small and mid-sized businesses and the integrators who serve them, who need agent automation but cannot accept unrestricted tool access or per-token cloud costs. Initial go-to-market is fixed-scope integration engagements (the Lane 1 contract work this engine already tracks), moving to a licensed or hosted orchestration product. *(Applicant to add sourced market-size figures and named design-partner conversations before submission.)*
+The target market is autonomous agent orchestration and DevOps-style automation: businesses deploying multi-agent systems to automate pipelines, operations and routine engineering work. Buyers are small and mid-sized businesses, and the integrators who serve them, that need agent automation but cannot accept unrestricted tool access or unbounded per-token cloud costs.
+
+The value proposition is efficiency in automated pipeline routing (sending each task to the cheapest model that succeeds) and reliable decentralized state synchronization between agents. Initial go-to-market is fixed-scope integration engagements, moving to a licensed or hosted orchestration product.
+
+*Evidence base:* the applicant's own production use of Agent Smith and `nexus-state-bus` demonstrates multi-agent inter-process communication and failure recovery under live operating constraints. These are internal deployments, not external design partners. **[TODO before submission: add sourced market-size and growth figures with citations, and any named external pilot customers.]**
 
 ### 1.4 Company and Team
-**Digital Nomad LLC** — principal: Jasper (PsyCry), Principal Systems Architect. Relevant existing work: Agent Smith (Rust MCP server, hybrid routing, `pgvector` memory), plus Phronarch and Shelter Source as supporting engineering evidence. *(Applicant to add biography, SBIR eligibility facts, and SAM.gov / SBA registration status.)*
+**Digital Nomad LLC** is a U.S.-owned and operated small business that the applicant states meets SBA size standards and domestic performance requirements for Phase I.
+
+**William Jasper Land** (principal / principal investigator) holds an M.S. in Computer Science from UNCC. He has a production software engineering background, formerly at Amazon, and specializes in systems architecture. He designed and operates Agent Smith, `nexus-state-bus`, and the supporting Phronarch and Shelter Source codebases.
+
+Registrations: the applicant states that Digital Nomad LLC is active and verified on SAM.gov, Grants.gov and seedfund.nsf.gov.
 
 ---
 
@@ -72,11 +81,11 @@ A Project Pitch does not include a budget. This table is a planning draft agains
 
 ## 4. Pre-Submission Checklist
 
-- [x] **Technical Dossier Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md) (generated before NSF 26-510 was confirmed; refresh to match the pitch).
+- [x] **Technical Dossier Refreshed:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md) mirrors §1 (T-029).
 - [x] **Solicitation details recorded:** NSF 26-510, ceiling `\$305,000`, windows 11/04/2026, 03/04/2027, 07/07/2027.
-- [ ] **Verify** pitch form section names, word limits and topic-code field on the live NSF pitch form.
-- [ ] **Add** sourced market data and design-partner evidence to §1.3.
-- [ ] **Add** founder biography and SBIR eligibility facts to §1.4.
-- [ ] **Confirm** SAM.gov, SBA company registry and Research.gov registrations.
-- [ ] **Submit** Project Pitch via the NSF pitch portal, then wait for an invitation.
-- [ ] **Refresh dossier** to the pitch narrative and the NSF 26-510 proposal format.
+- [x] **Section word limits:** each pitch section is under 500 words (limit per applicant).
+- [x] **Biography & eligibility:** added to §1.4 (applicant-attested).
+- [x] **Registrations:** SAM.gov, Grants.gov, seedfund.nsf.gov — applicant states active (not independently verified).
+- [ ] **Add** sourced market-size figures with citations to §1.3 (currently none).
+- [ ] **Check** the topic-code / category field on the live NSF pitch form.
+- [ ] **Submit** Project Pitch via the NSF portal (manual), then await invitation.
