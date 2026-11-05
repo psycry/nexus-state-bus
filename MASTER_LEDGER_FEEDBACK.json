@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T15:38:10Z",
+  "timestamp": "2026-11-05T15:38:42Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-026",
+  "latest_milestone": "T-027",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -30,9 +30,12 @@
     "T-023",
     "T-024",
     "T-025",
-    "T-026"
+    "T-026",
+    "T-027"
   ],
   "total_staged_pipeline_usd": 600500.0,
+  "live_staged_pipeline_usd": 0.0,
+  "projected_staged_pipeline_usd": 600500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -43,7 +46,8 @@
       "estimated_value_usd": 8500.0,
       "anchor": "agent_smith",
       "stage": "STAGED_T011",
-      "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md"
+      "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
+      "listing_type": "curated_placeholder"
     },
     {
       "id": 17,
@@ -54,7 +58,8 @@
       "estimated_value_usd": 275000.0,
       "anchor": "shelter_source",
       "stage": "STAGED_T011",
-      "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md"
+      "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
+      "listing_type": "curated_placeholder"
     },
     {
       "id": 18,
@@ -65,7 +70,8 @@
       "estimated_value_usd": 305000.0,
       "anchor": "agent_smith",
       "stage": "STAGED_T012",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md"
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "listing_type": "curated_placeholder"
     },
     {
       "id": 10,
@@ -76,7 +82,8 @@
       "estimated_value_usd": 12000.0,
       "anchor": "phronarch",
       "stage": "STAGED_T012",
-      "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md"
+      "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
+      "listing_type": "curated_placeholder"
     }
   ],
   "recent_workforce_tasks": [
