@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T17:32:46Z",
+  "timestamp": "2026-11-05T17:33:01Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-036",
   "status": "COMPLETED",
@@ -59,6 +59,7 @@
       "listing_type": "curated_placeholder",
       "solicitation": "OUTBOUND SOW \u2022 3 OSS TARGETS",
       "close_date": "",
+      "patch_bundle": "",
       "url": "https://github.com/modelcontextprotocol/rust-sdk"
     },
     {
@@ -74,6 +75,7 @@
       "listing_type": "live_solicitation",
       "solicitation": "HHS-2027-ACL-NIDILRR-BISA-0308",
       "close_date": "12/16/2026",
+      "patch_bundle": "",
       "url": "https://www.grants.gov/search-results-detail/363966"
     },
     {
@@ -89,6 +91,7 @@
       "listing_type": "curated_placeholder",
       "solicitation": "OUTBOUND SOW \u2022 2 QUANT TARGETS",
       "close_date": "",
+      "patch_bundle": "",
       "url": "https://github.com/nautechsystems/nautilus_trader"
     },
     {
@@ -104,6 +107,7 @@
       "listing_type": "live_solicitation",
       "solicitation": "NSF 26-510",
       "close_date": "03/04/2027",
+      "patch_bundle": "",
       "url": "https://seedfund.nsf.gov"
     }
   ],
