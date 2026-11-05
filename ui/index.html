@@ -414,6 +414,25 @@
       border: 1px solid rgba(179, 136, 255, 0.35);
     }
 
+    .badge-live {
+      background: rgba(0, 255, 156, 0.18);
+      color: var(--matrix-green);
+      border: 1px solid var(--matrix-green);
+    }
+
+    .badge-projected {
+      background: rgba(255, 179, 0, 0.14);
+      color: var(--amber-accent);
+      border: 1px dashed rgba(255, 179, 0, 0.55);
+    }
+
+    .badge-solicitation {
+      background: rgba(0, 229, 255, 0.12);
+      color: var(--cyan-accent);
+      border: 1px solid rgba(0, 229, 255, 0.45);
+      margin-left: 6px;
+    }
+
     .anchor-chip {
       display: inline-flex;
       align-items: center;
@@ -835,23 +854,23 @@
     <section class="kpi-grid" aria-label="Executive KPIs">
       <div class="kpi-card">
         <div class="kpi-label"><span>Total Staged Pipeline</span><span>USD</span></div>
-        <div class="kpi-value" id="kpi-total-pipeline">$600,500.00</div>
-        <div class="kpi-sub">$0/mo baseline burn &bull; 100% autonomous staging</div>
+        <div class="kpi-value" id="kpi-total-pipeline">$425,500.00</div>
+        <div class="kpi-sub" id="kpi-total-sub">Live: $405,000.00 (95.2%) &bull; Projected: $20,500.00</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label"><span>Active Staged Dossiers</span><span>QUEUE</span></div>
         <div class="kpi-value" id="kpi-active-dossiers">4 / 4 DOSSIER_READY</div>
-        <div class="kpi-sub">All fit_score &ge; 0.40 staged in submissions/</div>
+        <div class="kpi-sub" id="kpi-active-sub">2 Live Solicitations &bull; 2 Projected B2B Contracts</div>
       </div>
       <div class="kpi-card cyan">
         <div class="kpi-label"><span>Fast Cashflow Lane</span><span>LANE 1</span></div>
         <div class="kpi-value" id="kpi-fast-lane">$20,500.00</div>
-        <div class="kpi-sub">2 Fixed-Scope 14-Day Engineering Contracts</div>
+        <div class="kpi-sub" id="kpi-fast-sub">Projected: $20,500.00 &bull; 2 Fixed-Scope 14-Day Sprints</div>
       </div>
       <div class="kpi-card amber">
         <div class="kpi-label"><span>High-Ticket Grant / SBIR Lane</span><span>LANE 2</span></div>
-        <div class="kpi-value" id="kpi-grant-lane">$580,000.00</div>
-        <div class="kpi-sub">2 Phase I SBIR Proposals (NSF + Civic Shelter)</div>
+        <div class="kpi-value" id="kpi-grant-lane">$405,000.00</div>
+        <div class="kpi-sub" id="kpi-grant-sub">100% Live Verified &bull; NSF 26-510 ($305K) + HHS-ACL ($100K)</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label"><span>MCP Stdio IPC Latency</span><span>T-014</span></div>
@@ -873,10 +892,12 @@
           <span class="tag" id="lead-count-tag">4 LEADS STAGED</span>
         </div>
         <div class="filter-controls">
-          <button class="filter-btn active" data-lane="ALL" onclick="setLaneFilter('ALL')">ALL LANES ($600.5K)</button>
-          <button class="filter-btn" data-lane="FAST_CASHFLOW" onclick="setLaneFilter('FAST_CASHFLOW')">FAST_CASHFLOW ($20.5K)</button>
-          <button class="filter-btn" data-lane="HIGH_TICKET_GRANT_RFP" onclick="setLaneFilter('HIGH_TICKET_GRANT_RFP')">HIGH_TICKET_GRANT_RFP ($580K)</button>
-          <input type="search" id="lead-search" class="search-input" placeholder="Filter ID, anchor, stage..." oninput="renderLeadsTable()" />
+          <button class="filter-btn active" id="btn-filter-all" data-lane="ALL" onclick="setLaneFilter('ALL')">ALL LANES ($425.5K)</button>
+          <button class="filter-btn" id="btn-filter-live" data-lane="LIVE_ONLY" onclick="setLaneFilter('LIVE_ONLY')">LIVE SOLICITATIONS ($405.0K)</button>
+          <button class="filter-btn" id="btn-filter-projected" data-lane="PROJECTED_ONLY" onclick="setLaneFilter('PROJECTED_ONLY')">PROJECTED ($20.5K)</button>
+          <button class="filter-btn" id="btn-filter-fast" data-lane="FAST_CASHFLOW" onclick="setLaneFilter('FAST_CASHFLOW')">FAST_CASHFLOW ($20.5K)</button>
+          <button class="filter-btn" id="btn-filter-grant" data-lane="HIGH_TICKET_GRANT_RFP" onclick="setLaneFilter('HIGH_TICKET_GRANT_RFP')">HIGH_TICKET_GRANT_RFP ($405.0K)</button>
+          <input type="search" id="lead-search" class="search-input" placeholder="Filter ID, solicitation, anchor..." oninput="renderLeadsTable()" />
         </div>
       </div>
       <div class="table-wrap">
@@ -953,7 +974,7 @@
       <div class="panel-header">
         <div class="panel-title">
           <span>Multi-Agent Workforce Pod &amp; 768-Dim Capability Anchors (Zero-Token Pre-Scoring)</span>
-          <span class="tag">models/text-embedding-004 + FNV-1a 768-Dim Lock</span>
+          <span class="tag">models/gemini-embedding-001 (768-Dim L2) + FNV-1a Fallback</span>
         </div>
       </div>
       <div class="pod-grid" id="pod-grid"></div>
@@ -983,17 +1004,22 @@
   <script>
     // Canonical Embedded Fallback Snapshot (renders cleanly via file://, /api/state, ./dashboard_state.json, or ../MASTER_LEDGER_FEEDBACK.json)
     const FALLBACK_STATE = {
-      schema_version: "1.2-T015",
-      timestamp: "2026-10-29T16:02:00Z",
+      schema_version: "1.2-T035",
+      timestamp: "2026-11-05T16:45:00Z",
       google_doc_id: "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-      latest_milestone: "T-015",
+      latest_milestone: "T-035",
       status: "COMPLETED",
       mcp_ipc_latency_ms: 28.5,
       state_bus_status: "CLOSED-LOOP 2-WAY ACTIVE",
-      total_staged_pipeline_usd: 600500.0,
+      total_staged_pipeline_usd: 425500.0,
+      live_staged_pipeline_usd: 405000.0,
+      projected_staged_pipeline_usd: 20500.0,
       completed_milestones: [
         "T-001","T-002","T-003","T-004","T-005","T-006","T-007",
-        "T-008","T-009","T-010","T-011","T-012","T-013","T-014","T-015"
+        "T-008","T-009","T-010","T-011","T-012","T-013","T-014","T-015",
+        "T-016","T-017","T-018","T-019","T-020","T-021","T-022","T-023",
+        "T-024","T-025","T-026","T-027","T-028","T-029","T-030","T-031",
+        "T-032","T-033","T-034","T-035"
       ],
       staged_leads: [
         {
@@ -1002,7 +1028,11 @@
           title: "Custom Rust MCP Server & PostgreSQL pgvector RAG Pipeline Integration",
           lane: "FAST_CASHFLOW",
           status: "DOSSIER_READY",
-          fit_score: 0.5971,
+          listing_type: "curated_placeholder",
+          solicitation: "",
+          close_date: "",
+          url: "https://modelcontextprotocol.io",
+          fit_score: 0.7122,
           estimated_value_usd: 8500.0,
           anchor: "agent_smith",
           stage: "STAGED_T011",
@@ -1015,34 +1045,22 @@
         {
           id: 17,
           external_id: "SBIR-2026-CIVIC-SHELTER-01",
-          title: "SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform",
+          title: "HHS ACL/NIDILRR SBIR Phase I (HHS-2027-ACL-NIDILRR-BISA-0308): Accessible Emergency Shelter & Community Living Resource Navigation Platform",
           lane: "HIGH_TICKET_GRANT_RFP",
           status: "DOSSIER_READY",
-          fit_score: 0.5949,
-          estimated_value_usd: 275000.0,
+          listing_type: "live_solicitation",
+          solicitation: "HHS-2027-ACL-NIDILRR-BISA-0308",
+          close_date: "12/16/2026",
+          url: "https://www.grants.gov/search-results-detail/363966",
+          fit_score: 0.6444,
+          estimated_value_usd: 100000.0,
           anchor: "shelter_source",
-          stage: "STAGED_T011",
+          stage: "STAGED_LIVE_SOLICITATION_T034",
           submission_pkg: "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
           dossier_path: "dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md",
-          timeline: "9-Month Phase I Execution (TRL-6 -> TRL-7 Field Pilot)",
-          architecture_fit: "Built directly on Digital Nomad LLC's TRL-6 Shelter Source & Nomad Nexus codebase (unified Flutter/Dart iOS/Android/Web geospatial core, Firebase Auth/Firestore, offline-first SQLite/Hive sync with >=95% conflict recovery, and reputation-weighted community verification).",
-          executive_pitch: "SBIR Phase I Technical Abstract ($275,000):\nAdvances Shelter Source & Nomad Nexus from TRL-6 to TRL-7 operational field readiness across 3 Specific Aims: (1) Real-time geospatial indexing (<2.0s load for 100+ nodes), (2) Deterministic offline-first local cache (>=95% sync integrity), and (3) Reputation-weighted crowdsourced capacity verification (>=80% throughput under 1,000-user load + 20-operator NGO field pilot)."
-        },
-        {
-          id: 18,
-          external_id: "NSF-SBIR-2026-AGENTIC-AI",
-          title: "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
-          lane: "HIGH_TICKET_GRANT_RFP",
-          status: "DOSSIER_READY",
-          fit_score: 0.4527,
-          estimated_value_usd: 305000.0,
-          anchor: "agent_smith",
-          stage: "STAGED_T012",
-          submission_pkg: "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-          dossier_path: "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
-          timeline: "6-Month NSF Phase I R&D Execution (TRL-6/7 -> TRL-8)",
-          architecture_fit: "Leverages Agent Smith v0.2.0 (Rust Edition 2024, Tokio async, RMCP 1.7 + Python 3.14 SQLModel worker plane) to deliver >70% cloud token reduction via 768-dim pgvector zero-token pre-scoring and 0 sandbox escapes across 10,000 adversarial MCP payloads.",
-          executive_pitch: "NSF SBIR Phase I Project Pitch ($305,000):\nAdvances Agent Smith into an open-standards verifiable enterprise runtime: (Aim 1) Hybrid Inference & Zero-Token 768-dim pgvector Pre-Scoring (<50ms recall, >=70% cloud token savings), (Aim 2) Zero-Trust Rust Capability Sandbox tested against 10,000 adversarial fuzzing payloads, and (Aim 3) Multi-Agent Collective Memory with >=99.5% idempotent checkpoint recovery."
+          timeline: "6-Month HHS ACL/NIDILRR Phase I Execution ($100K Ceiling / $95K Floor • Close: 12/16/2026)",
+          architecture_fit: "Built directly on Digital Nomad LLC's TRL-6 Shelter Source & Nomad Nexus codebase (unified Flutter/Dart iOS/Android/Web WCAG 2.1 AA geospatial core, NIDILRR disability accessibility schema, offline-first SQLite/Hive sync with >=95% conflict recovery, and CIL/peer verification).",
+          executive_pitch: "HHS ACL/NIDILRR SBIR Phase I Technical Abstract ($100,000 — HHS-2027-ACL-NIDILRR-BISA-0308):\nAdvances Shelter Source & Nomad Nexus from TRL-6 to TRL-7 accessibility & field readiness across 3 Specific Aims: (1) Disability & Accessibility Geospatial Schema (ADA, DME backup power, sensory/ASL) + WCAG 2.1 AA UI, (2) Deterministic offline-first local cache (>=95% blackout sync integrity), and (3) Center for Independent Living (CIL) & peer verification (>=80% throughput + 15-stakeholder usability pilot)."
         },
         {
           id: 10,
@@ -1050,7 +1068,11 @@
           title: "Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)",
           lane: "FAST_CASHFLOW",
           status: "DOSSIER_READY",
-          fit_score: 0.4220,
+          listing_type: "curated_placeholder",
+          solicitation: "",
+          close_date: "",
+          url: "https://github.com/psycry/phronarch",
+          fit_score: 0.6213,
           estimated_value_usd: 12000.0,
           anchor: "phronarch",
           stage: "STAGED_T012",
@@ -1059,6 +1081,26 @@
           timeline: "14-Day Fixed-Scope Sprint (M1: $3,600 / M2: $4,800 / M3: $3,600)",
           architecture_fit: "Direct match with Phronarch v2.2.0 (/home/psycry/Projects/phronarch): Go ultra-low-latency L2 WebSocket streamer (<10ms Redis 7 Pub/Sub serialization) + TypeScript quantitative engine (OFI Z-scores, rolling VWAP +-2/3 sigma bands, 6-stage Bayesian posterior pipeline, and Lightweight Charts v5 UI).",
           executive_pitch: "Subject: Sub-10ms Go WebSocket L2 Order Book Ingestor + TypeScript OFI/VWAP & Bayesian Telemetry Dashboard — 14-Day Delivery (QUANT-STREAM-OFI-2026-02)\n\nBuilt on our battle-tested Phronarch v2.2.0 Go + TypeScript quantitative telemetry engine. Delivers <10ms ingest-to-Redis latency, L1/L2 OFI momentum Z-scores, VWAP volatility bands, and 6-stage Bayesian signal alerts in 14 days for $12,000."
+        },
+        {
+          id: 18,
+          external_id: "NSF-SBIR-2026-AGENTIC-AI",
+          title: "NSF 26-510 SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+          lane: "HIGH_TICKET_GRANT_RFP",
+          status: "DOSSIER_READY",
+          listing_type: "live_solicitation",
+          solicitation: "NSF 26-510",
+          close_date: "03/04/2027",
+          url: "https://seedfund.nsf.gov",
+          fit_score: 0.5738,
+          estimated_value_usd: 305000.0,
+          anchor: "agent_smith",
+          stage: "PROJECT_PITCH_READY_T032",
+          submission_pkg: "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+          dossier_path: "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
+          timeline: "NSF 26-510 Project Pitch -> 6-Month Phase I R&D ($305K Ceiling • Window: 03/04/2027)",
+          architecture_fit: "Leverages Agent Smith v0.2.0 (Rust Edition 2024, Tokio async, RMCP 1.7 + Python 3.14 SQLModel worker plane) and nexus-state-bus synchronization to deliver verified sandbox policy, cost-aware hybrid routing, and concurrency-safe 768-dim pgvector collective memory.",
+          executive_pitch: "NSF 26-510 Project Pitch ($305,000 Ceiling):\nAdvances Agent Smith & nexus-state-bus into a verifiable multi-agent orchestration runtime: (Aim 1) Verified Tool-Call Sandbox Policy (0 boundary violations across adversarial suite), (Aim 2) Cost-Aware Hybrid Local/Cloud Routing, and (Aim 3) Multi-Agent Shared pgvector Memory & State Synchronization."
         }
       ],
       phases: [
@@ -1124,8 +1166,8 @@
           id: "shelter_source",
           dim: "768-DIM HNSW",
           stack: "Flutter / Dart (iOS, Android, Web) • Firebase Auth & Firestore • Offline-First SQLite/Hive",
-          matched_leads: "SBIR-2026-CIVIC-SHELTER-01 ($275K Phase I)",
-          summary: "TRL-6 cross-platform civic resource & emergency shelter geospatial mapping platform with offline resilience, conflict sync, and crowdsourced peer verification."
+          matched_leads: "SBIR-2026-CIVIC-SHELTER-01 ($100K HHS-ACL Phase I)",
+          summary: "TRL-6 cross-platform civic resource & accessible emergency shelter geospatial mapping platform with offline resilience, conflict sync, and crowdsourced peer verification."
         },
         {
           id: "phronarch",
@@ -1243,20 +1285,54 @@
       renderLeadsTable();
     }
 
+    function formatShortK(val) {
+      const n = Number(val) || 0;
+      return `$${(n / 1000).toFixed(1).replace(/\.0$/, '')}K`;
+    }
+
+    function isProjectedLead(lead) {
+      return lead && lead.listing_type === 'curated_placeholder';
+    }
+
     function renderKPIs() {
       const leads = currentState.staged_leads || [];
       const total = leads.reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
-      const fastTotal = leads.filter(l => l.lane === 'FAST_CASHFLOW').reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
-      const grantTotal = leads.filter(l => l.lane === 'HIGH_TICKET_GRANT_RFP').reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const projectedTotal = leads.filter(isProjectedLead).reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const liveTotal = total - projectedTotal;
+      const livePct = total > 0 ? ((liveTotal / total) * 100).toFixed(1) : '0.0';
+      const fastLeads = leads.filter(l => l.lane === 'FAST_CASHFLOW');
+      const grantLeads = leads.filter(l => l.lane === 'HIGH_TICKET_GRANT_RFP');
+      const fastTotal = fastLeads.reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
+      const grantTotal = grantLeads.reduce((acc, l) => acc + (Number(l.estimated_value_usd) || 0), 0);
       const readyCount = leads.filter(l => l.status === 'DOSSIER_READY').length;
+      const liveCount = leads.filter(l => !isProjectedLead(l)).length;
+      const projCount = leads.filter(isProjectedLead).length;
 
       document.getElementById('kpi-total-pipeline').textContent = formatUSD(total);
+      const totalSub = document.getElementById('kpi-total-sub');
+      if (totalSub) {
+        totalSub.innerHTML = `<strong style="color:var(--matrix-green)">Live: ${formatUSD(liveTotal)} (${livePct}%)</strong> &bull; <span style="color:var(--amber-accent)">Projected: ${formatUSD(projectedTotal)}</span>`;
+      }
       document.getElementById('kpi-active-dossiers').textContent = `${readyCount} / ${leads.length} DOSSIER_READY`;
+      const activeSub = document.getElementById('kpi-active-sub');
+      if (activeSub) {
+        activeSub.innerHTML = `${liveCount} Live Solicitation${liveCount === 1 ? '' : 's'} &bull; ${projCount} Projected B2B Contract${projCount === 1 ? '' : 's'}`;
+      }
       document.getElementById('kpi-fast-lane').textContent = formatUSD(fastTotal);
       document.getElementById('kpi-grant-lane').textContent = formatUSD(grantTotal);
       document.getElementById('kpi-ipc-latency').textContent = `${currentState.mcp_ipc_latency_ms || 28.5}ms — HEALTHY`;
-      document.getElementById('latest-milestone-badge').textContent = currentState.latest_milestone || 'T-015';
-      document.getElementById('sync-time-badge').textContent = currentState.timestamp || '2026-10-29T16:00:00Z';
+      document.getElementById('latest-milestone-badge').textContent = currentState.latest_milestone || 'T-035';
+      document.getElementById('sync-time-badge').textContent = currentState.timestamp || '2026-11-05T16:45:00Z';
+
+      const setBtn = (id, label) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = label;
+      };
+      setBtn('btn-filter-all', `ALL LANES (${formatShortK(total)})`);
+      setBtn('btn-filter-live', `LIVE SOLICITATIONS (${formatShortK(liveTotal)})`);
+      setBtn('btn-filter-projected', `PROJECTED (${formatShortK(projectedTotal)})`);
+      setBtn('btn-filter-fast', `FAST_CASHFLOW (${formatShortK(fastTotal)})`);
+      setBtn('btn-filter-grant', `HIGH_TICKET_GRANT_RFP (${formatShortK(grantTotal)})`);
     }
 
     function renderLeadsTable() {
@@ -1264,8 +1340,12 @@
       const query = (document.getElementById('lead-search').value || '').trim().toLowerCase();
 
       const filtered = (currentState.staged_leads || []).filter(lead => {
-        const matchesLane = currentLaneFilter === 'ALL' || lead.lane === currentLaneFilter;
-        const text = `${lead.external_id} ${lead.title || ''} ${lead.anchor} ${lead.stage} ${lead.lane}`.toLowerCase();
+        let matchesLane = true;
+        if (currentLaneFilter === 'LIVE_ONLY') matchesLane = !isProjectedLead(lead);
+        else if (currentLaneFilter === 'PROJECTED_ONLY') matchesLane = isProjectedLead(lead);
+        else if (currentLaneFilter !== 'ALL') matchesLane = lead.lane === currentLaneFilter;
+
+        const text = `${lead.external_id} ${lead.title || ''} ${lead.solicitation || ''} ${lead.anchor} ${lead.stage} ${lead.lane} ${lead.listing_type || ''}`.toLowerCase();
         const matchesQuery = !query || text.includes(query);
         return matchesLane && matchesQuery;
       });
@@ -1275,16 +1355,25 @@
       tbody.innerHTML = filtered.map(lead => {
         const laneClass = lead.lane === 'FAST_CASHFLOW' ? 'badge-fast' : 'badge-grant';
         const fitPct = Math.min(100, Math.round((Number(lead.fit_score) || 0) * 100));
+        const proj = isProjectedLead(lead);
+        const typeBadge = proj
+          ? `<span class="badge badge-projected" title="Curated B2B contract template awaiting live counterparty">PROJECTED / CURATED</span>`
+          : `<span class="badge badge-live" title="Verified live federal solicitation">LIVE SOLICITATION</span>`;
+        const solBadge = lead.solicitation
+          ? `<span class="badge badge-solicitation">${lead.solicitation}${lead.close_date ? ' &bull; ' + lead.close_date : ''}</span>`
+          : '';
         return `
           <tr class="lead-row" onclick="openDrawer('${lead.external_id}')">
             <td>
-              <div class="ext-id">#${String(lead.id).padStart(2, '0')} &bull; ${lead.external_id}</div>
+              <div class="ext-id">#${String(lead.id).padStart(2, '0')} &bull; ${lead.external_id}${solBadge}</div>
               <div class="lead-title">${lead.title || lead.external_id}</div>
             </td>
             <td><span class="badge ${laneClass}">${lead.lane}</span></td>
             <td>
-              <span class="badge badge-ready">${lead.status}</span>
-              <span class="badge badge-stage">${lead.stage}</span>
+              <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                ${typeBadge}
+                <span class="badge badge-stage">${lead.stage}</span>
+              </div>
             </td>
             <td>
               <div class="fit-wrap">
@@ -1293,7 +1382,12 @@
               </div>
             </td>
             <td><span class="anchor-chip">${lead.anchor}</span></td>
-            <td><span class="val-usd">${formatUSD(lead.estimated_value_usd)}</span></td>
+            <td>
+              <span class="val-usd">${formatUSD(lead.estimated_value_usd)}</span>
+              <div style="font-family:var(--font-mono);font-size:0.66rem;color:${proj ? 'var(--amber-accent)' : 'var(--matrix-green)'};">
+                ${proj ? 'PROJECTED SOW' : 'LIVE CEILING'}
+              </div>
+            </td>
             <td style="font-family:var(--font-mono);font-size:0.73rem;color:var(--text-secondary);">${lead.submission_pkg}</td>
             <td><button class="btn-inspect" onclick="event.stopPropagation(); openDrawer('${lead.external_id}')">INSPECT &rarr;</button></td>
           </tr>
