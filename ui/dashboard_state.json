@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T15:34:44Z",
+  "generated_at": "2026-11-05T15:34:45Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -923,17 +923,6 @@
       "status": "PASS",
       "fit": 0.4527,
       "issues": []
-    },
-    {
-      "package": "PD-19-127Y_SUBMISSION_PACKAGE.md",
-      "status": "WARN",
-      "fit": 0.2581,
-      "issues": [
-        [
-          "WARN",
-          "weak anchor fit 0.26 - human review of alignment advised"
-        ]
-      ]
     },
     {
       "package": "QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
