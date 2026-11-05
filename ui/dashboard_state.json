@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T16:36:25Z",
+  "generated_at": "2026-11-05T16:36:32Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-032",
+  "latest_milestone": "T-033",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -41,7 +41,8 @@
     "T-029",
     "T-030",
     "T-031",
-    "T-032"
+    "T-032",
+    "T-033"
   ],
   "milestone_log": [
     {
@@ -266,6 +267,13 @@
       "timestamp": "2026-11-05 11:02",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): (1) Directly verified all 3 market research citations via HTTP 200 primary URLs (`prnewswire.com` for MarketsandMarkets \\$7.84B-\\>\\$52.62B @ 46.3%, `bccresearch.com/pressroom` for \\$8.0B-\\>\\$48.3B @ 43.3%, `grandviewresearch.com/industry-analysis/development-to-operations-devops-market` for \\$16.2B-\\>\\$74.1B @ 21.9%) and updated dossier + package checklist; (2) Restored technical summary keywords on `NSF-SBIR-2026-AGENTIC-AI` (keeping administrative deadlines in `raw_metadata` + `deadline_at`) and cached 404 on retired `text-embedding-004` in `engine/embeddings.py`, restoring fit `0.2741 -> 0.4441` (`QA_REPORT.md` now **4/4 PASS**, 0 WARN, 1 human portal-submit item remaining)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-033",
+      "timestamp": "2026-11-05 11:36",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Upgraded 768-dim Embedding Engine from retired `models/text-embedding-004` (HTTP 404) to `models/gemini-embedding-001` (`outputDimensionality: 768`, L2-normalized, batch embedding via `batchEmbedContents`) across `engine/embeddings.py` and `claw-mcp-server/src/tools/workforce.rs` (release binary rebuilt); added dense-cone baseline calibration in `engine/anchors.py` and Grants.gov `fetchOpportunity` synopsis + `award_ceiling_usd` enrichment in `engine/ingest.py`; re-seeded 3 capability anchors and re-scored all 68 leads in `nomad_nexus_grid` (`MCP-RUST-ORCH-2026-01` `0.7122`, `SBIR-2026-CIVIC-SHELTER-01` `0.6955`, `QUANT-STREAM-OFI-2026-02` `0.6213`, `NSF-SBIR-2026-AGENTIC-AI` `0.5738`; **4/4 QA PASS**)",
       "status": "DONE"
     }
   ],
@@ -1889,13 +1897,13 @@
     {
       "package": "MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
       "status": "PASS",
-      "fit": 0.5971,
+      "fit": 0.7122,
       "issues": []
     },
     {
       "package": "NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
       "status": "PASS",
-      "fit": 0.4441,
+      "fit": 0.5738,
       "issues": [
         [
           "INFO",
@@ -1906,13 +1914,13 @@
     {
       "package": "QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
       "status": "PASS",
-      "fit": 0.422,
+      "fit": 0.6213,
       "issues": []
     },
     {
       "package": "SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
       "status": "PASS",
-      "fit": 0.5949,
+      "fit": 0.6955,
       "issues": []
     }
   ],
