@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-02T21:54:22Z",
+  "generated_at": "2026-11-05T15:26:19Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -198,7 +198,7 @@
     }
   ],
   "metrics": {
-    "total_leads_count": 24,
+    "total_leads_count": 28,
     "staged_leads_count": 5,
     "total_pipeline_usd": 1680500.0,
     "total_staged_pipeline_usd": 750500.0,
@@ -401,6 +401,22 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.2581)."
     },
     {
+      "id": 148,
+      "external_id": "1137614",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Software Engineer Infrastructure (Sodalis, Inc.)",
+      "status": "NEW",
+      "fit_score": 0.2529,
+      "estimated_value_usd": 0.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.2529)."
+    },
+    {
       "id": 91,
       "external_id": "1137600",
       "source": "remoteok_api",
@@ -466,6 +482,38 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.1947)."
     },
     {
+      "id": 146,
+      "external_id": "1137675",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Paid Media Manager US  (Kyra)",
+      "status": "NEW",
+      "fit_score": 0.1854,
+      "estimated_value_usd": 0.0,
+      "anchor": "shelter_source",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.1854)."
+    },
+    {
+      "id": 145,
+      "external_id": "1137685",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "Software Engineer (Claims)",
+      "status": "NEW",
+      "fit_score": 0.1802,
+      "estimated_value_usd": 0.0,
+      "anchor": "agent_smith",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.1802)."
+    },
+    {
       "id": 1,
       "external_id": "1137568",
       "source": "remoteok_api",
@@ -528,6 +576,22 @@
       "dossier_path": "",
       "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.1585)."
+    },
+    {
+      "id": 147,
+      "external_id": "1137619",
+      "source": "remoteok_api",
+      "lane": "FAST_CASHFLOW",
+      "title": "AI ML Engineer (Docusketch)",
+      "status": "NEW",
+      "fit_score": 0.1444,
+      "estimated_value_usd": 0.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.1444)."
     },
     {
       "id": 8,
