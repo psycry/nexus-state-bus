@@ -39,9 +39,17 @@ Principal technical risks: prompt-injection that survives allowlisting, quality 
 ### 1.3 Market Opportunity
 The target market is autonomous agent orchestration and DevOps-style automation: businesses deploying multi-agent systems to automate pipelines, operations and routine engineering work. Buyers are small and mid-sized businesses, and the integrators who serve them, that need agent automation but cannot accept unrestricted tool access or unbounded per-token cloud costs.
 
+Published forecasts show both adjacent markets growing quickly. Market research firm MarketsandMarkets projects the global AI agents market will grow from about $7.84 billion in 2025 to $52.62 billion by 2030, a 46.3% CAGR [1]; BCC Research independently forecasts about $8.0 billion in 2025 to $48.3 billion by 2030, a 43.3% CAGR [2]. The surrounding DevOps market, where automated delivery pipelines are moving from rule-based to AI-augmented operation, is estimated by Grand View Research at about $16.2 billion in 2025, reaching $74.1 billion by 2033 at a 21.9% CAGR [3]. These are broad, vendor-defined total-market figures; the company's initial serviceable market is the small-business and integrator segment within them, which we have not yet sized.
+
 The value proposition is efficiency in automated pipeline routing (sending each task to the cheapest model that succeeds) and reliable decentralized state synchronization between agents. Initial go-to-market is fixed-scope integration engagements, moving to a licensed or hosted orchestration product.
 
-*Evidence base:* the applicant's own production use of Agent Smith and `nexus-state-bus` demonstrates multi-agent inter-process communication and failure recovery under live operating constraints. These are internal deployments, not external design partners. **[TODO before submission: add sourced market-size and growth figures with citations, and any named external pilot customers.]**
+*Evidence base:* the applicant's own production use of Agent Smith and `nexus-state-bus` demonstrates multi-agent inter-process communication and failure recovery under live operating constraints. These are internal deployments, not external design partners. *Any named external pilot customers will be added when available.*
+
+
+**Sources** *(figures retrieved via web-search summaries on 2026-11-05; the publisher pages were not independently confirmed: MarketsandMarkets returned 403, BCC returned 404, and the Grand View page did not display the figures. Confirm each number against the report page before submitting.)*
+1. MarketsandMarkets, "AI Agents Market" report (marketsandmarkets.com): $7.84B (2025) to $52.62B (2030), CAGR 46.3%.
+2. BCC Research, AI agents market report (bccresearch.com): $8.0B (2025) to $48.3B (2030), CAGR 43.3%.
+3. Grand View Research, "DevOps Market" report (grandviewresearch.com): $16.2B (2025), $74.1B (2033), CAGR 21.9% (2026-2033).
 
 ### 1.4 Company and Team
 **Digital Nomad LLC** is a U.S.-owned and operated small business that the applicant states meets SBA size standards and domestic performance requirements for Phase I.
@@ -86,6 +94,7 @@ A Project Pitch does not include a budget. This table is a planning draft agains
 - [x] **Section word limits:** each pitch section is under 500 words (limit per applicant).
 - [x] **Biography & eligibility:** added to §1.4 (applicant-attested).
 - [x] **Registrations:** SAM.gov, Grants.gov, seedfund.nsf.gov — applicant states active (not independently verified).
-- [ ] **Add** sourced market-size figures with citations to §1.3 (currently none).
+- [x] **Market data** with citations added to §1.3 (T-031).
+- [ ] **Verify** the three market figures against the publisher report pages (retrieved via search summaries; direct pages blocked or not showing figures).
 - [ ] **Check** the topic-code / category field on the live NSF pitch form.
 - [ ] **Submit** Project Pitch via the NSF portal (manual), then await invitation.
