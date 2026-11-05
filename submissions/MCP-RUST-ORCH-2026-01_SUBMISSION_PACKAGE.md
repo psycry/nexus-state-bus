@@ -8,7 +8,8 @@
 - **Contract Valuation:** `\$8,500.00` (Projected Fixed-Scope 14-Day Sprint)
 - **Primary Ecosystem URL:** https://github.com/modelcontextprotocol/rust-sdk
 - **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md)
-- **Package Status:** `STAGED_B2B_TARGETS_T036`
+- **Upstream Technical Wedge PR Bundle:** [`submissions/patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md`](patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md)
+- **Package Status:** `PR_WEDGE_READY_T037`
 
 ---
 
@@ -68,4 +69,5 @@ To convert `MCP-RUST-ORCH-2026-01` via a **"PR-First Technical Wedge + Outbound 
 - [x] **768-Dim Embedding Contract Verified:** `models/gemini-embedding-001` (`outputDimensionality: 768`, L2-normalized) + deterministic FNV-1a 768-dim fallback locked across Rust & Python (`T-033`).
 - [x] **PostgreSQL 16 + `pgvector 0.8.7` Online:** Container `agent-smith-pgvector` active on `:5432` with HNSW index on `agent_memories` and `opportunity_leads`.
 - [x] **Live Target Queue Verified (`T-036`):** 3 flagship Rust/MCP repositories and 8 open issues verified via GitHub API (`200 OK`).
+- [x] **Upstream PR Wedge Patches Staged (`T-037`):** Line-verified unified diffs and regression tests staged in [`submissions/patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md`](patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md) for `modelcontextprotocol/rust-sdk#1420` (`auth.rs`) and `agentgateway/agentgateway#4121` (`openapi/mod.rs`).
 - [x] **Technical Dossier Complete:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md).

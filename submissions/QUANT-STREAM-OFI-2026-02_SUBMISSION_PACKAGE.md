@@ -8,7 +8,8 @@
 - **Contract Valuation:** `\$12,000.00` (Projected Fixed-Scope 14-Day Sprint)
 - **Primary Ecosystem URL:** https://github.com/nautechsystems/nautilus_trader
 - **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md`](../dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md)
-- **Package Status:** `STAGED_B2B_TARGETS_T036`
+- **Upstream Technical Wedge PR Bundle:** [`submissions/patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md`](patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md)
+- **Package Status:** `PR_WEDGE_READY_T037`
 
 ---
 
@@ -73,4 +74,5 @@ To convert `QUANT-STREAM-OFI-2026-02` via a **"PR-First Technical Wedge + Outbou
 - [x] **Prior Art Repository Present Locally:** `/home/psycry/Projects/phronarch` (`Phronarch v2.2.0` Go + TypeScript + Redis 7).
 - [x] **768-Dim Embedding Contract Verified:** `models/gemini-embedding-001` (`outputDimensionality: 768`, L2-normalized) (`fit_score = 0.6213`, `T-033`).
 - [x] **Live Target Queue Verified (`T-036`):** 2 flagship quantitative trading repositories (`nautechsystems/nautilus_trader`, `thrasher-corp/gocryptotrader`) and 6 open order-book/WebSocket issues verified via GitHub API (`200 OK`).
+- [x] **Upstream PR Wedge Patches Staged (`T-037`):** Line-verified unified diffs and regression tests staged in [`submissions/patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md`](patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md) for `nautechsystems/nautilus_trader#5568` (`book/sync.rs`) and `thrasher-corp/gocryptotrader#2507` (`exchange/websocket/`).
 - [x] **Entity Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).
