@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-034 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-035 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -90,22 +90,22 @@ Success Criteria:
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-034` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-035` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T16:46:05Z`
+- **Auto-Sync Timestamp:** `2026-11-05T16:46:14Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-034` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034`)
+- **Latest Milestone Flip:** `T-035` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
 - **Total Staged Pipeline Valuation:** **`$425,500.00`** (`4/4 DOSSIER_READY` leads staged) — **Live:** `$405,000.00` | **Projected (curated placeholders):** `$20,500.00`
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-030`** (Phase 6 — `2026-11-05 10:56`): Self-Issued Directive (Autonomous Discretion): Refreshed `dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md` to mirror the NSF 26-510 Project Pitch (4 sections, each 87-201 words, under the 500-word limit); added applicant-attested biography, eligibility and registration facts and nexus-state-bus as internal-deployment evidence (not external design partners). Package checklist 3 of 8 items pending: sourced market-size citations (none yet), topic-code check on live form, manual portal submission. QA WARN fit 0.27 unchanged $\rightarrow$ **`DONE`**
 - **`T-031`** (Phase 6 — `2026-11-05 10:58`): Self-Issued Directive (Autonomous Discretion): Filled NSF pitch section 1.3 market data in dossier + package - MarketsandMarkets AI agents \$7.84B (2025) -\> \$52.62B (2030) CAGR 46.3%; BCC Research \$8.0B -\> \$48.3B CAGR 43.3%; Grand View DevOps \$16.2B (2025) -\> \$74.1B (2033) CAGR 21.9%. Figures came from web-search summaries only (MarketsandMarkets 403, BCC 404, Grand View page lacked figures) - flagged UNVERIFIED in sources block and checklist; SAM not yet sized $\rightarrow$ **`DONE`**
 - **`T-032`** (Phase 6 — `2026-11-05 11:02`): Self-Issued Directive (Autonomous Discretion): (1) Directly verified all 3 market research citations via HTTP 200 primary URLs (`prnewswire.com` for MarketsandMarkets \$7.84B-\>\$52.62B @ 46.3%, `bccresearch.com/pressroom` for \$8.0B-\>\$48.3B @ 43.3%, `grandviewresearch.com/industry-analysis/development-to-operations-devops-market` for \$16.2B-\>\$74.1B @ 21.9%) and updated dossier + package checklist; (2) Restored technical summary keywords on `NSF-SBIR-2026-AGENTIC-AI` (keeping administrative deadlines in `raw_metadata` + `deadline_at`) and cached 404 on retired `text-embedding-004` in `engine/embeddings.py`, restoring fit `0.2741 -> 0.4441` (`QA_REPORT.md` now **4/4 PASS**, 0 WARN, 1 human portal-submit item remaining) $\rightarrow$ **`DONE`**
 - **`T-033`** (Phase 6 — `2026-11-05 11:36`): Self-Issued Directive (Autonomous Discretion): Upgraded 768-dim Embedding Engine from retired `models/text-embedding-004` (HTTP 404) to `models/gemini-embedding-001` (`outputDimensionality: 768`, L2-normalized, batch embedding via `batchEmbedContents`) across `engine/embeddings.py` and `claw-mcp-server/src/tools/workforce.rs` (release binary rebuilt); added dense-cone baseline calibration in `engine/anchors.py` and Grants.gov `fetchOpportunity` synopsis + `award_ceiling_usd` enrichment in `engine/ingest.py`; re-seeded 3 capability anchors and re-scored all 68 leads in `nomad_nexus_grid` (`MCP-RUST-ORCH-2026-01` `0.7122`, `SBIR-2026-CIVIC-SHELTER-01` `0.6955`, `QUANT-STREAM-OFI-2026-02` `0.6213`, `NSF-SBIR-2026-AGENTIC-AI` `0.5738`; **4/4 QA PASS**) $\rightarrow$ **`DONE`**
 - **`T-034`** (Phase 6 — `2026-11-05 11:41`): Self-Issued Directive (Autonomous Discretion): Converted `SBIR-2026-CIVIC-SHELTER-01` from curated placeholder (\$275k) to `live_solicitation` targeting **HHS ACL/NIDILRR SBIR Phase I (`HHS-2027-ACL-NIDILRR-BISA-0308`, Grants.gov ID `363966`)** — verified \$100,000 Phase I ceiling (\$95,000 floor, 6-month period, 11 awards, response date `12/16/2026`, contact Brian Bard `brian.bard@acl.hhs.gov`); refreshed dossier + submission package around NIDILRR disability accessibility & community-living mandate (`fit_score = 0.6444`, **4/4 QA PASS**). Staged pipeline now **\$425,500.00** (**Live: \$405,000.00** across 2 verified federal SBIR solicitations / **Projected: \$20,500.00** across 2 B2B contract packages) $\rightarrow$ **`DONE`**
+- **`T-035`** (Phase 6 — `2026-11-05 11:46`): Self-Issued Directive (Autonomous Discretion): Upgraded Tactical Command Center UI (`ui/index.html`) + `engine/dashboard_api.py` + `engine/ledger_sync.py` to render Live (**\$405,000.00 / 95.2%**) vs. Projected (**\$20,500.00 / 4.8%**) valuation split across KPI cards, dynamic filter buttons (`LIVE SOLICITATIONS`, `PROJECTED`), and row badges (`LIVE SOLICITATION`, `PROJECTED / CURATED`, plus solicitation & close-date pills `NSF 26-510 • 03/04/2027` and `HHS-2027-ACL-NIDILRR-BISA-0308 • 12/16/2026`); wired `dashboard_api --export-only` into `scripts/push_state_bus.sh` and restarted `agent-smith-dashboard.service` $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
