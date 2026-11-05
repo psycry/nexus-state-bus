@@ -5,7 +5,7 @@
 - **Title:** SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform
 - **Matched Capability Anchor:** `shelter_source` (`fit_score = 0.5949`)
 - **Grant Award Ceiling:** `\$275,000.00` (9-Month Phase I Execution)
-- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md)
+- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md)
 - **Package Status:** `STAGED_FOR_SUBMISSION` (`T-011`)
 
 ---
@@ -42,6 +42,6 @@ During natural disasters and humanitarian crises, vulnerable populations and fir
 
 ## 4. Pre-Submission Portal Checklist
 
-- [x] **Specific Aims & 9-Month Work Plan Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md) (132 lines).
+- [x] **Specific Aims & 9-Month Work Plan Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md) (132 lines).
 - [x] **TRL-6 Prior Art Repository Present Locally:** `/home/psycry/Projects/shelter_source` & `/home/psycry/Projects/nomad_nexus`.
 - [x] **Entity Registration Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).

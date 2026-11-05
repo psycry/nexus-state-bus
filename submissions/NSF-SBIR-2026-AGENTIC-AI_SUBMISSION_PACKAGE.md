@@ -5,7 +5,7 @@
 - **Title:** NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure
 - **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.4527`)
 - **Grant Award Ceiling:** `\$305,000.00` (6-Month Phase I Execution)
-- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)
+- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)
 - **Package Status:** `STAGED_T012`
 
 ---
@@ -42,6 +42,6 @@ Small and medium-sized enterprises (SMEs) adopting autonomous AI agents face two
 
 ## 4. Pre-Submission Portal Checklist
 
-- [x] **Technical Dossier Complete:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md).
+- [x] **Technical Dossier Complete:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md).
 - [x] **Operational TRL-6/7 Codebase Verified:** `/home/psycry/Projects/agent_smith` (`target/release/claw-mcp-server`, 17 MCP tools verified).
 - [x] **Entity Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).

@@ -5,7 +5,7 @@
 - **Title:** Custom Rust MCP Server & PostgreSQL `pgvector` RAG Pipeline Integration
 - **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.5971`)
 - **Contract Valuation:** `\$8,500.00` (Fixed-Scope 14-Day Sprint)
-- **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md)
+- **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md)
 - **Package Status:** `STAGED_FOR_SUBMISSION` (`T-011`)
 
 ---
@@ -51,4 +51,4 @@ Principal Systems Architect — **Digital Nomad LLC**
 - [x] **Rust Release Binary Verified:** `/home/psycry/Projects/agent_smith/target/release/claw-mcp-server` responds to `initialize` and `tools/call` over stdio JSON-RPC (`rmcp v1.7.0`).
 - [x] **768-Dim Embedding Contract Verified:** `models/text-embedding-004` (`outputDimensionality: 768`) + deterministic FNV-1a 768-dim fallback locked across Rust & Python.
 - [x] **PostgreSQL 16 + `pgvector 0.8.7` Online:** Container `agent-smith-pgvector` active on `:5432` with HNSW index on `agent_memories` and `opportunity_leads`.
-- [x] **Technical Dossier Complete:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md) (153 lines).
+- [x] **Technical Dossier Complete:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md) (153 lines).
