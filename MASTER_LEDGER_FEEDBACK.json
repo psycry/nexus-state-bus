@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T15:33:35Z",
+  "timestamp": "2026-11-05T15:34:44Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-024",
+  "latest_milestone": "T-025",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -28,9 +28,10 @@
     "T-021",
     "T-022",
     "T-023",
-    "T-024"
+    "T-024",
+    "T-025"
   ],
-  "total_staged_pipeline_usd": 750500.0,
+  "total_staged_pipeline_usd": 600500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -75,17 +76,6 @@
       "anchor": "phronarch",
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md"
-    },
-    {
-      "id": 16,
-      "external_id": "PD-19-127Y",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.2581,
-      "estimated_value_usd": 150000.0,
-      "anchor": "phronarch",
-      "stage": "STAGED_T016",
-      "submission_pkg": "submissions/PD-19-127Y_SUBMISSION_PACKAGE.md"
     }
   ],
   "recent_workforce_tasks": [

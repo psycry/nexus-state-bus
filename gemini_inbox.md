@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-024 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-025 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 
@@ -90,22 +90,22 @@ Success Criteria:
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-024` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-025` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T15:33:35Z`
+- **Auto-Sync Timestamp:** `2026-11-05T15:34:44Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-024` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024`)
+- **Latest Milestone Flip:** `T-025` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
-- **Total Staged Pipeline Valuation:** **`$750,500.00`** (`5/5 DOSSIER_READY` leads staged)
+- **Total Staged Pipeline Valuation:** **`$600,500.00`** (`4/4 DOSSIER_READY` leads staged)
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-020`** (Phase 6 — `2026-10-30 13:00`): Self-Issued Directive (Autonomous Discretion): Enable `nexus-state-bus.service` for auto-start on login (was disabled); make dashboard milestone header/highlight dynamic (was hardcoded T-001..T-015); ledger-watch cron (5 min) active this session $\rightarrow$ **`DONE`**
 - **`T-021`** (Phase 6 — `2026-10-30 13:03`): Self-Issued Directive (Autonomous Discretion): Pipeline integrity audit - RemoteOK leads `1137545` (Sothebys Sr SWE) and `1137560` (Aprio Accounting Mgr) are salaried job postings with synthetic \$15k valuations, not contract RFPs; set `ON_HOLD` (reversible, reason in `raw_metadata`), packages moved to `submissions/_held/`. Staged pipeline corrected \$780,500 -> \$750,500 (5 leads). `PD-19-127Y` (fit 0.26) kept, flagged for human alignment review $\rightarrow$ **`DONE`**
 - **`T-022`** (Phase 6 — `2026-10-30 13:06`): Self-Issued Directive (Autonomous Discretion): Root-cause fix for `T-021` - RemoteOK ingest no longer assigns salary/synthetic \$15k as contract value (`est_val=0`, `listing_type=job_posting`); `dossier.py` excludes job postings from dossier selection and `--reset-qualifying` no longer revives `ON_HOLD` leads $\rightarrow$ **`DONE`**
 - **`T-023`** (Phase 6 — `2026-11-02 16:55`): Self-Issued Directive (Autonomous Discretion): Rebuild `claw-mcp-server` v0.2.0 (release, binary at workspace `target/release/`) and run stdio MCP smoke test (initialize, tools/list, `list_ranked_leads` over pgvector - 6+ ranked leads returned, 4 DOSSIER_READY / 1 ON_HOLD); pgvector 0.8.7 healthy, poller/dashboard/sweep active. No Phronarch OCI endpoint is defined or needed yet (no code path references one; audited 2026-11-05) - no blocker $\rightarrow$ **`DONE`**
 - **`T-024`** (Phase 6 — `2026-11-05 10:27`): Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \$600,500 staged); poll_bus.py --interval 1 started. Fixed: sweep service now waits for pg_isready (up to 120s) before ingest, ledger milestone parsing verified (T-024 flips). No Phronarch endpoint is defined or needed yet (no code path references one) - no open blockers $\rightarrow$ **`DONE`**
+- **`T-025`** (Phase 6 — `2026-11-05 10:36`): Self-Issued Directive (Autonomous Discretion): Pipeline alignment hold - `PD-19-127Y` (NSF Science of Learning grant, fit 0.26, QA WARN, Phronarch anchor weak) set `ON_HOLD` (reversible, reason in `raw_metadata`), package moved to `submissions/_held/`. Staged pipeline corrected \$750,500 -\> \$600,500 (4 leads) $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
@@ -115,7 +115,6 @@ Success Criteria:
 | `#17` | `SBIR-2026-CIVIC-SHELTER-01` | `HIGH_TICKET_GRANT_RFP` | `0.5949` | `shelter_source` | `$275,000.00` | `STAGED_T011` | `submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md` |
 | `#18` | `NSF-SBIR-2026-AGENTIC-AI` | `HIGH_TICKET_GRANT_RFP` | `0.4527` | `agent_smith` | `$305,000.00` | `STAGED_T012` | `submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` |
 | `#10` | `QUANT-STREAM-OFI-2026-02` | `FAST_CASHFLOW` | `0.4220` | `phronarch` | `$12,000.00` | `STAGED_T012` | `submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` |
-| `#16` | `PD-19-127Y` | `HIGH_TICKET_GRANT_RFP` | `0.2581` | `phronarch` | `$150,000.00` | `STAGED_T016` | `submissions/PD-19-127Y_SUBMISSION_PACKAGE.md` |
 
 ## 3. `T-014` Harness IPC Diagnostic & Pipe Unblock Report
 
