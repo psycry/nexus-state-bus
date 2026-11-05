@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T17:34:00Z",
+  "timestamp": "2026-11-05T17:34:14Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-036",
+  "latest_milestone": "T-037",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -40,7 +40,8 @@
     "T-033",
     "T-034",
     "T-035",
-    "T-036"
+    "T-036",
+    "T-037"
   ],
   "total_staged_pipeline_usd": 425500.0,
   "live_staged_pipeline_usd": 405000.0,
@@ -54,12 +55,12 @@
       "fit_score": 0.7122,
       "estimated_value_usd": 8500.0,
       "anchor": "agent_smith",
-      "stage": "STAGED_T011",
+      "stage": "PR_WEDGE_READY_T037",
       "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
       "listing_type": "curated_placeholder",
       "solicitation": "OUTBOUND SOW \u2022 3 OSS TARGETS",
       "close_date": "",
-      "patch_bundle": "",
+      "patch_bundle": "submissions/patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md",
       "url": "https://github.com/modelcontextprotocol/rust-sdk"
     },
     {
@@ -86,12 +87,12 @@
       "fit_score": 0.6213,
       "estimated_value_usd": 12000.0,
       "anchor": "phronarch",
-      "stage": "STAGED_T012",
+      "stage": "PR_WEDGE_READY_T037",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
       "listing_type": "curated_placeholder",
       "solicitation": "OUTBOUND SOW \u2022 2 QUANT TARGETS",
       "close_date": "",
-      "patch_bundle": "",
+      "patch_bundle": "submissions/patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md",
       "url": "https://github.com/nautechsystems/nautilus_trader"
     },
     {
