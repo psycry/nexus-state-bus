@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T16:41:30Z",
+  "timestamp": "2026-11-05T16:41:33Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-033",
   "status": "COMPLETED",
@@ -39,9 +39,9 @@
     "T-032",
     "T-033"
   ],
-  "total_staged_pipeline_usd": 600500.0,
-  "live_staged_pipeline_usd": 305000.0,
-  "projected_staged_pipeline_usd": 295500.0,
+  "total_staged_pipeline_usd": 425500.0,
+  "live_staged_pipeline_usd": 405000.0,
+  "projected_staged_pipeline_usd": 20500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -60,12 +60,12 @@
       "external_id": "SBIR-2026-CIVIC-SHELTER-01",
       "lane": "HIGH_TICKET_GRANT_RFP",
       "status": "DOSSIER_READY",
-      "fit_score": 0.6955,
-      "estimated_value_usd": 275000.0,
+      "fit_score": 0.6444,
+      "estimated_value_usd": 100000.0,
       "anchor": "shelter_source",
-      "stage": "STAGED_T011",
+      "stage": "STAGED_LIVE_SOLICITATION_T034",
       "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
-      "listing_type": "curated_placeholder"
+      "listing_type": "live_solicitation"
     },
     {
       "id": 10,
