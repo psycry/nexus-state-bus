@@ -92,7 +92,7 @@ Success Criteria:
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-032` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T16:03:33Z`
+- **Auto-Sync Timestamp:** `2026-11-05T16:36:25Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-032` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
@@ -111,10 +111,10 @@ Success Criteria:
 
 | ID | External ID | Lane | Fit Score | Anchor | Valuation | Stage | Submission Package |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `#09` | `MCP-RUST-ORCH-2026-01` | `FAST_CASHFLOW` | `0.5971` | `agent_smith` | `$8,500.00` | `STAGED_T011` | `submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md` |
-| `#17` | `SBIR-2026-CIVIC-SHELTER-01` | `HIGH_TICKET_GRANT_RFP` | `0.5949` | `shelter_source` | `$275,000.00` | `STAGED_T011` | `submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md` |
-| `#18` | `NSF-SBIR-2026-AGENTIC-AI` | `HIGH_TICKET_GRANT_RFP` | `0.4441` | `agent_smith` | `$305,000.00` | `PROJECT_PITCH_READY_T032` | `submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` |
-| `#10` | `QUANT-STREAM-OFI-2026-02` | `FAST_CASHFLOW` | `0.4220` | `phronarch` | `$12,000.00` | `STAGED_T012` | `submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` |
+| `#09` | `MCP-RUST-ORCH-2026-01` | `FAST_CASHFLOW` | `0.7122` | `agent_smith` | `$8,500.00` | `STAGED_T011` | `submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md` |
+| `#17` | `SBIR-2026-CIVIC-SHELTER-01` | `HIGH_TICKET_GRANT_RFP` | `0.6955` | `shelter_source` | `$275,000.00` | `STAGED_T011` | `submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md` |
+| `#10` | `QUANT-STREAM-OFI-2026-02` | `FAST_CASHFLOW` | `0.6213` | `phronarch` | `$12,000.00` | `STAGED_T012` | `submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` |
+| `#18` | `NSF-SBIR-2026-AGENTIC-AI` | `HIGH_TICKET_GRANT_RFP` | `0.5738` | `agent_smith` | `$305,000.00` | `PROJECT_PITCH_READY_T032` | `submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` |
 
 ## 3. `T-014` Harness IPC Diagnostic & Pipe Unblock Report
 

@@ -1,10 +1,10 @@
 # Submission QA Report (T-018)
 
-Generated: 2026-11-05 11:03
+Generated: 2026-11-05 11:36
 
 | Package | Status | Fit | Issues |
 | :--- | :--- | :--- | :--- |
-| `MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md` | **PASS** | 0.60 | - |
-| `NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` | **PASS** | 0.44 | INFO: 1 checklist item(s) pending (human action) |
-| `QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` | **PASS** | 0.42 | - |
-| `SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md` | **PASS** | 0.59 | - |
+| `MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md` | **PASS** | 0.71 | - |
+| `NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md` | **PASS** | 0.57 | INFO: 1 checklist item(s) pending (human action) |
+| `QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md` | **PASS** | 0.62 | - |
+| `SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md` | **PASS** | 0.70 | - |

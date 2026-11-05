@@ -6,7 +6,7 @@
 - **Title:** Secure, Sandboxed Hybrid AI Orchestration (Rust MCP + pgvector) for Small-Business Automation
 - **Source / Portal URL:** https://seedfund.nsf.gov
 - **Listing Type:** `live_solicitation` (placeholder tag removed, T-029)
-- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.4441`)
+- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.5738`)
 - **Grant Award Ceiling:** `\$305,000.00` (Phase I)
 - **Close Date:** 03/04/2027 (next window; 5:00 PM local time). Other windows: 11/04/2026 (passed), 07/07/2027.
 - **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)

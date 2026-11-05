@@ -38,7 +38,7 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
    - **Rust Control Plane (`claw-mcp-server`):** Owns MCP tool exposure (17 tools), path/command sandboxing, Discord C2 daemon, semantic memory recall (`store_memory` / `recall_memory`), subagent orchestration (`dispatch_subagent` / `list_workforce_tasks`), and native MCP invocation of Python workers (`run_lead_ingestion`, `generate_dossiers`, `list_ranked_leads`).
    - **Python Worker Plane (`engine/` — `SQLModel` + `pgvector`):** Owns API/web scraping (`engine/ingest.py`), Capability Anchor pre-scoring (`engine/anchors.py`), Autonomous Proposal/Dossier generation (`engine/dossier.py`), Notification Dispatch (`engine/notify.py`), and Closed-Loop Ledger Feedback (`engine/ledger_sync.py`).
 2. **Embedding Lock (768-Dim Contract):**
-   - Both Rust (`workforce.rs`) and Python (`engine/embeddings.py`) are pinned strictly to **768 dimensions** (`models/text-embedding-004` with `outputDimensionality: 768` + identical 64-bit FNV-1a normalized 768-dim fallback).
+   - Both Rust (`workforce.rs`) and Python (`engine/embeddings.py`) are pinned strictly to **768 dimensions** (`models/gemini-embedding-001` with `outputDimensionality: 768` + unit L2 normalization + identical 64-bit FNV-1a normalized 768-dim fallback; upgraded from retired `models/text-embedding-004` in `T-033`).
 3. **Upsert Idempotency (`UNIQUE (source, external_id)`):**
    - `opportunity_leads` enforces `CONSTRAINT uq_opportunity_leads_source_ext_id UNIQUE (source, external_id)` for idempotent `ON CONFLICT (source, external_id) DO UPDATE` upserts.
 4. **Capability Anchor Matching (Zero-Token Pre-Scoring):**

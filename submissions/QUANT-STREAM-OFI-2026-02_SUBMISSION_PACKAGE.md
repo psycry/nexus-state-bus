@@ -3,7 +3,7 @@
 - **Opportunity ID:** `b2b_ai_contracts:QUANT-STREAM-OFI-2026-02`
 - **Lane:** `FAST_CASHFLOW`
 - **Title:** Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)
-- **Matched Capability Anchor:** `phronarch` (`fit_score = 0.4220`)
+- **Matched Capability Anchor:** `phronarch` (`fit_score = 0.6213`)
 - **Contract Valuation:** `\$12,000.00` (Fixed-Scope 14-Day Sprint)
 - **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md`](../dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md)
 - **Package Status:** `STAGED_T012`

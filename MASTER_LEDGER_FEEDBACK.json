@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T16:03:33Z",
+  "timestamp": "2026-11-05T16:36:25Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-032",
   "status": "COMPLETED",
@@ -47,7 +47,7 @@
       "external_id": "MCP-RUST-ORCH-2026-01",
       "lane": "FAST_CASHFLOW",
       "status": "DOSSIER_READY",
-      "fit_score": 0.5971,
+      "fit_score": 0.7122,
       "estimated_value_usd": 8500.0,
       "anchor": "agent_smith",
       "stage": "STAGED_T011",
@@ -59,7 +59,7 @@
       "external_id": "SBIR-2026-CIVIC-SHELTER-01",
       "lane": "HIGH_TICKET_GRANT_RFP",
       "status": "DOSSIER_READY",
-      "fit_score": 0.5949,
+      "fit_score": 0.6955,
       "estimated_value_usd": 275000.0,
       "anchor": "shelter_source",
       "stage": "STAGED_T011",
@@ -67,28 +67,28 @@
       "listing_type": "curated_placeholder"
     },
     {
-      "id": 18,
-      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.4441,
-      "estimated_value_usd": 305000.0,
-      "anchor": "agent_smith",
-      "stage": "PROJECT_PITCH_READY_T032",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "listing_type": "live_solicitation"
-    },
-    {
       "id": 10,
       "external_id": "QUANT-STREAM-OFI-2026-02",
       "lane": "FAST_CASHFLOW",
       "status": "DOSSIER_READY",
-      "fit_score": 0.422,
+      "fit_score": 0.6213,
       "estimated_value_usd": 12000.0,
       "anchor": "phronarch",
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
       "listing_type": "curated_placeholder"
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.5738,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "PROJECT_PITCH_READY_T032",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "listing_type": "live_solicitation"
     }
   ],
   "recent_workforce_tasks": [

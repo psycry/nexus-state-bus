@@ -3,7 +3,7 @@
 - **Opportunity ID:** `sbir_civic_rfp:SBIR-2026-CIVIC-SHELTER-01`
 - **Lane:** `HIGH_TICKET_GRANT_RFP`
 - **Title:** SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform
-- **Matched Capability Anchor:** `shelter_source` (`fit_score = 0.5949`)
+- **Matched Capability Anchor:** `shelter_source` (`fit_score = 0.6955`)
 - **Grant Award Ceiling:** `\$275,000.00` (9-Month Phase I Execution)
 - **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md)
 - **Package Status:** `STAGED_FOR_SUBMISSION` (`T-011`)

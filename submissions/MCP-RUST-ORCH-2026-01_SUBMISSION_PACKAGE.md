@@ -3,7 +3,7 @@
 - **Opportunity ID:** `b2b_ai_contracts:MCP-RUST-ORCH-2026-01`
 - **Lane:** `FAST_CASHFLOW`
 - **Title:** Custom Rust MCP Server & PostgreSQL `pgvector` RAG Pipeline Integration
-- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.5971`)
+- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.7122`)
 - **Contract Valuation:** `\$8,500.00` (Fixed-Scope 14-Day Sprint)
 - **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md`](../dossiers/FAST_CASHFLOW/MCP-RUST-ORCH-2026-01.md)
 - **Package Status:** `STAGED_FOR_SUBMISSION` (`T-011`)
