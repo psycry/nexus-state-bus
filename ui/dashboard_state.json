@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T16:41:13Z",
+  "generated_at": "2026-11-05T16:41:16Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -1920,8 +1920,13 @@
     {
       "package": "SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
       "status": "PASS",
-      "fit": 0.6955,
-      "issues": []
+      "fit": 0.6444,
+      "issues": [
+        [
+          "INFO",
+          "1 checklist item(s) pending (human action)"
+        ]
+      ]
     }
   ],
   "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified."
