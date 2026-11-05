@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T15:26:29Z",
+  "generated_at": "2026-11-05T15:27:01Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-023",
+  "latest_milestone": "T-024",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -32,7 +32,8 @@
     "T-020",
     "T-021",
     "T-022",
-    "T-023"
+    "T-023",
+    "T-024"
   ],
   "milestone_log": [
     {
@@ -194,6 +195,13 @@
       "timestamp": "2026-11-02 16:55",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): Rebuild `claw-mcp-server` v0.2.0 (release, binary at workspace `target/release/`) and run stdio MCP smoke test (initialize, tools/list, `list_ranked_leads` over pgvector - 6+ ranked leads returned, 4 DOSSIER_READY / 1 ON_HOLD); pgvector 0.8.7 healthy, poller/dashboard/sweep active. Phronarch OCI endpoint not configured locally - open blocker",
+      "status": "DONE"
+    },
+    {
+      "id": "T-024",
+      "timestamp": "2026-11-05 10:27",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \\$600,500 staged); poll_bus.py --interval 1 started. Follow-up: add DB readiness wait to sweep service; Phronarch OCI endpoint still unconfigured",
       "status": "DONE"
     }
   ],
