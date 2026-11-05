@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T15:27:03Z",
+  "generated_at": "2026-11-05T15:30:03Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -201,7 +201,7 @@
       "id": "T-024",
       "timestamp": "2026-11-05 10:27",
       "phase": "Phase 6",
-      "description": "Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \\$600,500 staged); poll_bus.py --interval 1 started. Follow-up: add DB readiness wait to sweep service; Phronarch OCI endpoint still unconfigured",
+      "description": "Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \\$600,500 staged); poll_bus.py --interval 1 started. Fixed: sweep service now waits for pg_isready (up to 120s) before ingest, ledger milestone parsing verified (T-024 flips). Open: Phronarch OCI endpoint still unconfigured",
       "status": "DONE"
     }
   ],

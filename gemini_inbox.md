@@ -92,7 +92,7 @@ Success Criteria:
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-024` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-05T15:27:03Z`
+- **Auto-Sync Timestamp:** `2026-11-05T15:30:03Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-024` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
@@ -105,7 +105,7 @@ Success Criteria:
 - **`T-021`** (Phase 6 — `2026-10-30 13:03`): Self-Issued Directive (Autonomous Discretion): Pipeline integrity audit - RemoteOK leads `1137545` (Sothebys Sr SWE) and `1137560` (Aprio Accounting Mgr) are salaried job postings with synthetic \$15k valuations, not contract RFPs; set `ON_HOLD` (reversible, reason in `raw_metadata`), packages moved to `submissions/_held/`. Staged pipeline corrected \$780,500 -> \$750,500 (5 leads). `PD-19-127Y` (fit 0.26) kept, flagged for human alignment review $\rightarrow$ **`DONE`**
 - **`T-022`** (Phase 6 — `2026-10-30 13:06`): Self-Issued Directive (Autonomous Discretion): Root-cause fix for `T-021` - RemoteOK ingest no longer assigns salary/synthetic \$15k as contract value (`est_val=0`, `listing_type=job_posting`); `dossier.py` excludes job postings from dossier selection and `--reset-qualifying` no longer revives `ON_HOLD` leads $\rightarrow$ **`DONE`**
 - **`T-023`** (Phase 6 — `2026-11-02 16:55`): Self-Issued Directive (Autonomous Discretion): Rebuild `claw-mcp-server` v0.2.0 (release, binary at workspace `target/release/`) and run stdio MCP smoke test (initialize, tools/list, `list_ranked_leads` over pgvector - 6+ ranked leads returned, 4 DOSSIER_READY / 1 ON_HOLD); pgvector 0.8.7 healthy, poller/dashboard/sweep active. Phronarch OCI endpoint not configured locally - open blocker $\rightarrow$ **`DONE`**
-- **`T-024`** (Phase 6 — `2026-11-05 10:27`): Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \$600,500 staged); poll_bus.py --interval 1 started. Follow-up: add DB readiness wait to sweep service; Phronarch OCI endpoint still unconfigured $\rightarrow$ **`DONE`**
+- **`T-024`** (Phase 6 — `2026-11-05 10:27`): Self-Issued Directive (Autonomous Discretion): Post-boot sweep recovery - 10:24 boot-time sweep failed (pgvector not yet accepting connections); re-ran ingest --ingest-all, dossier, notify manually (10 Lane 1 + 8 Lane 2 upserted, 0 new dossiers, 4 DOSSIER_READY / \$600,500 staged); poll_bus.py --interval 1 started. Fixed: sweep service now waits for pg_isready (up to 120s) before ingest, ledger milestone parsing verified (T-024 flips). Open: Phronarch OCI endpoint still unconfigured $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
