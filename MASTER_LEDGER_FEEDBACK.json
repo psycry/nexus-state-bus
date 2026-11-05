@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T16:44:15Z",
+  "timestamp": "2026-11-05T16:44:30Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-034",
   "status": "COMPLETED",
@@ -54,7 +54,10 @@
       "anchor": "agent_smith",
       "stage": "STAGED_T011",
       "submission_pkg": "submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md",
-      "listing_type": "curated_placeholder"
+      "listing_type": "curated_placeholder",
+      "solicitation": "",
+      "close_date": "",
+      "url": "https://modelcontextprotocol.io"
     },
     {
       "id": 17,
@@ -66,7 +69,10 @@
       "anchor": "shelter_source",
       "stage": "STAGED_LIVE_SOLICITATION_T034",
       "submission_pkg": "submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md",
-      "listing_type": "live_solicitation"
+      "listing_type": "live_solicitation",
+      "solicitation": "HHS-2027-ACL-NIDILRR-BISA-0308",
+      "close_date": "12/16/2026",
+      "url": "https://www.grants.gov/search-results-detail/363966"
     },
     {
       "id": 10,
@@ -78,7 +84,10 @@
       "anchor": "phronarch",
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
-      "listing_type": "curated_placeholder"
+      "listing_type": "curated_placeholder",
+      "solicitation": "",
+      "close_date": "",
+      "url": "https://github.com/psycry/phronarch"
     },
     {
       "id": 18,
@@ -90,7 +99,10 @@
       "anchor": "agent_smith",
       "stage": "PROJECT_PITCH_READY_T032",
       "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "listing_type": "live_solicitation"
+      "listing_type": "live_solicitation",
+      "solicitation": "NSF 26-510",
+      "close_date": "",
+      "url": "https://seedfund.nsf.gov"
     }
   ],
   "recent_workforce_tasks": [
