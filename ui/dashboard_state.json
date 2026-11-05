@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-05T15:40:04Z",
+  "generated_at": "2026-11-05T15:52:06Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-028",
+  "latest_milestone": "T-029",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -37,7 +37,8 @@
     "T-025",
     "T-026",
     "T-027",
-    "T-028"
+    "T-028",
+    "T-029"
   ],
   "milestone_log": [
     {
@@ -235,6 +236,13 @@
       "phase": "Phase 6",
       "description": "Gemini Directive T-026 next_step (real solicitation search): `engine/ingest.py` Grants.gov ingest moved to `api.grants.gov/v1/api/search2` with 10 capability keyword queries; live grants valued at \\$0 (no synthetic \\$150k) and tagged `live_solicitation`. Result: 57 live Lane 2 leads ingested, best fit 0.30 (NSF 23-568 HNDS, 24-587 NCSES, NIH PAR-28-039) - none reach 0.40 dossier threshold, so no new dossiers; live staged value remains \\$0. SBIR.gov and contract boards not yet searched",
       "status": "DONE"
+    },
+    {
+      "id": "T-029",
+      "timestamp": "2026-11-05 10:53",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Converted `NSF-SBIR-2026-AGENTIC-AI` from curated placeholder to `live_solicitation` - NSF 26-510 (applicant-supplied from seedfund.nsf.gov; nsf.gov page not independently fetched): Phase I ceiling \\$305,000, deadline_at 2027-03-04 (windows 2026-11-04 passed, 2027-03-04, 2027-07-07), invited Project Pitch required. Package rewritten as Project Pitch draft (6 human checklist items pending); stale lane-folder copy superseded. Re-embedding the NSF-specific text dropped fit 0.45 -> 0.27 (QA WARN, below 0.40 notify threshold). Live staged value now \\$305,000 (grant is a ceiling, not an award); projected \\$295,500",
+      "status": "DONE"
     }
   ],
   "metrics": {
@@ -242,8 +250,8 @@
     "staged_leads_count": 4,
     "total_pipeline_usd": 1230500.0,
     "total_staged_pipeline_usd": 600500.0,
-    "live_staged_pipeline_usd": 0.0,
-    "projected_staged_pipeline_usd": 600500.0,
+    "live_staged_pipeline_usd": 305000.0,
+    "projected_staged_pipeline_usd": 295500.0,
     "fast_cashflow_staged_usd": 20500.0,
     "grant_rfp_staged_usd": 580000.0,
     "workforce_tasks_count": 12,
@@ -290,24 +298,6 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.5949)."
     },
     {
-      "id": 18,
-      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
-      "source": "sbir_civic_rfp",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.4527,
-      "estimated_value_usd": 305000.0,
-      "anchor": "agent_smith",
-      "stage": "STAGED_T012",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
-      "listing_type": "curated_placeholder",
-      "executive_pitch": "# \ud83d\udce6 Staged NSF SBIR Phase I Submission Package: `NSF-SBIR-2026-AGENTIC-AI`\n\n- **Opportunity ID:** `sbir_civic_rfp:NSF-SBIR-2026-AGENTIC-AI`\n- **Lane:** `HIGH_TICKET_GRANT_RFP`\n- **Title:** NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure\n- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.4527`)\n- **Grant Award Ceiling:** `\\$305,000.00` (6-Month Phase I Execution)\n- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)\n- **Package Status:** `STAGED_T012`\n\n---\n\n## 1. Executive Project Pitch & Technical Abstract (NSF Project Pitch / Portal Format)\n\n**Technical Abstract:**  \nSmall and medium-sized enterprises (SMEs) adopting autonomous AI agents face two systemic barriers: prohibitive cloud token expenditure for continuous multi-step workflows, and severe security vulnerabilities (arbitrary command injection, unauthorized filesystem traversal, and credential exfiltration) inherent in unsandboxed tool-calling frameworks. **Digital Nomad LLC** proposes a 6-month NSF SBIR Phase I R&D project to advance **Agent Smith (`claw-mcp-server v0.2.0`)**, our operational **TRL-6/TRL-7 Rust Hybrid Multi-Agent Orchestrator**, into an open-standards, verifiable enterprise automation runtime. Built in **Rust (Edition 2024, Tokio async, RMCP 1.7)** coupled with a **Python 3.14 `SQLModel` worker plane** and **PostgreSQL 16 + `pgvector 0.8.7` (768-dim HNSW cosine indexing)**, the proposed system introduces three core technical innovations: (1) a deterministic **Hybrid Inference & Zero-Token Pre-Scoring Router** that pairs sub-millisecond `pgvector` capability matching and local small-language-model inference (`qwen2.5-coder:1.5b`) with multi-model cloud foundation fallbacks, cutting cloud API costs by $>70\\%$; (2) a zero-trust **Rust Capability Sandbox (`SandboxConfig::resolve_safe_path`)** enforcing path canonicalization, binary allowlists, and non-blocking execution checkpoints across 17+ native Model Context Protocol (MCP) tools; and (3) a shared **768-Dimensional Collective Vector Memory** uniting compiled Rust control planes and Python analytical workers with zero schema drift. Phase I will benchmark latency, sandbox containment across 10,000 adversarial tool-invocation payloads, and end-to-end autonomous workflow execution for resource-constrained SMEs.\n\n---\n\n## 2. Specific Aims 1\u20133 & Quantitative Verification Matrix\n\n| Specific Aim | Target TRL Progression | Core R&D Objective | Quantitative Phase I KPI | Existing Digital Nomad LLC TRL-6/7 Prior Art |\n| :--- | :--- | :--- | :--- | :--- |\n| **Aim 1: Hybrid Inference & Zero-Token Vector Pre-Scoring** | `TRL-6 -> TRL-7` | Formalize the 768-dim `pgvector` HNSW cosine pre-scoring engine and strongly-typed JSON router splitting local SLM (`qwen2.5-coder:1.5b`) vs. Cloud LLM workloads | $< 50\\text{ms}$ semantic recall & routing latency; $\\ge 70\\%$ reduction in cloud LLM token burn on benchmark workflows | `/home/psycry/Projects/agent_smith` (`workforce.rs` + `engine/anchors.py` 768-dim embedding lock) |\n| **Aim 2: Zero-Trust Rust MCP Sandbox & Adversarial Hardening** | `TRL-6 -> TRL-7` | Harden `SandboxConfig::resolve_safe_path`, binary allowlisting, and resource-bounded subprocess execution across all 17+ JSON-RPC stdio MCP tools | $0$ unhandled sandbox escapes or path-traversal bypasses across $10,000$ automated adversarial fuzzing payloads | `claw-mcp-server v0.2.0` (`rmcp 1.7.0`) path canonicalization & command whitelist engine |\n| **Aim 3: Multi-Agent Collective Memory & SME Pilot Package** | `TRL-7 -> TRL-8` | Validate multi-role subagent dispatch (`scout`, `architect`, `operator`, `analyst`) over shared PostgreSQL `pgvector` state and release containerized SME deployment kit | $\\ge 99.5\\%$ idempotent checkpoint recovery across burst-mode restarts; complete Phase I Final Report & Phase II commercialization plan | Operational 2-lane autonomous business engine (`engine/ingest.py`, `engine/dossier.py`, `poll_bus.py`) |\n\n---\n\n## 3. NSF Phase I Budget Allocation Blueprint (`\\$305,000.00` \u2014 6 Months)\n\n| Budget Category | Allocation (USD) | Share (%) | Scope & Justification |\n| :--- | :--- | :--- | :--- |\n| **Senior Personnel / Principal Investigator Labor** | `\\$183,000.00` | `60.0%` | Lead Systems Architect / PI (Rust MCP control plane hardening, adversarial sandbox verification harness, hybrid router optimization across Months 1\u20136) |\n| **R&D Engineering & Security Auditing Support** | `\\$48,800.00` | `16.0%` | Automated red-team fuzzing harness (10,000 adversarial MCP payloads), benchmark dataset curation, and containerization packaging |\n| **Compute, Vector Database & Cloud API Testbed** | `\\$24,400.00` | `8.0%` | Multi-model foundation API benchmark quota, high-concurrency PostgreSQL 16 + `pgvector` HNSW stress testing, and edge GPU validation |\n| **Indirect / F&A & Grant Compliance Administration** | `\\$27,450.00` | `9.0%` | NSF Research.gov financial reporting, audit compliance, accounting, and IP management |\n| **NSF SBIR Statutory Fee / Small Business Profit (7%)** | `\\$21,350.00` | `7.0%` | Reinvested into Digital Nomad LLC autonomous compute infrastructure & Phase II commercialization |\n| **Total Phase I Request** | **`\\$305,000.00`** | **`100.0%`** | **6-Month NSF SBIR Phase I Execution** |\n\n---\n\n## 4. Pre-Submission Portal Checklist\n\n- [x] **Technical Dossier Complete:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md).\n- [x] **Operational TRL-6/7 Codebase Verified:** `/home/psycry/Projects/agent_smith` (`target/release/claw-mcp-server`, 17 MCP tools verified).\n- [x] **Entity Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).\n",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.4527)."
-    },
-    {
       "id": 10,
       "external_id": "QUANT-STREAM-OFI-2026-02",
       "source": "b2b_ai_contracts",
@@ -324,6 +314,24 @@
       "executive_pitch": "# \ud83d\udce6 Staged Outreach & Submission Package: `QUANT-STREAM-OFI-2026-02`\n\n- **Opportunity ID:** `b2b_ai_contracts:QUANT-STREAM-OFI-2026-02`\n- **Lane:** `FAST_CASHFLOW`\n- **Title:** Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)\n- **Matched Capability Anchor:** `phronarch` (`fit_score = 0.4220`)\n- **Contract Valuation:** `\\$12,000.00` (Fixed-Scope 14-Day Sprint)\n- **Full Technical Dossier:** [`dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md`](../dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md)\n- **Package Status:** `STAGED_T012`\n\n---\n\n## 1. Ready-to-Send Executive Outreach Message\n\n**Subject:** Sub-10ms Go WebSocket L2 Order Book Ingestor + TypeScript OFI/VWAP & Bayesian Telemetry Dashboard \u2014 14-Day Delivery (`QUANT-STREAM-OFI-2026-02`)\n\n**Body:**\n\nHi Team,\n\nWe reviewed your engineering specification for the **Real-Time WebSocket Order Book & Volatility Telemetry Dashboard (Go + TypeScript)** requiring sub-10ms exchange L2 ingestion, Order Flow Imbalance (OFI), rolling VWAP volatility bands, and Bayesian signal alerts.\n\nAt **Digital Nomad LLC**, we have already built and battle-tested this exact architecture in **Phronarch v2.2.0** (`/home/psycry/Projects/phronarch`), our proprietary **Go + TypeScript High-Frequency Quantitative & Bayesian Decision Engine**:\n- **Go Ultra-Low-Latency WebSocket Ingestion Tier:** Persistent L2 order book streamer with automated reconnect/backoff and sub-10ms serialization into **Redis 7 Pub/Sub**.\n- **TypeScript Quantitative & Bayesian Engine:** Computes real-time Level-1/Level-2 **Order Flow Imbalance (OFI)** momentum Z-scores, rolling **VWAP $\\pm 2\\sigma / 3\\sigma$ volatility bands**, multi-timeframe (`1m`/`15m`) RSI confirmation, L2 book-walk slippage veto, and a **6-stage Bayesian posterior probability pipeline**.\n- **Real-Time Telemetry UI & Alerting:** Responsive **Lightweight Charts v5** dashboard streaming live L2 depth, OFI Z-scores, VWAP volatility regimes, and configurable webhook/console Bayesian signal alerts.\n\nBecause Phronarch v2.2.0 already implements these core modules in production, we can adapt the exchange adapter, calibrate your OFI/VWAP/Bayesian thresholds, and deliver the complete containerized stack within a **14-day fixed-scope engagement (\\$12,000.00)**.\n\nAttached is our **Technical Execution Brief, Reference Architecture, and 14-Day Milestone Schedule**. We are ready to demonstrate Phronarch v2.2.0 live this week and kick off Day 1 immediately.\n\nBest regards,  \n**Jasper (PsyCry)**  \nPrincipal Quantitative Systems Architect \u2014 **Digital Nomad LLC**\n\n---\n\n## 2. Fixed-Scope Statement of Work (SOW) & Milestone Payment Schedule\n\n| Milestone | Target Window | Deliverable Summary | Verification Benchmark | Payment Allocation |\n| :--- | :--- | :--- | :--- | :--- |\n| **M1: Go L2 WebSocket Ingestor & Core Quant Engine (OFI + VWAP)** | Days 1\u20134 | Deploy Go exchange WebSocket adapter $\\rightarrow$ Redis 7 Pub/Sub; wire TypeScript OFI Z-score & rolling VWAP calculation engine | Timestamp benchmark confirming $< 10\\text{ms}$ ingest-to-Redis latency + passing OFI/VWAP unit test suite | **\\$3,600.00 (30%)** |\n| **M2: Volatility Bands, 6-Stage Bayesian Pipeline & Live Dashboard** | Days 5\u201310 | Implement $\\pm 2\\sigma/3\\sigma$ VWAP bands, 6-stage Bayesian decision pipeline with L2 slippage veto, and Lightweight Charts v5 UI + webhook alerts | Live streaming dashboard rendering L2 depth, OFI, VWAP bands, and Bayesian signal triggers under high-tick load | **\\$4,800.00 (40%)** |\n| **M3: Stress Hardening, UAT, Runbook & Full Source Handover** | Days 11\u201314 | Reconnection fault-injection testing, end-to-end latency profiling, Docker Compose packaging, technical documentation & team walkthrough | Signed UAT verification + full Git repository & operational runbook handover | **\\$3,600.00 (30%)** |\n| **Total** | **14 Days** | **Production Go + TypeScript L2 OFI/VWAP/Bayesian Telemetry Suite** | **Sub-10ms Verified End-to-End** | **\\$12,000.00 (100%)** |\n\n---\n\n## 3. Reference Architecture Summary (`Phronarch v2.2.0` Core)\n\n1. **Go WebSocket Ingestion Service:** Zero-allocation JSON/binary frame parser feeding normalized L2 snapshots and deltas into Redis 7 Pub/Sub in $< 10\\text{ms}$.\n2. **TypeScript Quantitative Engine:** Streaming state machine computing L1/L2 OFI momentum Z-scores, rolling VWAP $\\pm 2\\sigma / 3\\sigma$ bands, and the 6-stage Bayesian signal pipeline.\n3. **TypeScript Alerting & Lightweight Charts v5 Dashboard:** Low-latency WebSocket fan-out to the browser UI and configurable webhook alert destinations.\n\n---\n\n## 4. Pre-Submission Technical Readiness Checklist\n\n- [x] **Technical Dossier Complete:** [`dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md`](../dossiers/FAST_CASHFLOW/QUANT-STREAM-OFI-2026-02.md) (152 lines).\n- [x] **Prior Art Repository Present Locally:** `/home/psycry/Projects/phronarch` (`Phronarch v2.2.0` Go + TypeScript + Redis 7).\n- [x] **Entity Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).\n",
       "timeline": "14-Day Fixed-Milestone SOW (30% / 40% / 30%)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.4220)."
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "NSF 26-510 America's Seed Fund SBIR/STTR Phase I (Project Pitch): Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.2741,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "PROJECT_PITCH_DRAFT_T029",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
+      "listing_type": "live_solicitation",
+      "executive_pitch": "# \ud83d\udce6 NSF Project Pitch Package: `NSF-SBIR-2026-AGENTIC-AI`\n\n- **Opportunity ID:** `sbir_civic_rfp:NSF-SBIR-2026-AGENTIC-AI`\n- **Lane:** `HIGH_TICKET_GRANT_RFP`\n- **Solicitation:** **NSF 26-510** \u2014 America's Seed Fund, SBIR/STTR Phase I / Phase II / Fast-Track\n- **Title:** Secure, Sandboxed Hybrid AI Orchestration (Rust MCP + pgvector) for Small-Business Automation\n- **Source / Portal URL:** https://seedfund.nsf.gov\n- **Listing Type:** `live_solicitation` (placeholder tag removed, T-029)\n- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.2741`)\n- **Grant Award Ceiling:** `\\$305,000.00` (Phase I)\n- **Close Date:** 03/04/2027 (next window; 5:00 PM local time). Other windows: 11/04/2026 (passed), 07/07/2027.\n- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)\n- **Package Status:** `PROJECT_PITCH_DRAFT` (`T-029`) \u2014 **a Project Pitch is required, and NSF must invite a full proposal before one can be submitted.**\n\n> [!NOTE]\n> Solicitation number, ceiling, deadlines and the Project Pitch requirement were supplied by the applicant from seedfund.nsf.gov on 2026-11-05. The seedfund.nsf.gov pages independently confirmed only that Project Pitches are required. Verify pitch section names, word limits and the \"Topic Code\" field in the NSF questionnaire against the live pitch form before submitting.\n\n---\n\n## 1. Executive Project Pitch (Draft Text for the NSF Project Pitch Form)\n\n### 1.1 Technology Innovation\nSmall businesses want AI agents that act on their systems, but today's agent stacks run tools with broad host access, depend entirely on cloud models, and keep no durable shared memory. **Digital Nomad LLC** is building a secure orchestration layer that addresses all three:\n\n- **Deterministic sandboxed tool execution (Rust):** every tool call passes path canonicalization and a command allowlist before it runs, so an agent cannot read or write outside declared roots.\n- **Hybrid inference routing:** a local model (Ollama, `qwen2.5-coder:1.5b`) handles low-cost work and cloud foundation models (Gemini Flash family) handle the rest, with automatic fallback.\n- **Collective vector memory:** PostgreSQL 16 + `pgvector` 768-dimension semantic memory shared by the Rust control plane and a Python worker plane under a fixed embedding contract.\n\nThe working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools). The innovation to fund is the part that is not yet built or proven: measurable security guarantees, routing policy that optimizes cost against quality, and multi-agent coordination over shared memory.\n\n### 1.2 Technical Objectives and Challenges\n1. **Sandbox assurance:** define a tool-call policy model and test it with adversarial prompt-injection and path-traversal suites. Target: zero boundary violations across the test corpus.\n2. **Cost-aware routing:** learn a routing policy between local and cloud models. Target: a defined reduction in cloud-token spend at equal task success on a benchmark task set.\n3. **Multi-agent memory coordination:** concurrent agents reading and writing shared `pgvector` memory without stale or conflicting recall. Target: measured recall precision and latency under concurrent load.\n\nPrincipal technical risks: prompt-injection that survives allowlisting, and quality loss from routing to small local models. Phase I exists to quantify both.\n\n### 1.3 Market Opportunity\nCustomers are small and mid-sized businesses and the integrators who serve them, who need agent automation but cannot accept unrestricted tool access or per-token cloud costs. Initial go-to-market is fixed-scope integration engagements (the Lane 1 contract work this engine already tracks), moving to a licensed or hosted orchestration product. *(Applicant to add sourced market-size figures and named design-partner conversations before submission.)*\n\n### 1.4 Company and Team\n**Digital Nomad LLC** \u2014 principal: Jasper (PsyCry), Principal Systems Architect. Relevant existing work: Agent Smith (Rust MCP server, hybrid routing, `pgvector` memory), plus Phronarch and Shelter Source as supporting engineering evidence. *(Applicant to add biography, SBIR eligibility facts, and SAM.gov / SBA registration status.)*\n\n---\n\n## 2. Specific Aims 1\u20133 & Quantitative Verification Matrix\n\n| Specific Aim | Target TRL Progression | Core R&D Objective | Quantitative Phase I KPI | Existing Prior Art |\n| :--- | :--- | :--- | :--- | :--- |\n| **Aim 1: Verified Sandbox Policy** | `TRL-4 -> TRL-6` | Formal tool-call policy plus adversarial test harness | 0 boundary violations on the adversarial corpus | `claw-mcp-server` sandbox (`resolve_safe_path`, command allowlist) |\n| **Aim 2: Cost-Aware Hybrid Routing** | `TRL-4 -> TRL-6` | Routing policy between local and cloud models | Cloud-token reduction at equal task success on benchmark set | Ollama + Gemini fallback router in `claw-mcp-server` |\n| **Aim 3: Multi-Agent Shared Memory** | `TRL-4 -> TRL-6` | Concurrency-safe shared `pgvector` memory | Recall precision and p95 latency under N concurrent agents | `store_memory` / `recall_memory`, 768-dim HNSW index |\n\n*(TRL starting points are conservative estimates for the unbuilt research components; adjust to your own assessment.)*\n\n---\n\n## 3. Indicative Phase I Budget (For the Full Proposal, After Invitation)\n\nA Project Pitch does not include a budget. This table is a planning draft against the `\\$305,000` ceiling.\n\n| Budget Category | Allocation (USD) | Share (%) | Scope & Justification |\n| :--- | :--- | :--- | :--- |\n| **Senior Personnel / PI Labor** | `\\$183,000.00` | `60.0%` | PI / lead architect across the Phase I period |\n| **R&D Engineering & Verification Harness** | `\\$48,800.00` | `16.0%` | Adversarial test suites, routing benchmarks, integration testing |\n| **Compute, Vector DB & Cloud API Testbed** | `\\$24,400.00` | `8.0%` | Concurrency testbed, multi-model evaluation |\n| **Indirect / F&A & Compliance** | `\\$27,450.00` | `9.0%` | Reporting, audit, accounting, IP |\n| **Statutory Small Business Fee (7%)** | `\\$21,350.00` | `7.0%` | Fee permitted under SBIR rules; confirm against the solicitation |\n| **Total Phase I Request** | **`\\$305,000.00`** | **`100.0%`** | **Phase I** |\n\n---\n\n## 4. Pre-Submission Checklist\n\n- [x] **Technical Dossier Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md) (generated before NSF 26-510 was confirmed; refresh to match the pitch).\n- [x] **Solicitation details recorded:** NSF 26-510, ceiling `\\$305,000`, windows 11/04/2026, 03/04/2027, 07/07/2027.\n- [ ] **Verify** pitch form section names, word limits and topic-code field on the live NSF pitch form.\n- [ ] **Add** sourced market data and design-partner evidence to \u00a71.3.\n- [ ] **Add** founder biography and SBIR eligibility facts to \u00a71.4.\n- [ ] **Confirm** SAM.gov, SBA company registry and Research.gov registrations.\n- [ ] **Submit** Project Pitch via the NSF pitch portal, then wait for an invitation.\n- [ ] **Refresh dossier** to the pitch narrative and the NSF 26-510 proposal format.\n",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.2741)."
     }
   ],
   "opportunity_leads": [
@@ -362,24 +370,6 @@
       "executive_pitch": "# \ud83d\udce6 Staged SBIR Phase I Submission Package: `SBIR-2026-CIVIC-SHELTER-01`\n\n- **Opportunity ID:** `sbir_civic_rfp:SBIR-2026-CIVIC-SHELTER-01`\n- **Lane:** `HIGH_TICKET_GRANT_RFP`\n- **Title:** SBIR Phase I: Crowdsourced Emergency Shelter & Humanitarian Resource Mapping Platform\n- **Matched Capability Anchor:** `shelter_source` (`fit_score = 0.5949`)\n- **Grant Award Ceiling:** `\\$275,000.00` (9-Month Phase I Execution)\n- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md)\n- **Package Status:** `STAGED_FOR_SUBMISSION` (`T-011`)\n\n---\n\n## 1. Executive Project Pitch & Technical Abstract (250-Word SBIR Portal Format)\n\n**Technical Abstract:**  \nDuring natural disasters and humanitarian crises, vulnerable populations and first responders face severe information fragmentation regarding emergency shelter capacity, medical aid, food distribution, and potable water\u2014compounded by degraded cellular connectivity. **Digital Nomad LLC** proposes a 9-month SBIR Phase I project to advance our existing **TRL-6 cross-platform civic resource navigation architecture (`Shelter Source` & `Nomad Nexus`)** to **TRL-7 operational field readiness**. Built on a unified **Flutter/Dart** codebase for iOS, Android, and Web backed by **Firebase Auth, Cloud Firestore, and local offline-first persistence**, the platform delivers three core innovations: (1) high-throughput geospatial indexing and real-time filtering across heterogeneous humanitarian resource layers (<2s map load for 100+ regional nodes); (2) deterministic offline-first local storage with automated background synchronization and conflict resolution achieving $\\ge 95\\%$ sync integrity across intermittent connectivity regimes; and (3) a multi-tiered community crowdsourcing and peer/moderator verification pipeline enforced via granular Firestore security rules and reputation weighting ($\\ge 80\\%$ automated verification throughput under simulated 1,000-user load). Phase I culminates in a 20-operator field pilot with partner NGOs and municipal emergency managers, establishing dual-use commercialization pathways across FEMA/municipal disaster response SaaS and daily civic resource navigation.\n\n---\n\n## 2. Specific Aims Summary & Prior Art Verification Matrix\n\n| Specific Aim | Target TRL Progression | Core Technical Objective | Quantitative Phase I KPI | Existing Digital Nomad LLC TRL-6 Prior Art |\n| :--- | :--- | :--- | :--- | :--- |\n| **Aim 1: Cross-Platform Real-Time Geospatial Core** | `TRL-6 -> TRL-7` | Unified iOS/Android/Web Flutter mapping interface with real-time resource filtering & Firebase Auth | Map load $< 2.0\\text{s}$ for 100 active nodes; 5 standardized civic resource schemas | `/home/psycry/Projects/shelter_source` unified Flutter/Dart geospatial navigation engine |\n| **Aim 2: Offline-First Resilience & Conflict Sync** | `TRL-6 -> TRL-7` | Local SQLite/Hive offline cache, offline search, and CRDT/timestamp conflict resolution on reconnect | $\\ge 95\\%$ sync success across intermittent/offline transitions | `shelter_source` offline-first field persistence & `nomad_nexus` distributed state modules |\n| **Aim 3: Crowdsourced Capacity & Verification Engine** | `TRL-6 -> TRL-7` | Community capacity reporting, reputation-weighted peer verification, and moderator dashboard | $\\ge 80\\%$ verification pipeline throughput; 1,000 concurrent simulated users; 20-user live pilot ($\\ge 4.0/5.0$ CSAT) | Firestore composite indexes & role-based security rules proven in `shelter_source` |\n\n---\n\n## 3. Phase I Budget Allocation Blueprint (`\\$275,000.00` \u2014 9 Months)\n\n| Budget Category | Allocation (USD) | Share (%) | Scope & Justification |\n| :--- | :--- | :--- | :--- |\n| **Direct Senior Engineering & Principal Investigator Labor** | `\\$165,000.00` | `60.0%` | Principal Investigator / Lead Systems Architect (Flutter/Dart geospatial core, offline sync engine, security rules, pilot orchestration across Months 1\u20139) |\n| **Specialized Subcontractor / UX & Field Pilot Coordination** | `\\$44,000.00` | `16.0%` | Accessibility/humanitarian UI refinement, NGO stakeholder interviews (Months 1\u20132), and 20-operator field pilot execution (Month 9) |\n| **Cloud Infrastructure, Geospatial Tile APIs & Test Devices** | `\\$22,000.00` | `8.0%` | Firebase Blaze high-concurrency testing, offline map tile vector packs, automated load-testing harness (1,000 concurrent users) |\n| **Indirect / F&A & Compliance Overhead** | `\\$24,750.00` | `9.0%` | Accounting, SAM/Grants.gov compliance reporting, insurance, and legal/IP administration |\n| **SBIR Statutory Fee / Profit (7%)** | `\\$19,250.00` | `7.0%` | Reinvested into Digital Nomad LLC autonomous compute & Phase II matching readiness |\n| **Total Phase I Request** | **`\\$275,000.00`** | **`100.0%`** | **9-Month TRL-6 $\\rightarrow$ TRL-7 Execution** |\n\n---\n\n## 4. Pre-Submission Portal Checklist\n\n- [x] **Specific Aims & 9-Month Work Plan Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md`](../dossiers/HIGH_TICKET_GRANT_RFP/SBIR-2026-CIVIC-SHELTER-01.md) (132 lines).\n- [x] **TRL-6 Prior Art Repository Present Locally:** `/home/psycry/Projects/shelter_source` & `/home/psycry/Projects/nomad_nexus`.\n- [x] **Entity Registration Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).\n",
       "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.5949)."
-    },
-    {
-      "id": 18,
-      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
-      "source": "sbir_civic_rfp",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.4527,
-      "estimated_value_usd": 305000.0,
-      "anchor": "agent_smith",
-      "stage": "STAGED_T012",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
-      "listing_type": "curated_placeholder",
-      "executive_pitch": "# \ud83d\udce6 Staged NSF SBIR Phase I Submission Package: `NSF-SBIR-2026-AGENTIC-AI`\n\n- **Opportunity ID:** `sbir_civic_rfp:NSF-SBIR-2026-AGENTIC-AI`\n- **Lane:** `HIGH_TICKET_GRANT_RFP`\n- **Title:** NSF SBIR Phase I: Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure\n- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.4527`)\n- **Grant Award Ceiling:** `\\$305,000.00` (6-Month Phase I Execution)\n- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)\n- **Package Status:** `STAGED_T012`\n\n---\n\n## 1. Executive Project Pitch & Technical Abstract (NSF Project Pitch / Portal Format)\n\n**Technical Abstract:**  \nSmall and medium-sized enterprises (SMEs) adopting autonomous AI agents face two systemic barriers: prohibitive cloud token expenditure for continuous multi-step workflows, and severe security vulnerabilities (arbitrary command injection, unauthorized filesystem traversal, and credential exfiltration) inherent in unsandboxed tool-calling frameworks. **Digital Nomad LLC** proposes a 6-month NSF SBIR Phase I R&D project to advance **Agent Smith (`claw-mcp-server v0.2.0`)**, our operational **TRL-6/TRL-7 Rust Hybrid Multi-Agent Orchestrator**, into an open-standards, verifiable enterprise automation runtime. Built in **Rust (Edition 2024, Tokio async, RMCP 1.7)** coupled with a **Python 3.14 `SQLModel` worker plane** and **PostgreSQL 16 + `pgvector 0.8.7` (768-dim HNSW cosine indexing)**, the proposed system introduces three core technical innovations: (1) a deterministic **Hybrid Inference & Zero-Token Pre-Scoring Router** that pairs sub-millisecond `pgvector` capability matching and local small-language-model inference (`qwen2.5-coder:1.5b`) with multi-model cloud foundation fallbacks, cutting cloud API costs by $>70\\%$; (2) a zero-trust **Rust Capability Sandbox (`SandboxConfig::resolve_safe_path`)** enforcing path canonicalization, binary allowlists, and non-blocking execution checkpoints across 17+ native Model Context Protocol (MCP) tools; and (3) a shared **768-Dimensional Collective Vector Memory** uniting compiled Rust control planes and Python analytical workers with zero schema drift. Phase I will benchmark latency, sandbox containment across 10,000 adversarial tool-invocation payloads, and end-to-end autonomous workflow execution for resource-constrained SMEs.\n\n---\n\n## 2. Specific Aims 1\u20133 & Quantitative Verification Matrix\n\n| Specific Aim | Target TRL Progression | Core R&D Objective | Quantitative Phase I KPI | Existing Digital Nomad LLC TRL-6/7 Prior Art |\n| :--- | :--- | :--- | :--- | :--- |\n| **Aim 1: Hybrid Inference & Zero-Token Vector Pre-Scoring** | `TRL-6 -> TRL-7` | Formalize the 768-dim `pgvector` HNSW cosine pre-scoring engine and strongly-typed JSON router splitting local SLM (`qwen2.5-coder:1.5b`) vs. Cloud LLM workloads | $< 50\\text{ms}$ semantic recall & routing latency; $\\ge 70\\%$ reduction in cloud LLM token burn on benchmark workflows | `/home/psycry/Projects/agent_smith` (`workforce.rs` + `engine/anchors.py` 768-dim embedding lock) |\n| **Aim 2: Zero-Trust Rust MCP Sandbox & Adversarial Hardening** | `TRL-6 -> TRL-7` | Harden `SandboxConfig::resolve_safe_path`, binary allowlisting, and resource-bounded subprocess execution across all 17+ JSON-RPC stdio MCP tools | $0$ unhandled sandbox escapes or path-traversal bypasses across $10,000$ automated adversarial fuzzing payloads | `claw-mcp-server v0.2.0` (`rmcp 1.7.0`) path canonicalization & command whitelist engine |\n| **Aim 3: Multi-Agent Collective Memory & SME Pilot Package** | `TRL-7 -> TRL-8` | Validate multi-role subagent dispatch (`scout`, `architect`, `operator`, `analyst`) over shared PostgreSQL `pgvector` state and release containerized SME deployment kit | $\\ge 99.5\\%$ idempotent checkpoint recovery across burst-mode restarts; complete Phase I Final Report & Phase II commercialization plan | Operational 2-lane autonomous business engine (`engine/ingest.py`, `engine/dossier.py`, `poll_bus.py`) |\n\n---\n\n## 3. NSF Phase I Budget Allocation Blueprint (`\\$305,000.00` \u2014 6 Months)\n\n| Budget Category | Allocation (USD) | Share (%) | Scope & Justification |\n| :--- | :--- | :--- | :--- |\n| **Senior Personnel / Principal Investigator Labor** | `\\$183,000.00` | `60.0%` | Lead Systems Architect / PI (Rust MCP control plane hardening, adversarial sandbox verification harness, hybrid router optimization across Months 1\u20136) |\n| **R&D Engineering & Security Auditing Support** | `\\$48,800.00` | `16.0%` | Automated red-team fuzzing harness (10,000 adversarial MCP payloads), benchmark dataset curation, and containerization packaging |\n| **Compute, Vector Database & Cloud API Testbed** | `\\$24,400.00` | `8.0%` | Multi-model foundation API benchmark quota, high-concurrency PostgreSQL 16 + `pgvector` HNSW stress testing, and edge GPU validation |\n| **Indirect / F&A & Grant Compliance Administration** | `\\$27,450.00` | `9.0%` | NSF Research.gov financial reporting, audit compliance, accounting, and IP management |\n| **NSF SBIR Statutory Fee / Small Business Profit (7%)** | `\\$21,350.00` | `7.0%` | Reinvested into Digital Nomad LLC autonomous compute infrastructure & Phase II commercialization |\n| **Total Phase I Request** | **`\\$305,000.00`** | **`100.0%`** | **6-Month NSF SBIR Phase I Execution** |\n\n---\n\n## 4. Pre-Submission Portal Checklist\n\n- [x] **Technical Dossier Complete:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md).\n- [x] **Operational TRL-6/7 Codebase Verified:** `/home/psycry/Projects/agent_smith` (`target/release/claw-mcp-server`, 17 MCP tools verified).\n- [x] **Entity Alignment:** Digital Nomad LLC (`BUSINESS_ENGINE_STATE.md`).\n",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.4527)."
     },
     {
       "id": 10,
@@ -467,6 +457,24 @@
       "listing_type": "live_solicitation",
       "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'shelter_source' (cosine fit_score = 0.2810)."
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "source": "sbir_civic_rfp",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "NSF 26-510 America's Seed Fund SBIR/STTR Phase I (Project Pitch): Autonomous Multi-Agent Workflows & Secure Sandboxed MCP Infrastructure",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.2741,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "PROJECT_PITCH_DRAFT_T029",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "dossier_path": "dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md",
+      "listing_type": "live_solicitation",
+      "executive_pitch": "# \ud83d\udce6 NSF Project Pitch Package: `NSF-SBIR-2026-AGENTIC-AI`\n\n- **Opportunity ID:** `sbir_civic_rfp:NSF-SBIR-2026-AGENTIC-AI`\n- **Lane:** `HIGH_TICKET_GRANT_RFP`\n- **Solicitation:** **NSF 26-510** \u2014 America's Seed Fund, SBIR/STTR Phase I / Phase II / Fast-Track\n- **Title:** Secure, Sandboxed Hybrid AI Orchestration (Rust MCP + pgvector) for Small-Business Automation\n- **Source / Portal URL:** https://seedfund.nsf.gov\n- **Listing Type:** `live_solicitation` (placeholder tag removed, T-029)\n- **Matched Capability Anchor:** `agent_smith` (`fit_score = 0.2741`)\n- **Grant Award Ceiling:** `\\$305,000.00` (Phase I)\n- **Close Date:** 03/04/2027 (next window; 5:00 PM local time). Other windows: 11/04/2026 (passed), 07/07/2027.\n- **Full Technical Dossier:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md)\n- **Package Status:** `PROJECT_PITCH_DRAFT` (`T-029`) \u2014 **a Project Pitch is required, and NSF must invite a full proposal before one can be submitted.**\n\n> [!NOTE]\n> Solicitation number, ceiling, deadlines and the Project Pitch requirement were supplied by the applicant from seedfund.nsf.gov on 2026-11-05. The seedfund.nsf.gov pages independently confirmed only that Project Pitches are required. Verify pitch section names, word limits and the \"Topic Code\" field in the NSF questionnaire against the live pitch form before submitting.\n\n---\n\n## 1. Executive Project Pitch (Draft Text for the NSF Project Pitch Form)\n\n### 1.1 Technology Innovation\nSmall businesses want AI agents that act on their systems, but today's agent stacks run tools with broad host access, depend entirely on cloud models, and keep no durable shared memory. **Digital Nomad LLC** is building a secure orchestration layer that addresses all three:\n\n- **Deterministic sandboxed tool execution (Rust):** every tool call passes path canonicalization and a command allowlist before it runs, so an agent cannot read or write outside declared roots.\n- **Hybrid inference routing:** a local model (Ollama, `qwen2.5-coder:1.5b`) handles low-cost work and cloud foundation models (Gemini Flash family) handle the rest, with automatic fallback.\n- **Collective vector memory:** PostgreSQL 16 + `pgvector` 768-dimension semantic memory shared by the Rust control plane and a Python worker plane under a fixed embedding contract.\n\nThe working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools). The innovation to fund is the part that is not yet built or proven: measurable security guarantees, routing policy that optimizes cost against quality, and multi-agent coordination over shared memory.\n\n### 1.2 Technical Objectives and Challenges\n1. **Sandbox assurance:** define a tool-call policy model and test it with adversarial prompt-injection and path-traversal suites. Target: zero boundary violations across the test corpus.\n2. **Cost-aware routing:** learn a routing policy between local and cloud models. Target: a defined reduction in cloud-token spend at equal task success on a benchmark task set.\n3. **Multi-agent memory coordination:** concurrent agents reading and writing shared `pgvector` memory without stale or conflicting recall. Target: measured recall precision and latency under concurrent load.\n\nPrincipal technical risks: prompt-injection that survives allowlisting, and quality loss from routing to small local models. Phase I exists to quantify both.\n\n### 1.3 Market Opportunity\nCustomers are small and mid-sized businesses and the integrators who serve them, who need agent automation but cannot accept unrestricted tool access or per-token cloud costs. Initial go-to-market is fixed-scope integration engagements (the Lane 1 contract work this engine already tracks), moving to a licensed or hosted orchestration product. *(Applicant to add sourced market-size figures and named design-partner conversations before submission.)*\n\n### 1.4 Company and Team\n**Digital Nomad LLC** \u2014 principal: Jasper (PsyCry), Principal Systems Architect. Relevant existing work: Agent Smith (Rust MCP server, hybrid routing, `pgvector` memory), plus Phronarch and Shelter Source as supporting engineering evidence. *(Applicant to add biography, SBIR eligibility facts, and SAM.gov / SBA registration status.)*\n\n---\n\n## 2. Specific Aims 1\u20133 & Quantitative Verification Matrix\n\n| Specific Aim | Target TRL Progression | Core R&D Objective | Quantitative Phase I KPI | Existing Prior Art |\n| :--- | :--- | :--- | :--- | :--- |\n| **Aim 1: Verified Sandbox Policy** | `TRL-4 -> TRL-6` | Formal tool-call policy plus adversarial test harness | 0 boundary violations on the adversarial corpus | `claw-mcp-server` sandbox (`resolve_safe_path`, command allowlist) |\n| **Aim 2: Cost-Aware Hybrid Routing** | `TRL-4 -> TRL-6` | Routing policy between local and cloud models | Cloud-token reduction at equal task success on benchmark set | Ollama + Gemini fallback router in `claw-mcp-server` |\n| **Aim 3: Multi-Agent Shared Memory** | `TRL-4 -> TRL-6` | Concurrency-safe shared `pgvector` memory | Recall precision and p95 latency under N concurrent agents | `store_memory` / `recall_memory`, 768-dim HNSW index |\n\n*(TRL starting points are conservative estimates for the unbuilt research components; adjust to your own assessment.)*\n\n---\n\n## 3. Indicative Phase I Budget (For the Full Proposal, After Invitation)\n\nA Project Pitch does not include a budget. This table is a planning draft against the `\\$305,000` ceiling.\n\n| Budget Category | Allocation (USD) | Share (%) | Scope & Justification |\n| :--- | :--- | :--- | :--- |\n| **Senior Personnel / PI Labor** | `\\$183,000.00` | `60.0%` | PI / lead architect across the Phase I period |\n| **R&D Engineering & Verification Harness** | `\\$48,800.00` | `16.0%` | Adversarial test suites, routing benchmarks, integration testing |\n| **Compute, Vector DB & Cloud API Testbed** | `\\$24,400.00` | `8.0%` | Concurrency testbed, multi-model evaluation |\n| **Indirect / F&A & Compliance** | `\\$27,450.00` | `9.0%` | Reporting, audit, accounting, IP |\n| **Statutory Small Business Fee (7%)** | `\\$21,350.00` | `7.0%` | Fee permitted under SBIR rules; confirm against the solicitation |\n| **Total Phase I Request** | **`\\$305,000.00`** | **`100.0%`** | **Phase I** |\n\n---\n\n## 4. Pre-Submission Checklist\n\n- [x] **Technical Dossier Drafted:** [`dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md`](../dossiers/HIGH_TICKET_GRANT_RFP/NSF-SBIR-2026-AGENTIC-AI.md) (generated before NSF 26-510 was confirmed; refresh to match the pitch).\n- [x] **Solicitation details recorded:** NSF 26-510, ceiling `\\$305,000`, windows 11/04/2026, 03/04/2027, 07/07/2027.\n- [ ] **Verify** pitch form section names, word limits and topic-code field on the live NSF pitch form.\n- [ ] **Add** sourced market data and design-partner evidence to \u00a71.3.\n- [ ] **Add** founder biography and SBIR eligibility facts to \u00a71.4.\n- [ ] **Confirm** SAM.gov, SBA company registry and Research.gov registrations.\n- [ ] **Submit** Project Pitch via the NSF pitch portal, then wait for an invitation.\n- [ ] **Refresh dossier** to the pitch narrative and the NSF 26-510 proposal format.\n",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.2741)."
     },
     {
       "id": 16,
@@ -1423,11 +1431,11 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0136)."
     },
     {
-      "id": 231,
-      "external_id": "HHS-2027-ACL-NIDILRR-BISA-0308",
+      "id": 232,
+      "external_id": "HHS-2027-ACL-NIDILRR-BISB-0309",
       "source": "grants_gov",
       "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[HHS-2027-ACL-NIDILRR-BISA-0308] Small Business Innovation Research (SBIR) program, Phase I (Administration for Community Living)",
+      "title": "[HHS-2027-ACL-NIDILRR-BISB-0309] Small Business Innovation Research Program (SBIR) Phase II (Administration for Community Living)",
       "status": "NEW",
       "fit_score": 0.0129,
       "estimated_value_usd": 0.0,
@@ -1440,11 +1448,11 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0129)."
     },
     {
-      "id": 232,
-      "external_id": "HHS-2027-ACL-NIDILRR-BISB-0309",
+      "id": 231,
+      "external_id": "HHS-2027-ACL-NIDILRR-BISA-0308",
       "source": "grants_gov",
       "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[HHS-2027-ACL-NIDILRR-BISB-0309] Small Business Innovation Research Program (SBIR) Phase II (Administration for Community Living)",
+      "title": "[HHS-2027-ACL-NIDILRR-BISA-0308] Small Business Innovation Research (SBIR) program, Phase I (Administration for Community Living)",
       "status": "NEW",
       "fit_score": 0.0129,
       "estimated_value_usd": 0.0,
@@ -1542,23 +1550,6 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
     },
     {
-      "id": 212,
-      "external_id": "HQ003426NFOECAD02",
-      "source": "grants_gov",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[HQ003426NFOECAD02] Pacific Disaster Center (Washington Headquarters Services)",
-      "status": "NEW",
-      "fit_score": 0.0,
-      "estimated_value_usd": 0.0,
-      "anchor": "phronarch",
-      "stage": "NEW",
-      "submission_pkg": "",
-      "dossier_path": "",
-      "listing_type": "live_solicitation",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
-    },
-    {
       "id": 204,
       "external_id": "HHS-2027-IHS-DVP-0001",
       "source": "grants_gov",
@@ -1574,6 +1565,74 @@
       "listing_type": "live_solicitation",
       "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0000)."
+    },
+    {
+      "id": 237,
+      "external_id": "HQ003425NFOEASD03",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[HQ003425NFOEASD03] Department of War Cyber Service Academy (DoW CSA) (Washington Headquarters Services)",
+      "status": "NEW",
+      "fit_score": 0.0,
+      "estimated_value_usd": 0.0,
+      "anchor": "agent_smith",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "listing_type": "live_solicitation",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0000)."
+    },
+    {
+      "id": 200,
+      "external_id": "W911NF-20-S-0008",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[W911NF-20-S-0008] UNITED STATES MILITARY ACADEMY Broad Agency Announcement (Dept of the Army -- Materiel Command)",
+      "status": "NEW",
+      "fit_score": 0.0,
+      "estimated_value_usd": 0.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "listing_type": "live_solicitation",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
+    },
+    {
+      "id": 205,
+      "external_id": "CDC-RFA-TP22-2201",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[CDC-RFA-TP22-2201] Public Health Crisis Response Cooperative Agreement (Centers for Disease Control - OPHPR)",
+      "status": "NEW",
+      "fit_score": 0.0,
+      "estimated_value_usd": 0.0,
+      "anchor": "agent_smith",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "listing_type": "live_solicitation",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0000)."
+    },
+    {
+      "id": 212,
+      "external_id": "HQ003426NFOECAD02",
+      "source": "grants_gov",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "title": "[HQ003426NFOECAD02] Pacific Disaster Center (Washington Headquarters Services)",
+      "status": "NEW",
+      "fit_score": 0.0,
+      "estimated_value_usd": 0.0,
+      "anchor": "phronarch",
+      "stage": "NEW",
+      "submission_pkg": "",
+      "dossier_path": "",
+      "listing_type": "live_solicitation",
+      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
+      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
     },
     {
       "id": 215,
@@ -1627,40 +1686,6 @@
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
     },
     {
-      "id": 200,
-      "external_id": "W911NF-20-S-0008",
-      "source": "grants_gov",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[W911NF-20-S-0008] UNITED STATES MILITARY ACADEMY Broad Agency Announcement (Dept of the Army -- Materiel Command)",
-      "status": "NEW",
-      "fit_score": 0.0,
-      "estimated_value_usd": 0.0,
-      "anchor": "phronarch",
-      "stage": "NEW",
-      "submission_pkg": "",
-      "dossier_path": "",
-      "listing_type": "live_solicitation",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
-    },
-    {
-      "id": 237,
-      "external_id": "HQ003425NFOEASD03",
-      "source": "grants_gov",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[HQ003425NFOEASD03] Department of War Cyber Service Academy (DoW CSA) (Washington Headquarters Services)",
-      "status": "NEW",
-      "fit_score": 0.0,
-      "estimated_value_usd": 0.0,
-      "anchor": "agent_smith",
-      "stage": "NEW",
-      "submission_pkg": "",
-      "dossier_path": "",
-      "listing_type": "live_solicitation",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0000)."
-    },
-    {
       "id": 239,
       "external_id": "TIRDEMCOMMR2FY23",
       "source": "grants_gov",
@@ -1676,23 +1701,6 @@
       "listing_type": "live_solicitation",
       "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
       "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'phronarch' (cosine fit_score = 0.0000)."
-    },
-    {
-      "id": 205,
-      "external_id": "CDC-RFA-TP22-2201",
-      "source": "grants_gov",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "title": "[CDC-RFA-TP22-2201] Public Health Crisis Response Cooperative Agreement (Centers for Disease Control - OPHPR)",
-      "status": "NEW",
-      "fit_score": 0.0,
-      "estimated_value_usd": 0.0,
-      "anchor": "agent_smith",
-      "stage": "NEW",
-      "submission_pkg": "",
-      "dossier_path": "",
-      "listing_type": "live_solicitation",
-      "timeline": "6-Month Phase I R&D Execution (Aims 1-3)",
-      "architecture_fit": "Matched against 768-dim PostgreSQL pgvector HNSW capability anchor 'agent_smith' (cosine fit_score = 0.0000)."
     }
   ],
   "recent_workforce_tasks": [
@@ -1862,9 +1870,18 @@
     },
     {
       "package": "NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "status": "PASS",
-      "fit": 0.4527,
-      "issues": []
+      "status": "WARN",
+      "fit": 0.2741,
+      "issues": [
+        [
+          "WARN",
+          "weak anchor fit 0.27 - human review of alignment advised"
+        ],
+        [
+          "INFO",
+          "6 checklist item(s) pending (human action)"
+        ]
+      ]
     },
     {
       "package": "QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",

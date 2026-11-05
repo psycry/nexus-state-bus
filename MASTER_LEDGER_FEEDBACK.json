@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-05T15:40:04Z",
+  "timestamp": "2026-11-05T15:52:06Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-028",
+  "latest_milestone": "T-029",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -32,11 +32,12 @@
     "T-025",
     "T-026",
     "T-027",
-    "T-028"
+    "T-028",
+    "T-029"
   ],
   "total_staged_pipeline_usd": 600500.0,
-  "live_staged_pipeline_usd": 0.0,
-  "projected_staged_pipeline_usd": 600500.0,
+  "live_staged_pipeline_usd": 305000.0,
+  "projected_staged_pipeline_usd": 295500.0,
   "staged_leads": [
     {
       "id": 9,
@@ -63,18 +64,6 @@
       "listing_type": "curated_placeholder"
     },
     {
-      "id": 18,
-      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
-      "lane": "HIGH_TICKET_GRANT_RFP",
-      "status": "DOSSIER_READY",
-      "fit_score": 0.4527,
-      "estimated_value_usd": 305000.0,
-      "anchor": "agent_smith",
-      "stage": "STAGED_T012",
-      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
-      "listing_type": "curated_placeholder"
-    },
-    {
       "id": 10,
       "external_id": "QUANT-STREAM-OFI-2026-02",
       "lane": "FAST_CASHFLOW",
@@ -85,6 +74,18 @@
       "stage": "STAGED_T012",
       "submission_pkg": "submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md",
       "listing_type": "curated_placeholder"
+    },
+    {
+      "id": 18,
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "lane": "HIGH_TICKET_GRANT_RFP",
+      "status": "DOSSIER_READY",
+      "fit_score": 0.2741,
+      "estimated_value_usd": 305000.0,
+      "anchor": "agent_smith",
+      "stage": "PROJECT_PITCH_DRAFT_T029",
+      "submission_pkg": "submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md",
+      "listing_type": "live_solicitation"
     }
   ],
   "recent_workforce_tasks": [
