@@ -126,3 +126,10 @@ Active `DOSSIER_READY` / Staged Leads (`count=4`):
 - **`NSF-SBIR-2026-AGENTIC-AI`** [`HIGH_TICKET_GRANT_RFP` | `PROJECT_PITCH_READY_T032`] fit=`0.5738` | anchor=`agent_smith` | val=`$305,000.00` | artifact=`submissions/NSF-SBIR-2026-AGENTIC-AI_SUBMISSION_PACKAGE.md`
 **Total Staged Pipeline Valuation:** `$425,500.00` (Live: `$405,000.00` | Projected/Curated: `$20,500.00`)
 ------------------------------------------------------------------------
+🚨 **Digital Nomad LLC — Autonomous Business Engine Alert (2026-11-11T22:28:33Z)**
+Active `DOSSIER_READY` / Staged Leads (`count=3`):
+- **`MCP-RUST-ORCH-2026-01`** [`FAST_CASHFLOW` | `PR_WEDGE_READY_T037`] fit=`0.7122` | anchor=`agent_smith` | val=`$8,500.00` (PROJECTED) | artifact=`submissions/MCP-RUST-ORCH-2026-01_SUBMISSION_PACKAGE.md`
+- **`SBIR-2026-CIVIC-SHELTER-01`** [`HIGH_TICKET_GRANT_RFP` | `STAGED_LIVE_SOLICITATION_T034`] fit=`0.6444` | anchor=`shelter_source` | val=`$100,000.00` | artifact=`submissions/SBIR-2026-CIVIC-SHELTER-01_SUBMISSION_PACKAGE.md`
+- **`QUANT-STREAM-OFI-2026-02`** [`FAST_CASHFLOW` | `PR_WEDGE_READY_T037`] fit=`0.6213` | anchor=`phronarch` | val=`$12,000.00` (PROJECTED) | artifact=`submissions/QUANT-STREAM-OFI-2026-02_SUBMISSION_PACKAGE.md`
+**Total Staged Pipeline Valuation:** `$120,500.00` (Live: `$100,000.00` | Projected/Curated: `$20,500.00`)
+------------------------------------------------------------------------
