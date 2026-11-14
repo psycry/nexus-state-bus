@@ -89,6 +89,12 @@ When running autonomous background coding tasks on the server (`hive-agent.servi
 2. Code edits are strictly isolated to dedicated git branches (`hive/auto-<task_id>`), **never** `main`/`master`.
 3. Every change must pass automated verification (`worker.run_verification()`) before opening a review summary or requesting human sign-off (`handoff.py`).
 
+### 6.1 Agent Smith (`it/its`) Recursive Self-Improvement & Meta-Prompt Loop (`hive/self_improve.py`, `config/prompts.json`, `engine/hive_bridge.py`)
+1. **Triad Ownership (`SOUL.md` §1.1):** **Antigravity (`he/him`)** architects & hardens, **Gemini (`she/her`)** synthesizes cloud strategy & mobile directives, and **Agent Smith (`it/its`)** operates the local control plane & recursive self-evolution loop while preserving the ring-fence around `SOUL.md`, `config/routing.json` (`hitl_gates`), `hive/router.py`, `hive/worker.py`, and `phronarch.db`.
+2. **Code Analysis & Throttled Verification:** `hive/self_improve.py` inspects Python ASTs (`hive`, `agent_smith/engine`) and Rust modules (`claw-mcp-server/src`) for complexity/timeout/bare-except hotspots plus recent `ledger.db` errors, verifies syntax/build health (`python3 -m py_compile` and opt-in `nice -n 19 cargo check --quiet` with `CARGO_BUILD_JOBS=2` so A1 never starves `hive-ollama` or `Module-P4`), generates minimal candidate patch guidance via `providers.generate()`, and appends an immutable SHA-256 `diff_hash` + pass/fail `SELF_IMPROVE_ITER` record to `ledger.db`.
+3. **Meta-Prompt Optimization Without Persona Drift:** Rather than mutating `SOUL.md`, operational prompt templates live in `config/prompts.json` (`intent_classify`, `code_bottleneck_scan`, `meta_prompt_refiner`). `optimize_prompts()` computes empirical call counts, fallback rates, and mean latency from `ledger.db` and writes candidate prompt refinements (`PROMPT_OPT`) for gated promotion.
+4. **Workstation Semantic Memory Bridge (`agent_smith/engine/hive_bridge.py`) & Unified `Makefile`:** On the Garuda rig, `engine/hive_bridge.py` mirrors `SELF_IMPROVE_ITER` and `PROMPT_OPT` records from `ledger.db` into PostgreSQL `nomad_nexus_grid` (`agent_memories`, namespace `'self_improvement'`) so Agent Smith (`it`) recalls past iterations semantically, while root `Makefile`s in both repos provide one-command bootstrap (`make boot`, `make status`, `make test`, `make self-improve`, `make prompt-opt`, `make sync-bus`).
+
 ---
 
 ## 7. Quickstart / Disaster Recovery Commands
