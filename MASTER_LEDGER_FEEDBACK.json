@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-14T20:08:19Z",
+  "timestamp": "2026-11-14T20:10:07Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-044",
   "status": "COMPLETED",
@@ -175,6 +175,6 @@
       "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
     ]
   },
-  "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified.",
+  "note": "T-044 Self-Evolving SMITH_PERSONA.md (anti-delusion grounding), shared editable hive package, adaptive load/RAM governor, revenue-weighted hotspots, git worktree sandbox verification, and pgvector semantic recall.",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)"
 }
