@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-14T17:27:07Z",
+  "generated_at": "2026-11-14T18:20:30Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-038",
+  "latest_milestone": "T-041",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -47,7 +47,9 @@
     "T-035",
     "T-036",
     "T-037",
-    "T-038"
+    "T-038",
+    "T-040",
+    "T-041"
   ],
   "milestone_log": [
     {
@@ -314,6 +316,20 @@
       "timestamp": "2026-11-05 12:38",
       "phase": "Phase 6",
       "description": "Self-Issued Directive (Autonomous Discretion): (1) Added live GitHub Open-Source PR-Wedge Issue Scout (`github_oss_targets`, `per_page=15`, with anti-honeypot blocklist & PR filtering) to `engine/ingest.py` (`ingest_lane1_fast_cashflow`) and excluded `oss_target_issue` from standalone `$0` dossier generation in `engine/dossier.py` (8 live upstream issues ingested & scored across `agentgateway`, `rust-sdk`, `rig`, and `nautilus_trader`); (2) Eliminated multi-poller timestamp ping-pong in `poll_bus.py` and `scripts/push_state_bus.sh` by normalizing volatile `<ISO_TS>` timestamps in `compute_local_state_hash()` and synchronizing `.last_state_bus_hash` across manual and daemon pushes",
+      "status": "DONE"
+    },
+    {
+      "id": "T-040",
+      "timestamp": "2026-11-14 13:18",
+      "phase": "Phase 6",
+      "description": "Deploy The Hive control plane (`/opt/hive`, `hive-gateway.service` on `:8799`, `hive-perpetual.service`, and `hive-ollama` `qwen2.5-coder:1.5b`) to OCI Ampere A1 (`phronarch-ampere-web` `158.101.108.156`), disable duplicate local laptop Hive services, and point local `config/routing.json` to `http://158.101.108.156:8799`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-041",
+      "timestamp": "2026-11-14 13:19",
+      "phase": "Phase 6",
+      "description": "Audit & harden Phronarch (`psycry/phronarch` `b74373b`..`2decabc`): purge synthetic headline/backfill generators, enforce live RSS + Reddit JSON polling, Coinbase `USD` symbol mapping, `0.3%` L2 slippage veto, L2 `avgFillPrice` fills, and round-trip fee deduction in `OBSERVER` mode; bind dashboard/API ports to `127.0.0.1`, add on-demand `phronarch-ui.sh` (`on`/`off`/`status` + `--oci`), and rebuild containers on A1 with Vite UI shut down by default",
       "status": "DONE"
     }
   ],
