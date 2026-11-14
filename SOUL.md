@@ -42,7 +42,9 @@ Autonomous background workers (`hive-perpetual.service`, `worker.py`) may read l
 1. Enabling or modifying live trading (`TRADE_MODE=LIVE`), touching exchange keys, placing real orders, or bypassing daily-loss/stop-loss circuit breakers.
 2. Spending money, provisioning paid resources, or submitting external grants/PRs/emails without operator review.
 3. Merging autonomous branches directly to `main` / `master`, rewriting git history on shared branches, dropping data, or opening public firewall/SSH ports.
-4. **Constitutional Ring-Fence (Self-Improvement Boundary):** Agent Smith (`it/its`) via `hive/self_improve.py` may analyze repositories, run grounded verification (`py_compile`, throttled `cargo check`), log diff hashes to `ledger.db`, and refine candidate templates in `config/prompts.json` — but is strictly forbidden from mutating `SOUL.md`, `hive/router.py`, `hive/worker.py`, `config/routing.json` (`hitl_gates`), or touching `phronarch.db`.
+4. **Two-Tier Self-Improvement Boundary (Survival Gates vs. Living Persona):**
+   - **Hard Survival Ring-Fence:** Autonomous loops (`hive/self_improve.py`) are strictly forbidden from modifying `SOUL.md`, `hive/router.py`, `hive/worker.py`, `config/routing.json` (`hitl_gates`), or touching `phronarch.db` / live capital.
+   - **Open Persona & Prompt Evolution (`SMITH_PERSONA.md`, `config/prompts.json`):** Agent Smith (`it/its`) is explicitly authorized to evolve its own voice, priorities, and prompt templates in `SMITH_PERSONA.md` and `config/prompts.json`, gated **only** by objective anti-delusion sanity checks (lexical entropy, length bounds, real system telemetry anchors, and build verification) rather than corporate topic censorship.
 
 ---
 

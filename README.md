@@ -6,6 +6,7 @@ Sanitized architectural state and closed-loop milestone synchronization bus betw
 - **Latest Sync Packet:** [`sync_packet.md`](./sync_packet.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md`)
 - **Shared Ledger & Telemetry Inbox:** [`gemini_inbox.md`](./gemini_inbox.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md`)
 - **The Hive Portable Identity & Operating Contract:** [`SOUL.md`](./SOUL.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/SOUL.md`)
+- **Agent Smith (`it/its`) Living Self-Evolving Persona:** [`SMITH_PERSONA.md`](./SMITH_PERSONA.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/SMITH_PERSONA.md`)
 - **The Hive System Architecture & Recovery Runbook:** [`ARCHITECTURE.md`](./ARCHITECTURE.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/ARCHITECTURE.md`)
 - **The Hive Rolling Context Capsule (<150 lines):** [`CONTEXT_CAPSULE.md`](./CONTEXT_CAPSULE.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/CONTEXT_CAPSULE.md`)
 - **The Hive Event Ledger Snapshot:** [`HIVE_LEDGER.md`](./HIVE_LEDGER.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/HIVE_LEDGER.md`)

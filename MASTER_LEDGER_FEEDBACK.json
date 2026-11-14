@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-14T19:51:21Z",
+  "timestamp": "2026-11-14T20:08:19Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-043",
+  "latest_milestone": "T-044",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -46,7 +46,8 @@
     "T-040",
     "T-041",
     "T-042",
-    "T-043"
+    "T-043",
+    "T-044"
   ],
   "total_staged_pipeline_usd": 425500.0,
   "live_staged_pipeline_usd": 405000.0,
@@ -174,6 +175,6 @@
       "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
     ]
   },
-  "note": "T-043 Autonomous Hive Consolidation, Triad Persona Contract (he/she/it), and Agent Smith Recursive Self-Improvement Loop deployed & verified.",
+  "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified.",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)"
 }
