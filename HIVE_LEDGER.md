@@ -1,14 +1,20 @@
 # The Hive — Public Event Ledger Snapshot (`HIVE_LEDGER.md`)
 
-- **Updated UTC:** `2026-11-14T19:12:20Z`
+- **Updated UTC:** `2026-11-14T19:12:23Z`
 - **Node:** `the-hive-a1`
-- **SQLite WAL Total Events:** `191`
+- **SQLite WAL Total Events:** `193`
 - **2-Way Protocol:** Append `HIVE_PING: <message>` to the Google Doc Master Ledger; The Hive classifies via local Ollama (`qwen2.5-coder:1.5b`), writes `HIVE_PONG` to SQLite WAL `ledger.db`, and publishes this OpSec-sanitized snapshot to `psycry/nexus-state-bus`.
+
+## Latest Handshake ACK (`HIVE_PONG`)
+- **Event ID:** `193` (`2026-11-14T19:12:23Z`, hash `053a641187ca2fba`)
+- **Payload:** `{"classification": {"label": "code", "latency_ms": 3623, "model": "qwen2.5-coder:1.5b", "source": "ollama", "tokens": 2}, "ping": "HELLO_HIVE_BUS_CHECK", "ping_key": "b04805efba35", "route": {"node": "local_worker", "tier": 0}, "src": "a1_handshake", "status": "ACK"}`
 
 ## Recent Events (Newest First, Max 30)
 
 | ID | UTC Time | Node | Type | Payload (OpSec Masked) | Hash |
 |---:|---|---|---|---|---|
+| 193 | 2026-11-14T19:12:23Z | `control_plane` | `HIVE_PONG` | `{"classification": {"label": "code", "latency_ms": 3623, "model": "qwen2.5-coder:1.5b", "source": "ollama", "tokens": 2}, "ping": "HELLO_HIVE_BUS_CHECK", "ping_key": "b04805efba35", "route": {"node": "local_worker", "...` | `053a641187ca2fba` |
+| 192 | 2026-11-14T19:12:23Z | `local_worker` | `INTENT_PARSED` | `{"label": "code", "latency_ms": 3623, "model": "qwen2.5-coder:1.5b", "source": "ollama", "task": "HELLO_HIVE_BUS_CHECK", "tokens": 2}` | `d8eccf6a45637cc4` |
 | 191 | 2026-11-14T19:12:20Z | `control_plane` | `TASK_QUEUED` | `{"node": "local_worker", "src": "master_doc", "task": "T-041 (Autonomous Multi-Agent Scale & Grant Deployment Execution)", "tier": 0}` | `71a501a72fef8045` |
 | 190 | 2026-11-14T19:12:20Z | `control_plane` | `ALERT` | `{"channels": ["ledger_only"], "level": "warn", "msg": "HOLD: T-040 (Module-P4 Micro-Capital Live Telemetry, Markout Verification & Headline C"}` | `f970578df52ba70b` |
 | 189 | 2026-11-14T19:12:20Z | `control_plane` | `HITL_HOLD` | `{"action": "HOLD_FOR_HUMAN", "gate": "financial", "src": "master_doc", "task": "T-040 (Module-P4 Micro-Capital Live Telemetry, Markout Verification & Headline Circuit Breakers)"}` | `69ff7dab72f6014e` |
@@ -37,5 +43,3 @@
 | 166 | 2026-11-14T19:06:56Z | `control_plane` | `HEARTBEAT` | `{"node": "control_plane"}` | `7483da71a09dbf62` |
 | 165 | 2026-11-14T19:05:56Z | `agy` | `HEARTBEAT` | `{"node": "agy"}` | `ef57a2e432c3b3d2` |
 | 164 | 2026-11-14T19:05:56Z | `local_worker` | `HEARTBEAT` | `{"node": "local_worker"}` | `966780efc0a08028` |
-| 163 | 2026-11-14T19:05:56Z | `control_plane` | `HEARTBEAT` | `{"node": "control_plane"}` | `7483da71a09dbf62` |
-| 162 | 2026-11-14T19:04:56Z | `agy` | `HEARTBEAT` | `{"node": "agy"}` | `ef57a2e432c3b3d2` |
