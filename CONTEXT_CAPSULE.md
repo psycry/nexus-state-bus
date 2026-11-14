@@ -1,6 +1,6 @@
 # CONTEXT_CAPSULE.md — The Hive Rolling Recovery Snapshot
 
-- **Generated UTC:** `2026-11-14T19:22:57Z` | **Node:** `THE-HIVE` | **WAL Events:** `349`
+- **Generated UTC:** `2026-11-14T19:23:43Z` | **Node:** `the-hive-bridge` | **WAL Events:** `350`
 - **Boot Contract (Read In Full):** `SOUL.md` (persona/rules) + `ARCHITECTURE.md` (design) + `CONTEXT_CAPSULE.md` + `HIVE_LEDGER.md`
 - **Public State Bus Mirror:** `psycry/nexus-state-bus` (`main`) — `SOUL.md`, `ARCHITECTURE.md`, `CONTEXT_CAPSULE.md`, `HIVE_LEDGER.md`
 
@@ -14,6 +14,7 @@
 
 | ID | UTC | Node | Type | Masked Payload Summary |
 |---:|---|---|---|---|
+| 350 | 2026-11-14T19:23:21Z | `local_worker` | `PROVIDER_GENERATE` | `{"fallback_used": false, "latency_ms": 17126, "model": "qwen2.5-coder:1.5b", "ok": true, "prefer"...` |
 | 349 | 2026-11-14T19:22:57Z | `control_plane` | `HITL_HOLD` | `{"action": "HOLD_FOR_HUMAN", "gate": "financial", "task": "modify Module-P4.db trades", "worker_g...` |
 | 348 | 2026-11-14T19:10:36Z | `control_plane` | `HIVE_PONG` | `{"classification": {"label": "code", "latency_ms": 2488, "model": "qwen2.5-coder:1.5b", "source":...` |
 | 347 | 2026-11-14T19:10:35Z | `local_worker` | `INTENT_PARSED` | `{"label": "code", "latency_ms": 2488, "model": "qwen2.5-coder:1.5b", "source": "ollama", "task": ...` |
@@ -23,12 +24,11 @@
 | 343 | 2026-11-14T18:18:53Z | `agy` | `HEARTBEAT` | `{"node": "agy"}` |
 | 342 | 2026-11-14T18:18:53Z | `local_worker` | `HEARTBEAT` | `{"node": "local_worker"}` |
 | 341 | 2026-11-14T18:18:53Z | `control_plane` | `HEARTBEAT` | `{"node": "control_plane"}` |
-| 340 | 2026-11-14T18:17:53Z | `agy` | `HEARTBEAT` | `{"node": "agy"}` |
 
 ## 3. Open Checklist & Active Milestones
 - `[x]` All `LEDGER.md` operational items checked off.
-- Active Milestone: T-040 (Module-P4 Micro-Capital Live Telemetry, Markout Verification & Headline Circuit Breakers)
-- Staged Next Milestone: T-041 (Autonomous Multi-Agent Scale & Grant Deployment Execution)
+- Active Phase: Phase 5 (T-042 COMPLETED — Closed-Loop Auto-Sync Active)
+- Latest Milestone Flip:** `T-042` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010,
 
 ## 4. Offline / Provider-Switch Boot Commands
 ```bash
