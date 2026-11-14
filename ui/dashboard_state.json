@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-14T19:10:37Z",
+  "generated_at": "2026-11-14T19:23:05Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-041",
+  "latest_milestone": "T-042",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -49,7 +49,8 @@
     "T-037",
     "T-038",
     "T-040",
-    "T-041"
+    "T-041",
+    "T-042"
   ],
   "milestone_log": [
     {
@@ -330,6 +331,13 @@
       "timestamp": "2026-11-14 13:19",
       "phase": "Phase 6",
       "description": "Audit & harden Phronarch (`psycry/phronarch` `b74373b`..`2decabc`): purge synthetic headline/backfill generators, enforce live RSS + Reddit JSON polling, Coinbase `USD` symbol mapping, `0.3%` L2 slippage veto, L2 `avgFillPrice` fills, and round-trip fee deduction in `OBSERVER` mode; bind dashboard/API ports to `127.0.0.1`, add on-demand `phronarch-ui.sh` (`on`/`off`/`status` + `--oci`), and rebuild containers on A1 with Vite UI shut down by default",
+      "status": "DONE"
+    },
+    {
+      "id": "T-042",
+      "timestamp": "2026-11-14 14:25",
+      "phase": "Phase 6",
+      "description": "Sovereign Cloud-Agnostic Hive Continuity & Documentation upgrade: author portable persona (`SOUL.md`) and full runbook (`ARCHITECTURE.md`), add pluggable local-first provider adapter (`hive/providers.py`: Ollama + OpenAI-compat + scrubbed Gemini/Anthropic burst), sandboxed worker (`hive/worker.py`: `hive/auto-*` branch + HITL hardstops + `DEVNULL` verification), rolling `<150`-line recovery snapshot (`hive/capsule.py` -> `CONTEXT_CAPSULE.md`), zero-open-port `scripts/hive-tunnel.sh`, comprehensive module docstrings across `hive/*.py`, `--boot-prompt` CLI, and A1 deployment",
       "status": "DONE"
     }
   ],
