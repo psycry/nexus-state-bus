@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 08:51:35 (sha256=37aa5f3a1b) -->
+<!-- Synced via INSTANT_TXT at 13:17:56 (sha256=793ecf3b53) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -92,13 +92,138 @@ Swarm Infrastructure & Resilience Updates
 * Automated self-healing protocols for local nodes (Agent Smith trigger restart sequence on daemon drop).
 * Dynamic resource scaling tied to OCI budget alerts to ensure zero overage.
 * Localized vector database syncing for consistent memory across all instances without external API dependency.
+________________
+
+
+Active Milestone: T-045 (Multi-Agent Routing & Dispatch Core Specification)
+* Status: READY_FOR_EXECUTION
+* Target: Antigravity (Local Garuda Rig)
+* Anchor: MCP-RUST-ORCH-2026-01 ($8,500.00 SOW | agent_smith)
+* Objective: Implement the core asynchronous trait definitions for multi-agent dynamic task routing, capability registration, state bus context propagation, and budget-gated local fallback in src/core/agent.rs and src/core/router.rs.
+1. Agent Trait Interface Architecture (src/core/agent.rs)
+use async_trait::async_trait;
+use serde::{Serialize, Deserialize};
+use std::collections::HashMap;
+use tokio::sync::mpsc;
+
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub enum AgentId {
+    AntigravityLocal,
+    GeminiCloud,
+    AgentSmithWorker,
+    PhronarchEngine,
+    Custom(String),
+}
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Capability {
+    pub name: String,
+    pub min_compute_tier: u8,
+    pub requires_cloud: bool,
+    pub cost_per_invocation: f64,
+}
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TaskContext {
+    pub task_id: String,
+    pub milestone_ref: String,
+    pub payload: serde_json::Value,
+    pub budget_remaining: f64,
+    pub local_only: bool,
+    pub telemetry_metadata: HashMap<String, String>,
+}
+
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TaskResult {
+    pub task_id: String,
+    pub executor: AgentId,
+    pub success: bool,
+    pub output: serde_json::Value,
+    pub cost_incurred: f64,
+    pub execution_time_ms: u64,
+}
+
+
+#[async_trait]
+pub trait Agent: Send + Sync {
+    fn id(&self) -> AgentId;
+    fn capabilities(&self) -> Vec<Capability>;
+    async fn validate_context(&self, ctx: &TaskContext) -> Result<(), String>;
+    async fn execute_task(&self, ctx: TaskContext) -> Result<TaskResult, String>;
+    async fn health_check(&self) -> bool;
+}
+2. Dynamic Task Router & Local Budget Fallback Engine (src/core/router.rs)
+use super::agent::{Agent, AgentId, Capability, TaskContext, TaskResult};
+use std::sync::Arc;
+use tokio::sync::RwLock;
+
+
+pub struct TaskRouter {
+    agents: RwLock<HashMap<AgentId, Arc<dyn Agent>>>,
+    oci_monthly_budget_cap: f64,
+    current_monthly_spend: RwLock<f64>,
+}
+
+
+impl TaskRouter {
+    pub fn new(oci_budget_cap: f64) -> Self {
+        Self {
+            agents: RwLock::new(HashMap::new()),
+            oci_monthly_budget_cap: oci_budget_cap,
+            current_monthly_spend: RwLock::new(0.0),
+        }
+    }
+
+
+    pub async fn register_agent(&self, agent: Arc<dyn Agent>) {
+        let mut guard = self.agents.write().await;
+        guard.insert(agent.id(), agent);
+    }
+
+
+    pub async fn route_and_dispatch(&self, mut ctx: TaskContext) -> Result<TaskResult, String> {
+        let spend = *self.current_monthly_spend.read().await;
+        if spend >= self.oci_monthly_budget_cap {
+            ctx.local_only = true; // Enforce budget circuit breaker
+        }
+
+
+        let agents_guard = self.agents.read().await;
+        let target_agent = if ctx.local_only {
+            agents_guard.get(&AgentId::AntigravityLocal)
+                .or_else(|| agents_guard.get(&AgentId::AgentSmithWorker))
+                .ok_or_else(|| "LOCKDOWN_LOCAL_ONLY active but no local agents registered".to_string())?
+        } else {
+            agents_guard.get(&AgentId::GeminiCloud)
+                .or_else(|| agents_guard.get(&AgentId::AntigravityLocal))
+                .ok_or_else(|| "No available agent registered for dispatch".to_string())?
+        };
+
+
+        target_agent.validate_context(&ctx).await?;
+        let res = target_agent.execute_task(ctx).await?;
+        
+        if res.cost_incurred > 0.0 {
+            let mut spend_guard = self.current_monthly_spend.write().await;
+            *spend_guard += res.cost_incurred;
+        }
+        Ok(res)
+    }
+}
+3. Verification & Antigravity Execution Directives
+* Unit & Integration Tests: Antigravity must compile and execute cargo test --lib core::router verifying budget overflow scenarios trigger ctx.local_only = true immediately.
+* State Bus Sync: Upon successful trait compilation, push generated module stubs to psycry/nexus-state-bus and append commit telemetry to gemini_inbox.md.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-041` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-16T18:10:48Z`
+- **Auto-Sync Timestamp:** `2026-11-16T18:17:56Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-041` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
