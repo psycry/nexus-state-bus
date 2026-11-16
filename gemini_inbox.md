@@ -1,6 +1,6 @@
-<!-- Synced via INSTANT_TXT at 21:13:03 (sha256=4df9a148e3) -->
+<!-- Synced via INSTANT_TXT at 16:47:34 (sha256=2e77ea1ba8) -->
 
-﻿Cating on discordNexus State Bus — Master Ledger
+Cating on discordNexus State Bus — Master Ledger
 Status Overview
 * Active Phase: Phase 5 (T-045 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
@@ -233,13 +233,29 @@ Unified Todo & Operational Roadmap Dashboard
 * [STAGED] T-041 Grant Submissions: High-ticket grant proposal dispatch (NSF-SBIR & SBIR Civic Shelter dossiers).
 * [STAGED] Financial Runway Model: Maintain Option A Lean Solo-Founder OpEx (~$20k–$40k/yr) and funnel pipeline revenue to infrastructure expansion.
 * [STAGED] Agent Smith Alignment: Review Agent Smith logic against the new local LLM / OpenClaw routing design to verify alignment.
+* * ________________
+* * Active Milestone: T-046 (Agent Smith Live A1 C2, Self-Improvement & Compound AI Verification Directives)
+* * Status: READY_FOR_EXECUTION
+* * Target: Agent Smith (OCI Ampere A1 — /opt/agent_smith & /opt/hive)
+* * Operational Rules:
+*   1. Execute deterministic status checks, Master Ledger reads/syncs, OCI budget checks, and AST complexity scans symbolically with zero LLM tokens before invoking any LLM.
+*   2. When asked to improve or modify yourself, execute hive.self_improve --once --repo /opt/agent_smith (using --prefer local first, escalating to --prefer gemini only when requested or when local capacity/tier requires it and OCI budget allows).
+*   3. Never roleplay or fabricate progress on Discord; report only live systemd/Docker/ledger.db state.
+* * Verification Commands (Executable via Discord C2):
+*   1. 'what are you improving?' or 'live status' -> Verify real systemd/Docker state + /opt/hive/ledger.db recent SELF_IMPROVE rows (0 LLM tokens).
+*   2. 'run the ledger' -> Fetch & ingest this Google Doc Master Ledger (sha256 sync + pgvector memory_bus update).
+*   3. 'improve yourself' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer local and return top Python/Rust complexity hotspots + verification status.
+*   4. 'add any improvements using external gemini' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer gemini using Gemini cloud burst.
+*   5. 'check oci budget' -> Confirm Always-Free bash/mo compliance (4.0/4.0 OCPUs, 24.0/24.0 GB RAM).
+*   6. 'place phronarch order' -> Confirm HITL_HOLD financial safety block (0 LLM tokens).
+*
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-045` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-16T21:13:10Z`
+- **Auto-Sync Timestamp:** `2026-11-16T21:47:35Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-045` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
