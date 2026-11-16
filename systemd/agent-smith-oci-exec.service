@@ -1,13 +1,11 @@
 [Unit]
-Description=Agent Smith 24/7 OCI Mesh Executive, Google Doc Ledger & Memory Sync Worker
+Description=Agent Smith 24/7 OCI Mesh Executive & State Bus Sync Worker
 After=network-online.target
 
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/agent_smith
-ExecStartPre=-/usr/bin/git -C /home/opc/nexus-state-bus pull --ff-only origin main
-ExecStart=/opt/agent_smith/engine/.venv/bin/python -m engine.gdoc_ledger --sync
-ExecStartPost=-/opt/agent_smith/engine/.venv/bin/python -m engine.hive_bridge --import-git --offline --git-path /home/opc/nexus-state-bus/memory_bus/agent_memories.jsonl
-ExecStartPost=-/opt/agent_smith/engine/.venv/bin/python -m engine.mesh_handoff --claim --node ampere-a1 --queue-path /home/opc/nexus-state-bus/memory_bus/mesh_handoffs.jsonl
+ExecStart=/usr/bin/git -C /home/opc/nexus-state-bus pull --ff-only origin main
+ExecStartPost=/usr/bin/python3 -m engine.mesh_handoff --claim --node ampere-a1 --queue-path /home/opc/nexus-state-bus/memory_bus/mesh_handoffs.jsonl
 StandardOutput=journal
 StandardError=journal
