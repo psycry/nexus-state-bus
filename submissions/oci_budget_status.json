@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-16T18:02:45Z",
+  "timestamp": "2026-11-16T18:04:59Z",
   "region": "us-ashburn-1",
   "zero_overage_compliant": true,
   "a1_ocpus_used": 2.0,
@@ -13,6 +13,21 @@
     "ram_gb_free": 12.0,
     "storage_gb_free": 103.0
   },
+  "scaling_policy": {
+    "scale_mode": "ALWAYS_FREE_BURST_ELIGIBLE",
+    "cloud_burst_allowed": true,
+    "max_parallel_workers": 4,
+    "prefer_provider": "auto"
+  },
+  "budgets": [
+    {
+      "name": "oracle_free_tier_cap",
+      "amount": 5.0,
+      "actual_spend": 0.0,
+      "forecasted_spend": 0.0,
+      "lifecycle_state": "ACTIVE"
+    }
+  ],
   "instances": [
     {
       "name": "phronarch-ampere-web",

@@ -7,5 +7,6 @@ Type=oneshot
 WorkingDirectory=/home/psycry/Projects/agent_smith
 ExecStart=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.self_heal
 ExecStartPost=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.oci_budget_guard
+ExecStartPost=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.hive_bridge --import-git --offline --git-path /home/psycry/Projects/nexus-state-bus/memory_bus/agent_memories.jsonl
 StandardOutput=journal
 StandardError=journal
