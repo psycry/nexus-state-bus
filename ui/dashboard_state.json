@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-16T18:20:10Z",
+  "generated_at": "2026-11-16T18:28:29Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -390,7 +390,7 @@
     "projected_staged_pipeline_usd": 20500.0,
     "fast_cashflow_staged_usd": 20500.0,
     "grant_rfp_staged_usd": 405000.0,
-    "workforce_tasks_count": 12,
+    "workforce_tasks_count": 15,
     "capability_anchors_count": 3,
     "embedding_dimensions": 768,
     "monthly_burn_usd": 0.0
@@ -3667,6 +3667,33 @@
     }
   ],
   "recent_workforce_tasks": [
+    {
+      "id": 15,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "priority": 5,
+      "result": "{\n  \"ok\": true,\n  \"status\": \"RESOLVED_SYMBOLICALLY\",\n  \"tokens_spent\": 0,\n  \"tier\": 0,\n  \"node\": \"symbolic_deterministic\",\n  \"scaling_policy\": {\n    \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n    \"cloud_burst_allowed\": true,\n    \"max_parallel_workers\": 4,\n    \"prefer_provider\": \"auto\"\n  },\n  \"symbolic\": {\n    \"resolver\": \"oci_budget_guard\",\n    \"result\": {\n      \"timestamp\": \"2026-11-16T18:28:20Z\",\n      \"region\": \"us-ashburn-1\",\n      \"zero_overage_compliant\": true,\n      \"a1_ocpus_used\": 2.0,\n      \"a1_ocpus_limit\": 4.0,\n      \"a1_ram_gb_used\": 12.0,\n      \"a1_ram_gb_limit\": 24.0,\n      \"storage_gb_used\": 97.0,\n      \"storage_gb_limit\": 200.0,\n      \"headroom\": {\n        \"ocpus_free\": 2.0,\n        \"ram_gb_free\": 12.0,\n        \"storage_gb_free\": 103.0\n      },\n      \"scaling_policy\": {\n        \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n        \"cloud_burst_allowed\": true,\n        \"max_parallel_workers\": 4,\n        \"prefer_provider\": \"auto\"\n      },\n      \"budgets\": [\n        {\n          \"name\": \"oracle_free_tier_cap\",\n          \"amount\": 5.0,\n          \"actual_spend\": 0.0,\n          \"forecasted_spend\": 0.0,\n          \"lifecycle_state\": \"ACTIVE\"\n        }\n      ],\n      \"instances\": [\n        {\n          \"name\": \"phronarch-ampere-web\",\n          \"shape\": \"VM.Standard.A1.Flex\",\n          \"state\": \"RUNNING\",\n          \"ocpus\": 2.0,\n          \"ram_gb\": 12.0\n        }\n      ],\n      \"alerts\": []\n    }\n  }\n}",
+      "updated_at": "2026-11-16 18:28:21.206934+00"
+    },
+    {
+      "id": 14,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "priority": 5,
+      "result": "{\n  \"ok\": true,\n  \"status\": \"RESOLVED_SYMBOLICALLY\",\n  \"tokens_spent\": 0,\n  \"tier\": 0,\n  \"node\": \"symbolic_deterministic\",\n  \"scaling_policy\": {\n    \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n    \"cloud_burst_allowed\": true,\n    \"max_parallel_workers\": 4,\n    \"prefer_provider\": \"auto\"\n  },\n  \"symbolic\": {\n    \"resolver\": \"oci_budget_guard\",\n    \"result\": {\n      \"timestamp\": \"2026-11-16T18:26:40Z\",\n      \"region\": \"us-ashburn-1\",\n      \"zero_overage_compliant\": true,\n      \"a1_ocpus_used\": 2.0,\n      \"a1_ocpus_limit\": 4.0,\n      \"a1_ram_gb_used\": 12.0,\n      \"a1_ram_gb_limit\": 24.0,\n      \"storage_gb_used\": 97.0,\n      \"storage_gb_limit\": 200.0,\n      \"headroom\": {\n        \"ocpus_free\": 2.0,\n        \"ram_gb_free\": 12.0,\n        \"storage_gb_free\": 103.0\n      },\n      \"scaling_policy\": {\n        \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n        \"cloud_burst_allowed\": true,\n        \"max_parallel_workers\": 4,\n        \"prefer_provider\": \"auto\"\n      },\n      \"budgets\": [\n        {\n          \"name\": \"oracle_free_tier_cap\",\n          \"amount\": 5.0,\n          \"actual_spend\": 0.0,\n          \"forecasted_spend\": 0.0,\n          \"lifecycle_state\": \"ACTIVE\"\n        }\n      ],\n      \"instances\": [\n        {\n          \"name\": \"phronarch-ampere-web\",\n          \"shape\": \"VM.Standard.A1.Flex\",\n          \"state\": \"RUNNING\",\n          \"ocpus\": 2.0,\n          \"ram_gb\": 12.0\n        }\n      ],\n      \"alerts\": []\n    }\n  }\n}",
+      "updated_at": "2026-11-16 18:26:41.219762+00"
+    },
+    {
+      "id": 13,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "priority": 5,
+      "result": "{\n  \"ok\": true,\n  \"status\": \"RESOLVED_SYMBOLICALLY\",\n  \"tokens_spent\": 0,\n  \"tier\": 0,\n  \"node\": \"symbolic_deterministic\",\n  \"scaling_policy\": {\n    \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n    \"cloud_burst_allowed\": true,\n    \"max_parallel_workers\": 4,\n    \"prefer_provider\": \"auto\"\n  },\n  \"symbolic\": {\n    \"resolver\": \"oci_budget_guard\",\n    \"result\": {\n      \"timestamp\": \"2026-11-16T18:26:27Z\",\n      \"region\": \"us-ashburn-1\",\n      \"zero_overage_compliant\": true,\n      \"a1_ocpus_used\": 2.0,\n      \"a1_ocpus_limit\": 4.0,\n      \"a1_ram_gb_used\": 12.0,\n      \"a1_ram_gb_limit\": 24.0,\n      \"storage_gb_used\": 97.0,\n      \"storage_gb_limit\": 200.0,\n      \"headroom\": {\n        \"ocpus_free\": 2.0,\n        \"ram_gb_free\": 12.0,\n        \"storage_gb_free\": 103.0\n      },\n      \"scaling_policy\": {\n        \"scale_mode\": \"ALWAYS_FREE_BURST_ELIGIBLE\",\n        \"cloud_burst_allowed\": true,\n        \"max_parallel_workers\": 4,\n        \"prefer_provider\": \"auto\"\n      },\n      \"budgets\": [\n        {\n          \"name\": \"oracle_free_tier_cap\",\n          \"amount\": 5.0,\n          \"actual_spend\": 0.0,\n          \"forecasted_spend\": 0.0,\n          \"lifecycle_state\": \"ACTIVE\"\n        }\n      ],\n      \"instances\": [\n        {\n          \"name\": \"phronarch-ampere-web\",\n          \"shape\": \"VM.Standard.A1.Flex\",\n          \"state\": \"RUNNING\",\n          \"ocpus\": 2.0,\n          \"ram_gb\": 12.0\n        }\n      ],\n      \"alerts\": []\n    }\n  }\n}",
+      "updated_at": "2026-11-16 18:26:28.925477+00"
+    },
     {
       "id": 12,
       "assigned_agent": "architect",

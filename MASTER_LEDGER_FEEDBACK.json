@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-16T18:20:09Z",
+  "timestamp": "2026-11-16T18:28:28Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
   "latest_milestone": "T-045",
   "status": "COMPLETED",
@@ -124,6 +124,27 @@
   ],
   "recent_workforce_tasks": [
     {
+      "id": 15,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "updated_at": "2026-11-16 18:28:21.206934+00"
+    },
+    {
+      "id": 14,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "updated_at": "2026-11-16 18:26:41.219762+00"
+    },
+    {
+      "id": 13,
+      "assigned_agent": "operator",
+      "title": "OCI budget check",
+      "status": "COMPLETED",
+      "updated_at": "2026-11-16 18:26:28.925477+00"
+    },
+    {
       "id": 12,
       "assigned_agent": "architect",
       "title": "Draft FAST_CASHFLOW Dossier: 1137545",
@@ -143,27 +164,6 @@
       "title": "Draft FAST_CASHFLOW Dossier: 1137560",
       "status": "COMPLETED",
       "updated_at": "2026-10-29 17:20:52.879853+00"
-    },
-    {
-      "id": 9,
-      "assigned_agent": "architect",
-      "title": "T-015: Multi-Agent Pod \u2014 Backend Telemetry API & Tactical Command Center UI Sync",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-29 16:05:49.232756+00"
-    },
-    {
-      "id": 8,
-      "assigned_agent": "operator",
-      "title": "T-014: Harness IPC Diagnostic & Pipe Unblock",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-29 15:59:26.049033+00"
-    },
-    {
-      "id": 7,
-      "assigned_agent": "operator",
-      "title": "T-013: Automated Two-Way Feedback Bridge & Git State Bus Loop",
-      "status": "COMPLETED",
-      "updated_at": "2026-10-27 17:15:47.083001+00"
     }
   ],
   "ipc_diagnostic": {
