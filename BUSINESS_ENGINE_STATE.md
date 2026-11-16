@@ -13,7 +13,7 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 
 - **Mission:** Transition from standalone projects (`phronarch`, `shelter_source`, `nomad_nexus`) into automated operational revenue pipelines (high-signal data ingestion, automated contract/grant discovery & proposal execution, algorithmic intelligence) that generate real cashflow.
 - **Capital Flywheel:** Maintain a **\$0/month baseline infrastructure burn rate** while reinvesting initial profits directly into autonomous compute scaling, API capacity, and workforce expansion.
-- **Active Staged Pipeline Valuation (`T-034` + `T-036`):** **\$425,500.00** across 4 `DOSSIER_READY` & `STAGED` opportunities (**\$405,000.00 Live** across 2 verified federal SBIR solicitations `NSF 26-510` + `HHS-2027-ACL-NIDILRR-BISA-0308` and **\$20,500.00 Projected** across 2 `FAST_CASHFLOW` fixed-scope B2B SOWs backed by 5 verified open-source target repositories and 14 live GitHub engineering issues).
+- **Contracted Revenue:** **\$0.00** (`2` unsubmitted federal SBIR drafts `NSF 26-510` + `HHS-2027-ACL-NIDILRR-BISA-0308` with **\$405,000.00** combined max award ceilings, plus `2` uncontracted B2B/OSS wedge targets with **\$20,500.00** placeholder SOW estimates).
 
 ---
 

@@ -98,11 +98,11 @@ Swarm Infrastructure & Resilience Updates
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-041` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-16T17:52:59Z`
+- **Auto-Sync Timestamp:** `2026-11-16T17:56:10Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-041` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
-- **Total Staged Pipeline Valuation:** **`$425,500.00`** (`4/4 DOSSIER_READY` leads staged) — **Live:** `$405,000.00` | **Projected (curated placeholders):** `$20,500.00`
+- **Contracted Revenue:** **`$0.00`** (`4` staged drafts — **Unsubmitted SBIR Grant Ceilings:** `$405,000.00` | **Uncontracted SOW Placeholders:** `$20,500.00`)
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
