@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/agent_smith
-ExecStart=/opt/agent_smith/engine/.venv/bin/python -m engine.hive_bridge --import-git --offline --git-path /home/ubuntu/nexus-state-bus/memory_bus/agent_memories.jsonl
-ExecStartPost=/opt/agent_smith/engine/.venv/bin/python -m engine.mesh_handoff --claim --node ampere-a1 --queue-path /home/ubuntu/nexus-state-bus/memory_bus/mesh_handoffs.jsonl
+ExecStart=/opt/agent_smith/engine/.venv/bin/python -m engine.hive_bridge --import-git --offline --git-path /home/opc/nexus-state-bus/memory_bus/agent_memories.jsonl
+ExecStartPost=/opt/agent_smith/engine/.venv/bin/python -m engine.mesh_handoff --claim --node ampere-a1 --queue-path /home/opc/nexus-state-bus/memory_bus/mesh_handoffs.jsonl
 StandardOutput=journal
 StandardError=journal

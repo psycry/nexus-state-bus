@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-11-16T18:59:35Z",
+  "timestamp": "2026-11-16T19:58:35Z",
   "region": "us-ashburn-1",
   "zero_overage_compliant": true,
-  "a1_ocpus_used": 2.0,
+  "a1_ocpus_used": 4.0,
   "a1_ocpus_limit": 4.0,
-  "a1_ram_gb_used": 12.0,
+  "a1_ram_gb_used": 24.0,
   "a1_ram_gb_limit": 24.0,
   "storage_gb_used": 97.0,
   "storage_gb_limit": 200.0,
   "headroom": {
-    "ocpus_free": 2.0,
-    "ram_gb_free": 12.0,
+    "ocpus_free": 0.0,
+    "ram_gb_free": 0.0,
     "storage_gb_free": 103.0
   },
   "scaling_policy": {
-    "scale_mode": "ALWAYS_FREE_BURST_ELIGIBLE",
+    "scale_mode": "CONSERVE_LOCAL_FIRST",
     "cloud_burst_allowed": true,
-    "max_parallel_workers": 4,
-    "prefer_provider": "auto"
+    "max_parallel_workers": 2,
+    "prefer_provider": "local"
   },
   "budgets": [
     {
@@ -30,11 +30,11 @@
   ],
   "instances": [
     {
-      "name": "phronarch-ampere-web",
+      "name": "THE-HIVE",
       "shape": "VM.Standard.A1.Flex",
       "state": "RUNNING",
-      "ocpus": 2.0,
-      "ram_gb": 12.0
+      "ocpus": 4.0,
+      "ram_gb": 24.0
     }
   ],
   "alerts": []
