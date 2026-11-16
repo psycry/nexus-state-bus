@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-041 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-045 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 * Pipeline Valuation Split: $425,500.00 Total ($405,000.00 Live [95.2%] / $20,500.00 Projected [4.8%])
@@ -221,22 +221,22 @@ impl TaskRouter {
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-041` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-045` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-16T18:17:56Z`
+- **Auto-Sync Timestamp:** `2026-11-16T18:20:02Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-041` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041`)
+- **Latest Milestone Flip:** `T-045` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
 - **Contracted Revenue:** **`$0.00`** (`4` staged drafts — **Unsubmitted SBIR Grant Ceilings:** `$405,000.00` | **Uncontracted SOW Placeholders:** `$20,500.00`)
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-042`** (Phase 6 — `2026-11-14 14:25`): Sovereign Cloud-Agnostic Hive Continuity & Documentation upgrade: author portable persona (`SOUL.md`) and full runbook (`ARCHITECTURE.md`), add pluggable local-first provider adapter (`hive/providers.py`: Ollama + OpenAI-compat + scrubbed Gemini/Anthropic burst), sandboxed worker (`hive/worker.py`: `hive/auto-*` branch + HITL hardstops + `DEVNULL` verification), rolling `<150`-line recovery snapshot (`hive/capsule.py` -> `CONTEXT_CAPSULE.md`), zero-open-port `scripts/hive-tunnel.sh`, comprehensive module docstrings across `hive/*.py`, `--boot-prompt` CLI, and A1 deployment $\rightarrow$ **`DONE`**
 - **`T-043`** (Phase 6 — `2026-11-14 14:44`): Autonomous Hive Consolidation, Triad Persona Contract (`Argon he/him` · `Gemini she/her` · `Agent Smith it/its`), & Recursive Self-Improvement Loop: codify explicit 3-layer boundaries (`hive/__init__.py`) and root `Makefile` bootstraps (`hive/Makefile`, `agent_smith/Makefile`); author AST/Rust complexity scanner, grounded verification (`py_compile` + throttled `CARGO_BUILD_JOBS=2 nice -n 19 cargo check`), SHA-256 diff hashing (`SELF_IMPROVE_ITER`), and constitutional ring-fencing (`hive/self_improve.py`); deploy versioned `config/prompts.json` meta-prompt registry with placeholder-integrity guard (`PROMPT_OPT`), `perpetual.py --self-improve` daemon hook, and `engine/hive_bridge.py` (`pgvector` `namespace='self_improvement'`) $\rightarrow$ **`DONE`**
 - **`T-044`** (Phase 6 — `2026-11-14 15:08`): Self-Evolving Persona, Shared Library & Phase 4 Autonomous Upgrades: launch living `SMITH_PERSONA.md` (`SOUL.md` two-tier boundary splitting survival gates from open self-evolution via anti-delusion reality checks `validate_persona_sanity`); add `pyproject.toml` + `.venv` editable link between `hive` and `agent_smith`; add `check_host_resources()` load/RAM governor, revenue-weighted hotspot scoring (`REVENUE_WEIGHTS`), ephemeral `git worktree` sandbox runner (`test_in_worktree`), and pgvector cosine semantic iteration recall (`engine/hive_bridge.py --recall`) $\rightarrow$ **`DONE`**
 - **`T-040`** (Phase 5 — `2026-11-16 09:36`): Master Ledger `T-040` (`psycry/phronarch` `749900d`): Initialize Phronarch micro-capital live telemetry, markout verification & headline circuit breakers (`execution/src/micro_capital.ts`, `db.ts`, `index.ts`, `sync_ledger.py`): (1) Cost-gated entry filter & `MIN_NOTIONAL` guard + strict `POST_ONLY` maker routing (zero taker-fee drag); (2) `watchTrades` TFI + L2 OFI confluence (spoof-flicker veto); (3) 2-tier `HeadlineShockBreaker` (`WIDEN_SPREAD` / `PAUSED`); (4) BBO queue-collapse scratch bailout (`<25%` L1 support); (5) `100ms`–`10s` post-fill `markout_telemetry` SQLite persistence + `/markout` API; verified via `tsc --noEmit` & `scratch/verify_t040.ts` (5/5 checks PASS, positive 500ms/2s markout `+3.0`/`+5.0` bps) $\rightarrow$ **`DONE`**
 - **`T-041`** (Phase 6 — `2026-11-16 12:59`): Master Ledger `T-041` & Swarm Resilience Updates: (1) Built `engine/self_heal.py` + enabled `agent-smith-watchdog.timer` (5m auto-recovery for `agent-smith-pgvector`, `hive-ollama`, `nexus-state-bus.service`, `agent-smith-dashboard.service` — `4/4 HEALTHY`); (2) Built `engine/oci_budget_guard.py` verifying Always-Free zero-overage compliance (`COMPLIANT $0/mo`: A1 `2.0/4.0` OCPUs, `12.0/24.0GB` RAM, `97.0/200.0GB` storage); (3) Added `--offline` / `AGENT_SMITH_OFFLINE_EMBED=1` to `engine/embeddings.py` + `engine/hive_bridge.py` (`8/8` Hive events synced with zero external API calls); (4) Implemented Tier-Based Multi-Agent Routing & `HITL_HOLD` gates in `claw-mcp-server/src/tools/workforce.rs` (`classify_subagent_route`, `local_first` Tier 0 Ollama vs `cloud_first` Tier 2/3, release binary rebuilt) and `engine/router_bridge.py` (`hive.router` + `hive.providers`) $\rightarrow$ **`DONE`**
+- **`T-045`** (Phase 6 — `2026-11-16 13:19`): Master Ledger `T-045` (`claw-mcp-server/src/core/agent.rs`, `src/core/router.rs`, `src/core/mod.rs`, `src/lib.rs`): Implemented async `Agent` trait, `AgentId` (`Hash` + `Eq`), `Capability`, `TaskContext`, `TaskResult`, and `TaskRouter` with OCI budget circuit breaker (`spend >= oci_monthly_budget_cap` $\rightarrow$ `ctx.local_only = true` + `LOCKDOWN_LOCAL_ONLY` guard and `from_oci_budget_status` loader); verified via `cargo test --lib core::router` (`2 passed; 0 failed`) $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
