@@ -23,11 +23,11 @@
 Small businesses want AI agents that act on their systems, but current agent stacks run tools with broad host access, depend entirely on cloud models, and keep no durable shared state across agents. **Digital Nomad LLC** is building a secure orchestration layer that addresses all three:
 
 - **Deterministic sandboxed tool execution (Rust):** every tool call passes path canonicalization and a command allowlist before it runs, so an agent cannot read or write outside declared roots.
-- **Hybrid inference routing:** a local model (Ollama, `qwen2.5-coder:1.5b`) handles low-cost work and cloud foundation models (Gemini Flash family) handle the rest, with automatic fallback.
-- **Collective vector memory:** PostgreSQL 16 + `pgvector` 768-dimension semantic memory shared by the Rust control plane and a Python worker plane under a fixed embedding contract.
-- **Decentralized state synchronization:** the `nexus-state-bus` architecture synchronizes state between independent agents through a shared ledger, with polling, sanitized state packets and automatic recovery.
+- **Compound AI & hybrid inference routing:** a symbolic/deterministic pre-filter (AST complexity scanning, 768-dim FNV-1a/cosine capability scoring, and OCI budget guards) resolves deterministic tasks with zero LLM tokens, while an async Rust `TaskRouter` (`src/core/router.rs`) and `router_bridge.py` dispatch remaining work to local Ollama (`qwen2.5-coder:1.5b`) or cloud foundation models (Gemini Flash family) with automatic budget-cap lockdown (`LOCKDOWN_LOCAL_ONLY`) and HITL gates.
+- **Collective vector memory:** PostgreSQL 16 + `pgvector` 768-dimension semantic memory shared by the Rust control plane and Python worker plane under a fixed embedding contract, plus scrubbed Git-backed replication (`memory_bus/agent_memories.jsonl`).
+- **Decentralized state & peer-to-peer mesh synchronization:** `nexus-state-bus` and `mesh_handoff.py` synchronize state and multi-node task handoffs across nodes (local workstation + OCI Always-Free ARM instance) with automatic recovery (`self_heal.py`).
 
-The working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools), operated internally in production together with `nexus-state-bus`. The innovation to fund is what is not yet built or proven: measurable security guarantees, a cost-aware routing policy, and multi-agent coordination over shared memory and state.
+The working base is **Agent Smith** (`claw-mcp-server`, a Rust Model Context Protocol server exposing 17 tools plus a 24/7 Discord async bridge), operated internally together with `nexus-state-bus`. The innovation to fund is what is not yet built or proven: measurable security guarantees, a learned cost-aware routing policy, and quantitative multi-agent coordination benchmarks over shared memory and state.
 
 ### 1.2 Technical Objectives and Challenges
 1. **Sandbox assurance:** define a tool-call policy model and test it with adversarial prompt-injection and path-traversal suites. Target: zero boundary violations across the test corpus.

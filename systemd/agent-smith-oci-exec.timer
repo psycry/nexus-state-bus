@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Agent Smith OCI Mesh Executive Worker every 2 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Unit=agent-smith-oci-exec.service
+
+[Install]
+WantedBy=timers.target

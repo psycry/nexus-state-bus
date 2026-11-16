@@ -1,0 +1,11 @@
+[Unit]
+Description=Agent Smith 24/7 OCI Mesh Executive & Memory Sync Worker
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/agent_smith
+ExecStart=/opt/agent_smith/engine/.venv/bin/python -m engine.hive_bridge --import-git --offline --git-path /home/ubuntu/nexus-state-bus/memory_bus/agent_memories.jsonl
+ExecStartPost=/opt/agent_smith/engine/.venv/bin/python -m engine.mesh_handoff --claim --node ampere-a1 --queue-path /home/ubuntu/nexus-state-bus/memory_bus/mesh_handoffs.jsonl
+StandardOutput=journal
+StandardError=journal

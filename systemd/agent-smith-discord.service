@@ -1,0 +1,15 @@
+[Unit]
+Description=Agent Smith 24/7 Discord Async C2 Bridge
+After=network-online.target docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/home/psycry/Projects/agent_smith/target/release/discord
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
