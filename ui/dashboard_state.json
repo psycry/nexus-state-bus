@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-16T17:56:20Z",
+  "generated_at": "2026-11-16T18:00:07Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -367,9 +367,9 @@
     },
     {
       "id": "T-041",
-      "timestamp": "2026-11-16 12:52",
+      "timestamp": "2026-11-16 12:59",
       "phase": "Phase 6",
-      "description": "Master Ledger `T-041` & Swarm Resilience Updates: (1) Built `engine/self_heal.py` + enabled `agent-smith-watchdog.timer` (5m auto-recovery for `agent-smith-pgvector`, `hive-ollama`, `nexus-state-bus.service`, `agent-smith-dashboard.service` \u2014 `4/4 HEALTHY`); (2) Built `engine/oci_budget_guard.py` verifying Always-Free zero-overage compliance (`COMPLIANT $0/mo`: A1 `2.0/4.0` OCPUs, `12.0/24.0GB` RAM, `97.0/200.0GB` storage); (3) Added `--offline` / `AGENT_SMITH_OFFLINE_EMBED=1` to `engine/embeddings.py` + `engine/hive_bridge.py` (`8/8` Hive events synced with zero external API calls); (4) Verified grant & SOW submission packages via `engine.qa` (**4/4 PASS, 0 WARN, 0 FAIL**)",
+      "description": "Master Ledger `T-041` & Swarm Resilience Updates: (1) Built `engine/self_heal.py` + enabled `agent-smith-watchdog.timer` (5m auto-recovery for `agent-smith-pgvector`, `hive-ollama`, `nexus-state-bus.service`, `agent-smith-dashboard.service` \u2014 `4/4 HEALTHY`); (2) Built `engine/oci_budget_guard.py` verifying Always-Free zero-overage compliance (`COMPLIANT $0/mo`: A1 `2.0/4.0` OCPUs, `12.0/24.0GB` RAM, `97.0/200.0GB` storage); (3) Added `--offline` / `AGENT_SMITH_OFFLINE_EMBED=1` to `engine/embeddings.py` + `engine/hive_bridge.py` (`8/8` Hive events synced with zero external API calls); (4) Implemented Tier-Based Multi-Agent Routing & `HITL_HOLD` gates in `claw-mcp-server/src/tools/workforce.rs` (`classify_subagent_route`, `local_first` Tier 0 Ollama vs `cloud_first` Tier 2/3, release binary rebuilt) and `engine/router_bridge.py` (`hive.router` + `hive.providers`)",
       "status": "DONE"
     }
   ],
