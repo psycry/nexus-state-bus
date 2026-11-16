@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-16T13:56:15Z",
+  "timestamp": "2026-11-16T14:36:19Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-044",
+  "latest_milestone": "T-040",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -47,7 +47,8 @@
     "T-041",
     "T-042",
     "T-043",
-    "T-044"
+    "T-044",
+    "T-040"
   ],
   "total_staged_pipeline_usd": 425500.0,
   "live_staged_pipeline_usd": 405000.0,

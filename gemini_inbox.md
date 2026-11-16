@@ -2,7 +2,7 @@
 
 Nexus State Bus — Master Ledger
 Status Overview
-* Active Phase: Phase 5 (T-044 COMPLETED — Closed-Loop Auto-Sync Active)
+* Active Phase: Phase 5 (T-040 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
 * Shared Bridge: Google Doc State Ledger (Canonical Source of Truth) & GitHub State Bus (gemini_inbox.md)
 * Pipeline Valuation Split: $425,500.00 Total ($405,000.00 Live [95.2%] / $20,500.00 Projected [4.8%])
@@ -96,22 +96,22 @@ Swarm Infrastructure & Resilience Updates
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
-# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-044` (`COMPLETED`)
+# ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-040` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-16T13:56:15Z`
+- **Auto-Sync Timestamp:** `2026-11-16T14:36:19Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
-- **Latest Milestone Flip:** `T-044` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044`)
+- **Latest Milestone Flip:** `T-040` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
 - **Total Staged Pipeline Valuation:** **`$425,500.00`** (`4/4 DOSSIER_READY` leads staged) — **Live:** `$405,000.00` | **Projected (curated placeholders):** `$20,500.00`
 - **Runtime Blockers:** `NONE`
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-040`** (Phase 6 — `2026-11-14 13:18`): Deploy The Hive control plane (`/opt/hive`, `hive-gateway.service` on `:8799`, `hive-perpetual.service`, and `hive-ollama` `qwen2.5-coder:1.5b`) to OCI Ampere A1 (`phronarch-ampere-web` `158.101.108.156`), disable duplicate local laptop Hive services, and point local `config/routing.json` to `http://158.101.108.156:8799` $\rightarrow$ **`DONE`**
 - **`T-041`** (Phase 6 — `2026-11-14 13:19`): Audit & harden Phronarch (`psycry/phronarch` `b74373b`..`2decabc`): purge synthetic headline/backfill generators, enforce live RSS + Reddit JSON polling, Coinbase `USD` symbol mapping, `0.3%` L2 slippage veto, L2 `avgFillPrice` fills, and round-trip fee deduction in `OBSERVER` mode; bind dashboard/API ports to `127.0.0.1`, add on-demand `phronarch-ui.sh` (`on`/`off`/`status` + `--oci`), and rebuild containers on A1 with Vite UI shut down by default $\rightarrow$ **`DONE`**
 - **`T-042`** (Phase 6 — `2026-11-14 14:25`): Sovereign Cloud-Agnostic Hive Continuity & Documentation upgrade: author portable persona (`SOUL.md`) and full runbook (`ARCHITECTURE.md`), add pluggable local-first provider adapter (`hive/providers.py`: Ollama + OpenAI-compat + scrubbed Gemini/Anthropic burst), sandboxed worker (`hive/worker.py`: `hive/auto-*` branch + HITL hardstops + `DEVNULL` verification), rolling `<150`-line recovery snapshot (`hive/capsule.py` -> `CONTEXT_CAPSULE.md`), zero-open-port `scripts/hive-tunnel.sh`, comprehensive module docstrings across `hive/*.py`, `--boot-prompt` CLI, and A1 deployment $\rightarrow$ **`DONE`**
 - **`T-043`** (Phase 6 — `2026-11-14 14:44`): Autonomous Hive Consolidation, Triad Persona Contract (`Argon he/him` · `Gemini she/her` · `Agent Smith it/its`), & Recursive Self-Improvement Loop: codify explicit 3-layer boundaries (`hive/__init__.py`) and root `Makefile` bootstraps (`hive/Makefile`, `agent_smith/Makefile`); author AST/Rust complexity scanner, grounded verification (`py_compile` + throttled `CARGO_BUILD_JOBS=2 nice -n 19 cargo check`), SHA-256 diff hashing (`SELF_IMPROVE_ITER`), and constitutional ring-fencing (`hive/self_improve.py`); deploy versioned `config/prompts.json` meta-prompt registry with placeholder-integrity guard (`PROMPT_OPT`), `perpetual.py --self-improve` daemon hook, and `engine/hive_bridge.py` (`pgvector` `namespace='self_improvement'`) $\rightarrow$ **`DONE`**
 - **`T-044`** (Phase 6 — `2026-11-14 15:08`): Self-Evolving Persona, Shared Library & Phase 4 Autonomous Upgrades: launch living `SMITH_PERSONA.md` (`SOUL.md` two-tier boundary splitting survival gates from open self-evolution via anti-delusion reality checks `validate_persona_sanity`); add `pyproject.toml` + `.venv` editable link between `hive` and `agent_smith`; add `check_host_resources()` load/RAM governor, revenue-weighted hotspot scoring (`REVENUE_WEIGHTS`), ephemeral `git worktree` sandbox runner (`test_in_worktree`), and pgvector cosine semantic iteration recall (`engine/hive_bridge.py --recall`) $\rightarrow$ **`DONE`**
+- **`T-040`** (Phase 5 — `2026-11-16 09:36`): Master Ledger `T-040` (`psycry/phronarch` `749900d`): Initialize Phronarch micro-capital live telemetry, markout verification & headline circuit breakers (`execution/src/micro_capital.ts`, `db.ts`, `index.ts`, `sync_ledger.py`): (1) Cost-gated entry filter & `MIN_NOTIONAL` guard + strict `POST_ONLY` maker routing (zero taker-fee drag); (2) `watchTrades` TFI + L2 OFI confluence (spoof-flicker veto); (3) 2-tier `HeadlineShockBreaker` (`WIDEN_SPREAD` / `PAUSED`); (4) BBO queue-collapse scratch bailout (`<25%` L1 support); (5) `100ms`–`10s` post-fill `markout_telemetry` SQLite persistence + `/markout` API; verified via `tsc --noEmit` & `scratch/verify_t040.ts` (5/5 checks PASS, positive 500ms/2s markout `+3.0`/`+5.0` bps) $\rightarrow$ **`DONE`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 
