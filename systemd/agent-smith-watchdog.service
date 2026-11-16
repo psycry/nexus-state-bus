@@ -1,0 +1,10 @@
+[Unit]
+Description=Agent Smith Local Node Self-Healing Watchdog (T-041)
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.self_heal
+StandardOutput=journal
+StandardError=journal

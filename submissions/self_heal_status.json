@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-11-16T17:52:32Z",
+  "all_healthy": true,
+  "recoveries_triggered": 0,
+  "checks": [
+    {
+      "target": "agent-smith-pgvector",
+      "kind": "docker",
+      "healthy": true,
+      "action": "NONE"
+    },
+    {
+      "target": "hive-ollama",
+      "kind": "docker",
+      "healthy": true,
+      "action": "NONE"
+    },
+    {
+      "target": "nexus-state-bus.service",
+      "kind": "systemd_user",
+      "healthy": true,
+      "action": "NONE"
+    },
+    {
+      "target": "agent-smith-dashboard.service",
+      "kind": "systemd_user",
+      "healthy": true,
+      "action": "NONE"
+    }
+  ]
+}

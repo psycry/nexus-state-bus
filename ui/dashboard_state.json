@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-16T14:36:25Z",
+  "generated_at": "2026-11-16T17:53:00Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-040",
+  "latest_milestone": "T-041",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -53,7 +53,8 @@
     "T-042",
     "T-043",
     "T-044",
-    "T-040"
+    "T-040",
+    "T-041"
   ],
   "milestone_log": [
     {
@@ -362,6 +363,13 @@
       "timestamp": "2026-11-16 09:36",
       "phase": "Phase 5",
       "description": "Master Ledger `T-040` (`psycry/phronarch` `749900d`): Initialize Phronarch micro-capital live telemetry, markout verification & headline circuit breakers (`execution/src/micro_capital.ts`, `db.ts`, `index.ts`, `sync_ledger.py`): (1) Cost-gated entry filter & `MIN_NOTIONAL` guard + strict `POST_ONLY` maker routing (zero taker-fee drag); (2) `watchTrades` TFI + L2 OFI confluence (spoof-flicker veto); (3) 2-tier `HeadlineShockBreaker` (`WIDEN_SPREAD` / `PAUSED`); (4) BBO queue-collapse scratch bailout (`<25%` L1 support); (5) `100ms`\u2013`10s` post-fill `markout_telemetry` SQLite persistence + `/markout` API; verified via `tsc --noEmit` & `scratch/verify_t040.ts` (5/5 checks PASS, positive 500ms/2s markout `+3.0`/`+5.0` bps)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-041",
+      "timestamp": "2026-11-16 12:52",
+      "phase": "Phase 6",
+      "description": "Master Ledger `T-041` & Swarm Resilience Updates: (1) Built `engine/self_heal.py` + enabled `agent-smith-watchdog.timer` (5m auto-recovery for `agent-smith-pgvector`, `hive-ollama`, `nexus-state-bus.service`, `agent-smith-dashboard.service` \u2014 `4/4 HEALTHY`); (2) Built `engine/oci_budget_guard.py` verifying Always-Free zero-overage compliance (`COMPLIANT $0/mo`: A1 `2.0/4.0` OCPUs, `12.0/24.0GB` RAM, `97.0/200.0GB` storage); (3) Added `--offline` / `AGENT_SMITH_OFFLINE_EMBED=1` to `engine/embeddings.py` + `engine/hive_bridge.py` (`8/8` Hive events synced with zero external API calls); (4) Verified grant & SOW submission packages via `engine.qa` (**4/4 PASS, 0 WARN, 0 FAIL**)",
       "status": "DONE"
     }
   ],

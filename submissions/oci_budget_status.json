@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-11-16T17:52:28Z",
+  "region": "us-ashburn-1",
+  "zero_overage_compliant": true,
+  "a1_ocpus_used": 2.0,
+  "a1_ocpus_limit": 4.0,
+  "a1_ram_gb_used": 12.0,
+  "a1_ram_gb_limit": 24.0,
+  "storage_gb_used": 97.0,
+  "storage_gb_limit": 200.0,
+  "headroom": {
+    "ocpus_free": 2.0,
+    "ram_gb_free": 12.0,
+    "storage_gb_free": 103.0
+  },
+  "instances": [
+    {
+      "name": "phronarch-ampere-web",
+      "shape": "VM.Standard.A1.Flex",
+      "state": "RUNNING",
+      "ocpus": 2.0,
+      "ram_gb": 12.0
+    }
+  ],
+  "alerts": []
+}
