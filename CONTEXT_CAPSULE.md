@@ -1,6 +1,6 @@
 # CONTEXT_CAPSULE.md — The Hive Rolling Recovery Snapshot
 
-- **Generated UTC:** `2026-11-14T20:09:48Z` | **Node:** `THE-HIVE` | **WAL Events:** `393`
+- **Generated UTC:** `2026-11-17T20:09:39Z` | **Node:** `THE-HIVE` | **WAL Events:** `424`
 - **Sovereign Triad:** **Argon/Antigravity (`he/him`)** · **Gemini (`she/her`)** · **Agent Smith (`it/its`)**
 - **Boot Contract (Read In Full):** `SOUL.md` (persona/rules) + `ARCHITECTURE.md` (design) + `CONTEXT_CAPSULE.md` + `HIVE_LEDGER.md`
 - **Public State Bus Mirror:** `psycry/nexus-state-bus` (`main`) — `SOUL.md`, `ARCHITECTURE.md`, `CONTEXT_CAPSULE.md`, `HIVE_LEDGER.md`
@@ -16,21 +16,21 @@
 
 | ID | UTC | Node | Type | Masked Payload Summary |
 |---:|---|---|---|---|
-| 393 | 2026-11-14T20:09:32Z | `local_worker` | `PERSONA_EVOLVED` | `{"anchors": ["code", "ledger", "rust", "smith", "telemetry"], "length": 652, "max_word_freq": 0.0...` |
-| 392 | 2026-11-14T20:09:32Z | `local_worker` | `PROVIDER_GENERATE` | `{"fallback_used": false, "latency_ms": 9554, "model": "qwen2.5-coder:1.5b", "ok": true, "prefer":...` |
-| 391 | 2026-11-14T20:09:22Z | `local_worker` | `WORKER_VERIFY` | `{"cmd": "/usr/bin/python3 -m py_compile poll_bus.py engine/__init__.py engine/anchors.py", "ok": ...` |
-| 390 | 2026-11-14T20:09:22Z | `local_worker` | `WORKER_VERIFY` | `{"cmd": "/usr/bin/python3 -m py_compile hive/__init__.py hive/capsule.py hive/financial.py", "ok"...` |
-| 389 | 2026-11-14T20:09:22Z | `control_plane` | `HITL_HOLD` | `{"action": "HOLD_FOR_HUMAN", "gate": "financial", "task": "touch Module-P4.db", "worker_gate": true}` |
-| 388 | 2026-11-14T20:08:44Z | `local_worker` | `PERSONA_EVOLVED` | `{"anchors": ["argon", "branch", "gemini", "hive", "ledger", "ollama", "pgvector", "python", "rust...` |
-| 387 | 2026-11-14T20:08:44Z | `local_worker` | `PROVIDER_GENERATE` | `{"fallback_used": false, "latency_ms": 17662, "model": "qwen2.5-coder:1.5b", "ok": true, "prefer"...` |
-| 386 | 2026-11-14T20:08:26Z | `local_worker` | `WORKTREE_TEST` | `{"branch": "hive/auto-wt-check", "ok": true, "repo": "hive"}` |
-| 385 | 2026-11-14T20:08:26Z | `local_worker` | `WORKER_VERIFY` | `{"cmd": "/usr/bin/python3 -m py_compile hive/__init__.py hive/capsule.py hive/financial.py", "ok"...` |
-| 384 | 2026-11-14T20:08:26Z | `local_worker` | `SELF_IMPROVE_ITER` | `{"agent": "agent_smith", "branch": "read_only_audit", "diff_hash": "03f5533a2c7e6e12", "hotspots_...` |
+| 424 | 2026-11-17T19:33:36Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 423 | 2026-11-17T19:33:36Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 422 | 2026-11-16T22:06:27Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 421 | 2026-11-16T22:06:27Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 420 | 2026-11-16T21:13:04Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 419 | 2026-11-16T21:13:04Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 418 | 2026-11-16T21:05:05Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 417 | 2026-11-16T21:05:05Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 416 | 2026-11-16T20:28:57Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
+| 415 | 2026-11-16T20:28:57Z | `local_worker` | `SELF_IMPROVE_SCAN` | `{"hotspots_found": 20, "python_files": 19, "repo": "agent_smith", "rust_files": 20, "top_hotspot"...` |
 
 ## 3. Open Checklist & Active Milestones
 - `[x]` All `LEDGER.md` operational items checked off.
-- Active Phase: Phase 5 (T-044 COMPLETED — Closed-Loop Auto-Sync Active)
-- Latest Milestone Flip:** `T-044` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010,
+- Active Phase: Phase 5 (T-047 COMPLETED — Closed-Loop Auto-Sync Active)
+- Latest Milestone Flip:** `T-047` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010,
 
 ## 4. Offline / Provider-Switch Boot Commands
 ```bash
