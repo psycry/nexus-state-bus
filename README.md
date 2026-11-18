@@ -4,6 +4,7 @@ Sanitized architectural state and closed-loop milestone synchronization bus betw
 
 - **State File:** [`BUSINESS_ENGINE_STATE.md`](./BUSINESS_ENGINE_STATE.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/BUSINESS_ENGINE_STATE.md`)
 - **Latest Sync Packet:** [`sync_packet.md`](./sync_packet.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md`)
+- **Codebase & Capability Reality Snapshot (Ground Truth for Gemini):** [`CODEBASE_REALITY_SNAPSHOT.md`](./CODEBASE_REALITY_SNAPSHOT.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/CODEBASE_REALITY_SNAPSHOT.md`)
 - **Shared Ledger & Telemetry Inbox:** [`gemini_inbox.md`](./gemini_inbox.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md`)
 - **The Hive Portable Identity & Operating Contract:** [`SOUL.md`](./SOUL.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/SOUL.md`)
 - **Agent Smith (`it/its`) Living Self-Evolving Persona:** [`SMITH_PERSONA.md`](./SMITH_PERSONA.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/SMITH_PERSONA.md`)
