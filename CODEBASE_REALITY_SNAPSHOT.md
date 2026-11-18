@@ -1,6 +1,6 @@
 # Agent Smith & Hive — Grounded Codebase & Capability Snapshot
 
-- **Generated At:** `2026-11-18T16:25:41Z` (auto-refreshed by `engine/reality_snapshot.py`)
+- **Generated At:** `2026-11-18T16:26:07Z` (auto-refreshed by `engine/reality_snapshot.py`)
 - **Purpose:** Give Gemini (Cloud Architect) an accurate, zero-hype inventory of what actually exists in `psycry/agent_smith` and `psycry/hive`, what is running right now, and what is **not** implemented.
 - **Rule:** Never assume a staged or R&D item in the Google Doc Master Ledger is implemented in code unless it appears under **Implemented & Running** below.
 
@@ -12,7 +12,7 @@
 - `agent-smith-dashboard.service`: `active`
 - `agent-smith-sweep.timer`: `active`
 - `agent-smith-watchdog.timer`: `active`
-- **OCI Budget Guard:** scale_mode=`CONSERVE_LOCAL_FIRST`, cloud_burst_allowed=`True`, compliant=`UNKNOWN`
+- **OCI Budget Guard:** scale_mode=`CONSERVE_LOCAL_FIRST`, cloud_burst_allowed=`True`, zero_overage_compliant=`True`
 
 **What Agent Smith is NOT doing autonomously:**
 - It is **not** autonomously reading Master Ledger milestones and writing/deploying arbitrary code on its own.
