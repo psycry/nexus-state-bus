@@ -345,7 +345,7 @@ Architectural R&D & Cutting-Edge Enhancements (Staged)
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-050` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-18T16:40:40Z`
+- **Auto-Sync Timestamp:** `2026-11-18T19:08:15Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-050` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
@@ -354,11 +354,11 @@ Architectural R&D & Cutting-Edge Enhancements (Staged)
 
 ## 1. Automated Status-Flip Summary (`engine/ledger_sync.py` + `scripts/push_state_bus.sh`)
 
-- **`T-046`** (Phase 6 — `2026-11-16 17:08`): Master Ledger `T-046` (Live A1 C2, Anti-Roleplay & Mesh): Deployed `agent-smith-discord.service` + `agent-smith-oci-exec.timer` on `THE-HIVE` (`4.0` OCPUs / `24.0` GB RAM, `$0/mo`); verified live cross-node P2P mesh handoff (`c33beb3d25ae` `garuda-hive` $\rightarrow$ `ampere-a1` `RESOLVED_SYMBOLICALLY`, `0` tokens) and on-demand `hive.self_improve` (`19 py / 20 rs`, `verify_ok: true`) $\rightarrow$ **`DONE`**
-- **`T-047`** (Phase 6 — `2026-11-17 14:57`): Master Ledger `T-047` & `T-045` OTel/Guardrail Completion: Fixed Discord `Command not allowed` / `Path not allowed` chat fallback, unwrapped plain-English `router_bridge` replies, added `~/nexus-state-bus/submissions/oci_budget_status.json` `scaling_policy` lookup, fixed A1 `git safe.directory` (`WORKTREE_TEST`), added `TaskRouter` max-iteration guardrail (`>5` $\rightarrow$ `MAX_ITERATIONS_EXCEEDED`) & `submissions/otel_spans.jsonl` OpenTelemetry span emitter (`cargo test --lib core::router` `3 passed; 0 failed`) $\rightarrow$ **`DONE`**
-- **`T-048`** (Phase 6 — `2026-11-18 11:22`): Self-Issued Directive (Autonomous Discretion): Built `engine/reality_snapshot.py` to auto-generate grounded `CODEBASE_REALITY_SNAPSHOT.md` on every `push_state_bus.sh` sync (linked in `sync_packet.md`), armed `agent-smith-watchdog.timer` with `OnStartupSec=2min` (`4m55s` countdown active), and verified `tests/test_t048_autonomy_guardrails.py` (`3/3` PASS) + `cargo test --lib core::router` (`3/3` PASS) $\rightarrow$ **`DONE`**
-- **`T-049`** (Phase 6 — `2026-11-18 11:26`): Self-Issued Directive (Autonomous Discretion): Wired `engine.oci_budget_guard` into `scripts/push_state_bus.sh` so `submissions/oci_budget_status.json` Always-Free compliance & `scale_mode` auto-refresh before `reality_snapshot`; verified `engine.qa` (`4/4 PASS, 0 FAIL`), `tests/test_t048_autonomy_guardrails.py` + `tests/test_t049_pipeline_integrity.py` (`6/6` PASS), and `cargo test --lib` (`3/3` PASS) $\rightarrow$ **`DONE`**
 - **`T-050`** (Phase 6 — `2026-11-18 11:31`): Self-Issued Directive (Autonomous Discretion): Upgraded `Makefile` `test` target to run `unittest discover -s tests` + `cargo test --lib` (replacing compile-only check), ran full `make test` (`py_compile` + `6/6` Python tests + Hive tests + `3/3` Rust tests PASS), and checkpointed `agent_smith` git working tree + `nexus-state-bus` $\rightarrow$ **`DONE`**
+- **`T-051`** (`phronarch` — `P1`): Verify & commit `[SPOT_GUARD]` multi-exchange patch (`coinbase`/`kraken`/`binanceus` + `MARGIN_TRADING_ENABLED`), run `npx tsc --noEmit` + `verify_t040.ts`, and log local vs. A1 deployment diff $\rightarrow$ **`STAGED`**
+- **`T-052`** (`agent_smith` — `P1`): Pre-flight verify all 4 staged packages (`MCP-RUST-ORCH-2026-01`, `QUANT-STREAM-OFI-2026-02`, `SBIR-2026-CIVIC-SHELTER-01` due `12/16/2026`, `NSF-SBIR-2026-AGENTIC-AI`) & upstream PR wedge issue states (`HTTP 200` / still open) into a 1-page operator review checklist $\rightarrow$ **`STAGED`**
+- **`T-053`** (`agent_smith` — `P2`): Add regression tests for `router_bridge.py` + `discord`/`agent.rs` conversational fallback & plain-text unwrapping so raw JSON never leaks to Discord C2 $\rightarrow$ **`STAGED`**
+- **`T-054`** (`agent_smith` — `P2`): Keep `CODEBASE_REALITY_SNAPSHOT.md`, `oci_budget_status.json`, `QA_REPORT.md`, and `ui/dashboard_state.json` auto-synced and `make test` (`Python + Hive + Rust`) green $\rightarrow$ **`STAGED`**
 
 ## 2. Live PostgreSQL Staged Opportunity Ledger (`nomad_nexus_grid`)
 

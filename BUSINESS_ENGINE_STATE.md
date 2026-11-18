@@ -136,3 +136,16 @@ We are building the **Autonomous Agent Business Engine**—a self-sustaining, re
 | `T-048` | 2026-11-18 11:22 | Phase 6 | Self-Issued Directive (Autonomous Discretion): Built `engine/reality_snapshot.py` to auto-generate grounded `CODEBASE_REALITY_SNAPSHOT.md` on every `push_state_bus.sh` sync (linked in `sync_packet.md`), armed `agent-smith-watchdog.timer` with `OnStartupSec=2min` (`4m55s` countdown active), and verified `tests/test_t048_autonomy_guardrails.py` (`3/3` PASS) + `cargo test --lib core::router` (`3/3` PASS) | **DONE** |
 | `T-049` | 2026-11-18 11:26 | Phase 6 | Self-Issued Directive (Autonomous Discretion): Wired `engine.oci_budget_guard` into `scripts/push_state_bus.sh` so `submissions/oci_budget_status.json` Always-Free compliance & `scale_mode` auto-refresh before `reality_snapshot`; verified `engine.qa` (`4/4 PASS, 0 FAIL`), `tests/test_t048_autonomy_guardrails.py` + `tests/test_t049_pipeline_integrity.py` (`6/6` PASS), and `cargo test --lib` (`3/3` PASS) | **DONE** |
 | `T-050` | 2026-11-18 11:31 | Phase 6 | Self-Issued Directive (Autonomous Discretion): Upgraded `Makefile` `test` target to run `unittest discover -s tests` + `cargo test --lib` (replacing compile-only check), ran full `make test` (`py_compile` + `6/6` Python tests + Hive tests + `3/3` Rust tests PASS), and checkpointed `agent_smith` git working tree + `nexus-state-bus` | **DONE** |
+
+---
+
+## 6. Staged Autonomous Queue (`T-051`..`T-054` — Safe Execution While Operator Rests)
+
+> **Guardrails Active:** All financial/order actions remain behind `HITL_HOLD`; no external portal submissions or unreviewed upstream PRs are auto-dispatched. Every milestone below is locally verifiable via `make test` / `tsc --noEmit` and synced to `psycry/nexus-state-bus` for operator sanity-check.
+
+| ID | Priority | Scope | Concrete Deliverable & Verification Gate | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| `T-051` | P1 | `phronarch` | Verify & commit `[SPOT_GUARD]` multi-exchange patch (`coinbase`/`kraken`/`binanceus` + `MARGIN_TRADING_ENABLED`), run `npx tsc --noEmit` + `verify_t040.ts`, and log local vs. A1 deployment diff | **STAGED** |
+| `T-052` | P1 | `agent_smith` | Pre-flight verify all 4 staged packages (`MCP-RUST-ORCH-2026-01`, `QUANT-STREAM-OFI-2026-02`, `SBIR-2026-CIVIC-SHELTER-01` due `12/16/2026`, `NSF-SBIR-2026-AGENTIC-AI`) & upstream PR wedge issue states (`HTTP 200` / still open) into a 1-page operator review checklist | **STAGED** |
+| `T-053` | P2 | `agent_smith` | Add regression tests for `router_bridge.py` + `discord`/`agent.rs` conversational fallback & plain-text unwrapping so raw JSON never leaks to Discord C2 | **STAGED** |
+| `T-054` | P2 | `agent_smith` | Keep `CODEBASE_REALITY_SNAPSHOT.md`, `oci_budget_status.json`, `QA_REPORT.md`, and `ui/dashboard_state.json` auto-synced and `make test` (`Python + Hive + Rust`) green | **STAGED** |
