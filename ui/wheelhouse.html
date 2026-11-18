@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE HIVE // CORE WHEELHOUSE COCKPIT</title>
+  <style>
+    :root {
+      --bg-void: #050807;
+      --bg-panel: #0a100e;
+      --bg-panel-elevated: #0f1815;
+      --border-dim: #1b3228;
+      --border-bright: #00ff9c55;
+      --matrix-green: #00ff9c;
+      --matrix-green-dim: #00c476;
+      --cyan-accent: #00e5ff;
+      --amber-accent: #ffb300;
+      --danger-accent: #ff5252;
+      --text-primary: #e4f5ec;
+      --text-secondary: #8fb3a2;
+      --text-muted: #557566;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-void);
+      background-image:
+        radial-gradient(circle at 12% 0%, rgba(0, 255, 156, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 88% 100%, rgba(0, 229, 255, 0.06) 0%, transparent 45%),
+        linear-gradient(rgba(0, 255, 156, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 156, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 22px;
+      background: rgba(10, 16, 14, 0.94);
+      border-bottom: 1px solid var(--border-bright);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-cluster { display: flex; align-items: center; gap: 12px; }
+
+    .pulse-beacon {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--matrix-green);
+      box-shadow: 0 0 10px var(--matrix-green), 0 0 18px var(--matrix-green);
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.22); opacity: 0.72; }
+    }
+
+    .brand-title {
+      font-family: var(--font-mono);
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .brand-title span { color: var(--matrix-green); }
+    .brand-subtitle { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+
+    .status-strip { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--font-mono); font-size: 0.72rem; }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-dim);
+      background: var(--bg-panel-elevated);
+      color: var(--text-secondary);
+    }
+    .pill strong { color: var(--matrix-green); }
+    .pill.cyan strong { color: var(--cyan-accent); }
+    .pill.amber strong { color: var(--amber-accent); }
+    .pill.danger strong { color: var(--danger-accent); }
+
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 10px 22px;
+      background: #070d0b;
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .tab-btn {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-dim);
+      background: var(--bg-panel);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { border-color: var(--matrix-green); color: var(--text-primary); }
+    .tab-btn.active {
+      background: rgba(0, 255, 156, 0.12);
+      border-color: var(--matrix-green);
+      color: var(--matrix-green);
+    }
+
+    .tab-panel { display: none; flex: 1; }
+    .tab-panel.active { display: block; }
+    .tab-panel.frame-panel.active { display: flex; flex-direction: column; }
+
+    .container { max-width: 1480px; margin: 0 auto; padding: 20px 22px; display: grid; gap: 18px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 18px; }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-dim);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .panel-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px;
+      background: var(--bg-panel-elevated);
+      border-bottom: 1px solid var(--border-dim);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--matrix-green);
+      letter-spacing: 0.04em;
+    }
+    .panel-body { padding: 16px; }
+
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .ctrl-btn {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--matrix-green);
+      background: rgba(0, 255, 156, 0.1);
+      color: var(--matrix-green);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ctrl-btn:hover { background: rgba(0, 255, 156, 0.22); }
+    .ctrl-btn.cyan { border-color: var(--cyan-accent); color: var(--cyan-accent); background: rgba(0, 229, 255, 0.08); }
+    .ctrl-btn.cyan:hover { background: rgba(0, 229, 255, 0.2); }
+    .ctrl-btn.amber { border-color: var(--amber-accent); color: var(--amber-accent); background: rgba(255, 179, 0, 0.08); }
+    .ctrl-btn.danger { border-color: var(--danger-accent); color: var(--danger-accent); background: rgba(255, 82, 82, 0.08); }
+    .ctrl-btn:disabled { opacity: 0.5; cursor: wait; }
+
+    .action-log {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: #040706;
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
+    }
+    .stat-card {
+      padding: 10px 12px;
+      background: var(--bg-panel-elevated);
+      border: 1px solid var(--border-dim);
+      border-radius: 6px;
+    }
+    .stat-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; margin-top: 4px; color: var(--text-primary); }
+    .ok { color: var(--matrix-green) !important; }
+    .warn { color: var(--amber-accent) !important; }
+    .bad { color: var(--danger-accent) !important; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th, td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-dim);
+      text-align: left;
+      font-family: var(--font-mono);
+    }
+    th { color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; }
+
+    .hitl-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .hitl-list li {
+      padding: 8px 12px;
+      background: rgba(255, 179, 0, 0.06);
+      border-left: 3px solid var(--amber-accent);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--text-primary);
+    }
+
+    iframe.embedded-view {
+      width: 100%;
+      flex: 1;
+      min-height: calc(100vh - 115px);
+      border: none;
+      background: #050807;
+    }
+
+    pre.doc-view {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      line-height: 1.5;
+      color: var(--text-primary);
+      white-space: pre-wrap;
+      max-height: 74vh;
+      overflow-y: auto;
+      background: #040706;
+      padding: 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-dim);
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="brand-cluster">
+      <div class="pulse-beacon"></div>
+      <div>
+        <div class="brand-title">THE HIVE // <span>CORE WHEELHOUSE COCKPIT</span></div>
+        <div class="brand-subtitle">Unified Control Plane &bull; Agent Smith (:8787) + Phronarch (:5173/:3000) + Continuity &amp; OCI Guard</div>
+      </div>
+    </div>
+    <div class="status-strip">
+      <span class="pill">CONTINUITY: <strong id="badge-continuity">--</strong></span>
+      <span class="pill cyan">OCI GUARD: <strong id="badge-oci">--</strong></span>
+      <span class="pill" id="pill-phronarch">PHRONARCH: <strong id="badge-phronarch">--</strong></span>
+      <span class="pill">COMMAND CENTER: <strong id="badge-cc">--</strong></span>
+      <span class="pill">SYNC: <strong id="badge-sync">--</strong></span>
+    </div>
+  </header>
+
+  <nav class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('overview', this)">&#x26a1; Wheelhouse Overview</button>
+    <button class="tab-btn" onclick="switchTab('command-center', this)">&#x1f576;&#xfe0f; Command Center (:8787)</button>
+    <button class="tab-btn" onclick="switchTab('phronarch', this)">&#x1f4c8; Phronarch Engine (:5173)</button>
+    <button class="tab-btn" onclick="switchTab('docs', this)">&#x1f4cb; Sanity Checklist &amp; Codebase Reality</button>
+  </nav>
+
+  <!-- TAB 1: OVERVIEW -->
+  <section id="tab-overview" class="tab-panel active">
+    <div class="container">
+      <div class="panel">
+        <div class="panel-head">
+          <span>1-CLICK MASTER CONTROL DECK</span>
+          <span id="pipeline-summary" style="color:var(--cyan-accent);">Loading...</span>
+        </div>
+        <div class="panel-body">
+          <div class="btn-row">
+            <button class="ctrl-btn" onclick="runAction('phronarch-on', this)">&#x25b6; SPIN UP PHRONARCH</button>
+            <button class="ctrl-btn danger" onclick="runAction('phronarch-off', this)">&#x23f9; STOP PHRONARCH UI</button>
+            <button class="ctrl-btn cyan" onclick="runAction('self-heal', this)">&#x1f6e1; RUN SELF-HEAL + CONTINUITY</button>
+            <button class="ctrl-btn" onclick="runAction('sweep', this)">&#x26a1; SWEEP DOSSIERS</button>
+            <button class="ctrl-btn amber" onclick="runAction('push-bus', this)">&#x1f4e1; SYNC STATE BUS</button>
+            <a class="ctrl-btn cyan" href="/index.html" target="_blank">&#x2197; OPEN :8787</a>
+            <a class="ctrl-btn cyan" href="http://localhost:5173" target="_blank">&#x2197; OPEN :5173</a>
+          </div>
+          <div id="action-log" class="action-log">Wheelhouse ready. Polling /api/wheelhouse every 10s...</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head">
+            <span>ENDPOINT &amp; DAEMON HEALTH GRID</span>
+            <span id="oci-headroom-label" style="color:var(--text-secondary);">--</span>
+          </div>
+          <div class="panel-body">
+            <div id="daemon-grid" class="stat-grid"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <span>PHRONARCH LIVE MARKET PULSE</span>
+            <span id="phronarch-mode-label" style="color:var(--amber-accent);">--</span>
+          </div>
+          <div class="panel-body">
+            <div id="price-grid" class="stat-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head">
+            <span>LIVE GRANT COUNTDOWN &amp; PR WEDGES</span>
+            <span id="qa-summary-label">--</span>
+          </div>
+          <div class="panel-body">
+            <table>
+              <thead>
+                <tr><th>ID / Solicitation</th><th>Deadline / SOW</th><th>Value</th><th>QA</th></tr>
+              </thead>
+              <tbody id="grants-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <span>OPERATOR SANITY QUEUE (HITL_HOLD)</span>
+            <span style="color:var(--amber-accent);">HUMAN SIGN-OFF REQUIRED</span>
+          </div>
+          <div class="panel-body">
+            <div id="continuity-meta" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);"></div>
+            <ul id="hitl-list" class="hitl-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 2: COMMAND CENTER -->
+  <section id="tab-command-center" class="tab-panel frame-panel">
+    <iframe class="embedded-view" src="/index.html" title="Agent Smith Command Center"></iframe>
+  </section>
+
+  <!-- TAB 3: PHRONARCH -->
+  <section id="tab-phronarch" class="tab-panel frame-panel">
+    <div id="phronarch-offline-banner" style="display:none;padding:12px 22px;background:#1a1208;border-bottom:1px solid var(--amber-accent);font-family:var(--font-mono);font-size:0.8rem;align-items:center;justify-content:space-between;">
+      <span>Phronarch UI (:5173) is currently offline. Spin it up to inspect live OBSERVER telemetry.</span>
+      <button class="ctrl-btn" onclick="runAction('phronarch-on', this)">&#x25b6; SPIN UP PHRONARCH</button>
+    </div>
+    <iframe id="phronarch-frame" class="embedded-view" src="http://localhost:5173" title="Phronarch Trading Engine"></iframe>
+  </section>
+
+  <!-- TAB 4: CHECKLIST & REALITY -->
+  <section id="tab-docs" class="tab-panel">
+    <div class="container">
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><span>OPERATOR_SANITY_CHECKLIST.md</span></div>
+          <div class="panel-body"><pre id="doc-checklist" class="doc-view">Loading...</pre></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><span>CODEBASE_REALITY_SNAPSHOT.md</span></div>
+          <div class="panel-body"><pre id="doc-reality" class="doc-view">Loading...</pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function switchTab(name, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+      if (name === 'phronarch') {
+        const frame = document.getElementById('phronarch-frame');
+        if (!frame.dataset.loaded) {
+          frame.src = 'http://localhost:5173';
+          frame.dataset.loaded = '1';
+        }
+      }
+    }
+
+    function fmtUsd(v) {
+      return '$' + Number(v || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function fmtPrice(v) {
+      const n = Number(v || 0);
+      if (!n) return '$0.00';
+      if (n < 0.001) return '$' + n.toFixed(8);
+      if (n < 10) return '$' + n.toFixed(4);
+      return '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderWheelhouse(data) {
+      const dash = data.dashboard || {};
+      const cont = data.continuity || {};
+      const oci = data.oci_budget || {};
+      const phr = data.phronarch || {};
+      const post = cont.continuity || {};
+      const pol = oci.scaling_policy || {};
+
+      document.getElementById('badge-continuity').textContent = post.mode || 'UNKNOWN';
+      document.getElementById('badge-oci').textContent =
+        (oci.zero_overage_compliant ? '$0/MO ' : 'OVERAGE ') + (pol.scale_mode || '');
+      document.getElementById('badge-phronarch').textContent =
+        (phr.ui_online && phr.api_online) ? 'ONLINE (:5173/:3000)' : (phr.api_online ? 'API ONLY' : 'OFFLINE');
+      document.getElementById('badge-cc').textContent = dash.db_online ? 'ONLINE (:8787)' : 'DEGRADED';
+      document.getElementById('badge-sync').textContent = data.generated_at || '--';
+
+      const metrics = dash.metrics || {};
+      document.getElementById('pipeline-summary').textContent =
+        `Milestone ${dash.latest_milestone || '--'} | Staged ${fmtUsd(dash.total_staged_pipeline_usd)} (Live ${fmtUsd(metrics.live_staged_pipeline_usd)})`;
+
+      document.getElementById('oci-headroom-label').textContent =
+        `A1: ${oci.a1_ocpus_used ?? '?'}/${oci.a1_ocpus_limit ?? '?'} OCPUs | ${oci.a1_ram_gb_used ?? '?'}/${oci.a1_ram_gb_limit ?? '?'} GB RAM`;
+
+      // Daemon & Endpoint Grid
+      const units = cont.systemd_units || {};
+      const daemonEntries = [
+        ['nexus-state-bus.service', units['nexus-state-bus.service'] || 'unknown'],
+        ['agent-smith-dashboard.service', units['agent-smith-dashboard.service'] || 'unknown'],
+        ['agent-smith-sweep.timer', units['agent-smith-sweep.timer'] || 'unknown'],
+        ['agent-smith-watchdog.timer', units['agent-smith-watchdog.timer'] || 'unknown'],
+        ['phronarch-ui (:5173)', phr.ui_online ? 'active' : 'offline'],
+        ['phronarch-api (:3000)', phr.api_online ? 'active' : 'offline'],
+      ];
+      document.getElementById('daemon-grid').innerHTML = daemonEntries.map(([name, st]) => {
+        const cls = (st === 'active') ? 'ok' : (st === 'offline' ? 'warn' : 'bad');
+        return `<div class="stat-card"><div class="stat-label">${name}</div><div class="stat-val ${cls}">${String(st).toUpperCase()}</div></div>`;
+      }).join('');
+
+      // Phronarch Market Pulse
+      const pStatus = phr.status || {};
+      document.getElementById('phronarch-mode-label').textContent =
+        phr.api_online ? `MODE: ${pStatus.mode || 'OBSERVER'}` : 'OFFLINE';
+      document.getElementById('phronarch-offline-banner').style.display = phr.ui_online ? 'none' : 'flex';
+      const prices = pStatus.prices || {};
+      const priceKeys = Object.keys(prices);
+      document.getElementById('price-grid').innerHTML = priceKeys.length
+        ? priceKeys.map(sym => `<div class="stat-card"><div class="stat-label">${sym}</div><div class="stat-val">${fmtPrice(prices[sym])}</div></div>`).join('')
+        : '<div class="stat-card"><div class="stat-label">STATUS</div><div class="stat-val warn">Click SPIN UP PHRONARCH to stream prices</div></div>';
+
+      // Grants + Wedges
+      document.getElementById('qa-summary-label').textContent =
+        `QA: ${cont.qa_total_packages ?? 0} PKGS | FAIL=${cont.qa_fail_count ?? 0}`;
+      const rows = [];
+      (cont.live_grants || []).forEach(g => {
+        rows.push(`<tr><td>${g.external_id}<br><span style="color:var(--text-muted)">${g.solicitation}</span></td><td>${g.deadline} (${g.days_remaining}d)</td><td>${fmtUsd(g.ceiling_usd)}</td><td class="${g.qa_status === 'PASS' ? 'ok' : 'warn'}">${g.qa_status}</td></tr>`);
+      });
+      (cont.fast_cashflow_wedges || []).forEach(w => {
+        rows.push(`<tr><td>${w.external_id}<br><span style="color:var(--text-muted)">PR Wedge ${w.patch_bundle_exists ? 'READY' : 'MISSING'}</span></td><td>14d Fixed SOW</td><td>${fmtUsd(w.sow_usd)}</td><td class="${w.qa_status === 'PASS' ? 'ok' : 'warn'}">${w.qa_status}</td></tr>`);
+      });
+      document.getElementById('grants-table-body').innerHTML = rows.join('');
+
+      // Continuity & HITL
+      document.getElementById('continuity-meta').textContent =
+        `Mode: ${post.mode || '--'} | Hours Since Operator: ${cont.hours_since_operator ?? '--'}h | force_local_only=${post.force_local_only}`;
+      document.getElementById('hitl-list').innerHTML = (cont.hitl_hold_items || [])
+        .map(item => `<li><strong>HITL_HOLD:</strong> ${item}</li>`)
+        .join('');
+
+      document.getElementById('doc-checklist').textContent = data.checklist_md || 'No checklist generated yet.';
+      document.getElementById('doc-reality').textContent = data.reality_md || 'No reality snapshot generated yet.';
+    }
+
+    async function refreshWheelhouse() {
+      try {
+        const res = await fetch('/api/wheelhouse', { cache: 'no-store' });
+        if (res.ok) renderWheelhouse(await res.json());
+      } catch (err) {
+        document.getElementById('action-log').textContent = 'Wheelhouse poll error: ' + err;
+      }
+    }
+
+    async function runAction(action, btn) {
+      const log = document.getElementById('action-log');
+      if (btn) btn.disabled = true;
+      log.textContent = `[RUNNING] POST /api/actions/${action}...`;
+      try {
+        const res = await fetch(`/api/actions/${action}`, { method: 'POST' });
+        const payload = await res.json();
+        log.textContent = `[${payload.ok ? 'OK' : 'ERR'}] ${action}\n` + (payload.output || payload.error || 'Completed.');
+        if (action === 'phronarch-on' && payload.ok) {
+          document.getElementById('phronarch-frame').src = 'http://localhost:5173';
+        }
+        await refreshWheelhouse();
+      } catch (err) {
+        log.textContent = `[ERR] ${action}: ${err}`;
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    refreshWheelhouse();
+    setInterval(refreshWheelhouse, 10000);
+  </script>
+</body>
+</html>
