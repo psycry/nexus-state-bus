@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-11-18T19:12:02Z",
+  "hours_since_operator": 2.69,
+  "continuity": {
+    "mode": "ACTIVE_COLLAB",
+    "force_local_only": false,
+    "max_cloud_burst": true
+  },
+  "systemd_units": {
+    "nexus-state-bus.service": "active",
+    "agent-smith-sweep.timer": "active",
+    "agent-smith-watchdog.timer": "active",
+    "agent-smith-dashboard.service": "active"
+  },
+  "qa_total_packages": 4,
+  "qa_fail_count": 0,
+  "qa_warn_count": 0,
+  "live_grants": [
+    {
+      "external_id": "SBIR-2026-CIVIC-SHELTER-01",
+      "solicitation": "HHS-2027-ACL-NIDILRR-BISA-0308",
+      "deadline": "2026-12-16",
+      "days_remaining": 28,
+      "ceiling_usd": 100000.0,
+      "qa_status": "PASS"
+    },
+    {
+      "external_id": "NSF-SBIR-2026-AGENTIC-AI",
+      "solicitation": "NSF 26-510",
+      "deadline": "2027-03-04",
+      "days_remaining": 106,
+      "ceiling_usd": 305000.0,
+      "qa_status": "PASS"
+    }
+  ],
+  "fast_cashflow_wedges": [
+    {
+      "external_id": "MCP-RUST-ORCH-2026-01",
+      "sow_usd": 8500.0,
+      "qa_status": "PASS",
+      "patch_bundle": "submissions/patches/MCP-RUST-ORCH-2026-01_PR_WEDGES.md",
+      "patch_bundle_exists": true
+    },
+    {
+      "external_id": "QUANT-STREAM-OFI-2026-02",
+      "sow_usd": 12000.0,
+      "qa_status": "PASS",
+      "patch_bundle": "submissions/patches/QUANT-STREAM-OFI-2026-02_PR_WEDGES.md",
+      "patch_bundle_exists": true
+    }
+  ],
+  "oci_zero_overage_compliant": true,
+  "oci_scale_mode": "CONSERVE_LOCAL_FIRST",
+  "self_heal_all_healthy": true,
+  "hitl_hold_items": [
+    "Portal submission of HHS-2027-ACL-NIDILRR-BISA-0308 and NSF 26-510 SBIR packages",
+    "Upstream GitHub PR dispatch from submissions/patches/",
+    "Phronarch LIVE_TRADING_ENABLED=true toggle and Coinbase USD funding"
+  ]
+}

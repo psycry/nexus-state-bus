@@ -14,6 +14,7 @@ Sanitized architectural state and closed-loop milestone synchronization bus betw
 - **Machine-Readable Ledger Feedback JSON:** [`MASTER_LEDGER_FEEDBACK.json`](./MASTER_LEDGER_FEEDBACK.json) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/MASTER_LEDGER_FEEDBACK.json`)
 - **Staged Submission Packages (4 Ready Leads — \$425,500.00 Pipeline: \$405,000.00 Live / \$20,500.00 Projected):** [`submissions/EXECUTIVE_SUBMISSION_INDEX.md`](./submissions/EXECUTIVE_SUBMISSION_INDEX.md)
 - **Submission QA Gate Report (`4/4 PASS`):** [`submissions/QA_REPORT.md`](./submissions/QA_REPORT.md)
+- **Operator Sanity-Check & Continuity Checklist:** [`submissions/OPERATOR_SANITY_CHECKLIST.md`](./submissions/OPERATOR_SANITY_CHECKLIST.md) (`https://raw.githubusercontent.com/psycry/nexus-state-bus/main/submissions/OPERATOR_SANITY_CHECKLIST.md`)
 - **Upstream Technical Wedge PR Bundles (`T-037`):** [`submissions/patches/`](./submissions/patches/)
 - **Technical Capability Dossiers:** [`dossiers/`](./dossiers/)
 - **Tactical Command Center UI & Snapshot:** [`ui/index.html`](./ui/index.html) | [`ui/dashboard_state.json`](./ui/dashboard_state.json)
