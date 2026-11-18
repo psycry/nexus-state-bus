@@ -1,12 +1,12 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-18T16:16:44Z",
+  "generated_at": "2026-11-18T16:22:12Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
   "db_error": null,
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-047",
+  "latest_milestone": "T-048",
   "status": "COMPLETED",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)",
   "completed_milestones": [
@@ -57,7 +57,8 @@
     "T-041",
     "T-045",
     "T-046",
-    "T-047"
+    "T-047",
+    "T-048"
   ],
   "milestone_log": [
     {
@@ -394,6 +395,13 @@
       "timestamp": "2026-11-17 14:57",
       "phase": "Phase 6",
       "description": "Master Ledger `T-047` & `T-045` OTel/Guardrail Completion: Fixed Discord `Command not allowed` / `Path not allowed` chat fallback, unwrapped plain-English `router_bridge` replies, added `~/nexus-state-bus/submissions/oci_budget_status.json` `scaling_policy` lookup, fixed A1 `git safe.directory` (`WORKTREE_TEST`), added `TaskRouter` max-iteration guardrail (`>5` $\\rightarrow$ `MAX_ITERATIONS_EXCEEDED`) & `submissions/otel_spans.jsonl` OpenTelemetry span emitter (`cargo test --lib core::router` `3 passed; 0 failed`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-048",
+      "timestamp": "2026-11-18 11:22",
+      "phase": "Phase 6",
+      "description": "Self-Issued Directive (Autonomous Discretion): Built `engine/reality_snapshot.py` to auto-generate grounded `CODEBASE_REALITY_SNAPSHOT.md` on every `push_state_bus.sh` sync (linked in `sync_packet.md`), armed `agent-smith-watchdog.timer` with `OnStartupSec=2min` (`4m55s` countdown active), and verified `tests/test_t048_autonomy_guardrails.py` (`3/3` PASS) + `cargo test --lib core::router` (`3/3` PASS)",
       "status": "DONE"
     }
   ],
