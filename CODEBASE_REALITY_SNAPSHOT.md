@@ -1,6 +1,6 @@
 # Agent Smith & Hive — Grounded Codebase & Capability Snapshot
 
-- **Generated At:** `2026-11-19T18:05:37Z` (auto-refreshed by `engine/reality_snapshot.py`)
+- **Generated At:** `2026-11-19T18:35:28Z` (auto-refreshed by `engine/reality_snapshot.py`)
 - **Purpose:** Give Gemini (Cloud Architect) an accurate, zero-hype inventory of what actually exists in `psycry/agent_smith` and `psycry/hive`, what is running right now, and what is **not** implemented.
 - **Rule:** Never assume a staged or R&D item in the Google Doc Master Ledger is implemented in code unless it appears under **Implemented & Running** below.
 
@@ -26,16 +26,20 @@
 
 | Component | Language | Files | Lines of Code | Role |
 | :--- | :--- | ---: | ---: | :--- |
-| `agent_smith/claw-mcp-server/src` | Rust | 20 | 3,845 | MCP server (`v0.2.0`), `TaskRouter`, Discord/CLI C2, sandboxing |
-| `agent_smith/engine` | Python | 1062 | 533,016 | Lead ingestion, 768-dim `pgvector` scoring, dossiers, QA, ledger sync, dashboard API |
+| `agent_smith/claw-mcp-server/src` | Rust | 24 | 4,380 | MCP server (`v0.2.0`), `TaskRouter`, HumSynth DSP (`audio/`), Discord/CLI C2, sandboxing |
+| `agent_smith/engine` | Python | 20 | 4,915 | Lead ingestion, 768-dim `pgvector` scoring, KEOV, dossiers, QA, ledger sync, dashboard API |
 | `hive/hive` | Python | 15 | 2,086 | Provider adapters, `self_improve` worktree runner, `CONTEXT_CAPSULE.md`, IPC |
+
+## 2b. Recently Implemented Master Ledger Modules
+
+- **KEOV (`engine/keov.py`)**: Implemented (deterministic operator intent vectors in `agent_memories` `namespace='keov_operator_intent'`, offline JSONL checkpoint buffer `submissions/keov_offline_buffer.jsonl`, and `align_task_with_operator_vector()`).
+- **Vocode-MIDI / HumSynth DSP Core (`claw-mcp-server/src/audio/`)**: Implemented in Rust (`src/audio/ingest.rs` zero-allocation ring buffer, `src/audio/pitch.rs` streaming YIN pitch detector, `src/audio/midi_mapper.rs` MIDI note/pitch-bend/CC & contour-to-prompt mapper).
 
 ---
 
 ## 3. Staged / Aspirational Items NOT Yet Implemented in Code
 
 Do **not** assume Agent Smith can currently execute these:
-- **KEOV (Knowledge-Enhanced Operator Vector)** offline buffer/recalibration protocol (staged directive only; no `keov` module exists).
 - **Zero-Knowledge Proofs (ZKPs)** in Phronarch execution pipeline (R&D concept only).
 - **Dynamic Self-Healing Agent Topologies & Decentralized Consensus State Sync** (R&D concepts only; current sync is single-master Git + Google Doc `INSTANT_TXT`).
 - **Autonomous Proposal/PR Submission without Human Review** (packages and patch bundles are staged in `submissions/`, not auto-submitted to portals or upstream repos without operator review).

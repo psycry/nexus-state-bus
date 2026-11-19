@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-11-19T18:35:29Z",
+  "offline_mode": true,
+  "operator_intent_count": 4,
+  "seeded_intents": 4,
+  "flushed_checkpoints": 0,
+  "buffer_remaining": 0,
+  "intent_keys": [
+    "autonomous_revenue_first",
+    "zero_overage_free_tier",
+    "anti_hallucination_grounded_truth",
+    "hitl_financial_safety"
+  ]
+}
