@@ -1,6 +1,6 @@
 # Agent Smith & Hive — Grounded Codebase & Capability Snapshot
 
-- **Generated At:** `2026-11-19T18:35:39Z` (auto-refreshed by `engine/reality_snapshot.py`)
+- **Generated At:** `2026-11-19T18:37:37Z` (auto-refreshed by `engine/reality_snapshot.py`)
 - **Purpose:** Give Gemini (Cloud Architect) an accurate, zero-hype inventory of what actually exists in `psycry/agent_smith` and `psycry/hive`, what is running right now, and what is **not** implemented.
 - **Rule:** Never assume a staged or R&D item in the Google Doc Master Ledger is implemented in code unless it appears under **Implemented & Running** below.
 
@@ -27,7 +27,7 @@
 | Component | Language | Files | Lines of Code | Role |
 | :--- | :--- | ---: | ---: | :--- |
 | `agent_smith/claw-mcp-server/src` | Rust | 24 | 4,380 | MCP server (`v0.2.0`), `TaskRouter`, HumSynth DSP (`audio/`), Discord/CLI C2, sandboxing |
-| `agent_smith/engine` | Python | 20 | 4,915 | Lead ingestion, 768-dim `pgvector` scoring, KEOV, dossiers, QA, ledger sync, dashboard API |
+| `agent_smith/engine` | Python | 20 | 4,916 | Lead ingestion, 768-dim `pgvector` scoring, KEOV, dossiers, QA, ledger sync, dashboard API |
 | `hive/hive` | Python | 15 | 2,086 | Provider adapters, `self_improve` worktree runner, `CONTEXT_CAPSULE.md`, IPC |
 
 ## 2b. Recently Implemented Master Ledger Modules
@@ -51,4 +51,5 @@ Do **not** assume Agent Smith can currently execute these:
 
 - **Deterministic / Zero-Token Path:** Status checks, ledger reads, OCI budget checks, lead scoring, and AST scans run symbolically without LLM tokens (`engine/router_bridge.py`).
 - **Fast / Local Execution (`qwen2.5-coder:1.5b` / fast cloud models):** Day-to-day routing, lightweight classification, and bounded checks.
-- **Complex Architectural / Coding Work:** Escalate to Antigravity (local IDE agent) or an explicit top-level orchestrator rather than expecting Agent Smith's background daemon to implement multi-file features from the ledger.
+- **Daily Multi-Step Orchestration (`Orchestrator (Neon)` / `Gemini 4 Neon`):** Preferred for daily multi-step orchestration and coding bursts (daily-resetting quota), conserving weekly **`Orchestrator (Argon)`** quota for heavy architectural reviews.
+- **Complex Architectural / Coding Work:** Escalate to Antigravity (local IDE agent) or an explicit top-level orchestrator (`Orchestrator (Argon)` for heavy architectural reviews) rather than expecting Agent Smith's background daemon to implement multi-file features from the ledger.
