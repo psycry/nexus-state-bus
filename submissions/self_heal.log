@@ -1,0 +1,1 @@
+[2026-11-19T18:04:07Z] SELF_HEAL target=agent-smith-dashboard.service action="systemctl --user restart agent-smith-dashboard.service" healthy=False

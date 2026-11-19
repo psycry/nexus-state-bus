@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-11-18T19:15:30Z",
-  "all_healthy": true,
-  "recoveries_triggered": 0,
+  "timestamp": "2026-11-19T18:04:07Z",
+  "all_healthy": false,
+  "recoveries_triggered": 1,
   "checks": [
     {
       "target": "agent-smith-pgvector",
@@ -24,8 +24,8 @@
     {
       "target": "agent-smith-dashboard.service",
       "kind": "systemd_user",
-      "healthy": true,
-      "action": "NONE"
+      "healthy": false,
+      "action": "systemctl --user restart agent-smith-dashboard.service"
     }
   ]
 }
