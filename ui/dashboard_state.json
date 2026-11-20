@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-20T17:06:27Z",
+  "generated_at": "2026-11-20T18:59:24Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -70,6 +70,7 @@
     "T-057",
     "T-058",
     "T-059",
+    "T-060",
     "T-051",
     "T-052",
     "T-053",
@@ -494,6 +495,13 @@
       "timestamp": "2026-11-19 13:35",
       "phase": "Phase 6",
       "description": "Added `tests/test_t056_t058.py`, executed full `make test` (`py_compile` + `22/22` Python tests + Hive tests across `15` hive + `26` agent_smith files + `6/6` Rust tests PASS), updated `BUSINESS_ENGINE_STATE.md`, and synced state bus to `psycry/nexus-state-bus`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-060",
+      "timestamp": "2026-11-20 13:59",
+      "phase": "Phase 6",
+      "description": "Integrated Alpaca Markets Cash/Paper Equities into Phronarch (`execution/src/alpaca.ts`, `index.ts`, `dashboard/src/App.tsx`: inverse ETFs `BITI`/`PSQ`/`SH` + cash-safe long ETFs `SPY`/`QQQ`/`IBIT` with `1h RSI <= 32` dip-buy, `QQQ`/`SPY` EMA12 trend gate, `-2.5%` SL, `+4%/+5%` TP, SQLite-persisted `+1.5%/0.8%` trailing profit-lock, `verify_alpaca.ts` `13/13 PASS`); fixed `phronarch-ui.sh` Local Mirror DB extraction (`origin/main:ledger/phronarch_backup.db`); added Wheelhouse Alpaca cards (`ui/wheelhouse.html`), token-gated `agy` self-improve runner (`engine/auto_improve.py` + `agent-smith-self-improve.timer`), and disk-safe log rotation + GitHub gzip offload (`engine/log_rotator.py` wired into `engine/self_heal.py`)",
       "status": "DONE"
     },
     {

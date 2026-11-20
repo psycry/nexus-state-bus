@@ -1,0 +1,12 @@
+[Unit]
+Description=Agent Smith Token-Gated Autonomous Self-Improvement Runner
+After=network-online.target docker.service
+
+[Service]
+Type=oneshot
+Nice=15
+WorkingDirectory=/home/psycry/Projects/agent_smith
+Environment=AGENT_SMITH_OFFLINE_EMBED=1
+ExecStart=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.auto_improve
+StandardOutput=journal
+StandardError=journal

@@ -285,6 +285,7 @@
             <button class="ctrl-btn amber" onclick="runAction('push-bus', this)">&#x1f4e1; SYNC STATE BUS</button>
             <a class="ctrl-btn cyan" href="/index.html" target="_blank">&#x2197; OPEN :8787</a>
             <a class="ctrl-btn cyan" href="http://localhost:5173" target="_blank">&#x2197; OPEN :5173</a>
+            <a class="ctrl-btn cyan" href="https://app.alpaca.markets/paper/dashboard/overview" target="_blank" rel="noreferrer">&#x2197; OPEN ALPACA</a>
           </div>
           <div id="action-log" class="action-log">Wheelhouse ready. Polling /api/wheelhouse every 10s...</div>
         </div>
@@ -437,15 +438,24 @@
         return `<div class="stat-card"><div class="stat-label">${name}</div><div class="stat-val ${cls}">${String(st).toUpperCase()}</div></div>`;
       }).join('');
 
-      // Phronarch Market Pulse
+      // Phronarch Market Pulse + Alpaca Equities
       const pStatus = phr.status || {};
+      const alp = pStatus.alpaca || {};
       document.getElementById('phronarch-mode-label').textContent =
-        phr.api_online ? `MODE: ${pStatus.mode || 'OBSERVER'}` : 'OFFLINE';
+        phr.api_online ? `MODE: ${pStatus.mode || 'OBSERVER'}${alp.enabled ? (alp.paper ? ' + ALPACA PAPER' : ' + ALPACA LIVE') : ''}` : 'OFFLINE';
       document.getElementById('phronarch-offline-banner').style.display = phr.ui_online ? 'none' : 'flex';
       const prices = pStatus.prices || {};
       const priceKeys = Object.keys(prices);
-      document.getElementById('price-grid').innerHTML = priceKeys.length
-        ? priceKeys.map(sym => `<div class="stat-card"><div class="stat-label">${sym}</div><div class="stat-val">${fmtPrice(prices[sym])}</div></div>`).join('')
+      const priceCards = priceKeys.map(sym => `<div class="stat-card"><div class="stat-label">${sym}</div><div class="stat-val">${fmtPrice(prices[sym])}</div></div>`);
+      if (alp.enabled && alp.account) {
+        priceCards.push(`<div class="stat-card"><div class="stat-label">ALPACA EQUITY (${alp.paper ? 'PAPER' : 'LIVE'})</div><div class="stat-val ok">${fmtUsd(alp.account.equity)}</div></div>`);
+        (alp.positions || []).forEach(pos => {
+          const cls = pos.unrealized_plpc >= 0 ? 'ok' : 'bad';
+          priceCards.push(`<div class="stat-card"><div class="stat-label">${pos.symbol} (${pos.qty} sh)</div><div class="stat-val ${cls}">${fmtUsd(pos.market_value)} (${pos.unrealized_plpc >= 0 ? '+' : ''}${Number(pos.unrealized_plpc).toFixed(2)}%)</div></div>`);
+        });
+      }
+      document.getElementById('price-grid').innerHTML = priceCards.length
+        ? priceCards.join('')
         : '<div class="stat-card"><div class="stat-label">STATUS</div><div class="stat-val warn">Click SPIN UP PHRONARCH to stream prices</div></div>';
 
       // Grants + Wedges
