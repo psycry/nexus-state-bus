@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 11:40:39 (sha256=64eab73841) -->
+<!-- Synced via INSTANT_TXT at 14:01:03 (sha256=b44bb99ece) -->
 
 WNexus State Bus — Master Ledger
 Status Overview
@@ -339,13 +339,29 @@ Architectural R&D & Cutting-Edge Enhancements (Staged)
 * Phronarch — Ultra-Low Latency Zero-Knowledge Proofs (ZKPs): Integrate low-latency zero-knowledge proof generation directly into Phronarch's transaction pipeline to verify execution integrity and preserve privacy without introducing execution latency drag.
 * Agent Smith — Self-Healing Agent Topologies: Implement dynamic communication graph restructuring allowing Agent Smith worker nodes to automatically re-route and heal topologies in response to network latency spikes or task failure rates.
 * Agent Smith — Decentralized Consensus State Synchronization: Introduce decentralized consensus protocols for cross-agent state synchronization to eliminate single points of control and enhance swarm fault tolerance.
+________________
+
+
+Completed Milestone: T-060 — Phronarch Dual-Regime Alpaca Paper Cash Execution & Telemetry Sync (2026-11-20)
+* Status: COMPLETED & LIVE-TESTING ON PAPER (Account PA3WN7HTI | State Bus Commit 9f56f36 via push_state_bus.sh)
+* Origin: Antigravity & PsyCry (Reviewed & Logged by Gemini Cloud Architect)
+* Execution Architecture:
+   1. Account & Safety Gates: Alpaca Paper Cash-style setup ($0 commission, limit orders only, ALPACA_PAPER=true locked behind LIVE_TRADING_ENABLED=true, with ALPACA_SMALL_ACCOUNT_FLOOR=true staged for whole-share sizing when transitioning to a $50–$100 live cash starter after the $100k simulation run).
+   2. Bearish / Selloff Regime: 1x Inverse ETFs (BITI, PSQ, SH) confirmed against QQQ/SPY 1h EMA12 downtrends.
+   3. Bullish & Sideways/Chop Regime: Cash-safe multi-hour/multi-day swings on SPY, QQQ, and IBIT (entering on >= +1.5% macro dips or oversold 1h RSI <= 32).
+   4. Risk & Profit-Lock Controls: Hard -2.5% stop-loss, +4%/+5% take-profit, and SQLite-persisted trailing profit-lock (+1.5% arm / 0.8% trail).
+   5. Automation & State Bus Hygiene: Wired engine/auto_improve.py (offloading code hotspots to agy under a daily token cap) and disk-safe log rotation (engine/log_rotator.py) pushing gzipped archives directly to psycry/nexus-state-bus.
+* Gemini Architectural Review & Guardrail Notes:
+   1. Daily Reset Drag on 1x Inverse ETFs: Monitor multi-day sideways/chop holding periods on BITI, PSQ, and SH to prevent daily rebalancing path decay outside clean downtrends.
+   2. Equity/ETF Session Boundaries: Account for U.S. regular trading hours (09:30–16:00 EST) versus 24/7 crypto feeds—guard limit orders and stop triggers against market-open gaps and overnight/pre-market spread widening.
+   3. T+1 Cash Settlement Discipline: Track unsettled cash proceeds on multi-hour/multi-day swings to prevent Good Faith Violations (GFVs) once stepping down to the $50–$100 live cash account.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-20T18:59:31Z`
+- **Auto-Sync Timestamp:** `2026-11-20T19:01:04Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
