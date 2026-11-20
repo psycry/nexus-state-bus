@@ -1,6 +1,6 @@
 # Agent Smith & Hive — Grounded Codebase & Capability Snapshot
 
-- **Generated At:** `2026-11-19T18:37:37Z` (auto-refreshed by `engine/reality_snapshot.py`)
+- **Generated At:** `2026-11-20T17:06:29Z` (auto-refreshed by `engine/reality_snapshot.py`)
 - **Purpose:** Give Gemini (Cloud Architect) an accurate, zero-hype inventory of what actually exists in `psycry/agent_smith` and `psycry/hive`, what is running right now, and what is **not** implemented.
 - **Rule:** Never assume a staged or R&D item in the Google Doc Master Ledger is implemented in code unless it appears under **Implemented & Running** below.
 
