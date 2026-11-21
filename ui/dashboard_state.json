@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-21T15:51:06Z",
+  "generated_at": "2026-11-21T17:51:18Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -75,6 +75,7 @@
     "T-062",
     "T-063",
     "T-064",
+    "T-065",
     "T-051",
     "T-052",
     "T-053",
@@ -534,6 +535,13 @@
       "timestamp": "2026-11-21 10:48",
       "phase": "Phase 6",
       "description": "Phronarch Equity/Macro Expansion & Test Isolation: Added `/v2/clock` market-close swing window (`isMarketCloseSwingWindow`, `evaluateMarketSessionWindow`), equity-native `SPY`/`QQQ` 7-bar return regime, Alpaca `/v1beta1/news` + `HeadlineShockBreaker` integration, CNBC/MarketWatch/Yahoo Finance RSS in `scout/main.go`, open-order dedup + >20m stale-order cancel, and `SPLG`/`QQQM` + tight-spread fractional fallback (`ALPACA_LONG_SYMBOLS=SPLG,QQQ,IBIT` in local `.env`); verified `tsc --noEmit`, `verify_alpaca` (`26/26 PASS`), `go build ./...`, and pushed `psycry/phronarch` (`8b31384`); fixed `tests/test_auto_improve.py` fixture isolation (`agent_smith` `make test` `28/28` Python + Hive + `8/8` Rust PASS)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-065",
+      "timestamp": "2026-11-21 12:51",
+      "phase": "Phase 6",
+      "description": "Deep End-to-End Phronarch Audit & A1 Alpaca Paper Activation (`psycry/phronarch` `0e1929f`): Fixed 9 real bugs \u2014 (1) synced missing Paper Alpaca keys into `/root/phronarch/.env` on `THE-HIVE` (`ALPACA enabled: True`, `PA3WN7HTI`, `$101,062.39` equity, `BITI`/`PSQ`/`SH` tracked, `clock.next_open=2026-11-23T09:30:00-05:00`); (2) fixed `getBarCloses` lookback/`sort=desc` & scaled `EQUITY_REGIME_THRESHOLDS` (`-0.8%/+0.6%`) vs `CRYPTO_REGIME_THRESHOLDS`; (3) isolated `equityShockBreaker` & gated crypto shock breaker on fresh `<20m` directional headlines; (4) fixed spot-only Bayesian `SELL` deadlock + rolling 150-headline window in `db.ts`; (5) wired dead `confidenceMultiplier` into sizing (clamped `0.25x\u20133.0x`) & matched EV gate to 15m ATR + full round-trip fees; (6) fixed `detectTargetSymbol` & `scout/main.go` per-feed source tagging + `>2h` startup backlog drop + word-boundary `localSentiment`; (7) added fractional-share market exits (`submitMarketQtyOrder`) + allowed exits when `cash < $1`; (8) exposed `lastCycle` + `equityShockBreaker` on `/status`; verified `tsc --noEmit`, `verify_alpaca` (`29/29 PASS`), `verify_live_exec` PASS, `go build ./...`, and live A1 `/status` via Cloudflare proxy",
       "status": "DONE"
     },
     {

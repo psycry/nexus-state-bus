@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-11-21T15:13:41Z",
+  "generated_at": "2026-11-21T17:14:40Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
   "prefer": "agy",
-  "gate_reason": "offloading important code work to agy (0/3 today)",
+  "gate_reason": "offloading important code work to agy (1/3 today)",
   "agy_cli_available": true,
   "agy_dispatched": false,
   "agy_output_tail": "",
   "cloud_runs_date": "2026-11-21",
-  "cloud_runs_today": 1,
+  "cloud_runs_today": 2,
   "max_cloud_per_day": 3,
   "result": {
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "f54bab1ca3caab91",
+      "diff_hash": "0e607b9d1d722438",
       "scans": [
         {
           "repo": "agent_smith",
-          "python_files": 30,
+          "python_files": 31,
           "rust_files": 24,
           "hotspots_found": 26,
           "top_hotspots": [
@@ -88,7 +88,7 @@
           "checks": [
             {
               "check": "py_compile",
-              "files": 30,
+              "files": 31,
               "ok": true,
               "returncode": 0,
               "output": ""
@@ -100,22 +100,22 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 33964,
+        "latency_ms": 10127,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow(self):\n    # Simplify logic to reduce branch nodes\n    if self.condition:\n        # Simplified logic\n        self.process_data()\n    else:\n    "
+      "proposal_preview": "```python\n# Patch: optimize the ingest lane1_fast_cashflow function by reducing the number of branch nodes\ndef ingest_lane1_fast_cashflow(self, data):\n    # Simplify the logic to reduce branch nodes\n    if data['status'] == 'active':\n      "
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-43328",
+        "repo": "smith-wt-wt-check-487416",
         "ok": true,
         "checks": [
           {
             "check": "py_compile",
-            "files": 30,
+            "files": 31,
             "ok": true,
             "returncode": 0,
             "output": ""
