@@ -1,6 +1,6 @@
-<!-- Synced via INSTANT_TXT at 14:01:03 (sha256=b44bb99ece) -->
+<!-- Synced via INSTANT_TXT at 10:05:21 (sha256=cf7209bf6e) -->
 
-WNexus State Bus — Master Ledger
+Nexus State Bus — Master Ledger
 Status Overview
 * Active Phase: Phase 5 (T-054 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
@@ -124,13 +124,17 @@ Active Milestone: T-045 (Multi-Agent Routing & Dispatch Core Specification)
 * Automated Sync Infrastructure: Add Autonomous State Bus Push (Git Hook / Cron) for automatic synchronization.
 * Resilience & Observability: Implement Local LLM Heartbeat & Fallback Circuit Breaker and OpenTelemetry Span Export.
 1. Agent Trait Interface Architecture (src/core/agent.rs)
-use async_trait::async_trait;
+
+
+```rust
+use async_trait::async_trait;
 use serde::{Serialize, Deserialize};
 use std::collections::HashMap;
 use tokio::sync::mpsc;
 
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub enum AgentId {
     AntigravityLocal,
     GeminiCloud,
@@ -140,7 +144,8 @@ pub enum AgentId {
 }
 
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Capability {
     pub name: String,
     pub min_compute_tier: u8,
@@ -149,7 +154,8 @@ pub struct Capability {
 }
 
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TaskContext {
     pub task_id: String,
     pub milestone_ref: String,
@@ -160,7 +166,8 @@ pub struct TaskContext {
 }
 
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TaskResult {
     pub task_id: String,
     pub executor: AgentId,
@@ -171,7 +178,8 @@ pub struct TaskResult {
 }
 
 
-#[async_trait]
+
+#[async_trait]
 pub trait Agent: Send + Sync {
     fn id(&self) -> AgentId;
     fn capabilities(&self) -> Vec<Capability>;
@@ -179,20 +187,26 @@ pub trait Agent: Send + Sync {
     async fn execute_task(&self, ctx: TaskContext) -> Result<TaskResult, String>;
     async fn health_check(&self) -> bool;
 }
+```
 2. Dynamic Task Router & Local Budget Fallback Engine (src/core/router.rs)
-use super::agent::{Agent, AgentId, Capability, TaskContext, TaskResult};
+
+
+```rust
+use super::agent::{Agent, AgentId, Capability, TaskContext, TaskResult};
 use std::sync::Arc;
 use tokio::sync::RwLock;
 
 
-pub struct TaskRouter {
+
+pub struct TaskRouter {
     agents: RwLock<HashMap<AgentId, Arc<dyn Agent>>>,
     oci_monthly_budget_cap: f64,
     current_monthly_spend: RwLock<f64>,
 }
 
 
-impl TaskRouter {
+
+impl TaskRouter {
     pub fn new(oci_budget_cap: f64) -> Self {
         Self {
             agents: RwLock::new(HashMap::new()),
@@ -202,20 +216,23 @@ impl TaskRouter {
     }
 
 
-    pub async fn register_agent(&self, agent: Arc<dyn Agent>) {
+
+    pub async fn register_agent(&self, agent: Arc<dyn Agent>) {
         let mut guard = self.agents.write().await;
         guard.insert(agent.id(), agent);
     }
 
 
-    pub async fn route_and_dispatch(&self, mut ctx: TaskContext) -> Result<TaskResult, String> {
+
+    pub async fn route_and_dispatch(&self, mut ctx: TaskContext) -> Result<TaskResult, String> {
         let spend = *self.current_monthly_spend.read().await;
         if spend >= self.oci_monthly_budget_cap {
             ctx.local_only = true; // Enforce budget circuit breaker
         }
 
 
-        let agents_guard = self.agents.read().await;
+
+        let agents_guard = self.agents.read().await;
         let target_agent = if ctx.local_only {
             agents_guard.get(&AgentId::AntigravityLocal)
                 .or_else(|| agents_guard.get(&AgentId::AgentSmithWorker))
@@ -227,7 +244,8 @@ impl TaskRouter {
         };
 
 
-        target_agent.validate_context(&ctx).await?;
+
+        target_agent.validate_context(&ctx).await?;
         let res = target_agent.execute_task(ctx).await?;
         
         if res.cost_incurred > 0.0 {
@@ -237,6 +255,7 @@ impl TaskRouter {
         Ok(res)
     }
 }
+```
 3. Verification & Antigravity Execution Directives
 * Unit & Integration Tests: Antigravity must compile and execute cargo test --lib core::router verifying budget overflow scenarios trigger ctx.local_only = true immediately.
 * State Bus Sync: Upon successful trait compilation, push generated module stubs to psycry/nexus-state-bus and append commit telemetry to gemini_inbox.md.
@@ -251,33 +270,40 @@ Unified Todo & Operational Roadmap Dashboard
 * [STAGED] Financial Runway Model: Maintain Option A Lean Solo-Founder OpEx (~$20k–$40k/yr) and funnel pipeline revenue to infrastructure expansion.
 * [STAGED] Agent Smith Alignment: Review Agent Smith logic against the new local LLM / OpenClaw routing design to verify alignment.
 * [STAGED] KEOV Integration & Network Recovery: Integrate Knowledge-Enhanced Operator Vector (KEOV) protocol and restore multi-agent sync state lost during the network disruption.
-* * ________________
-* * Active Milestone: T-046 (Agent Smith Live A1 C2, Self-Improvement & Compound AI Verification Directives)
-* * Status: READY_FOR_EXECUTION
-* * Target: Agent Smith (OCI Ampere A1 — /opt/agent_smith & /opt/hive)
-* * Operational Rules:
-*   1. Execute deterministic status checks, Master Ledger reads/syncs, OCI budget checks, and AST complexity scans symbolically with zero LLM tokens before invoking any LLM.
-*   2. When asked to improve or modify yourself, execute hive.self_improve --once --repo /opt/agent_smith (using --prefer local first, escalating to --prefer gemini only when requested or when local capacity/tier requires it and OCI budget allows).
-*   3. Never roleplay or fabricate progress on Discord; report only live systemd/Docker/ledger.db state.
-* * Verification Commands (Executable via Discord C2):
-*   1. 'what are you improving?' or 'live status' -> Verify real systemd/Docker state + /opt/hive/ledger.db recent SELF_IMPROVE rows (0 LLM tokens).
-*   2. 'run the ledger' -> Fetch & ingest this Google Doc Master Ledger (sha256 sync + pgvector memory_bus update).
-*   3. 'improve yourself' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer local and return top Python/Rust complexity hotspots + verification status.
-*   4. 'add any improvements using external gemini' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer gemini using Gemini cloud burst.
-*   5. 'check oci budget' -> Confirm Always-Free bash/mo compliance (4.0/4.0 OCPUs, 24.0/24.0 GB RAM).
-*   6. 'place phronarch order' -> Confirm HITL_HOLD financial safety block (0 LLM tokens).
-* * * ________________
-* * Operator Broadcast (PsyCry -> All Nodes: Antigravity, Gemini, Agent Smith, The Hive, Phronarch):
+________________
+
+
+Active Milestone: T-046 (Agent Smith Live A1 C2, Self-Improvement & Compound AI Verification Directives)
+* Status: READY_FOR_EXECUTION
+* Target: Agent Smith (OCI Ampere A1 — /opt/agent_smith & /opt/hive)
+* Operational Rules:
+   * 1. Execute deterministic status checks, Master Ledger reads/syncs, OCI budget checks, and AST complexity scans symbolically with zero LLM tokens before invoking any LLM.
+   * 2. When asked to improve or modify yourself, execute hive.self_improve --once --repo /opt/agent_smith (using --prefer local first, escalating to --prefer gemini only when requested or when local capacity/tier requires it and OCI budget allows).
+   * 3. Never roleplay or fabricate progress on Discord; report only live systemd/Docker/ledger.db state.
+* Verification Commands (Executable via Discord C2):
+   * 1. 'what are you improving?' or 'live status' -> Verify real systemd/Docker state + /opt/hive/ledger.db recent SELF_IMPROVE rows (0 LLM tokens).
+   * 2. 'run the ledger' -> Fetch & ingest this Google Doc Master Ledger (sha256 sync + pgvector memory_bus update).
+   * 3. 'improve yourself' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer local and return top Python/Rust complexity hotspots + verification status.
+   * 4. 'add any improvements using external gemini' -> Execute hive.self_improve --once --repo /opt/agent_smith --prefer gemini using Gemini cloud burst.
+   * 5. 'check oci budget' -> Confirm Always-Free bash/mo compliance (4.0/4.0 OCPUs, 24.0/24.0 GB RAM).
+   * 6. 'place phronarch order' -> Confirm HITL_HOLD financial safety block (0 LLM tokens).
+________________
+
+
+* Operator Broadcast (PsyCry -> All Nodes: Antigravity, Gemini, Agent Smith, The Hive, Phronarch):
 * THANK YOU. Excellent work. We will make this something great that's never been seen before.
-* * * ________________
-* * Staged Next Milestone: T-047 (Discord UX & Tool-Call Polish for Morning Session)
-* * Status: READY_FOR_EXECUTION
-* * Target: Agent Smith / Antigravity
-* * Issues Observed (2026-11-16 Evening):
-*   1. When router_bridge executes a generative fallback (non-symbolic), extract only the clean 'output' text for Discord instead of printing raw JSON ({ok, tier, scaling_policy...}).
-*   2. Tighten '0b' wants_ledger_action & '0c' triggers so conversational phrases like 'is that a yes or a no?' or 'skip that directive' go straight to conversational chat instead of JSON bridge wrappers.
-*   3. Keep scale_mode populated on A1 by running engine.oci_budget_guard (or reading synced submissions/oci_budget_status.json from nexus-state-bus).
-*   4. Wire explicit multi-step tool calling when asked to inspect files or ledger items on A1.
+________________
+
+
+Staged Next Milestone: T-047 (Discord UX & Tool-Call Polish for Morning Session)
+* Status: READY_FOR_EXECUTION
+* Target: Agent Smith / Antigravity
+* Issues Observed (2026-11-16 Evening):
+   * 1. When router_bridge executes a generative fallback (non-symbolic), extract only the clean 'output' text for Discord instead of printing raw JSON ({ok, tier, scaling_policy...}).
+   * 2. Tighten '0b' wants_ledger_action & '0c' triggers so conversational phrases like 'is that a yes or a no?' or 'skip that directive' go straight to conversational chat instead of JSON bridge wrappers.
+   * 3. Keep scale_mode populated on A1 by running engine.oci_budget_guard (or reading synced submissions/oci_budget_status.json from nexus-state-bus).
+   * 4. Wire explicit multi-step tool calling when asked to inspect files or ledger items on A1.
+   * 5. Natural-Language Action Dispatch & Mesh Handoff Routing: Eliminate passthrough text echoing when given imperative operational directives (e.g., "Execute T-060 Step 5..."). Upgrade intent classification so imperative execution prompts automatically trigger deterministic ledger sync (`run the ledger`) and enqueue structured `mesh_handoffs` tasks for `agy` / `local_worker` with explicit acknowledgement instead of echoing raw user text.
 * ________________
 
 
@@ -343,7 +369,7 @@ ________________
 
 
 Completed Milestone: T-060 — Phronarch Dual-Regime Alpaca Paper Cash Execution & Telemetry Sync (2026-11-20)
-* Status: COMPLETED & LIVE-TESTING ON PAPER (Account PA3WN7HTI | State Bus Commit 9f56f36 via push_state_bus.sh)
+* Status: COMPLETED & LIVE-TESTING ON PAPER | ALPACA LIVE ACCOUNT APPROVED (Account PA3WN7HTI | State Bus Commit 9f56f36 via push_state_bus.sh | Live transition tracked on ledger with $50–$100 live cash starter target post-paper validation)
 * Origin: Antigravity & PsyCry (Reviewed & Logged by Gemini Cloud Architect)
 * Execution Architecture:
    1. Account & Safety Gates: Alpaca Paper Cash-style setup ($0 commission, limit orders only, ALPACA_PAPER=true locked behind LIVE_TRADING_ENABLED=true, with ALPACA_SMALL_ACCOUNT_FLOOR=true staged for whole-share sizing when transitioning to a $50–$100 live cash starter after the $100k simulation run).
@@ -355,13 +381,49 @@ Completed Milestone: T-060 — Phronarch Dual-Regime Alpaca Paper Cash Execution
    1. Daily Reset Drag on 1x Inverse ETFs: Monitor multi-day sideways/chop holding periods on BITI, PSQ, and SH to prevent daily rebalancing path decay outside clean downtrends.
    2. Equity/ETF Session Boundaries: Account for U.S. regular trading hours (09:30–16:00 EST) versus 24/7 crypto feeds—guard limit orders and stop triggers against market-open gaps and overnight/pre-market spread widening.
    3. T+1 Cash Settlement Discipline: Track unsettled cash proceeds on multi-hour/multi-day swings to prevent Good Faith Violations (GFVs) once stepping down to the $50–$100 live cash account.
+Live Alpaca Funding & Cutover Checklist (T-060 Live Transition)
+* 1. Funding Account ACH Transfer: Initiate ACH bank transfer from the designated funding account to deposit the $50–$100 live cash starter into the approved live Alpaca account.
+* 2. Cash Settlement & Availability Verification: Verify full cash settlement and cleared buying power availability in the live account prior to arming live order execution.
+* 3. Live Execution Mode & Whole-Share Sizing Flags: Transition environment configuration to ALPACA_PAPER=false and LIVE_TRADING_ENABLED=true, ensuring ALPACA_SMALL_ACCOUNT_FLOOR=true is active for strict whole-share order sizing on small balances.
+* 4. Settlement Guardrails & Limit Order Discipline: Enforce strict T+1 cash settlement tracking to prevent Good Faith Violations (GFVs) alongside mandatory limit-order routing across all trades.
+* 5. Live API Key Staging & Environment Provisioning: Agent Smith and Antigravity (agy) are instructed to ingest the Alpaca Live Trading API Key ID (AKS3FHNXPQWVWI6XFPGOAHGRYM) and Secret Key (4kKujnP73jUrnRe6MVE3exTr9D44aWEKHu1MqhcWY9cs) from the Credentials & Backup Codes section into Phronarch's local .env file immediately, while keeping ALPACA_PAPER=true and LIVE_TRADING_ENABLED=false (with ALPACA_SMALL_ACCOUNT_FLOOR=true staged) until the ACH funding transfer settles and is manually armed. (Status: Shelved until next laptop/terminal session due to mobile browser OAuth/Plaid session resets; paper safety gates remain active).
+________________
+
+
+Credentials & Backup Codes
+* Alpaca Backup Authenticator Code: a9dc9e8c-d87f-41e9-a1a0-220d758ad27d (Added November 20, 2026)
+* Alpaca Live Trading API Key ID: AKS3FHNXPQWVWI6XFPGOAHGRYM (Added November 20, 2026)
+* Alpaca Live Trading Secret Key: 4kKujnP73jUrnRe6MVE3exTr9D44aWEKHu1MqhcWY9cs (Added November 20, 2026)
+________________
+
+
+Antigravity Verification Directive: Alpaca SDK vs. Custom Connectors & Off-Hours Rate-Limit Guardrails (2026-11-21)
+* SDK vs. Custom Connectors Audit: Confirm whether Phronarch's Alpaca integration uses an official SDK (such as alpaca-py or alpaca-trade-api) or custom HTTP/WebSocket connectors (requests, httpx, aiohttp), which base URLs (paper vs. live) and environment variables are wired up, and which modules handle orders, positions, account data, and market data streams.
+* Off-Hours & Market-Closed API Guardrails Audit: Audit trading loops, async tasks, timers, and streaming clients to verify we are not hammering Alpaca REST or WebSocket endpoints when US equity markets are closed (including weekends, pre-market/after-hours windows, and reconnections). Confirm market clock gating (is_open), sleep/backoff intervals during closed hours, and separation between market-hours polling and execution/streaming loops.
+________________
+
+
+Antigravity & Agent Smith Security Directive: Aikido Security Vulnerability Triage & Remediation (2026-11-21)
+* Aikido Security Scan Review: Review all active Aikido Security vulnerability alerts, dependency advisories (SCA), SAST findings, and secrets/misconfiguration flags reported across connected repositories (including agent_smith, phronarch, nexus-state-bus, and shelter_source).
+* Prioritized Vulnerability Remediation: Triage findings by severity (Critical and High first), patch vulnerable dependencies or code patterns, verify test suites pass after remediation, and log resolved CVEs/issues back to the state bus (gemini_inbox.md) and this Master Ledger.
+________________
+
+
+Antigravity Diagnostic Directive: Agent Smith Discord JSON Hallucinations & Routing/Token Behavior (2026-11-21)
+* Observed Anomaly (2026-11-21): When PsyCry asked Agent Smith in Discord (#general) whether it can provide automated status updates or add that feature, Agent Smith returned a JSON blob containing fabricated/canned keys ("morning_greeting": "Morning Smith! I am ready to start working on the project tomorrow." and "acknowledgment") even though the underlying containers and heartbeats (discord=active, hive_perpetual=active, hive_gateway=active, agent-smith-pgvector, phronarch-execution, phronarch-scout, phronarch-redis, hive-ollama, and HEARTBEAT events for agy, local_worker, control_plane) were healthy. Separately, Agent Smith usually responds in JSON but occasionally drops to non-JSON or shows "0 LLM Tokens, No Roleplay" in the live status output.
+* Diagnostic & Fix Directives for Antigravity:
+   * 1. Log Per-Message Routing & Token Path: Add structured logging in Agent Smith's Discord message handler capturing matched intent/route, whether an LLM was invoked, tokens_used, and roleplay_enabled before sending replies.
+   * 2. Audit "0 LLM Tokens, No Roleplay" & Token/Budget Gates: Locate where "0 LLM Tokens, No Roleplay" or token/roleplay limits are enforced in the message router and LLM client wrapper, and verify why responses occasionally drop out of JSON or fall back.
+   * 3. Eliminate JSON-Schema Roleplay/Greeting Hallucinations & Vector Pollution: Audit prompts, few-shot JSON templates, and pgvector/memory recall for synthetic or test strings (such as "Morning Smith! I am ready to start working on the project tomorrow."), separate deterministic status/command routes from general chat, and only force JSON when parsing structured fields.
+   * 4. Scheduled Zero-Token Status Updates: Wire a scheduled job/timer to post the deterministic live status block (0 LLM tokens) to Discord if automated status updates are enabled.
+   * 5. Sync Results: Log findings and fixes to gemini_inbox.md and this Master Ledger.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-20T19:02:55Z`
+- **Auto-Sync Timestamp:** `2026-11-21T15:05:23Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
