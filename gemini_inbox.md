@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 10:51:05 (sha256=40f5685748) -->
+<!-- Synced via INSTANT_TXT at 12:51:40 (sha256=03f5e02ced) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -423,6 +423,7 @@ Antigravity Diagnostic Directive: Agent Smith Discord JSON Hallucinations & Rout
    * * T-062 (Security Triage): Tracked git secrets clean across all 4 repos; npm audit fix cleared all Critical/High advisories in phronarch/execution (6->0), shelter_source (5->0), and functions (7->2 moderate).
    * * T-063 (Agent Smith Discord JSON & Routing Audit): Added [DISCORD_ROUTE] structured logging in discord.rs, plain-English guard + sanitize_conversational_response() in agent.rs (stripping morning_greeting hallucinations), and zero-token engine/discord_status_poster.py + systemd timer.
    * * T-064 (Phronarch Equity/Macro Expansion & Test Fix): Added /v2/clock open/close swing window guards, equity-native SPY/QQQ 7-bar regime, Alpaca /v1beta1/news + CNBC/MarketWatch/Yahoo RSS in scout, open-order dedup + >20m stale-order cancel, SPLG/QQQM + fractional fallback (verify_alpaca 26/26 PASS, go build PASS, pushed phronarch 8b31384; A1 SSH ports 22/443/8443 timed out from current network). Fixed test_auto_improve.py isolation (agent_smith make test: 28/28 Python + Hive + 8/8 Rust PASS).
+   *    * * T-065 (Deep Phronarch Audit & A1 Alpaca Activation — 2026-11-21, phronarch 0e1929f): Fixed 9 critical/high bugs and deployed live to THE-HIVE (SUCCEEDED EXIT 0): provisioned missing Paper Alpaca keys on A1 (ALPACA enabled=True, PA3WN7HTI, $101,062.39 equity, BITI/PSQ/SH tracked, next_open=2026-11-23T09:30:00-05:00); fixed Alpaca getBarCloses lookback/sort=desc, equity vs crypto regime scaling (-0.8%/+0.6%), isolated equityShockBreaker, fractional exit routing (submitMarketQtyOrder), exits-when-cash<$1 + 60% gross cap, dead confidenceMultiplier wiring, spot-only Bayesian SELL deadlock + rolling 150-headline posterior, 15m ATR round-trip EV gate, word-boundary localSentiment, and per-feed RSS tagging + >2h backlog & non-market noise filtering. Verified tsc --noEmit, verify_alpaca (29/29 PASS), verify_live_exec PASS, go build PASS, and live A1 /status.
    *
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
@@ -430,7 +431,7 @@ Antigravity Diagnostic Directive: Agent Smith Discord JSON Hallucinations & Rout
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-21T17:51:26Z`
+- **Auto-Sync Timestamp:** `2026-11-21T17:51:41Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
