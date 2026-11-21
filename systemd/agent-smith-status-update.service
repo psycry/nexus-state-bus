@@ -1,0 +1,10 @@
+[Unit]
+Description=Agent Smith - Deterministic Zero-Token Discord Status Update
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/psycry/Projects/agent_smith
+ExecStart=/home/psycry/Projects/agent_smith/engine/.venv/bin/python -m engine.discord_status_poster
+StandardOutput=append:/home/psycry/Projects/agent_smith/sweep.log
+StandardError=append:/home/psycry/Projects/agent_smith/sweep.log

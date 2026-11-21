@@ -1,23 +1,25 @@
 {
-  "generated_at": "2026-11-20T18:41:25Z",
+  "generated_at": "2026-11-21T15:13:41Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
-  "prefer": "local",
-  "gate_reason": "local-first default (0 cloud tokens)",
+  "prefer": "agy",
+  "gate_reason": "offloading important code work to agy (0/3 today)",
   "agy_cli_available": true,
-  "cloud_runs_date": "2026-11-20",
-  "cloud_runs_today": 0,
+  "agy_dispatched": false,
+  "agy_output_tail": "",
+  "cloud_runs_date": "2026-11-21",
+  "cloud_runs_today": 1,
   "max_cloud_per_day": 3,
   "result": {
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "0fd863f0c773e321",
+      "diff_hash": "f54bab1ca3caab91",
       "scans": [
         {
           "repo": "agent_smith",
-          "python_files": 28,
+          "python_files": 30,
           "rust_files": 24,
           "hotspots_found": 26,
           "top_hotspots": [
@@ -86,7 +88,7 @@
           "checks": [
             {
               "check": "py_compile",
-              "files": 28,
+              "files": 30,
               "ok": true,
               "returncode": 0,
               "output": ""
@@ -98,22 +100,22 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 29117,
+        "latency_ms": 33964,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Patch: Optimize ingest_lane1_fast_cashflow to reduce complexity and improve performance\ndef ingest_lane1_fast_cashflow(data):\n    # Simplify data processing steps\n    cleaned_data = preprocess_data(data)\n    processed_data = pro"
+      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow(self):\n    # Simplify logic to reduce branch nodes\n    if self.condition:\n        # Simplified logic\n        self.process_data()\n    else:\n    "
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-367534",
+        "repo": "smith-wt-wt-check-43328",
         "ok": true,
         "checks": [
           {
             "check": "py_compile",
-            "files": 26,
+            "files": 30,
             "ok": true,
             "returncode": 0,
             "output": ""

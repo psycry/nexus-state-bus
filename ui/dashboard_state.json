@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-21T15:09:38Z",
+  "generated_at": "2026-11-21T15:23:36Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -71,6 +71,9 @@
     "T-058",
     "T-059",
     "T-060",
+    "T-061",
+    "T-062",
+    "T-063",
     "T-051",
     "T-052",
     "T-053",
@@ -502,6 +505,27 @@
       "timestamp": "2026-11-20 13:59",
       "phase": "Phase 6",
       "description": "Integrated Alpaca Markets Cash/Paper Equities into Phronarch (`execution/src/alpaca.ts`, `index.ts`, `dashboard/src/App.tsx`: inverse ETFs `BITI`/`PSQ`/`SH` + cash-safe long ETFs `SPY`/`QQQ`/`IBIT` with `1h RSI <= 32` dip-buy, `QQQ`/`SPY` EMA12 trend gate, `-2.5%` SL, `+4%/+5%` TP, SQLite-persisted `+1.5%/0.8%` trailing profit-lock, `verify_alpaca.ts` `13/13 PASS`); fixed `phronarch-ui.sh` Local Mirror DB extraction (`origin/main:ledger/phronarch_backup.db`); added Wheelhouse Alpaca cards (`ui/wheelhouse.html`), token-gated `agy` self-improve runner (`engine/auto_improve.py` + `agent-smith-self-improve.timer`), and disk-safe log rotation + GitHub gzip offload (`engine/log_rotator.py` wired into `engine/self_heal.py`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-061",
+      "timestamp": "2026-11-21 10:23",
+      "phase": "Phase 6",
+      "description": "Gemini Directive (Alpaca SDK & Off-Hours Audit): Confirmed Phronarch uses custom TypeScript `fetch()` adapter (`execution/src/alpaca.ts`, no official SDK, no Alpaca WebSocket); fixed 24/7 off-hours REST polling (`refreshAlpacaSnapshot` 30s loop + `runAlpacaInverseCycle` `finally` + `getClock` backoff to 15m when `!clock.is_open`); verified `tsc --noEmit` & `verify_alpaca.ts` (`16/16 PASS`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-062",
+      "timestamp": "2026-11-21 10:23",
+      "phase": "Phase 6",
+      "description": "Gemini Directive (Security Triage): Confirmed `aikido-cli`/GitHub Dependabot disabled on repos and tracked git secrets clean across all 4 repos; ran `npm audit fix` resolving all Critical/High vulnerabilities in `phronarch/execution` (`6 -> 0`), `shelter_source` (`5 -> 0`), and `shelter_source/functions` (`7 -> 2` moderate `qs`/`express`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-063",
+      "timestamp": "2026-11-21 10:23",
+      "phase": "Phase 6",
+      "description": "Gemini Directive (Discord JSON Hallucinations & Routing/Token Audit): Added `[DISCORD_ROUTE]` structured logging (`matched_route`, `llm_invoked`, `tokens_used`, `roleplay_enabled`) in `discord.rs`, enforced plain-English `local_system` + `sanitize_conversational_response` in `agent.rs` (stripping canned `morning_greeting` JSON hallucinations), and added zero-token scheduled poster `engine/discord_status_poster.py` + `systemd/agent-smith-status-update.{service,timer}`; verified `make test` (`28` Python + Hive + `8` Rust PASS)",
       "status": "DONE"
     },
     {

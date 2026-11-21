@@ -1,0 +1,10 @@
+[Unit]
+Description=Agent Smith - Periodic Zero-Token Discord Status Timer (Every 2 Hours)
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=2h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
