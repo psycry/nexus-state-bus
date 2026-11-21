@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-21T15:23:47Z",
+  "generated_at": "2026-11-21T15:50:42Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -74,6 +74,7 @@
     "T-061",
     "T-062",
     "T-063",
+    "T-064",
     "T-051",
     "T-052",
     "T-053",
@@ -526,6 +527,13 @@
       "timestamp": "2026-11-21 10:23",
       "phase": "Phase 6",
       "description": "Gemini Directive (Discord JSON Hallucinations & Routing/Token Audit): Added `[DISCORD_ROUTE]` structured logging (`matched_route`, `llm_invoked`, `tokens_used`, `roleplay_enabled`) in `discord.rs`, enforced plain-English `local_system` + `sanitize_conversational_response` in `agent.rs` (stripping canned `morning_greeting` JSON hallucinations), and added zero-token scheduled poster `engine/discord_status_poster.py` + `systemd/agent-smith-status-update.{service,timer}`; verified `make test` (`28` Python + Hive + `8` Rust PASS)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-064",
+      "timestamp": "2026-11-21 10:48",
+      "phase": "Phase 6",
+      "description": "Phronarch Equity/Macro Expansion & Test Isolation: Added `/v2/clock` market-close swing window (`isMarketCloseSwingWindow`, `evaluateMarketSessionWindow`), equity-native `SPY`/`QQQ` 7-bar return regime, Alpaca `/v1beta1/news` + `HeadlineShockBreaker` integration, CNBC/MarketWatch/Yahoo Finance RSS in `scout/main.go`, open-order dedup + >20m stale-order cancel, and `SPLG`/`QQQM` + tight-spread fractional fallback (`ALPACA_LONG_SYMBOLS=SPLG,QQQ,IBIT` in local `.env`); verified `tsc --noEmit`, `verify_alpaca` (`26/26 PASS`), `go build ./...`, and pushed `psycry/phronarch` (`8b31384`); fixed `tests/test_auto_improve.py` fixture isolation (`agent_smith` `make test` `28/28` Python + Hive + `8/8` Rust PASS)",
       "status": "DONE"
     },
     {
