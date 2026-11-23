@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-21T18:20:20Z",
-  "hours_since_operator": 1.82,
+  "generated_at": "2026-11-23T15:28:41Z",
+  "hours_since_operator": 45.07,
   "continuity": {
-    "mode": "ACTIVE_COLLAB",
+    "mode": "AUTONOMOUS_CONTINUITY",
     "force_local_only": false,
     "max_cloud_burst": true
   },
@@ -20,7 +20,7 @@
       "external_id": "SBIR-2026-CIVIC-SHELTER-01",
       "solicitation": "HHS-2027-ACL-NIDILRR-BISA-0308",
       "deadline": "2026-12-16",
-      "days_remaining": 25,
+      "days_remaining": 23,
       "ceiling_usd": 100000.0,
       "qa_status": "PASS"
     },
@@ -28,7 +28,7 @@
       "external_id": "NSF-SBIR-2026-AGENTIC-AI",
       "solicitation": "NSF 26-510",
       "deadline": "2027-03-04",
-      "days_remaining": 103,
+      "days_remaining": 101,
       "ceiling_usd": 305000.0,
       "qa_status": "PASS"
     }

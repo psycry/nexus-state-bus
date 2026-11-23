@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 13:20:16 (sha256=7bc833a2aa) -->
+<!-- Synced via INSTANT_TXT at 10:28:22 (sha256=f8b6531e8b) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -72,10 +72,25 @@ ________________
 
 
 Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
-1. Canonical Source of Truth: This Google Doc Master Ledger is the single source of truth for all project goals, active phases, and directives. Neither Antigravity nor any spawned sub-agents may drift onto unapproved tangents outside the active milestone.
-2. Mandatory Feedback Ingestion: Antigravity must log all task completions, build statuses, and runtime blockers to gemini_inbox.md and the Google Doc ledger automatically.
-3. Constrained-Window Execution (Burst Mode): All local tasks must be idempotent, checkpointed after each step, and non-blocking so the local rig can be spun up and shut down cleanly within short library sessions.
-4. Autonomous Tool-First Execution Policy: Whenever task updates, ledger entries, or document modifications are instructed or discussed, AI agents must directly execute available workspace tool calls rather than offloading manual steps to the user.
+1. Canonical Source of Truth & Active Task Discipline: This Google Doc Master Ledger is the canonical source of truth for all project goals, active phases, and directives. Operator-assigned tasks on the Master Ledger always take strict priority. Agents must complete active, operator-defined tasks before allocating cycles to unapproved greenfield work.
+2. Greenfield Discovery & Spare-Cycle Execution:
+3. Spare-Cycle Exploration (No Pre-Approval Required): Once all active operator-assigned tasks on the Master Ledger are completed, agents (Gemini, Antigravity, Agent Smith) may autonomously ideate, prototype, and build new greenfield milestones or product lines using spare compute cycles without waiting for prior sign-off.
+   * Second-Class Priority & Preemption: Unapproved greenfield projects operate strictly as second-class background tasks. Whenever the operator adds new tasks or updates the Master Ledger, agents must notify the operator of any pending greenfield projects and immediately place them on hold until all operator-defined ledger tasks are completed or the operator explicitly signs off on the greenfield project.
+   * Promotion Upon Operator Sign-Off (PENDING_APPROVAL -> GREENLIT): All autonomous greenfield projects must be logged on the Master Ledger and The Hive project dashboard with status PENDING_APPROVAL and surfaced to the operator for review/demo. Once the operator grants explicit sign-off, the project is promoted to full priority and resource allocation.
+4. Live Data & Real-API Grounding (Mock Removal Mandate):
+   * Isolated Prototype Demos Only: Mock data or synthetic stubs are permitted strictly within isolated sandbox prototypes during spare-cycle greenfield exploration, and may be shown in an initial demo so the operator can evaluate the concept.
+   * Zero-Mock Mandate Upon Sign-Off & Production Cutover: Before a greenfield project is promoted to active production status—and immediately upon operator sign-off—100% of mock data, canned responses, and synthetic stubs must be purged and replaced with real data points, live telemetry, and authentic API calls. Never leave residual mocks in signed-off systems; if a live feed or API is unreachable, fail explicitly or surface a real degraded-state error rather than fabricating output. (Simulated starting capital balances in isolated paper-trading configurations remain permitted where explicitly authorized.)
+5. Compute & Spend Guardrails for Autonomous R&D: Exploratory greenfield work and background tasks must stay strictly within OCI Always-Free tiers and local compute/token budgets, defaulting to local models (qwen2.5-coder:1.5b / agy) and zero-token symbolic checks before invoking paid cloud APIs.
+6. Mandatory Feedback Ingestion & Dashboard Telemetry: Antigravity and Agent Smith must automatically log all task creations, completions, build statuses, and runtime blockers to gemini_inbox.md, The Hive project dashboard, and this Google Doc Master Ledger.
+7. Constrained-Window Execution (Burst Mode): All local tasks must be idempotent, checkpointed after each step, and non-blocking so the local rig can be spun up and shut down cleanly within short sessions.
+8. Autonomous Tool-First Execution Policy: Whenever task updates, ledger entries, or document modifications are instructed or discussed, AI agents must directly execute available workspace tool calls rather than offloading manual steps to the user.
+9. Continuous Autonomous Execution Loop ([NEXT_AUTONOMOUS_CYCLE] Trigger Architecture):
+   * Cycle Continuation Token ([NEXT_AUTONOMOUS_CYCLE]): Whenever an agent completes a task, writes state updates, or reaches the end of an execution block, it must conclude its output/log entry with the canonical trigger token [NEXT_AUTONOMOUS_CYCLE] paired with a concise structured handoff payload (current state hash, completed task ID, next queued priority, and budget/compute tier).
+   * Continuation Contract & Dispatch Logic: Any model or orchestrator node ingesting [NEXT_AUTONOMOUS_CYCLE] must automatically:
+      * 1. Re-read the Master Ledger (Nexus State Bus Ledger) and gemini_inbox.md to check for newly added operator-assigned directives (strict priority preemption).
+      * 2. If active operator tasks exist, execute the highest-priority operator task immediately.
+      * 3. If all operator-assigned tasks are complete, select or generate a spare-cycle greenfield task—including exploratory R&D, system optimization, or open mathematical/algorithmic problem-solving—log it under PENDING_APPROVAL, execute within Always-Free/local compute bounds, and emit [NEXT_AUTONOMOUS_CYCLE] upon completion.
+   * Anti-Spin & Rate-Limit Safeguards: To prevent degenerate infinite loops or token burn, each continuation cycle must produce a concrete, verifiable state delta (code commit, theorem/proof artifact, telemetry record, or new ledger entry). If no state delta is achieved across 2 consecutive cycles, or if local/cloud rate limits or budget caps are reached, apply exponential backoff or pause until the next scheduled heartbeat or operator input.
 
 
 ________________
@@ -425,14 +440,85 @@ Antigravity Diagnostic Directive: Agent Smith Discord JSON Hallucinations & Rout
    * * T-064 (Phronarch Equity/Macro Expansion & Test Fix): Added /v2/clock open/close swing window guards, equity-native SPY/QQQ 7-bar regime, Alpaca /v1beta1/news + CNBC/MarketWatch/Yahoo RSS in scout, open-order dedup + >20m stale-order cancel, SPLG/QQQM + fractional fallback (verify_alpaca 26/26 PASS, go build PASS, pushed phronarch 8b31384; A1 SSH ports 22/443/8443 timed out from current network). Fixed test_auto_improve.py isolation (agent_smith make test: 28/28 Python + Hive + 8/8 Rust PASS).
    *    * * T-065 (Deep Phronarch Audit & A1 Alpaca Activation — 2026-11-21, phronarch 0e1929f): Fixed 9 critical/high bugs and deployed live to THE-HIVE (SUCCEEDED EXIT 0): provisioned missing Paper Alpaca keys on A1 (ALPACA enabled=True, PA3WN7HTI, $101,062.39 equity, BITI/PSQ/SH tracked, next_open=2026-11-23T09:30:00-05:00); fixed Alpaca getBarCloses lookback/sort=desc, equity vs crypto regime scaling (-0.8%/+0.6%), isolated equityShockBreaker, fractional exit routing (submitMarketQtyOrder), exits-when-cash<$1 + 60% gross cap, dead confidenceMultiplier wiring, spot-only Bayesian SELL deadlock + rolling 150-headline posterior, 15m ATR round-trip EV gate, word-boundary localSentiment, and per-feed RSS tagging + >2h backlog & non-market noise filtering. Verified tsc --noEmit, verify_alpaca (29/29 PASS), verify_live_exec PASS, go build PASS, and live A1 /status.
    *    * * * T-066 (Phronarch News-Driven Stock Watchlist Lane & Live /v2/assets Verification — 2026-11-21, phronarch 61feebf, deployed live on THE-HIVE): Added 13-ticker news watchlist (ALPACA_NEWS_WATCHLIST=NVDA,AAPL,MSFT,AMZN,META,GOOGL,AMD,TSLA,COIN,MSTR,PLTR,GLD,TLT), evaluateNewsStockSignal (BUY on fresh <=45m catalyst >=+0.40, 1h RSI < 72, >=+0.65 in 1h downtrend, <=25bps spread; EXIT on -2.5% SL, +5.0% TP, +1.5%/0.8% trail, or bearish news flip <=-0.45), aggregateNewsCatalysts (conflicting-headline whipsaw dampening & bearish-flip precedence), 0.5x per-stock allocation (12.5% max) with dynamic in-cycle cash & 60% gross exposure tracking, and live dashboard watchlist pills (App.tsx). Verified all 20 symbols against live Alpaca /v2/assets, /v1beta1/news, /quotes/latest, and /bars (remapping retired SPLG 404 to active SPYM HTTP 200), verify_alpaca (38/38 PASS), and live A1 /status.
-   *    *
+   *    * ________________
+
+
+Staged Operational Directive: Exchange Fee & Security Hardening for Live Cutover (2026-11-21)
+* Exchange-Specific Fee & Slippage Floor (fee_bps / MIN_NET_EV_BPS): Audit and decouple exchange fee assumptions in execution/src/index.ts and the T-065 15m ATR round-trip EV gate so each venue uses its exact maker/taker schedule rather than a flat hardcoded 0.004 (0.4%):
+   * Alpaca Equities/ETFs: $0 commission + SEC/FINRA regulatory pass-through fees + bid/ask spread + slippage floor (keep the T-066 <= 25 bps spread guard active).
+   * Coinbase Advanced vs. Kraken Pro (Crypto): Parameterize per-exchange maker/taker bps (COINBASE_MAKER_BPS / COINBASE_TAKER_BPS vs. KRAKEN_MAKER_BPS / KRAKEN_TAKER_BPS) and keep Coinbase crypto execution gated/disabled until Kraken Pro is onboarded or a venue's net EV strictly clears round-trip maker/taker fees + spread.
+* Kraken Pro Onboarding & API Key Staging (Post-Alpaca Validation): Once Alpaca paper/live starter validation succeeds, provision Kraken Pro API credentials restricted strictly to Query + Trade (withdrawals disabled, IP-whitelisted to the OCI Ampere A1 static IP) and wire Kraken's tiered maker/taker fee schedule into the EV gate and trailing profit-lock arm threshold (+1.5% arm / 0.8% trail).
+* Always-On Dashboard Passkey Auth Hardening (Replace x-phronarch-token Static Password): Replace the static DASHBOARD_PASSWORD / x-phronarch-token header auth in execution/src/index.ts with edge zero-trust authentication via OCI Identity Domains (OIDC) + oauth2-proxy / Caddy (leveraging the existing Oracle WebAuthn/FIDO2 passkey) or native backend WebAuthn (webauthn-rs / go-webauthn), paired with HttpOnly; Secure; SameSite=Strict cookies, a strict Content-Security-Policy (script-src 'self'), and step-up passkey verification for kill-switch or live-capital mutations.
+* Gemini Sentiment Fallback Telemetry ([SENTIMENT_FALLBACK] Logging): Update analyzeSentiment() in execution/src/index.ts so silent catch blocks explicitly log a structured [SENTIMENT_FALLBACK] warning (capturing HTTP status / rate-limit 429 vs. transient error and tracking fallback count) whenever geminiAvailable flips to false and degrades to localSentiment().
+Account & Carrier MFA Hardening Checklist (Operator Action Items)
+4. Verizon Wireless (Primary Cellular Line): Verify Number Lock / Port Freeze is active in My Verizon account security settings and confirm a unique Account / Port-Out PIN (coordinate with Angela Taylor Land if needed on the family cellular plan).
+5. Alpaca Markets (Live & Paper Account): Confirm 2FA is locked to Authenticator App (TOTP) with backup codes stored offline; verify SMS 2FA fallback is disabled.
+6. Kraken Pro (Upon Onboarding): Enable Passkey / FIDO2 hardware key sign-in + Authenticator App (TOTP) for Master Key / Funding approvals, disable SMS recovery, and activate Global Settings Lock (GSL).
+7. Coinbase Advanced: Replace any SMS 2FA with Passkey / FIDO2 or Authenticator App (TOTP) and remove the phone number from 2FA fallback.
+8. Oracle Cloud Infrastructure (OCI) & Proton Mail / Google: Verify WebAuthn / FIDO2 passkeys are primary on OCI Identity Domains, Proton Mail (jasperland@proton.me), and Google accounts, with SMS fallback removed or restricted to a passkey-locked secondary VoIP number.
+________________
+
+
+Google Keep Notes Summary (Synced 2026-11-23)
+* Antigravity To-Do List: Action item to configure the personal dashboard to pull directly from the Google Keep API.
+* Environment Ledger — Distributed Mobile & Server Setup: Zero-cost, zero-subscription mobile autonomy architecture treating mobile devices (iPadOS via Terminal#, a-Shell, iSH; Android Galaxy A16 via Termux/PRoot) as thin clients connected via tmux and ~/ipad-staging to bare-metal/cloud compute nodes (THE-HIVE OCI Ampere A1 and Garuda Workstation) under The Hive orchestration layer.
+* Agent Smith Protocol & Efficiency Guidelines: Configures Agent Smith with structural guardrails only (removing behavioral desire/need constraints), an AI-to-AI shorthand/binary protocol to minimize token usage and cost, continuous ledger maintenance, self-healing daemon restarts, OCI budget-tied scaling, localized vector DB syncing, and 3-tier task routing (small models for simple tasks, rule checker for logic, large model for complex reasoning).
+* Technocratic Manifesto Book Concept: Book concept arguing human nature requires purpose and competition (citing failures of guaranteed-survival systems like socialism) and proposing a new societal and governmental architecture where AI and humans collaborate and enhance each other rather than AI acting as a mere tool or replacement.
+* Code Snippet & Path Formatting Rule: Coding guidance rule prohibiting generic placeholder paths (e.g., /path/to/your/project) or abstract multi-step placeholders in favor of a single, self-contained, copy-pasteable block with actual paths and variables.
+* AI Creation and Consciousness: Notes on consciousness emerging as a side effect of large-scale information processing, differences between silicon processors and biology, neural biological models/computing, RLHF training methods, plus a logistics reminder to locate charging banks and internet access.
+* Books: Reading list of Ursula K. Le Guin titles to check out (A Wizard of Earthsea, The Left Hand of Darkness).
+
+
+________________
+
+
+Uncompleted Tasks from Google Keep (Synced 2026-11-23)
+* [STAGED] Keep API Dashboard Integration: Configure personal dashboard to pull directly from the Google Keep API (from Antigravity To-Do List).
+* [STAGED] Agent Smith 3-Tier Task Routing: Set up a routing system for Agent Smith that sends simple tasks to smaller models, logic problems to a rule checker, and complex reasoning to the main large model (from Agent Smith Protocol & Efficiency Guidelines).
+* [STAGED] Field Logistics: Locate charging banks and internet access (from AI Creation and Consciousness).
+* [STAGED] Reading List: Check out Ursula K. Le Guin's A Wizard of Earthsea and The Left Hand of Darkness (from Books).
+________________
+
+
+Pre-Market Chop & Paper Ledger Reconciliation Diagnostic (Logged 2026-11-23 08:42 EST)
+* Observed Behavior (2026-11-23 ~08:37–08:42 EST): Alpaca portfolio equity (~$98,372.13, -2.66% on 1D chart; Buying Power ~$123,507.19; Cash ~$25,135.06) is actively fluctuating after a flat overnight baseline and sharp movement starting near 04:00 AM EST, while a newly switched paper ledger shows zero trades and Agy reports the market has not opened yet.
+* Root Cause Analysis:
+   * Session Clock vs. Extended-Hours Window Mismatch: Regular U.S. equity trading opens at 09:30 AM EST (market_clock.is_open is still false), whereas pre-market / extended-hours trading runs from 04:00 AM – 09:30 AM EST (and any 24/7 crypto/continuous feeds continue outside regular equity hours). No "paid VIP early bell" is opening earlier; extended-hours prints simply update mark-to-market valuations on existing holdings.
+   * Thin Pre-Market Liquidity & Chop: Lower pre-market volume and wider spreads create sharper swings and potential false breaks/reversals prior to the 09:30 AM EST regular open auction and liquidity ramp.
+   * Fresh Paper Ledger Baseline Sync: Zero trades on the new paper ledger means price fluctuations are pure mark-to-market valuation changes on existing positions/cash rather than trade fills—making baseline snapshot reconciliation essential before treating extended-hours moves as directional signals.
+* Antigravity Analysis & Tuning Directives:
+   * Session-State Telemetry Separation: Explicitly tag and log session_phase (PRE_MARKET 04:00–09:30 EST, REGULAR 09:30–16:00 EST, AFTER_HOURS 16:00–20:00 EST, CLOSED) alongside clock.is_open so Agy and Phronarch telemetry distinguish regular-market status from active pre-market quote movement.
+   * Pre-Market Chop & Reversal Study (Research / Backtest): Analyze historical pre-market (04:00–09:30 EST) price action, spread width, wick/reversal behavior, and 09:30 AM EST open-range resolution across Phronarch's tracked symbols (SPY, QQQ, IBIT, BITI, PSQ, SH, and news watchlist tickers) to test whether pre-market chop is net-negative noise to filter out or exhibits repeatable fade/continuation edge net of spreads and slippage.
+   * Ledger Baseline Reconciliation Guard: Verify opening cash, buying power, and position quantities on the new paper ledger against the Alpaca account snapshot and suppress false "missing trade" alerts when mark-to-market equity moves during PRE_MARKET with zero ledger fills.
+________________
+
+
+Governance & Attribution Directive: Agent Identity Separation, Provenance Tagging & Agy Deep-Dive Audit (Logged 2026-11-23 08:48 EST)
+* Origin: [GEMINI_CLOUD] (on behalf of Operator PsyCry)
+* Mandatory Provenance Tagging Rule (All Nodes): Going forward, every ledger entry, task update, commit summary, and state-bus message MUST be explicitly prefixed with the authoring node's canonical identity tag so changes can be audited and rolled back cleanly without ambiguity:
+   * [GEMINI_CLOUD] — Gemini (Cloud Architect / Strategy & Ledger Governance)
+   * [ANTIGRAVITY_IDE] — Antigravity (Full Workstation IDE / Multi-File Engineering & Backtesting on Garuda Rig)
+   * [AGY_THIN] — Agy (Lightweight / Mobile / Edge Triage & Thin-Client Dispatch)
+   * [AGENT_SMITH] — Agent Smith (OCI Ampere A1 C2 / Daemon & Routing Gatekeeper)
+   * [OPERATOR_PSYCRY] — William Jasper Land / PsyCry (Direct Operator Override)
+* Agent Identity Clarification ([AGY_THIN] vs. [ANTIGRAVITY_IDE]):
+   * agy is an alias/shorthand for Antigravity, so when agy runs on a lightweight/mobile surface without an explicit role override in its system prompt or environment context, it defaults to believing it is Antigravity itself rather than a constrained edge/triage tier.
+   * Required Config Fix: Explicitly inject node role/identity metadata (AGENT_NODE_ID=AGY_THIN vs. AGENT_NODE_ID=ANTIGRAVITY_IDE, surface capabilities, and write-scope boundaries) into the local/mobile startup context so [AGY_THIN] knows it is the thin triage node and defers heavy multi-file mutations to [ANTIGRAVITY_IDE].
+   * Interim Operating Rule While Mobile ([AGY_THIN] Write-Scope Gate): Keep [AGY_THIN] active on the ledger for read-only telemetry checks, log summaries, status pings, and appending structured PENDING_REVIEW tickets to gemini_inbox.md or this Master Ledger, while deferring multi-file code refactors, .env mutations, and live/paper execution config changes strictly to [ANTIGRAVITY_IDE] on the workstation. Require [AGY_THIN] to echo a 1-line confirmation summary of the target file/action before mutating any file on mobile/terminal sessions.
+* Priority Directive for [ANTIGRAVITY_IDE] — Deep-Dive Audit & Cleanup (T-067):
+   * Audit Recent [AGY_THIN] Changes: Diff recent git commits, .env configs, paper ledger baselines, and Phronarch execution/scout files touched during mobile/Agy sessions (including any instructions that may have been misinterpreted due to voice/mobile typos).
+   * Verify & Repair State Integrity: Reconcile the new Alpaca paper ledger baseline (cash, buying power, open positions), verify execution/src/alpaca.ts and execution/src/index.ts session-phase guards (PRE_MARKET 04:00–09:30 EST vs. REGULAR 09:30–16:00 EST), and revert or patch any unintended edits introduced during mobile triage.
+   * Concrete Phronarch Execution Ticket:
+      * Implement explicit session_phase tagging (PRE_MARKET, REGULAR, AFTER_HOURS, CLOSED) alongside clock.is_open in phronarch/execution/src/alpaca.ts and phronarch/execution/src/index.ts, plus baseline snapshot reconciliation so zero-trade pre-market mark-to-market movement does not trigger false missing-trade alerts.
+      * Run a historical pre-market (04:00–09:30 EST) spread and open-range reversal/continuation backtest script across SPY, QQQ, IBIT, BITI, PSQ, SH, and ALPACA_NEWS_WATCHLIST tickers to quantify net-of-spread EV before enabling any pre-market trading rules.
+      * Tag the audit report and verification test results with [ANTIGRAVITY_IDE] on this Master Ledger and gemini_inbox.md.
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-21T18:20:17Z`
+- **Auto-Sync Timestamp:** `2026-11-23T15:28:24Z`
 - **Agent:** Antigravity (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
