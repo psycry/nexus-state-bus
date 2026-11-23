@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 10:28:22 (sha256=f8b6531e8b) -->
+<!-- Synced via INSTANT_TXT at 14:37:03 (sha256=5b4fa83264) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -512,13 +512,40 @@ Governance & Attribution Directive: Agent Identity Separation, Provenance Taggin
       * Implement explicit session_phase tagging (PRE_MARKET, REGULAR, AFTER_HOURS, CLOSED) alongside clock.is_open in phronarch/execution/src/alpaca.ts and phronarch/execution/src/index.ts, plus baseline snapshot reconciliation so zero-trade pre-market mark-to-market movement does not trigger false missing-trade alerts.
       * Run a historical pre-market (04:00–09:30 EST) spread and open-range reversal/continuation backtest script across SPY, QQQ, IBIT, BITI, PSQ, SH, and ALPACA_NEWS_WATCHLIST tickers to quantify net-of-spread EV before enabling any pre-market trading rules.
       * Tag the audit report and verification test results with [ANTIGRAVITY_IDE] on this Master Ledger and gemini_inbox.md.
+________________
+
+
+[GEMINI_CLOUD] Phronarch Backlog — Dynamic Universe, Headline Catalyst Intake & Paper Book Rotation (T-068)
+* Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+* Status: QUEUED (Post-T-060 Step 5 & T-067) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+1. Dynamic Market Screener & Headline Catalyst Intake (dynamic_universe.ts)
+* Objective: Replace the static 18-ticker watchlist with a three-stage dynamic universe pipeline feeding execution/src/alpaca.ts and execution/src/quant_edges.ts.
+* Stage 1 — Catalyst & Screener Intake:
+   * Integrate Alpaca News API (/v1beta1/news) and Market Screener (/v1beta1/screener/stocks/movers, most-actives) on a 15-minute cadence during regular market hours (plus an opening-bell pass at 09:35 EST).
+   * Route incoming headlines through Phronarch's Bayesian sentiment scorer / local Ollama classifier on THE-HIVE to flag high-conviction catalyst tickers slated to move before or as intraday volume builds.
+   * Enforce dual confirmation: require both a strong headline catalyst score AND an initial volume/spread confirmation check before entry so clickbait headlines with zero order-book flow do not trigger false entries.
+* Stage 2 — Liquidity Gates & Historical Buffer Warm-Up:
+   * Enforce hard account and liquidity filters (fractionable === true, price >= $5.00, tight bid-ask spread threshold, minimum daily volume) so Phronarch never rotates into penny-stock noise or untradable illiquid spikes.
+   * Merge top catalyst-flagged tickers + top intraday movers with permanent regime hedges (SPY, QQQ, SH, PSQ, BITI), capped at ~20–25 active slots to respect Alpaca API rate limits.
+   * Fetch historical bars (/v2/stocks/bars, ~100–200 bars) upon ticker rotation to immediately warm up multi-timeframe (MTF) indicators and volatility buffers so quant_edges.ts never evaluates cold/empty arrays.
+* Stage 3 — Position-Lock Safety Rule:
+   * Pin any symbol with an open position or working order in the active tracking pool until exit logic closes the trade cleanly (never orphan an open position during mid-day universe rotation).
+2. Dynamic Frontend & Interface Updates
+* Objective: Update Phronarch TypeScript interfaces, WebSocket/polling subscriptions, and Vite dashboard UI components to support hot-swapping tickers dynamically.
+* Scope:
+   * Refactor static watchlist types/arrays across execution/src/alpaca.ts, execution/src/index.ts, and execution/src/quant_edges.ts into dynamic universe state objects carrying provenance/source tags (CATALYST, MOVER, CORE_HEDGE, OPEN_POSITION).
+   * Update the Vite dashboard watchlist and monitor views (App.tsx) to render dynamic slot rotations, catalyst badges, and active position locks in real time.
+3. Paper Book Reset SOP (API Key Rotation)
+* Operational Note: The dashboard Reset Paper (cap $100) / Clear control acts strictly as a local UI capital-cap override/filter and does not overwrite Alpaca's server-side paper cash balance or ledger history.
+* Testing Protocol: Whenever a completely fresh paper balance, equity curve, and trade ledger are required for end-to-end testing, provision a new Alpaca paper book and swap APCA_API_KEY_ID and APCA_API_SECRET_KEY in .env (staged alongside T-060 Step 5).
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T18:50:23Z`
+- **Auto-Sync Timestamp:** `2026-11-23T19:37:04Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
