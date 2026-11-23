@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-23T15:28:29Z",
+  "generated_at": "2026-11-23T15:55:45Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -77,6 +77,7 @@
     "T-064",
     "T-065",
     "T-066",
+    "T-067",
     "T-051",
     "T-052",
     "T-053",
@@ -550,6 +551,13 @@
       "timestamp": "2026-11-21 13:19",
       "phase": "Phase 6",
       "description": "Phronarch News-Driven Stock Watchlist Lane & Live `/v2/assets` Verification (`psycry/phronarch` `61feebf`, deployed live on `THE-HIVE`): Added 13-ticker news watchlist (`ALPACA_NEWS_WATCHLIST=NVDA,AAPL,MSFT,AMZN,META,GOOGL,AMD,TSLA,COIN,MSTR,PLTR,GLD,TLT`), `evaluateNewsStockSignal` (`BUY` on fresh `<=45m` catalyst `>=+0.40`, `1h RSI < 72`, `>=+0.65` in 1h downtrend, `<=25bps` spread; `EXIT` on `-2.5%` SL, `+5.0%` TP, `+1.5%/0.8%` trail, or bearish news flip `<=-0.45`), `aggregateNewsCatalysts` (conflicting-headline whipsaw dampening & bearish-flip precedence), `0.5x` per-stock allocation (`12.5%` max) with dynamic in-cycle cash & 60% gross exposure tracking, and live dashboard watchlist pills (`App.tsx`); verified all 20 symbols against live Alpaca `/v2/assets`, `/v1beta1/news`, `/quotes/latest`, and `/bars` (remapping retired `SPLG` 404 to active `SPYM` HTTP 200), `tsc --noEmit`, `verify_alpaca` (`38/38 PASS`), `verify_live_exec` PASS, Vite build PASS, and live A1 `/status`",
+      "status": "DONE"
+    },
+    {
+      "id": "T-067",
+      "timestamp": "2026-11-23 10:55",
+      "phase": "Phase 6",
+      "description": "`[ANTIGRAVITY_IDE]` Deep-Dive Audit, Pre-Market/Open/Close Chop Hardening & `$100` Crypto Floor Unblock (`psycry/phronarch` `e06f323`): (1) Audited recent `[AGY_THIN]` commits (`a7a3bb3`..`e86d24f`) and both Alpaca paper accounts (`PA3WN7HTI` Agent Smith `$95,717.40` vs `PA3EWBDW6` Phronarch `$100.43`); (2) Implemented `classifyMarketSessionPhase` (`PRE_MARKET` 04:00\u201309:30 ET, `REGULAR` 09:30\u201316:00 ET, `AFTER_HOURS` 16:00\u201320:00 ET, `CLOSED`), `reconcilePaperLedgerBaseline` (suppressing false missing-trade alerts on MTM moves), 15m open-chop buffer (`09:30\u201309:45 ET`), 15m pre-close EOD flatten (`15:45\u201316:00 ET`), and wired `getConflictingPositionSymbol` (`BITI`<->`IBIT`, `PSQ`<->`QQQ`, `SH`<->`SPYM`) + 30m `ALPACA_REENTRY_COOLDOWN_MS` into `runAlpacaInverseCycle`; (3) Ran 14-day 15m backtest (`scratch/backtest_premarket_chop.ts`: `39.7%` 09:30\u201309:45 ET whipsaw rate, `284.9 bps` mean overnight gap); (4) Unblocked `$100` BTC/crypto trading by decoupling venue-specific fees (`getVenueFeeRates`: `0.20%` paper maker / `0.16%` Kraken / Coinbase tier), adding `[SENTIMENT_FALLBACK]` telemetry, and expanding 4h/15m recovery swing triggers; (5) Configured `[AGY_THIN]` vs `[ANTIGRAVITY_IDE]` provenance tagging & write-scope gate (`auto_improve.py`, `router_bridge.py`, `ledger_sync.py`, `agent.rs`); verified `verify_alpaca` (`48/48 PASS`), `verify_t040` (`5/5 PASS`), `verify_live_exec` (`3/3 PASS`), and `make test` (`28/28` Python + Hive + `8/8` Rust PASS)",
       "status": "DONE"
     },
     {
