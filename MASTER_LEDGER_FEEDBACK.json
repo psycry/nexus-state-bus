@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1",
-  "timestamp": "2026-11-23T15:55:45Z",
+  "timestamp": "2026-11-23T15:55:59Z",
   "google_doc_id": "1WHt9j9CvMB2kSUgJRuQPahVKM0rFwT-7VwKTXkK5DOs",
-  "latest_milestone": "T-054",
+  "latest_milestone": "T-067",
   "status": "COMPLETED",
   "completed_milestones": [
     "T-001",
@@ -205,6 +205,6 @@
       "Rebuilt release binary target/release/claw-mcp-server and verified clean JSON-RPC stdio handshake + systemd service reload."
     ]
   },
-  "note": "T-014 Harness IPC Diagnostic & Pipe Unblock resolved; concurrent async stdio drain + stdin null isolation verified.",
+  "note": "[ANTIGRAVITY_IDE] T-067 completed: Pre-market/open/close chop hardening, session-phase tagging, ledger baseline reconciliation, 14-day backtest, 00 BTC venue-fee unblock, and [AGY_THIN] vs [ANTIGRAVITY_IDE] provenance separation.",
   "gdoc_push_mode": "GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)"
 }
