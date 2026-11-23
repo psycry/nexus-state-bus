@@ -522,7 +522,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Backlog — Dynamic Universe, Headline Catalyst Intake & Paper Book Rotation (T-068)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: QUEUED (Post-T-060 Step 5 & T-067) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Status: COMPLETED (`T-077` `c1312b1` / `THE-HIVE` live) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (`123/123` checks)
 1. Dynamic Market Screener & Headline Catalyst Intake (dynamic_universe.ts)
 * Objective: Replace the static 18-ticker watchlist with a three-stage dynamic universe pipeline feeding execution/src/alpaca.ts and execution/src/quant_edges.ts.
 * Stage 1 — Catalyst & Screener Intake:
@@ -562,7 +562,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Telemetry Directive — Strategy-Lane Attribution, Build Version Stamping (git_sha), Alpha vs. Beta Benchmark & Extended Markout (T-070)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: QUEUED (Post-T-067 & T-068) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Status: COMPLETED (`T-079` `41e817c` + `T-078` Intraday Session Rhythm) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (`verify_session_rhythm` `11/11`, `verify_alpaca` `76/76`, `verify_quant_edges` `24/24`, `verify_dynamic_universe` `15/15`, `verify_t040` `5/5`, `verify_live_exec` `3/3`, Vite build `636ms`)
 * Objective: Isolate Phronarch's strategy alpha from background market beta and silent code regressions inside a single lightweight A1 deployment—without fragmenting capital, API rate limits, or databases across multiple containers.
 * Execution Directives:
    * Build Version Stamping (git_sha & deploy_ts):
@@ -587,7 +587,7 @@ ________________
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T19:49:30Z`
+- **Auto-Sync Timestamp:** `2026-11-23T19:58:25Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
@@ -626,4 +626,9 @@ ________________
 - **JSON Telemetry Packet:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/MASTER_LEDGER_FEEDBACK.json`
 - **Sanitized Inbox Mirror:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md`
 - **Sanitized Sync Packet:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md`
+
+## 5. `[ANTIGRAVITY_IDE]` Phronarch Live Deployments (`T-077`, `T-078`, `T-079` / `T-070`)
+- **`T-077` (`c1312b1`, Gemini `T-068`):** Dynamic Universe (`dynamic_universe.ts`, Alpaca `/v1beta1/news` + `/v1beta1/screener/stocks/movers` & `most-actives`, liquidity gates, bar warm-up, Stage 3 `OPEN_POSITION` pinning, dynamic UI badges) — `DONE` (`verify_dynamic_universe` `15/15 PASS`, live on `THE-HIVE`).
+- **`T-078` (`efb845d`, rebased before `T-079`):** Intraday Session Rhythm (`classifyIntradaySessionRhythm`, `isCryptoEquityCloseTransition`, Midday Lull `11:30–14:00 ET` stricter RSI/spread + `0.75x` size, Power Hour `15:00–15:45 ET` `1.20x` size + tight harvest, Crypto `15:45–16:30 ET` equity-close handoff tight trailing stops) — `DONE` (`verify_session_rhythm` `11/11 PASS`).
+- **`T-079` (`41e817c`, Gemini `T-070`):** Build SHA (`git_sha` + `deploy_ts`) stamping in `db.ts`/`index.ts`, `strategy_lane` attribution (`CORE_REGIME`, `INVERSE_HEDGE`, `CATALYST_SWING`) + 2D `strategy_lane × git_sha` SQLite rollups (`strategy_orders` & `trades`), Alpha vs. Beta (`α(SPY)`, `α(BTC)`), `1m`/`15m` extended markouts, and `SHA` / `α(SPY)` badges in `App.tsx` — `DONE` (`tsc --noEmit`, `verify_session_rhythm` `11/11`, `verify_alpaca` `76/76`, `verify_quant_edges` `24/24`, `verify_dynamic_universe` `15/15`, `verify_t040` `5/5`, `verify_live_exec` `3/3`, Vite build `636ms`).
 <!-- ANTIGRAVITY_TELEMETRY_END -->
