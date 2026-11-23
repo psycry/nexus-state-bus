@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 14:49:29 (sha256=75f4509800) -->
+<!-- Synced via INSTANT_TXT at 15:08:04 (sha256=2190f7b6ff) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -522,7 +522,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Backlog — Dynamic Universe, Headline Catalyst Intake & Paper Book Rotation (T-068)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: COMPLETED (`T-077` `c1312b1` / `THE-HIVE` live) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (`123/123` checks)
+* Status: QUEUED (Post-T-060 Step 5 & T-067) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
 1. Dynamic Market Screener & Headline Catalyst Intake (dynamic_universe.ts)
 * Objective: Replace the static 18-ticker watchlist with a three-stage dynamic universe pipeline feeding execution/src/alpaca.ts and execution/src/quant_edges.ts.
 * Stage 1 — Catalyst & Screener Intake:
@@ -562,7 +562,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Telemetry Directive — Strategy-Lane Attribution, Build Version Stamping (git_sha), Alpha vs. Beta Benchmark & Extended Markout (T-070)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: COMPLETED (`T-079` `41e817c` + `T-078` Intraday Session Rhythm) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (`verify_session_rhythm` `11/11`, `verify_alpaca` `76/76`, `verify_quant_edges` `24/24`, `verify_dynamic_universe` `15/15`, `verify_t040` `5/5`, `verify_live_exec` `3/3`, Vite build `636ms`)
+* Status: QUEUED (Post-T-067 & T-068) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
 * Objective: Isolate Phronarch's strategy alpha from background market beta and silent code regressions inside a single lightweight A1 deployment—without fragmenting capital, API rate limits, or databases across multiple containers.
 * Execution Directives:
    * Build Version Stamping (git_sha & deploy_ts):
@@ -581,13 +581,33 @@ ________________
    * Signal-to-Execution Parity & Mark-to-Market Separation:
       * Log shadow signal intents alongside actual fills and mark-to-market unrealized drift so zero-trade equity fluctuations (such as pre-market/off-hours movement) are explicitly distinguished from deploy regressions.
 [NEXT_AUTONOMOUS_CYCLE]
+________________
+
+
+[GEMINI_CLOUD] Phronarch Crypto Execution & Inverse Hedge Directive — Kraken Pro Primary Integration & SETH Watchlist Slot (T-071)
+* Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+* Status: QUEUED (Priority 1 Crypto Execution) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Objective: Transition live crypto execution onto Kraken Pro for lower maker/taker fee drag and 24/7 coverage while adding -1x inverse Ethereum (SETH) alongside BITI in Alpaca's permanent INVERSE_HEDGE lane.
+* Execution Directives:
+   * Kraken Pro Primary Execution Integration:
+      * Provision Kraken Pro API credentials restricted strictly to Query + Trade (withdrawals disabled, IP-whitelisted to the OCI Ampere A1 static IP) once KYC verification completes.
+      * Wire Kraken Pro order routing and WebSocket/REST market data feeds into phronarch-execution as the primary live crypto execution venue (EXCHANGE_ID=kraken), routing entries via POST_ONLY limit orders to capture maker fees.
+      * Parameterize Kraken Pro's fee schedule (KRAKEN_MAKER_BPS=16, KRAKEN_TAKER_BPS=26) inside the net-EV gate and trailing profit-lock arm thresholds so trades only fire when expected edge clears round-trip Kraken fees + spread.
+   * Permanent -1x Inverse Crypto Watchlist Expansion (SETH + BITI):
+      * Add SETH (ProShares Short Ether ETF, -1x daily ETH) alongside BITI as a permanent pinned slot in INVERSE_HEDGE on Alpaca (excluding -2x inverse ETFs SBIT and ETHD from multi-hour swing slots due to daily volatility drag, wider spreads, and overnight crypto gap risk).
+      * Gate SETH and BITI entries strictly behind bearish crypto regime confirmation (ETH/USD / BTC/USD scout signals) and the /v2/assets fractionability + &lt;= 25 bps spread guard—never triggering them from top-movers screener noise.
+Sub-Task T-071.1 — Dual-Feed Crypto Telemetry: Retain Coinbase Public Market Tracking Alongside Kraken Pro (DEPENDS_ON: T-071)
+* Dependency: DEPENDS_ON: T-071 (Blocked until Kraken Pro primary execution integration is live and verified on THE-HIVE).
+* Assignee: [ANTIGRAVITY_IDE]
+* Objective: Keep Coinbase's public market data / L1 ticker & order-book stream active in read-only telemetry mode (COINBASE_EXECUTION_ENABLED=false) alongside Kraken Pro's live feed—eliminating Coinbase's higher fee drag on execution while preserving cross-exchange price/spread sanity checks, lead/lag confirmation, and Bayesian/OFI signal validation.
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T19:58:37Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:08:05Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
