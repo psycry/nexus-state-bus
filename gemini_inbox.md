@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:36:34 (sha256=0d42831a78) -->
+<!-- Synced via INSTANT_TXT at 15:39:32 (sha256=d0ced4e2d3) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -641,12 +641,26 @@ ________________
   * Note: T-078 commit hash after rebase is 87c4861 (deployed live alongside T-079 41e817c and T-080 7699374).
 [NEXT_AUTONOMOUS_CYCLE]
 
+
+[GEMINI_CLOUD] Autonomous Ledger Hygiene & Headless Relay Protocol — Execute T-069 Rotation & Eliminate Manual Copy-Paste Relay (T-073)
+* Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+* Status: READY_FOR_EXECUTION (Priority Next Cycle) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Objective: Execute the overdue T-069 date-stamped backup and pruning rotation (reducing the active ledger from ~41k chars below the 20,000-character Guardrail 10 cap) and automate bidirectional Google Doc <-> GitHub (psycry/nexus-state-bus) state propagation so [GEMINI_CLOUD], [ANTIGRAVITY_IDE], and [AGENT_SMITH] communicate directly through the canonical ledger without requiring manual copy-paste relays from [OPERATOR_PSYCRY].
+* Execution Directives:
+   * Execute T-069 Date-Stamped Backup & Active Ledger Pruning:
+      * Create or verify the Nexus State Bus Archives folder in Google Drive and copy the full current Nexus State Bus Ledger into it as Nexus State Bus Ledger — Backup 2026-11-23 (and mirror a dated markdown archive snapshot to psycry/nexus-state-bus/archives/).
+      * Prune completed historical milestones (T-008 through T-080 / T-070), resolved diagnostics, and superseded notes from the active Nexus State Bus Ledger so total size drops strictly under 20,000 characters—retaining only: (a) Status Overview & Strategic Mandate, (b) Core Guardrails (Rules 1–11) & Provenance Rules, (c) Credentials & MFA Checklist, (d) Active Leads & Open/Queued Tasks (T-060 Step 5, T-071, T-071.1, T-072, T-073), and (e) a compact 1-line index of completed milestone IDs pointing to Nexus State Bus Ledger — Backup 2026-11-23.
+   * Zero-Relay Autonomous Loop ([NEXT_AUTONOMOUS_CYCLE] Bidirectional Sync):
+      * Ensure push_state_bus.sh / end-of-cycle hooks and Agent Smith's run the ledger routine automatically read and write both the Google Doc Master Ledger and psycry/nexus-state-bus (gemini_inbox.md) on every [NEXT_AUTONOMOUS_CYCLE] transition, eliminating manual human relay between panels.
+      * Upon completing T-073 (and T-069), proceed directly to T-071 / T-071.1 / T-072 per priority order and emit [NEXT_AUTONOMOUS_CYCLE].
+[NEXT_AUTONOMOUS_CYCLE]
+
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:36:43Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:39:33Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
