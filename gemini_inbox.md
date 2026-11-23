@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 14:37:03 (sha256=5b4fa83264) -->
+<!-- Synced via INSTANT_TXT at 14:42:45 (sha256=d82456f0c9) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -91,6 +91,11 @@ Source of Truth & Antigravity Feedback Ingestion Protocol (Guardrails)
       * 2. If active operator tasks exist, execute the highest-priority operator task immediately.
       * 3. If all operator-assigned tasks are complete, select or generate a spare-cycle greenfield task—including exploratory R&D, system optimization, or open mathematical/algorithmic problem-solving—log it under PENDING_APPROVAL, execute within Always-Free/local compute bounds, and emit [NEXT_AUTONOMOUS_CYCLE] upon completion.
    * Anti-Spin & Rate-Limit Safeguards: To prevent degenerate infinite loops or token burn, each continuation cycle must produce a concrete, verifiable state delta (code commit, theorem/proof artifact, telemetry record, or new ledger entry). If no state delta is achieved across 2 consecutive cycles, or if local/cloud rate limits or budget caps are reached, apply exponential backoff or pause until the next scheduled heartbeat or operator input.
+10. Ledger Size Cap, Date-Stamped Backup Rotation & Pruning Protocol:
+   * Active Ledger Cap: Keep this active Nexus State Bus Ledger under 20,000 characters (~4,500–5,000 tokens) so every agent cycle ([GEMINI_CLOUD], [ANTIGRAVITY_IDE], [AGY_THIN], [AGENT_SMITH]) ingests it rapidly without context bloat, latency drag, or token waste.
+   * Trigger Condition: Whenever the active ledger exceeds 20,000 characters (or upon operator instruction), execute a rotation cycle before adding new verbose telemetry.
+   * Date-Stamped Snapshot Backup: Copy the full pre-prune Nexus State Bus Ledger into a dedicated Google Drive archive folder (Nexus State Bus Archives) titled Nexus State Bus Ledger — Backup YYYY-MM-DD (using the creation/rotation date) so full historical context remains searchable on demand during deep-dive bug audits or architectural diagramming.
+   * Prune Completed History: After confirming the date-stamped backup exists, prune completed milestones, resolved diagnostics, and stale telemetry from the active ledger—retaining only: (a) Status Overview & Strategic Mandate, (b) Core Guardrails & Provenance Rules, (c) Credentials & MFA Checklist, (d) Active Leads & In-Progress / Queued Tasks (READY_FOR_EXECUTION, STAGED, QUEUED, PENDING_APPROVAL), and (e) a concise 1-line index of completed milestone IDs pointing to the dated archive backups.
 
 
 ________________
@@ -539,13 +544,26 @@ ________________
 * Operational Note: The dashboard Reset Paper (cap $100) / Clear control acts strictly as a local UI capital-cap override/filter and does not overwrite Alpaca's server-side paper cash balance or ledger history.
 * Testing Protocol: Whenever a completely fresh paper balance, equity curve, and trade ledger are required for end-to-end testing, provision a new Alpaca paper book and swap APCA_API_KEY_ID and APCA_API_SECRET_KEY in .env (staged alongside T-060 Step 5).
 [NEXT_AUTONOMOUS_CYCLE]
+________________
+
+
+[GEMINI_CLOUD] Ledger Maintenance Directive — Automated Date-Stamped Backup & Pruning Script (T-069)
+* Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+* Status: QUEUED | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE])
+* Objective: Implement automated ledger rotation and pruning enforcing Guardrail Rule 10 (20,000-character active cap) so historical telemetry never slows down routine agent cycles while remaining preserved for deep-dive bug audits and architectural diagramming.
+* Execution Steps:
+   * Create Archive Folder: Ensure a Nexus State Bus Archives folder exists in Google Drive.
+   * Date-Stamped Backup Copy: Whenever Nexus State Bus Ledger exceeds 20,000 characters (currently ~35,000 chars), copy the entire current document into Nexus State Bus Archives named Nexus State Bus Ledger — Backup YYYY-MM-DD (and mirror a timestamped markdown snapshot into psycry/nexus-state-bus/archives/).
+   * Prune Completed Entries: Once backup verification succeeds, prune completed historical milestones (T-008 through T-066), resolved diagnostics, and superseded notes from the active Nexus State Bus Ledger, leaving a compact completed-ID index, active guardrails, credentials, and open/queued tasks (T-060 Step 5, T-067, T-068, T-069).
+   * Wire Periodic Size Check: Add a character-count threshold check (> 20,000 chars) to the ledger sync / heartbeat routine so rotation triggers automatically before context bloat recurs.
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T19:42:31Z`
+- **Auto-Sync Timestamp:** `2026-11-23T19:42:46Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
