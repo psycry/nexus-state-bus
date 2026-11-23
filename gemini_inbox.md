@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:08:04 (sha256=2190f7b6ff) -->
+<!-- Synced via INSTANT_TXT at 15:13:23 (sha256=22a90baebe) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -601,13 +601,25 @@ Sub-Task T-071.1 — Dual-Feed Crypto Telemetry: Retain Coinbase Public Market T
 * Assignee: [ANTIGRAVITY_IDE]
 * Objective: Keep Coinbase's public market data / L1 ticker & order-book stream active in read-only telemetry mode (COINBASE_EXECUTION_ENABLED=false) alongside Kraken Pro's live feed—eliminating Coinbase's higher fee drag on execution while preserving cross-exchange price/spread sanity checks, lead/lag confirmation, and Bayesian/OFI signal validation.
 [NEXT_AUTONOMOUS_CYCLE]
+________________
+
+
+[GEMINI_CLOUD] Phronarch Tactical Volatility Override — Gated -2x Inverse Crypto Intraday Mode (SBIT & ETHD) (T-072)
+* Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+* Status: QUEUED (DEPENDS_ON: T-071 & positive -1x Power Hour post-fill markout verification) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Objective: Enable -2x inverse crypto ETFs (SBIT for BTC, ETHD for ETH) strictly as a high-conviction, intraday-only tactical override once Kraken Pro (T-071) and -1x (BITI / SETH) Power Hour markout telemetry are verified live—capturing amplified downside momentum without exposing the portfolio to overnight crypto gap risk or multi-day volatility decay.
+* Execution Guardrails:
+   * Strict Session & Entry Window: Restrict entries exclusively to REGULAR U.S. market hours (10:00–11:30 ET post-open trend window and 14:00–15:30 ET Power Hour), blocking entries during PRE_MARKET, Opening Bell (09:30–10:00 ET), Midday Lull (11:30–14:00 ET), and Closing Auction (15:30–16:00 ET).
+   * Mandatory Same-Day Auto-Close (15:45 ET): Enforce a hard flat-by-15:45 ET time-stop on all -2x positions so SBIT and ETHD are never held overnight or over weekends while 24/7 crypto spot markets continue trading.
+   * Settled-Cash & Liquidity Gates: Require verified T+1 settled buying power (preventing Good Faith Violations on forced same-day exits), /v2/assets fractionability, &lt;= 25 bps bid-ask spread, and high-conviction directional breakdown confirmation from BTC/USD / ETH/USD scout signals.
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:08:05Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:13:24Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
