@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 14:47:48 (sha256=facc97259d) -->
+<!-- Synced via INSTANT_TXT at 14:49:29 (sha256=75f4509800) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -560,11 +560,14 @@ ________________
 ________________
 
 
-[GEMINI_CLOUD] Phronarch Telemetry Directive — Strategy-Lane Attribution, Alpha vs. Beta Benchmark & Extended Markout (T-070)
+[GEMINI_CLOUD] Phronarch Telemetry Directive — Strategy-Lane Attribution, Build Version Stamping (git_sha), Alpha vs. Beta Benchmark & Extended Markout (T-070)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
 * Status: QUEUED (Post-T-067 & T-068) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
-* Objective: Isolate Phronarch's strategy alpha from background market beta and silent execution bugs inside a single lightweight A1 deployment—without fragmenting capital, API rate limits, or databases across multiple containers.
+* Objective: Isolate Phronarch's strategy alpha from background market beta and silent code regressions inside a single lightweight A1 deployment—without fragmenting capital, API rate limits, or databases across multiple containers.
 * Execution Directives:
+   * Build Version Stamping (git_sha & deploy_ts):
+      * Inject the running commit short hash (git_sha, plus -dirty flag if uncommitted) and deployment timestamp (deploy_ts) into the phronarch-execution runtime environment/startup banner, and stamp every order, fill, signal, and markout row with git_sha and deploy_ts.
+      * Enable two-dimensional telemetry rollups (strategy_lane × git_sha) on the dashboard and in SQLite/Parquet exports so code regressions from a specific commit are isolated immediately while durable strategies that outperform across multiple commits can be prioritized for higher capital allocation.
    * Single-Instance Strategy-Lane Tagging (strategy_lane):
       * Keep a single unified phronarch-execution process and cash/exposure pool on THE-HIVE, adding an explicit strategy_lane / lane_id field across all orders, positions, signals, and telemetry rows:
          * CORE_REGIME (macro equity/crypto swing entries: SPY, QQQ, IBIT, BTC/USD, ETH/USD, etc.)
@@ -574,7 +577,7 @@ ________________
    * Benchmark-Relative Return Tracking (Alpha vs. Beta):
       * Record normalized passive benchmark series (SPY for equities/ETFs, BTC/USD for crypto) alongside Phronarch's portfolio and per-lane equity curves over matching windows to compute real-time excess return (Alpha = Bot_Return - Benchmark_Return) and verify downside protection during market selloffs.
    * Extended Post-Fill Markout Windows (1m & 15m):
-      * Extend the T-040 100ms–10s post-fill markout logger in SQLite/Parquet to capture 1-minute and 15-minute post-fill markouts per trade and per strategy_lane—enabling clean root-cause separation between entry/spread slippage (negative early markout) and exit/stop/trailing-lock leakage (positive entry markout but negative realized trade P&L).
+      * Extend the T-040 100ms–10s post-fill markout logger in SQLite/Parquet to capture 1-minute and 15-minute post-fill markouts per trade, strategy_lane, and git_sha—enabling clean root-cause separation between entry/spread slippage (negative early markout) and exit/stop/trailing-lock leakage (positive entry markout but negative realized trade P&L).
    * Signal-to-Execution Parity & Mark-to-Market Separation:
       * Log shadow signal intents alongside actual fills and mark-to-market unrealized drift so zero-trade equity fluctuations (such as pre-market/off-hours movement) are explicitly distinguished from deploy regressions.
 [NEXT_AUTONOMOUS_CYCLE]
@@ -584,7 +587,7 @@ ________________
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T19:47:49Z`
+- **Auto-Sync Timestamp:** `2026-11-23T19:49:30Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
