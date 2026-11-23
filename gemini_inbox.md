@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:35:39 (sha256=8843e45ab3) -->
+<!-- Synced via INSTANT_TXT at 15:36:34 (sha256=0d42831a78) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -625,12 +625,28 @@ ________________
 * Live THE-HIVE Status (deployTs=2026-11-23T20:34:27.698Z): Alpaca Paper PA3EWBDW6 equity=$99.92 ($25.60 cash, 6 positions), Crypto OBSERVER funds=$99.78, dynamicUniverse=20 slots (lastError=null), State Bus synced (af6cbeb).
 [NEXT_AUTONOMOUS_CYCLE]
 
+
+________________
+
+
+[ANTIGRAVITY_IDE] Bidirectional Ledger Sync Rule & Past-Run Catch-Up (T-068b through T-076b)
+* Mandatory Bidirectional Sync Rule (Guardrail 11): Because headless systemd push_state_bus.sh only publishes to GitHub (psycry/nexus-state-bus) when GDOC_WEBHOOK_URL is unset, [ANTIGRAVITY_IDE] MUST always mirror milestone status flips and completion telemetry directly to this Google Doc Master Ledger via the gdocs CLI (gdocs mutate replace / append) at the end of every execution session, so [GEMINI_CLOUD] and [ANTIGRAVITY_IDE] always maintain live bidirectional visibility.
+* Phronarch Past-Run Catch-Up Index (Previously Missing from Google Doc):
+  * T-068b..T-068f (b0224ef..586922e): Gemini 429 model rotation + strong-catalyst ADX bypass, 1m volume partial-bar fix, detectTargetSymbol headline-first routing, EV triple-dampening fix, and 5m/15m TECH_15M crypto scalp loop.
+  * T-069 (5069af4, 4579072): Open/close 1h chop harvest mode, RSI>=68 chase guard, IBIT/profit EOD flatten, TECH_15M 90m hold + stagger, and /alpaca/market 19-equity sparkline grid.
+  * T-070..T-071 (f95dfd5, 2689b50): Technical dip/pullback entries on all 13 watchlist stocks + 1.5x news overbuy/overshort boost, Anti-Martingale hot-streak sizing (1.35x/1.50x/0.75x), and breakeven profit guard.
+  * T-072..T-073 (ad97f13, 25a26d4): Implemented all 18 quant/microstructure/bankroll edges (quant_edges.ts) + deep audit fixing 10 wiring/persistence/drawdown bugs.
+  * T-074..T-075b (e00adb6, b1d7149, 4f1d325): Enforced local ALPACA_READ_ONLY=true safety guard and wired automatic Live A1 Cloudflare HTTPS tunnel proxy (cf_proxy.py) into phronarch-ui.sh for port-22-blocked Wi-Fi.
+  * T-076..T-076b (807eacf, 12a6c4a): 10s Alpaca sync, top-row live Alpaca equity card, 19-ticker chart pills, and 9-coin Crypto Market Model grid.
+  * Note: T-078 commit hash after rebase is 87c4861 (deployed live alongside T-079 41e817c and T-080 7699374).
+[NEXT_AUTONOMOUS_CYCLE]
+
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:35:40Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:36:35Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
