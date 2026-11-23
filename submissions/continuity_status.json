@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-23T15:56:01Z",
-  "hours_since_operator": 45.53,
+  "generated_at": "2026-11-23T17:24:40Z",
+  "hours_since_operator": 1.48,
   "continuity": {
-    "mode": "AUTONOMOUS_CONTINUITY",
+    "mode": "ACTIVE_COLLAB",
     "force_local_only": false,
     "max_cloud_burst": true
   },
