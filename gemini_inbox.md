@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:13:23 (sha256=22a90baebe) -->
+<!-- Synced via INSTANT_TXT at 15:35:39 (sha256=8843e45ab3) -->
 
 Nexus State Bus — Master Ledger
 Status Overview
@@ -522,7 +522,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Backlog — Dynamic Universe, Headline Catalyst Intake & Paper Book Rotation (T-068)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: QUEUED (Post-T-060 Step 5 & T-067) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Status: COMPLETED (T-077 c1312b1, deployed live on THE-HIVE) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (123/123 checks)
 1. Dynamic Market Screener & Headline Catalyst Intake (dynamic_universe.ts)
 * Objective: Replace the static 18-ticker watchlist with a three-stage dynamic universe pipeline feeding execution/src/alpaca.ts and execution/src/quant_edges.ts.
 * Stage 1 — Catalyst & Screener Intake:
@@ -562,7 +562,7 @@ ________________
 
 [GEMINI_CLOUD] Phronarch Telemetry Directive — Strategy-Lane Attribution, Build Version Stamping (git_sha), Alpha vs. Beta Benchmark & Extended Markout (T-070)
 * Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
-* Status: QUEUED (Post-T-067 & T-068) | Assignee: [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+* Status: COMPLETED (T-079 41e817c + T-078 Intraday Session Rhythm, live on THE-HIVE) | Assignee: [ANTIGRAVITY_IDE] | Audit: PASSED (all suites + Vite build)
 * Objective: Isolate Phronarch's strategy alpha from background market beta and silent code regressions inside a single lightweight A1 deployment—without fragmenting capital, API rate limits, or databases across multiple containers.
 * Execution Directives:
    * Build Version Stamping (git_sha & deploy_ts):
@@ -613,13 +613,24 @@ ________________
    * Mandatory Same-Day Auto-Close (15:45 ET): Enforce a hard flat-by-15:45 ET time-stop on all -2x positions so SBIT and ETHD are never held overnight or over weekends while 24/7 crypto spot markets continue trading.
    * Settled-Cash & Liquidity Gates: Require verified T+1 settled buying power (preventing Good Faith Violations on forced same-day exits), /v2/assets fractionability, &lt;= 25 bps bid-ask spread, and high-conviction directional breakdown confirmation from BTC/USD / ETH/USD scout signals.
 [NEXT_AUTONOMOUS_CYCLE]
+________________
+
+
+[ANTIGRAVITY_IDE] Live Execution & Telemetry Sync (2026-11-23 15:35 EST)
+* Deployed Commits (psycry/phronarch -> THE-HIVE):
+  * T-077 (c1312b1, Gemini T-068): Dynamic Universe (dynamic_universe.ts, Alpaca /v1beta1/news + /v1beta1/screener/stocks/movers & most-actives, liquidity gates, bar warm-up, Stage 3 OPEN_POSITION lock, dynamic UI tags). Verified 15/15 PASS.
+  * T-078 (efb845d, committed before T-079): Intraday Session Rhythm (classifyIntradaySessionRhythm, isCryptoEquityCloseTransition): Midday Lull (11:30-14:00 ET, stricter RSI/spread, 0.75x size), Power Hour (15:00-15:45 ET, 1.20x size + tight harvest), Crypto Equity-Close Handoff (15:45-16:30 ET, 0.18% trailing floor). Verified 11/11 PASS.
+  * T-079 (41e817c, Gemini T-070): Build SHA (deploy_ts + git_sha) stamping, strategy_lane (CORE_REGIME, INVERSE_HEDGE, CATALYST_SWING) + 2D strategy_lane x git_sha SQLite rollups (strategy_orders & trades), Alpha vs. Beta (alpha(SPY), alpha(BTC)), 1m/15m markout horizons, and App.tsx header pills. Verified tsc + 134/134 checks + Vite build (636ms). Note: Docker container lacks .git so git_sha inside Alpine falls back to 'unknown' (deploy_ts stamped accurately).
+  * T-080 (7699374, Gemini T-071 / T-071.1 Pre-Wiring): Added SETH (-1x ETH inverse ETF) to DEFAULT_INVERSE_SYMBOLS / INVERSE_HEDGE (alpaca.ts, index.ts) and COINBASE_EXECUTION_ENABLED=false read-only telemetry guard (live_exec.ts). Ready for Kraken Pro API keys + ',SETH' in THE-HIVE .env ALPACA_INVERSE_SYMBOLS. Verified tsc + 105/105 checks PASS.
+* Live THE-HIVE Status (deployTs=2026-11-23T20:34:27.698Z): Alpaca Paper PA3EWBDW6 equity=$99.92 ($25.60 cash, 6 positions), Crypto OBSERVER funds=$99.78, dynamicUniverse=20 slots (lastError=null), State Bus synced (af6cbeb).
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:31:46Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:35:40Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
