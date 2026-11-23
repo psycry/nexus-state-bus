@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 15:42:31 (sha256=f81111e054) -->
+<!-- Synced via INSTANT_TXT at 15:57:41 (sha256=85a6573dd8) -->
 
 Nexus State Bus — Master Ledger Status Overview • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [GEMINI_CLOUD] (Cloud Architect), [AGENT_SMITH] (OCI A1 C2), [AGY_THIN] (Mobile/Thin Triage) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
 
@@ -65,13 +65,28 @@ ________________
 
 
 Completed Milestone Index (Archived Verbatim in Backup 2026-11-23) • Full Pre-Prune Archive (73,080 chars): Google Drive Nexus State Bus Ledger — Backup 2026-11-23 (https://docs.google.com/document/d/1WNcbv0HKk9OOSlOMwf8HKioEQDOVApKBGt917EuRPoc/edit in folder https://drive.google.com/drive/folders/1-YhtW4gy5MfS4hNL24neusUi2aTn6oSr) & GitHub psycry/nexus-state-bus/archives/Nexus_State_Bus_Ledger_Backup_2026-11-23.md (commit c929bad). • T-008..T-054: Proposal/SOW pipeline, claw-mcp-server, PR wedges (T-037/039), T-040 markout/circuit-breakers, IPC/pipe unblock (T-014), closed-loop state bus sync (T-054 DONE). • T-060..T-067: Alpaca Dual-Regime Paper (T-060), SDK/Off-Hours audit (T-061), Aikido Security triage (T-062), Discord routing/hallucination fix (T-063), Equity/News watchlist (T-064..T-066), Deep Audit & $100 Crypto unblock (T-067, e06f323). • T-068b..T-076b: Gemini 429 rotation + TECH_15M crypto loop (T-068b..f, b0224ef..586922e), 1h chop + /alpaca/market grid (T-069, 5069af4/4579072), 13-stock tech entries + hot-streak sizing (T-070..71, f95dfd5/2689b50), 18 quant edges + deep audit (T-072..73, ad97f13/25a26d4), ALPACA_READ_ONLY + Live A1 Cloudflare tunnel (T-074..75b, e00adb6/b1d7149/4f1d325), 10s Alpaca sync + Crypto grid (T-076..76b, 807eacf/12a6c4a). • T-077 (Gemini T-068, c1312b1): Dynamic Universe (dynamic_universe.ts, screener/news intake, liquidity gates, bar warm-up, Stage 3 position-lock, UI tags) — DONE (15/15 PASS, live). • T-078 (87c4861): Intraday Session Rhythm (Midday Lull 11:30–14:00 ET, Power Hour 15:00–15:45 ET, Crypto Equity-Close Handoff 15:45–16:30 ET) — DONE (11/11 PASS, live). • T-079 (Gemini T-070, 41e817c): Build SHA (deploy_ts + git_sha), strategy_lane (CORE_REGIME, INVERSE_HEDGE, CATALYST_SWING), 2D rollups, Alpha vs Beta, 1m/15m markouts — DONE (134/134 checks + Vite 636ms, live). • T-080 (Gemini T-071 pre-wire, 7699374): SETH -1x ETH inverse + COINBASE_EXECUTION_ENABLED=false telemetry guard — DONE (105/105 checks, live on THE-HIVE deployTs=2026-11-23T20:34:27.698Z). • T-069 (2026-11-23): Executed automated backup (Drive + GitHub c929bad), pruned active ledger from 73,080 chars to <10,000 chars, and wired 20,000-char size-cap alert into push_state_bus.sh — DONE. [NEXT_AUTONOMOUS_CYCLE]
+[GEMINI_CLOUD] Phronarch Autonomous Strategy Evolution — Adaptive Edge Meta-Weighting, Regime Bandit & Self-Improving Alpha Loop (T-074)
+5. Origin: [GEMINI_CLOUD] (on behalf of [OPERATOR_PSYCRY])
+6. Status: QUEUED (DEPENDS_ON: T-073 & initial T-079 1m/15m markout sample accumulation) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+7. Objective: Transform Phronarch from a static-weight signal engine into a closed-loop, self-improving quantitative learning system where every edge, algorithm, and decision rationale in quant_edges.ts dynamically adapts its voting weight to real market feedback—continuously promoting edges that generate net-of-fee alpha and demoting edges that underperform, while safely discovering and graduating new hypotheses.
+8. Execution Directives:
+   1. Per-Edge Vote Attribution & Markout Linking (edge_votes -> 1m/15m Markouts):
+      1. Record the exact active edge vector (+1 bullish, -1 bearish, 0 neutral, plus raw confidence score) on every live and shadow signal emitted by quant_edges.ts (all 18 quant/microstructure/bankroll edges plus news catalyst & regime signals).
+      2. Link each resolved trade's 1m and 15m post-fill markout (from T-079) and realized net-of-fee P&L back to the specific subset of edges that voted for that entry, crediting or penalizing only the participating rationales.
+   2. Regime-Conditioned Exponential Weighting (TREND, CHOP, HIGH_VOL_NEWS):
+      1. Maintain separate adaptive weight tables per market regime (TREND, CHOP, HIGH_VOL_NEWS) so mean-reversion edges and momentum edges are evaluated in their native market environment rather than fighting each other across regime shifts.
+      2. Update each edge weight w_{i,r} via a bounded exponential moving average (EWMA, 30–50 resolved trade half-life) driven by net-of-fee expected markout (penalizing high-slippage or fee-eroded signals even if gross direction was right), clamped strictly within [0.15x, 2.50x] to prevent single-factor concentration or permanent edge death.
+   3. Shadow-Tracked Exploration & Closed-Loop Self-Improvement (hive.self_improve Integration):
+      1. Keep logging shadow signals for down-weighted edges so dormant strategies can prove recovery on live market tape before capital weight scales back up.
+      2. Wire a periodic offline/zero-token diagnostic loop (engine/auto_improve.py / hive.self_improve on THE-HIVE) that audits bottom-quartile edges and failure modes by strategy_lane × git_sha × regime, proposes targeted parameter refinements or new candidate edges in shadow mode, and promotes only candidates that beat baseline net-of-fee markout in out-of-sample replay before touching live execution weights.
+[NEXT_AUTONOMOUS_CYCLE]
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:42:42Z`
+- **Auto-Sync Timestamp:** `2026-11-23T20:57:42Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
