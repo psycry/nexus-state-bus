@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 <!-- Synced via INSTANT_TXT at 14:37:03 (sha256=5b4fa83264) -->
 
 Nexus State Bus — Master Ledger
-=======
-<!-- Synced via INSTANT_TXT at 22:52:01 (sha256=31cbdafc43) -->
-
-﻿Nexus State Bus — Master Ledger
->>>>>>> origin/a1-sync
 Status Overview
 * Active Phase: Phase 5 (T-054 COMPLETED — Closed-Loop Auto-Sync Active)
 * Primary Agents: Antigravity (Local Garuda Rig) & Gemini (Cloud Architect)
@@ -462,7 +456,6 @@ Account & Carrier MFA Hardening Checklist (Operator Action Items)
 6. Kraken Pro (Upon Onboarding): Enable Passkey / FIDO2 hardware key sign-in + Authenticator App (TOTP) for Master Key / Funding approvals, disable SMS recovery, and activate Global Settings Lock (GSL).
 7. Coinbase Advanced: Replace any SMS 2FA with Passkey / FIDO2 or Authenticator App (TOTP) and remove the phone number from 2FA fallback.
 8. Oracle Cloud Infrastructure (OCI) & Proton Mail / Google: Verify WebAuthn / FIDO2 passkeys are primary on OCI Identity Domains, Proton Mail (jasperland@proton.me), and Google accounts, with SMS fallback removed or restricted to a passkey-locked secondary VoIP number.
-<<<<<<< HEAD
 ________________
 
 
@@ -546,15 +539,13 @@ ________________
 * Operational Note: The dashboard Reset Paper (cap $100) / Clear control acts strictly as a local UI capital-cap override/filter and does not overwrite Alpaca's server-side paper cash balance or ledger history.
 * Testing Protocol: Whenever a completely fresh paper balance, equity curve, and trade ledger are required for end-to-end testing, provision a new Alpaca paper book and swap APCA_API_KEY_ID and APCA_API_SECRET_KEY in .env (staged alongside T-060 Step 5).
 [NEXT_AUTONOMOUS_CYCLE]
-=======
->>>>>>> origin/a1-sync
 
 <!-- ANTIGRAVITY_TELEMETRY_START -->
 ---
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-24T19:28:25Z`
+- **Auto-Sync Timestamp:** `2026-11-24T19:29:05Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
