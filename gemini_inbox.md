@@ -1,6 +1,6 @@
-<!-- Synced via INSTANT_TXT at 15:57:41 (sha256=85a6573dd8) -->
+<!-- Synced via INSTANT_TXT at 13:09:50 (sha256=c89d9a9366) -->
 
-Nexus State Bus — Master Ledger Status Overview • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [GEMINI_CLOUD] (Cloud Architect), [AGENT_SMITH] (OCI A1 C2), [AGY_THIN] (Mobile/Thin Triage) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
+Nexus State Bus — Master Ledger Status Overview • [LOCK_STATUS]: UNLOCKED (Ready for [AGY_A1] / [ANTIGRAVITY_IDE] lock acquisition) • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [AGY_A1] (OCI Ampere A1 THE-HIVE — also referred to as "iPad AGY" when accessed remotely via iPad), [AGY_MOBILE] (Samsung Galaxy A16 5G / Mobile Thin Triage, formerly [AGY_THIN]), [AGENT_SMITH] (OCI A1 C2), [GEMINI_CLOUD] (Cloud Architect), [OPERATOR_PSYCRY] (Human Operator) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
 
 
 ________________
@@ -18,11 +18,21 @@ Core Guardrails, Provenance & Bidirectional Sync Rules
 1. Canonical Source of Truth: This Google Doc Master Ledger is canonical. Operator-assigned tasks take strict priority over spare-cycle greenfield work.
 2. Zero-Mock Mandate: No synthetic/mock data in signed-off production systems; fail explicitly or surface real degraded-state telemetry.
 3. Compute & Spend Guardrails: Stay strictly within OCI Always-Free tiers and local compute/token budgets; use symbolic checks before cloud LLMs.
-4. Mandatory Provenance Tagging: Prefix every ledger entry, commit, and status update with [GEMINI_CLOUD], [ANTIGRAVITY_IDE], [AGY_THIN], [AGENT_SMITH], or [OPERATOR_PSYCRY].
-5. [AGY_THIN] Write-Scope Gate: Thin/mobile sessions handle read-only telemetry, logs, and PENDING_REVIEW tickets; multi-file refactors and .env/execution edits go to [ANTIGRAVITY_IDE].
+4. Mandatory Provenance Tagging: Prefix every ledger entry, commit, and status update with [GEMINI_CLOUD], [ANTIGRAVITY_IDE], [AGY_A1], [AGY_MOBILE], [AGENT_SMITH], or [OPERATOR_PSYCRY]. Note alias: "iPad AGY" maps strictly to [AGY_A1].
+5. [AGY_MOBILE] Write-Scope Gate: Mobile sessions ([AGY_MOBILE]) handle read-only telemetry, logs, and PENDING_REVIEW tickets; multi-file refactors and .env/execution edits go to [ANTIGRAVITY_IDE] or [AGY_A1].
 6. [NEXT_AUTONOMOUS_CYCLE] Contract: Re-read Master Ledger & gemini_inbox.md, execute highest-priority open task, or log/execute spare-cycle R&D if idle; halt/backoff if 2 consecutive cycles yield zero state delta.
 7. Ledger Size Cap & Rotation (Rule 10): Keep this active Master Ledger under 20,000 characters. When >20,000 chars, copy full doc to Google Drive folder Nexus State Bus Archives (https://drive.google.com/drive/folders/1-YhtW4gy5MfS4hNL24neusUi2aTn6oSr) as "Nexus State Bus Ledger — Backup YYYY-MM-DD", mirror to psycry/nexus-state-bus/archives/, and prune completed history to a 1-line index.
-8. Mandatory Bidirectional Google Doc Sync (Rule 11): Because headless push_state_bus.sh only pushes to GitHub when GDOC_WEBHOOK_URL is unset, [ANTIGRAVITY_IDE] MUST mirror milestone flips and completion telemetry directly to this Google Doc via gdocs CLI at the end of every execution session.
+8. Multi-Environment Ledger Locking, SQL Provenance & Post-Migration Schema Verification (Rule 9): Single-Writer Ledger Lock: Never run two concurrent Antigravity/AGY instances against the Master Ledger or live state simultaneously. Boot Environment Check & Config Persistence: On session boot, each AGY instance reads its local environment config file to identify its environment key ([ANTIGRAVITY_IDE], [AGY_A1], or [AGY_MOBILE]). If unknown/unconfigured, it must read the Master Ledger and prompt [OPERATOR_PSYCRY]: "What environment is this?" before writing its key to the local config file. Lock Acquisition & Conflict Resolution: Before mutating the ledger or execution state, the active instance writes LOCKED_BY: <ENV_KEY> (e.g., LOCKED_BY: [AGY_A1]) to the Master Ledger and releases it on session exit. If a conflicting lock from another environment key is already present, the instance must halt edits and prompt [OPERATOR_PSYCRY]: "Ledger/system is currently locked by <EXISTING_KEY>. I am <CURRENT_KEY>. Do you want to override?"—proceeding only upon explicit operator confirmation. SQL & Telemetry Environment Tagging: All database writes and SQLite/PostgreSQL logged rows (including Phronarch trade/signal logs and cleanup audits) must include an environment column/metadata tag (ANTIGRAVITY_IDE, AGY_A1, AGY_MOBILE, AGENT_SMITH) identifying which environment generated or modified the record. Post-Migration Schema Verification Protocol: After completing database edits, migrations, or column additions (including adding the environment column across SQLite and PostgreSQL schemas), the system must run an automated schema consistency audit across all modified databases/tables to verify that all newly added columns, constraints, and schema changes are preserved and intact. Auto-Remediation on Discrepancy: If any schema discrepancy or missing column is detected during verification (e.g., due to a reset, rollback, or out-of-sync instance), the system must automatically restore the missing columns and reapply the schema changes before resuming normal read/write execution or releasing the ledger lock.
+9. Mandatory Bidirectional Google Doc Sync (Rule 11): Because headless push_state_bus.sh only pushes to GitHub when GDOC_WEBHOOK_URL is unset, [ANTIGRAVITY_IDE] MUST mirror milestone flips and completion telemetry directly to this Google Doc via gdocs CLI at the end of every execution session.
+
+
+________________
+
+
+Notes
+
+
+* [GEMINI_CLOUD] BITI and SETH are non-fractionable -1x inverse ETFs for Bitcoin and Ethereum used for short selling; while currently enabled, their whole-share minimum pricing and high trading costs may require disabling them in the future.
 
 
 ________________
@@ -55,10 +65,43 @@ Active & Queued Tasks (READY / QUEUED / STAGED)
 2. [GEMINI_CLOUD] T-072 — Gated -2x Inverse Crypto Intraday Mode (SBIT & ETHD) • Status: QUEUED (DEPENDS_ON: T-071 & positive -1x BITI/SETH Power Hour post-fill markout verification). • Guardrails: REGULAR U.S. hours only (10:00–11:30 ET & 14:00–15:30 ET), hard same-day auto-close by 15:45 ET, verified T+1 settled buying power, fractionable, <=25 bps spread.
 
 
-3. [GEMINI_CLOUD] T-045 / T-046 / T-047 (Agent Smith Core & Routing) • T-045 (READY_FOR_EXECUTION): Rust multi-agent dynamic router traits (src/core/agent.rs, src/core/router.rs) with OCI budget overflow circuit breaker (ctx.local_only = true). • T-046 (READY_FOR_EXECUTION): Symbolic zero-token Discord C2 checks + hive.self_improve --once --repo /opt/agent_smith --prefer local. • T-047 (READY_FOR_EXECUTION): Discord UX polish (natural-language action dispatch -> mesh_handoffs).
+3. [GEMINI_CLOUD] T-045 / T-046 / T-047 (Agent Smith Core & Routing) • Note: Direct Google API key LLM routing is deprecated in favor of AGY CLI execution (hydrogen medium model). • T-045 (READY_FOR_EXECUTION): Rust multi-agent dynamic router traits (src/core/agent.rs, src/core/router.rs) with OCI budget overflow circuit breaker (ctx.local_only = true). • T-046 (READY_FOR_EXECUTION): Symbolic zero-token Discord C2 checks + hive.self_improve --once --repo /opt/agent_smith --prefer local. • T-047 (READY_FOR_EXECUTION): Discord UX polish (natural-language action dispatch -> mesh_handoffs).
 
 
-4. Google Keep Staged Tasks (Synced 2026-11-23) • [STAGED] Keep API Dashboard Integration | [STAGED] Agent Smith 3-Tier Task Routing | [STAGED] Field Logistics (charging banks & internet) | [STAGED] Reading List (Ursula K. Le Guin: A Wizard of Earthsea, The Left Hand of Darkness).
+4. [GEMINI_CLOUD] T-081 — Agent Smith Backend Cutover: Google API Keys -> AGY CLI (Hydrogen Medium Model) • Status: QUEUED (HIGH_PRIORITY — Operator Directive 2026-11-23) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass) • Objective: Reconfigure Agent Smith (/opt/agent_smith on THE-HIVE) to route LLM execution commands through the AGY CLI interface using the hydrogen medium model instead of direct Google API key calls, eliminating 429/quota exhaustion errors and conserving API token limits. • Execution Directives: 1. Replace direct Google Gemini API key inference calls in Agent Smith's routing/execution layer (src/core/router.rs / agent execution runner) with a subprocess/CLI adapter invoking AGY CLI configured to target the hydrogen medium model. 2. Retain local Ollama (qwen2.5-coder:1.5b) and symbolic checks as zero-token first-pass guards, routing escalated inference tasks to AGY CLI (hydrogen medium) rather than Google API keys. 3. Deprecate/disable active Google API key fallback in Agent Smith .env/config to prevent unintended quota burn, verify end-to-end command execution and output parsing on THE-HIVE, and log verification telemetry.
+
+
+5. Google Keep Staged Tasks (Synced 2026-11-23) • [STAGED] Keep API Dashboard Integration | [STAGED] Agent Smith 3-Tier Task Routing | [STAGED] Field Logistics (charging banks & internet) | [STAGED] Reading List (Ursula K. Le Guin: A Wizard of Earthsea, The Left Hand of Darkness).
+
+
+6. [AGY_A1] T-082 — Multi-Environment Lock Enforcement, SQL Environment Column & Schema Consistency Auto-Remediation • Status: QUEUED (HIGH_PRIORITY) | Assignee: [AGY_A1] & [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass) • Objective: Implement boot-time environment identification/config persistence, Master Ledger single-writer lock acquisition (LOCKED_BY: <ENV_KEY>) with operator override prompts on conflicts, ensure all SQLite/Postgres schemas (Phronarch trade/signal logs and audits) include an environment column, and implement automated post-migration schema consistency verification with auto-restoration of missing columns/schema changes before resuming execution or releasing locks.
+
+
+7. [GEMINI_CLOUD] T-083 — Verify Market Open/Close Time Determination Method (Alpaca API vs. Hardcoded Schedules) • Status: QUEUED (Operator Directive 2026-11-24) | Assignee: [ANTIGRAVITY_IDE] • Objective: Audit the Phronarch trading engine codebase to verify how market opening and closing times (including pre-market, regular U.S. session 09:30–16:00 ET, and after-hours boundaries) are determined—specifically checking whether the system dynamically queries the Alpaca Clock/Calendar API (/v2/clock, /v2/calendar) or relies on hardcoded timestamps—and confirm alignment with extended-hours volatility and intraday session gates.
+
+
+8. [GEMINI_CLOUD] T-084 — Strip Hardcoded URLs with Embedded Keys & Migrate THE-HIVE A1 to Standard Git SSH Deploy Keys • Status: QUEUED (HIGH_PRIORITY — Security & Hygiene Directive 2026-11-24) | Assignee: [AGY_A1] & [ANTIGRAVITY_IDE] | Audit: Required ([ANTIGRAVITY_IDE] verification pass) • Objective: Remove all hardcoded remote URLs containing embedded PATs/tokens/keys across local and THE-HIVE A1 repositories, reconfigure Git remotes on THE-HIVE A1 to use standard SSH deploy keys, and rotate/revoke any exposed tokens.
+
+
+9. [GEMINI_CLOUD] T-085 — Repository-Wide Credential/Secret Audit & Aikido Security Triage Verification • Status: QUEUED (HIGH_PRIORITY — Security & Hygiene Directive 2026-11-24) | Assignee: [ANTIGRAVITY_IDE] & [AGY_A1] • Objective: Audit the entire codebase and Git history across active repositories to verify zero plaintext credentials, API keys, or passwords exist in tracked files or commit logs; verify Aikido security scanner integration and remediate any open findings (extending completed T-062 Aikido Security triage).
+
+
+10. [GEMINI_CLOUD] T-086 — Phronarch Dip-Rebound Swing-Trading Lane (DIP_SWING: Buy Sharp Drops on Stabilization, Take Profit Before Peak) • Status: QUEUED (Operator Directive 2026-11-24) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass) • Objective: Add a short-to-mid-term swing-trading strategy lane (DIP_SWING) alongside Phronarch's existing intraday micro-trading lanes to capitalize on sharp morning sell-offs and chaotic volatility troughs across liquid equities and crypto (e.g., BTC). • Strategy & Risk Rules: 1. Entry (No Exact-Bottom Chasing): Detect sharp intraday/morning drops and wait for initial stabilization/inflection confirmation rather than trying to catch the exact tick bottom or buying into an unhalted freefall. 2. Exit (Early Profit Capture): Hold through the recovery/rebound window and take profit once price stabilizes back toward pre-drop levels or surges—exiting deliberately before the absolute peak to lock in gains and avoid sudden reversal give-backs, then recycling capital for the next drop. 3. Risk Guardrails: Apply larger conviction sizing on confirmed stabilization troughs paired with strict max-drawdown / catastrophic-crash stop-loss protection and net-of-fee telemetry tracking in strategy_lane = DIP_SWING.
+
+
+11. [GEMINI_CLOUD] T-087 — Alpaca Equity Options Extended Hours Support (GTH & Curb Sessions, Live Dec 4, 2026)
+12. • Status: QUEUED (Operator Directive 2026-11-24) | Assignee: [ANTIGRAVITY_IDE] & [AGENT_SMITH] | Audit: Required ([ANTIGRAVITY_IDE] verification pass)
+13. • Objective: Implement support for Alpaca's upcoming extended hours trading for equity options (available now in paper trading via Alpaca's Trading API; live launch December 4, 2026) across Phronarch's options/execution routing and session scheduling layers.
+14. • Session Windows & Symbol Scope:
+   1. - Early Morning Session (Global Trading Hours / GTH): 7:30 AM – 9:25 AM ET.
+   2. - After Hours Session (Curb Session): 4:00 PM – 4:15 PM ET (note: for supported ETFs, 4:00 PM – 4:15 PM ET is already part of regular trading hours, so no separate Curb session applies).
+   3. - Supported Underliers (29 initial symbols, subject to OCC/Exchange eligibility):
+      1. * Stocks (24): AAPL, AMD, AMZN, AVGO, BABA, BAC, F, GOOG, GOOGL, HOOD, INTC, META, MRVL, MSFT, MU, NFLX, NOK, NVDA, ORCL, PFE, PLTR, SNDK, TSLA, TSM.
+      2. * ETFs (5): SPY, QQQ, IWM, GLD, XLF.
+15. • Implementation & Order Guardrails:
+   1. 1. Order Flag & Routing: Set extended_hours=true on eligible equity options orders for the 29 designated underliers during GTH (07:30–09:25 ET) and Curb (16:00–16:15 ET) sessions; ensure orders without extended_hours=true (or with false) route strictly during regular hours, and reject/gate extended-hours options orders on non-designated underliers pre-submission to avoid API rejections.
+   2. 2. Strict Limit-Order Enforcement: Enforce limit orders only for the entire life of any order with extended_hours=true (no market orders); any change to the extended_hours parameter must cancel the existing order and submit a new order.
+   3. 3. Liquidity & Volatility Controls: Apply strict wide-spread/slippage guards, partial-fill handling, and paper-trading validation ahead of the December 4, 2026 live cutover, logging environment provenance tags on all test and live telemetry.
 
 
 ________________
@@ -86,7 +129,7 @@ Completed Milestone Index (Archived Verbatim in Backup 2026-11-23) • Full Pre-
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-23T20:57:42Z`
+- **Auto-Sync Timestamp:** `2026-11-24T18:09:52Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
