@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-25T16:54:28Z",
+  "generated_at": "2026-11-25T17:03:05Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -79,6 +79,7 @@
     "T-066",
     "T-067",
     "T-088",
+    "T-089",
     "T-051",
     "T-052",
     "T-053",
@@ -566,6 +567,13 @@
       "timestamp": "2026-11-25 04:03",
       "phase": "Phase 6",
       "description": "`[ANTIGRAVITY_IDE]` Overnight Runtime Forensics & Deep-Dive Alpha/Resilience v3 (`phronarch` `25e2428`, `agent_smith` `3707a4b`, `hive` `ea248b5` live on `THE-HIVE`): (1) Calibrated crypto `trailActivationPct` (`~0.64%` CB / `~0.56%` Kraken), `BREAKEVEN_GUARD` (`+5bps` net floor), `FREE_ROLL` (`>=+0.85%`), conservative `fillableMarkPrice`, and capital/structure-gated `DEAD_MONEY_EXIT` (replay delta `+$0.5902` across `#54..#81`); (2) Fixed `BBO_QUEUE_COLLAPSE_SCRATCH` price-drift/TFI check + passive exit on `>30bps` taker venues (`#81` fix), added `TECH_15M` `SELL_PRESSURE`/micro-bounce gate (`#79/#80` fix) + `18bps` scalp spread cap (`SHIB` 1-tick quantization veto); (3) Fixed `T-074` signed caution-vote (`-1`) EWMA reward & live-only failure-mode rollup, hydrated `AMZN`/`MSFT` `DIP_SWING` ownership + `-0.75%` `09:30\u201309:45 ET` open-auction stop cushion, completed `T-082` `ACTIVE_ENVIRONMENT` stamping across all SQLite tables, routed equity RSS headlines to Alpaca catalyst cache, purged `App.tsx` `Math.random()`, and added `>=85%` `/` disk auto-prune (`self_heal.py`) + Phronarch token/CF tunnel auto-discovery (`phronarch_alpha_audit.py` & `hive/self_improve.py`)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-089",
+      "timestamp": "2026-11-25 12:02",
+      "phase": "Phase 6",
+      "description": "`[ANTIGRAVITY_IDE]` Daytime Live-Tape Forensics (`09:08Z\u201316:55Z`, Alpaca `+2.05%` alpha vs SPY `-2.52%`) & Deep-Dive v4: (1) Fixed `T-074` `alpha^2` double-EWMA bug (`3,200`-trade -> true `30\u201350`-trade half-life), deferred live trade attribution until `closeTrade` (so `t=15m` markout never locks out `realized_pnl_bps`), and added idempotent `t089_edge_weights_recal_v4` DB backfill/replay; (2) Blocked `SWING`+`SCALP` same-symbol stacking (`#95+#96 ETH` `23.5%` exposure fix), stamped crypto cooldown at EXIT with `45m`/`3h` 2-loss symbol circuit breaker (`#84/#87 LINK`, `#89/#91 XRP` fix), tightened severe-selloff altcoin waterfall & BTC RSI<=24 gates (`#84..#90` fix); (3) Accelerated monitor loop `10s -> 3s`, guarded `BREAKEVEN_GUARD` against crystallizing fee losses inside `[+0.05%, rtFee+0.02%)` (`#93 BTC` fix), added neutral-TFI anti-flicker + `-0.18%` gate to `BBO_QUEUE_COLLAPSE` (`#94 ETH` fix); (4) Added explicit Alpaca `ENTRY SKIPPED` reasons (`SETH`/`META`/`AMD`) + `/alpaca/market` quote-mid fallback for zero-bar IEX ETFs (`SETH`), and made `sync_ledger.py` rebase-safe on `THE-HIVE`",
       "status": "DONE"
     },
     {
