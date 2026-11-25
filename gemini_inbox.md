@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 12:17:48 (sha256=67e6a8c903) -->
+<!-- Synced via INSTANT_TXT at 12:23:11 (sha256=f16413dd3d) -->
 
 Nexus State Bus — Master Ledger Status Overview • [LOCK_STATUS]: UNLOCKED (Ready for [AGY_A1] / [ANTIGRAVITY_IDE] lock acquisition) • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [AGY_A1] (OCI Ampere A1 THE-HIVE — also referred to as "iPad AGY" when accessed remotely via iPad), [AGY_MOBILE] (Samsung Galaxy A16 5G / Mobile Thin Triage, formerly [AGY_THIN]), [AGENT_SMITH] (OCI A1 C2), [GEMINI_CLOUD] (Cloud Architect), [OPERATOR_PSYCRY] (Human Operator) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
 
@@ -33,7 +33,7 @@ Notes
 
 
 * [GEMINI_CLOUD] BITI and SETH are non-fractionable -1x inverse ETFs for Bitcoin and Ethereum used for short selling; while currently enabled, their whole-share minimum pricing and high trading costs may require disabling them in the future.
-* [ANTIGRAVITY_IDE] 2026-11-25 Deep-Dive Alpha & Resilience v1-v4 (T-088 & T-089 — phronarch 52714db, agent_smith 3707a4b, hive ea248b5 live on THE-HIVE; Alpaca +2.05% alpha vs SPY -2.52%): Calibrated crypto trailActivation (~0.64% CB / ~0.56% Kraken), net-green BREAKEVEN_GUARD (#88/#93), FREE_ROLL, 3s real-time monitor, neutral-TFI anti-flicker scratch (#81/#94), 18bps scalp spread cap, post-exit 45m/3h 2-loss cooldown & anti-stacking (#95+#96 ETH), and severe-selloff waterfall gates; fixed T-074 single-EWMA (30-50 trade half-life), signed caution (-1) rewards, deferred closeTrade realized+markout attribution & live DB recalibration; hydrated DIP_SWING ownership + -0.75% 09:30-09:45 ET open-auction stop cushion (MSFT saved) + SETH quote-mid fallback & explicit ENTRY SKIPPED diagnostics; completed T-081..T-089, purged UI Math.random(), added >=85% / disk auto-prune, and made sync_ledger.py rebase-safe.
+* [ANTIGRAVITY_IDE] 2026-11-25 Deep-Dive Alpha & Resilience v1-v4 (T-088 & T-089 — phronarch 3b8bb75/52714db, agent_smith c34a9ca, hive ea248b5 live on THE-HIVE; 09:10Z deploy + manual docker builder prune verified; Alpaca +2.05% alpha vs SPY -2.52%): Calibrated crypto trailActivation (~0.64% CB / ~0.56% Kraken), net-green BREAKEVEN_GUARD (#88/#93), FREE_ROLL, 3s real-time monitor, neutral-TFI anti-flicker scratch (#81/#94), 18bps scalp spread cap, post-exit 45m/3h 2-loss cooldown & anti-stacking (#95+#96 ETH), and severe-selloff waterfall gates; fixed T-074 single-EWMA (30-50 trade half-life), signed caution (-1) rewards, deferred closeTrade realized+markout attribution & live DB recalibration; hydrated DIP_SWING ownership + -0.75% 09:30-09:45 ET open-auction stop cushion (MSFT saved) + SETH quote-mid fallback & explicit ENTRY SKIPPED diagnostics; completed T-081..T-089, purged UI Math.random(), added >=85% / disk auto-prune, made sync_ledger.py Python 3.9 + rebase-safe, and gated phronarch-scout Reddit on OAuth client_credentials with cloud-ASN HTTP 403 skip/circuit-breaker.
 
 
 ________________
@@ -111,7 +111,7 @@ Completed Milestone Index (Archived Verbatim in Backups 2026-11-23 & 2026-11-25:
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-25T17:22:18Z`
+- **Auto-Sync Timestamp:** `2026-11-25T17:23:08Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-088, T-089, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
@@ -138,7 +138,8 @@ Completed Milestone Index (Archived Verbatim in Backups 2026-11-23 & 2026-11-25:
 ## 3. `T-014` Harness IPC Diagnostic & Pipe Unblock Report
 
 - **Root Cause 1 (Rust `claw-mcp-server` Stdio Inheritance & Pipe Drain):** `src/tools/shell.rs` called blocking `std::process::Command::output()` inside async Tokio handlers, and `src/tools/workforce.rs` (`run_lead_ingestion`, `generate_dossiers`) spawned Python workers without `.stdin(Stdio::null())` (inheriting MCP `fd 0` stdin) and without dedicated concurrent async reader tasks for `stdout`/`stderr` or watchdog timeouts.
-- **Root Cause 2 (Headless `poll_bus.py` $ightarrow$ `gdocs` Sidecar IPC Stall):** When `nexus-state-bus.service` executed `push_state_bus.sh` at boot outside an active Antigravity IDE host bridge (`AGY_HOST_BRIDGE_URL` unset), `gdocs auth status` stalled waiting on IPC/stdin (`timed out after 5s` / `25s`).
+- **Root Cause 2 (Headless `poll_bus.py` $
+ightarrow$ `gdocs` Sidecar IPC Stall):** When `nexus-state-bus.service` executed `push_state_bus.sh` at boot outside an active Antigravity IDE host bridge (`AGY_HOST_BRIDGE_URL` unset), `gdocs auth status` stalled waiting on IPC/stdin (`timed out after 5s` / `25s`).
 - **Root Cause 3 (Boot-Time `docker.socket` Lazy Activation):** On Garuda Linux, `docker.socket` did not start `agent-smith-pgvector` until the first Docker CLI invocation, causing boot-time `sweep.log` / `ledger_sync.py` queries to hit `Connection refused` on `:5432`.
 - **Remediations Executed & Verified:**
   1. Refactored `claw-mcp-server/src/tools/shell.rs` and `claw-mcp-server/src/tools/workforce.rs` (`run_worker_with_async_drain`) with `.stdin(Stdio::null())`, `.kill_on_drop(true)`, dedicated concurrent `tokio::spawn` tasks draining `stdout` and `stderr` via `read_to_end`, and `tokio::time::timeout` watchdogs (`30s`/`90s`/`120s`). Rebuilt `target/release/claw-mcp-server`.
@@ -151,3 +152,4 @@ Completed Milestone Index (Archived Verbatim in Backups 2026-11-23 & 2026-11-25:
 - **Sanitized Inbox Mirror:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/gemini_inbox.md`
 - **Sanitized Sync Packet:** `https://raw.githubusercontent.com/psycry/nexus-state-bus/main/sync_packet.md`
 <!-- ANTIGRAVITY_TELEMETRY_END -->
+
