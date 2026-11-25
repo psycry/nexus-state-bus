@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-25T09:05:02Z",
-  "hours_since_operator": 0.06,
+  "generated_at": "2026-11-25T16:30:18Z",
+  "hours_since_operator": 7.48,
   "continuity": {
     "mode": "ACTIVE_COLLAB",
     "force_local_only": false,
@@ -51,7 +51,7 @@
   ],
   "oci_zero_overage_compliant": true,
   "oci_scale_mode": "CONSERVE_LOCAL_FIRST",
-  "self_heal_all_healthy": true,
+  "self_heal_all_healthy": false,
   "hitl_hold_items": [
     "Portal submission of HHS-2027-ACL-NIDILRR-BISA-0308 and NSF 26-510 SBIR packages",
     "Upstream GitHub PR dispatch from submissions/patches/",

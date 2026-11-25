@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-11-25T09:03:25Z",
-  "all_healthy": true,
-  "recoveries_triggered": 0,
+  "timestamp": "2026-11-25T16:27:26Z",
+  "all_healthy": false,
+  "recoveries_triggered": 2,
   "checks": [
     {
       "target": "agent-smith-pgvector",
@@ -12,8 +12,8 @@
     {
       "target": "hive-ollama",
       "kind": "docker",
-      "healthy": true,
-      "action": "NONE"
+      "healthy": false,
+      "action": "docker start/restart hive-ollama"
     },
     {
       "target": "nexus-state-bus.service",
@@ -24,15 +24,15 @@
     {
       "target": "agent-smith-dashboard.service",
       "kind": "systemd_user",
-      "healthy": true,
-      "action": "NONE"
+      "healthy": false,
+      "action": "systemctl --user restart agent-smith-dashboard.service"
     },
     {
       "target": "disk:/",
       "kind": "filesystem",
       "healthy": true,
-      "used_pct": 18.04,
-      "free_gb": 762.3,
+      "used_pct": 18.56,
+      "free_gb": 757.78,
       "action": "NONE"
     }
   ],

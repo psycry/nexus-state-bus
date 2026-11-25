@@ -5,3 +5,7 @@
 [2026-11-25T01:37:51Z] SELF_HEAL target=agent-smith-pgvector action="docker start/restart agent-smith-pgvector" healthy=False
 [2026-11-25T01:37:51Z] SELF_HEAL target=hive-ollama action="docker start/restart hive-ollama" healthy=False
 [2026-11-25T01:37:51Z] SELF_HEAL target=agent-smith-dashboard.service action="systemctl --user restart agent-smith-dashboard.service" healthy=False
+[2026-11-25T16:25:40Z] SELF_HEAL target=agent-smith-pgvector action="docker start/restart agent-smith-pgvector" healthy=False
+[2026-11-25T16:25:40Z] SELF_HEAL target=hive-ollama action="docker start/restart hive-ollama" healthy=False
+[2026-11-25T16:27:26Z] SELF_HEAL target=hive-ollama action="docker start/restart hive-ollama" healthy=False
+[2026-11-25T16:27:26Z] SELF_HEAL target=agent-smith-dashboard.service action="systemctl --user restart agent-smith-dashboard.service" healthy=False
