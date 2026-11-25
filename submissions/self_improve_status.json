@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T16:58:17Z",
+  "generated_at": "2026-11-25T19:08:38Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
@@ -12,8 +12,8 @@
   "cloud_runs_today": 3,
   "max_cloud_per_day": 3,
   "phronarch_alpha_audit": {
-    "generated_at": "2026-11-25T16:58:53Z",
-    "api_url": "https://bones-managed-intelligence-should.trycloudflare.com",
+    "generated_at": "2026-11-25T19:08:51Z",
+    "api_url": "http://127.0.0.1:3000",
     "ok": true,
     "tokens_spent": 0,
     "active_regime": "TREND",
@@ -22,87 +22,127 @@
     "shadow_signals_count": 32,
     "bottom_quartile": [
       {
+        "edge_id": "volatility_parity",
+        "regime": "CHOP",
+        "weight": 0.8873,
+        "ewma_net_bps": -18.931,
+        "sample_count": 29,
+        "win_count": 6,
+        "last_reward_bps": 0.737,
+        "updated_at": "2026-11-25 19:08:09"
+      },
+      {
         "edge_id": "regime_filter",
         "regime": "TREND",
-        "weight": 0.8866,
-        "ewma_net_bps": -15.021,
-        "sample_count": 31,
-        "win_count": 4,
-        "last_reward_bps": 41.651,
-        "updated_at": "2026-11-25 16:30:36"
+        "weight": 0.8375,
+        "ewma_net_bps": -12.61,
+        "sample_count": 34,
+        "win_count": 6,
+        "last_reward_bps": 186.453,
+        "updated_at": "2026-11-25 18:23:09"
       },
       {
         "edge_id": "volatility_parity",
-        "regime": "CHOP",
-        "weight": 0.9666,
-        "ewma_net_bps": -13.16,
-        "sample_count": 19,
-        "win_count": 2,
-        "last_reward_bps": 12.257,
-        "updated_at": "2026-11-25 16:40:36"
+        "regime": "TREND",
+        "weight": 0.9032,
+        "ewma_net_bps": -9.075,
+        "sample_count": 33,
+        "win_count": 9,
+        "last_reward_bps": -186.453,
+        "updated_at": "2026-11-25 18:23:09"
       },
       {
         "edge_id": "oversold_rsi_dip",
-        "regime": "CHOP",
-        "weight": 0.9724,
-        "ewma_net_bps": -8.311,
-        "sample_count": 14,
-        "win_count": 3,
-        "last_reward_bps": -138.827,
-        "updated_at": "2026-11-25 15:27:06"
+        "regime": "TREND",
+        "weight": 0.8817,
+        "ewma_net_bps": -8.866,
+        "sample_count": 15,
+        "win_count": 2,
+        "last_reward_bps": 41.651,
+        "updated_at": "2026-11-25 17:10:29"
       },
       {
         "edge_id": "dynamic_atr_brackets",
         "regime": "TREND",
-        "weight": 0.97,
-        "ewma_net_bps": -8.239,
+        "weight": 0.8819,
+        "ewma_net_bps": -8.464,
         "sample_count": 21,
         "win_count": 2,
-        "last_reward_bps": -88.353,
-        "updated_at": "2026-11-25 09:01:44"
+        "last_reward_bps": -96.13,
+        "updated_at": "2026-11-25 17:10:29"
       },
       {
-        "edge_id": "volatility_parity",
-        "regime": "TREND",
-        "weight": 0.9582,
-        "ewma_net_bps": -8.184,
-        "sample_count": 30,
-        "win_count": 6,
-        "last_reward_bps": -41.651,
-        "updated_at": "2026-11-25 16:30:36"
+        "edge_id": "mtf_alignment",
+        "regime": "HIGH_VOL_NEWS",
+        "weight": 0.9729,
+        "ewma_net_bps": -6.417,
+        "sample_count": 5,
+        "win_count": 1,
+        "last_reward_bps": -106.754,
+        "updated_at": "2026-11-25 17:20:05"
       },
       {
-        "edge_id": "oversold_rsi_dip",
-        "regime": "TREND",
-        "weight": 0.9623,
-        "ewma_net_bps": -7.664,
-        "sample_count": 15,
-        "win_count": 2,
-        "last_reward_bps": 41.651,
-        "updated_at": "2026-11-25 16:30:36"
+        "edge_id": "swing_4h_trend",
+        "regime": "HIGH_VOL_NEWS",
+        "weight": 0.9797,
+        "ewma_net_bps": -5.268,
+        "sample_count": 2,
+        "win_count": 0,
+        "last_reward_bps": -227.978,
+        "updated_at": "2026-11-25 17:10:29"
       },
       {
         "edge_id": "vwap_mean_reversion",
         "regime": "TREND",
-        "weight": 0.9863,
-        "ewma_net_bps": -6.138,
+        "weight": 0.929,
+        "ewma_net_bps": -5.158,
         "sample_count": 9,
         "win_count": 1,
-        "last_reward_bps": -78.319,
-        "updated_at": "2026-11-25 09:40:35"
-      },
-      {
-        "edge_id": "rvol_surge",
-        "regime": "TREND",
-        "weight": 0.989,
-        "ewma_net_bps": -5.463,
-        "sample_count": 9,
-        "win_count": 2,
-        "last_reward_bps": -91.41,
-        "updated_at": "2026-11-25 15:25:35"
+        "last_reward_bps": -73.499,
+        "updated_at": "2026-11-25 17:10:29"
       }
     ],
     "failure_modes_by_lane_sha_regime": [
+      {
+        "strategyLane": "CATALYST_SWING",
+        "gitSha": "68c20ae",
+        "regime": "CHOP",
+        "signals": 6,
+        "liveSignals": 6,
+        "shadowSignals": 0,
+        "avgNetRewardBps": 25.7,
+        "losingSignals": 1
+      },
+      {
+        "strategyLane": "INVERSE_HEDGE",
+        "gitSha": "68c20ae",
+        "regime": "CHOP",
+        "signals": 1,
+        "liveSignals": 1,
+        "shadowSignals": 0,
+        "avgNetRewardBps": null,
+        "losingSignals": 0
+      },
+      {
+        "strategyLane": "CATALYST_SWING",
+        "gitSha": "52714db",
+        "regime": "TREND",
+        "signals": 1,
+        "liveSignals": 1,
+        "shadowSignals": 0,
+        "avgNetRewardBps": 186.8,
+        "losingSignals": 0
+      },
+      {
+        "strategyLane": "CORE_REGIME",
+        "gitSha": "52714db",
+        "regime": "CHOP",
+        "signals": 2,
+        "liveSignals": 2,
+        "shadowSignals": 0,
+        "avgNetRewardBps": -10.9,
+        "losingSignals": 2
+      },
       {
         "strategyLane": "DIP_SWING",
         "gitSha": "25e2428",
@@ -110,7 +150,7 @@
         "signals": 2,
         "liveSignals": 2,
         "shadowSignals": 0,
-        "avgNetRewardBps": -93.798,
+        "avgNetRewardBps": 5.771,
         "losingSignals": 1
       },
       {
@@ -120,7 +160,7 @@
         "signals": 6,
         "liveSignals": 6,
         "shadowSignals": 0,
-        "avgNetRewardBps": -11.04,
+        "avgNetRewardBps": -7.627,
         "losingSignals": 3
       },
       {
@@ -130,7 +170,7 @@
         "signals": 5,
         "liveSignals": 5,
         "shadowSignals": 0,
-        "avgNetRewardBps": -7.3,
+        "avgNetRewardBps": 39.68,
         "losingSignals": 2
       },
       {
@@ -140,7 +180,7 @@
         "signals": 5,
         "liveSignals": 5,
         "shadowSignals": 0,
-        "avgNetRewardBps": 56.3,
+        "avgNetRewardBps": 122.825,
         "losingSignals": 1
       },
       {
@@ -150,8 +190,8 @@
         "signals": 2,
         "liveSignals": 2,
         "shadowSignals": 0,
-        "avgNetRewardBps": 93.6,
-        "losingSignals": 0
+        "avgNetRewardBps": -9.7,
+        "losingSignals": 1
       },
       {
         "strategyLane": "CORE_REGIME",
@@ -180,8 +220,8 @@
         "signals": 2,
         "liveSignals": 2,
         "shadowSignals": 0,
-        "avgNetRewardBps": null,
-        "losingSignals": 0
+        "avgNetRewardBps": -169.15,
+        "losingSignals": 2
       },
       {
         "strategyLane": "CORE_REGIME",
@@ -364,22 +404,8 @@
         "losingSignals": 1
       }
     ],
-    "failing_groups_count": 21,
+    "failing_groups_count": 25,
     "proposed_candidates": [
-      {
-        "name": "t074-regime_filter-trend-tight",
-        "edgeId": "regime_filter",
-        "regime": "TREND",
-        "strategyLane": "CORE_REGIME",
-        "params": {
-          "regime": "TREND",
-          "observed_ewma_net_bps": -15.021,
-          "min_net_edge_bps_boost": 4.0,
-          "confidence_floor": 0.7,
-          "require_regime_alignment": true
-        },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=regime_filter, regime=TREND, ewma_net_bps=-15.02, weight=0.8866"
-      },
       {
         "name": "t074-volatility_parity-chop-tight",
         "edgeId": "volatility_parity",
@@ -387,40 +413,26 @@
         "strategyLane": "CORE_REGIME",
         "params": {
           "regime": "CHOP",
-          "observed_ewma_net_bps": -13.16,
+          "observed_ewma_net_bps": -18.931,
           "min_net_edge_bps_boost": 4.0,
           "confidence_floor": 0.7,
           "require_regime_alignment": true
         },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=CHOP, ewma_net_bps=-13.16, weight=0.9666"
+        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=CHOP, ewma_net_bps=-18.93, weight=0.8873"
       },
       {
-        "name": "t074-oversold_rsi_dip-chop-tight",
-        "edgeId": "oversold_rsi_dip",
-        "regime": "CHOP",
-        "strategyLane": "CORE_REGIME",
-        "params": {
-          "regime": "CHOP",
-          "observed_ewma_net_bps": -8.311,
-          "min_net_edge_bps_boost": 4.0,
-          "rsi_max": 30,
-          "require_bounce_candle": true
-        },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=oversold_rsi_dip, regime=CHOP, ewma_net_bps=-8.31, weight=0.9724"
-      },
-      {
-        "name": "t074-dynamic_atr_brackets-trend-tight",
-        "edgeId": "dynamic_atr_brackets",
+        "name": "t074-regime_filter-trend-tight",
+        "edgeId": "regime_filter",
         "regime": "TREND",
         "strategyLane": "CORE_REGIME",
         "params": {
           "regime": "TREND",
-          "observed_ewma_net_bps": -8.239,
+          "observed_ewma_net_bps": -12.61,
           "min_net_edge_bps_boost": 4.0,
           "confidence_floor": 0.7,
           "require_regime_alignment": true
         },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=dynamic_atr_brackets, regime=TREND, ewma_net_bps=-8.24, weight=0.97"
+        "notes": "Auto-proposed by zero-token alpha audit: edge=regime_filter, regime=TREND, ewma_net_bps=-12.61, weight=0.8375"
       },
       {
         "name": "t074-volatility_parity-trend-tight",
@@ -429,12 +441,12 @@
         "strategyLane": "CORE_REGIME",
         "params": {
           "regime": "TREND",
-          "observed_ewma_net_bps": -8.184,
+          "observed_ewma_net_bps": -9.075,
           "min_net_edge_bps_boost": 4.0,
           "confidence_floor": 0.7,
           "require_regime_alignment": true
         },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-8.18, weight=0.9582"
+        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-9.07, weight=0.9032"
       },
       {
         "name": "t074-oversold_rsi_dip-trend-tight",
@@ -443,12 +455,54 @@
         "strategyLane": "CORE_REGIME",
         "params": {
           "regime": "TREND",
-          "observed_ewma_net_bps": -7.664,
+          "observed_ewma_net_bps": -8.866,
           "min_net_edge_bps_boost": 4.0,
           "rsi_max": 30,
           "require_bounce_candle": true
         },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=oversold_rsi_dip, regime=TREND, ewma_net_bps=-7.66, weight=0.9623"
+        "notes": "Auto-proposed by zero-token alpha audit: edge=oversold_rsi_dip, regime=TREND, ewma_net_bps=-8.87, weight=0.8817"
+      },
+      {
+        "name": "t074-dynamic_atr_brackets-trend-tight",
+        "edgeId": "dynamic_atr_brackets",
+        "regime": "TREND",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "TREND",
+          "observed_ewma_net_bps": -8.464,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=dynamic_atr_brackets, regime=TREND, ewma_net_bps=-8.46, weight=0.8819"
+      },
+      {
+        "name": "t074-mtf_alignment-high_vol_news-tight",
+        "edgeId": "mtf_alignment",
+        "regime": "HIGH_VOL_NEWS",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "HIGH_VOL_NEWS",
+          "observed_ewma_net_bps": -6.417,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=mtf_alignment, regime=HIGH_VOL_NEWS, ewma_net_bps=-6.42, weight=0.9729"
+      },
+      {
+        "name": "t074-swing_4h_trend-high_vol_news-tight",
+        "edgeId": "swing_4h_trend",
+        "regime": "HIGH_VOL_NEWS",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "HIGH_VOL_NEWS",
+          "observed_ewma_net_bps": -5.268,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=swing_4h_trend, regime=HIGH_VOL_NEWS, ewma_net_bps=-5.27, weight=0.9797"
       },
       {
         "name": "t074-vwap_mean_reversion-trend-tight",
@@ -457,26 +511,12 @@
         "strategyLane": "CORE_REGIME",
         "params": {
           "regime": "TREND",
-          "observed_ewma_net_bps": -6.138,
+          "observed_ewma_net_bps": -5.158,
           "min_net_edge_bps_boost": 4.0,
           "vwap_sigma_min": 2.4,
           "rsi_max": 48
         },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=vwap_mean_reversion, regime=TREND, ewma_net_bps=-6.14, weight=0.9863"
-      },
-      {
-        "name": "t074-rvol_surge-trend-tight",
-        "edgeId": "rvol_surge",
-        "regime": "TREND",
-        "strategyLane": "CORE_REGIME",
-        "params": {
-          "regime": "TREND",
-          "observed_ewma_net_bps": -5.463,
-          "min_net_edge_bps_boost": 4.0,
-          "confidence_floor": 0.7,
-          "require_regime_alignment": true
-        },
-        "notes": "Auto-proposed by zero-token alpha audit: edge=rvol_surge, regime=TREND, ewma_net_bps=-5.46, weight=0.989"
+        "notes": "Auto-proposed by zero-token alpha audit: edge=vwap_mean_reversion, regime=TREND, ewma_net_bps=-5.16, weight=0.929"
       }
     ],
     "existing_candidates_count": 0,
@@ -489,7 +529,7 @@
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "74e21b105dbccf88",
+      "diff_hash": "a6088fa09b41c9fd",
       "scans": [
         {
           "repo": "agent_smith",
@@ -574,17 +614,17 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 23848,
+        "latency_ms": 12045,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Patch: Optimize ingest_lane1_fast_cashflow to reduce complexity and improve performance\ndef ingest_lane1_fast_cashflow(data):\n    # Simplify data processing steps\n    cleaned_data = preprocess_data(data)\n    # Optimize cashflow "
+      "proposal_preview": "```python\n# Patch: Optimize ingest_lane1_fast_cashflow function to reduce complexity and improve performance\ndef ingest_lane1_fast_cashflow(data):\n    # Simplify data processing\n    processed_data = [item for item in data if item > 0]\n    \n"
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-40457",
+        "repo": "smith-wt-wt-check-460229",
         "ok": true,
         "checks": [
           {
