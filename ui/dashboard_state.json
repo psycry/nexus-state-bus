@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-25T17:17:50Z",
+  "generated_at": "2026-11-25T17:22:19Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -571,9 +571,9 @@
     },
     {
       "id": "T-089",
-      "timestamp": "2026-11-25 12:02",
+      "timestamp": "2026-11-25 12:22",
       "phase": "Phase 6",
-      "description": "`[ANTIGRAVITY_IDE]` Daytime Live-Tape Forensics (`09:08Z\u201316:55Z`, Alpaca `+2.05%` alpha vs SPY `-2.52%`) & Deep-Dive v4: (1) Fixed `T-074` `alpha^2` double-EWMA bug (`3,200`-trade -> true `30\u201350`-trade half-life), deferred live trade attribution until `closeTrade` (so `t=15m` markout never locks out `realized_pnl_bps`), and added idempotent `t089_edge_weights_recal_v4` DB backfill/replay; (2) Blocked `SWING`+`SCALP` same-symbol stacking (`#95+#96 ETH` `23.5%` exposure fix), stamped crypto cooldown at EXIT with `45m`/`3h` 2-loss symbol circuit breaker (`#84/#87 LINK`, `#89/#91 XRP` fix), tightened severe-selloff altcoin waterfall & BTC RSI<=24 gates (`#84..#90` fix); (3) Accelerated monitor loop `10s -> 3s`, guarded `BREAKEVEN_GUARD` against crystallizing fee losses inside `[+0.05%, rtFee+0.02%)` (`#93 BTC` fix), added neutral-TFI anti-flicker + `-0.18%` gate to `BBO_QUEUE_COLLAPSE` (`#94 ETH` fix); (4) Added explicit Alpaca `ENTRY SKIPPED` reasons (`SETH`/`META`/`AMD`) + `/alpaca/market` quote-mid fallback for zero-bar IEX ETFs (`SETH`), and made `sync_ledger.py` rebase-safe on `THE-HIVE`",
+      "description": "`[ANTIGRAVITY_IDE]` Daytime Live-Tape Forensics (`09:08Z\u201317:20Z`, Alpaca `+2.05%` peak / `+0.94%` live alpha vs SPY) & Deep-Dive v4 + Scout ASN-403 Fix: (1) Fixed `T-074` `alpha^2` double-EWMA bug (`3,200`-trade -> true `30\u201350`-trade half-life), deferred live trade attribution until `closeTrade`, and ran live `t089_edge_weights_recal_v4` (`mtf_alignment -> 1.21x`, `lane_half_kelly -> 1.23x`, `oversold_rsi_dip -> 0.88x`); (2) Blocked `SWING`+`SCALP` same-symbol stacking (`#95+#96 ETH` fix), stamped crypto cooldown at EXIT with `45m`/`3h` 2-loss circuit breaker, tightened severe-selloff altcoin waterfall & BTC RSI<=24 gates; (3) Accelerated monitor loop `10s -> 3s`, guarded `BREAKEVEN_GUARD` against crystallizing fee losses (`#93 BTC` fix), added neutral-TFI anti-flicker + `-0.18%` gate to `BBO_QUEUE_COLLAPSE` (`#94 ETH` fix); (4) Added explicit Alpaca `ENTRY SKIPPED` reasons + `/alpaca/market` quote-mid fallback (`SETH` `$46.93` verified live), fixed `sync_ledger.py` Python 3.9 `__future__.annotations` + rebase auto-push (`8ffdafb` verified), and added Reddit OAuth `client_credentials` + unauthenticated cloud-ASN `403` skip/circuit-breaker in `scout/main.go`",
       "status": "DONE"
     },
     {
