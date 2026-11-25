@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T16:58:53Z",
+  "generated_at": "2026-11-25T17:09:21Z",
   "api_url": "https://bones-managed-intelligence-should.trycloudflare.com",
   "ok": true,
   "tokens_spent": 0,
@@ -11,12 +11,12 @@
     {
       "edge_id": "regime_filter",
       "regime": "TREND",
-      "weight": 0.8866,
-      "ewma_net_bps": -15.021,
-      "sample_count": 31,
+      "weight": 0.8734,
+      "ewma_net_bps": -16.073,
+      "sample_count": 33,
       "win_count": 4,
-      "last_reward_bps": 41.651,
-      "updated_at": "2026-11-25 16:30:36"
+      "last_reward_bps": -6.237,
+      "updated_at": "2026-11-25 17:00:48"
     },
     {
       "edge_id": "volatility_parity",
@@ -49,16 +49,6 @@
       "updated_at": "2026-11-25 09:01:44"
     },
     {
-      "edge_id": "volatility_parity",
-      "regime": "TREND",
-      "weight": 0.9582,
-      "ewma_net_bps": -8.184,
-      "sample_count": 30,
-      "win_count": 6,
-      "last_reward_bps": -41.651,
-      "updated_at": "2026-11-25 16:30:36"
-    },
-    {
       "edge_id": "oversold_rsi_dip",
       "regime": "TREND",
       "weight": 0.9623,
@@ -67,6 +57,16 @@
       "win_count": 2,
       "last_reward_bps": 41.651,
       "updated_at": "2026-11-25 16:30:36"
+    },
+    {
+      "edge_id": "volatility_parity",
+      "regime": "TREND",
+      "weight": 0.9536,
+      "ewma_net_bps": -6.918,
+      "sample_count": 32,
+      "win_count": 8,
+      "last_reward_bps": 6.237,
+      "updated_at": "2026-11-25 17:00:48"
     },
     {
       "edge_id": "vwap_mean_reversion",
@@ -107,7 +107,7 @@
       "signals": 6,
       "liveSignals": 6,
       "shadowSignals": 0,
-      "avgNetRewardBps": -11.04,
+      "avgNetRewardBps": -7.627,
       "losingSignals": 3
     },
     {
@@ -137,8 +137,8 @@
       "signals": 2,
       "liveSignals": 2,
       "shadowSignals": 0,
-      "avgNetRewardBps": 93.6,
-      "losingSignals": 0
+      "avgNetRewardBps": -9.7,
+      "losingSignals": 1
     },
     {
       "strategyLane": "CORE_REGIME",
@@ -351,7 +351,7 @@
       "losingSignals": 1
     }
   ],
-  "failing_groups_count": 21,
+  "failing_groups_count": 22,
   "proposed_candidates": [
     {
       "name": "t074-regime_filter-trend-tight",
@@ -360,12 +360,12 @@
       "strategyLane": "CORE_REGIME",
       "params": {
         "regime": "TREND",
-        "observed_ewma_net_bps": -15.021,
+        "observed_ewma_net_bps": -16.073,
         "min_net_edge_bps_boost": 4.0,
         "confidence_floor": 0.7,
         "require_regime_alignment": true
       },
-      "notes": "Auto-proposed by zero-token alpha audit: edge=regime_filter, regime=TREND, ewma_net_bps=-15.02, weight=0.8866"
+      "notes": "Auto-proposed by zero-token alpha audit: edge=regime_filter, regime=TREND, ewma_net_bps=-16.07, weight=0.8734"
     },
     {
       "name": "t074-volatility_parity-chop-tight",
@@ -410,20 +410,6 @@
       "notes": "Auto-proposed by zero-token alpha audit: edge=dynamic_atr_brackets, regime=TREND, ewma_net_bps=-8.24, weight=0.97"
     },
     {
-      "name": "t074-volatility_parity-trend-tight",
-      "edgeId": "volatility_parity",
-      "regime": "TREND",
-      "strategyLane": "CORE_REGIME",
-      "params": {
-        "regime": "TREND",
-        "observed_ewma_net_bps": -8.184,
-        "min_net_edge_bps_boost": 4.0,
-        "confidence_floor": 0.7,
-        "require_regime_alignment": true
-      },
-      "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-8.18, weight=0.9582"
-    },
-    {
       "name": "t074-oversold_rsi_dip-trend-tight",
       "edgeId": "oversold_rsi_dip",
       "regime": "TREND",
@@ -436,6 +422,20 @@
         "require_bounce_candle": true
       },
       "notes": "Auto-proposed by zero-token alpha audit: edge=oversold_rsi_dip, regime=TREND, ewma_net_bps=-7.66, weight=0.9623"
+    },
+    {
+      "name": "t074-volatility_parity-trend-tight",
+      "edgeId": "volatility_parity",
+      "regime": "TREND",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "TREND",
+        "observed_ewma_net_bps": -6.918,
+        "min_net_edge_bps_boost": 4.0,
+        "confidence_floor": 0.7,
+        "require_regime_alignment": true
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-6.92, weight=0.9536"
     },
     {
       "name": "t074-vwap_mean_reversion-trend-tight",
