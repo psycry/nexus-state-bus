@@ -1,27 +1,34 @@
 {
-  "generated_at": "2026-11-21T17:14:40Z",
+  "generated_at": "2026-11-24T20:13:45Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
   "prefer": "agy",
-  "gate_reason": "offloading important code work to agy (1/3 today)",
+  "gate_reason": "offloading important code work to agy (0/3 today)",
   "agy_cli_available": true,
   "agy_dispatched": false,
   "agy_output_tail": "",
-  "cloud_runs_date": "2026-11-21",
-  "cloud_runs_today": 2,
+  "cloud_runs_date": "2026-11-24",
+  "cloud_runs_today": 1,
   "max_cloud_per_day": 3,
+  "phronarch_alpha_audit": {
+    "generated_at": "2026-11-24T20:13:56Z",
+    "ok": false,
+    "tokens_spent": 0,
+    "api_url": "http://127.0.0.1:3000",
+    "error": "Phronarch /edge-weights unreachable: HTTP Error 401: Unauthorized"
+  },
   "result": {
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "0e607b9d1d722438",
+      "diff_hash": "c4a48a7aedfad2c0",
       "scans": [
         {
           "repo": "agent_smith",
-          "python_files": 31,
+          "python_files": 37,
           "rust_files": 24,
-          "hotspots_found": 26,
+          "hotspots_found": 28,
           "top_hotspots": [
             {
               "file": "engine/ingest.py",
@@ -44,38 +51,38 @@
             {
               "file": "engine/oci_budget_guard.py",
               "symbol": "check_oci_budget",
-              "line": 86,
+              "line": 93,
               "kind": "py_complexity",
-              "score": 227.0,
-              "detail": "149 lines, 26 branch nodes",
+              "score": 288.0,
+              "detail": "189 lines, 33 branch nodes",
               "weight": 1.0
             },
             {
               "file": "engine/ledger_sync.py",
               "symbol": "update_ledger_and_state_files",
-              "line": 203,
+              "line": 205,
               "kind": "py_complexity",
-              "score": 224.9,
-              "detail": "155 lines, 6 branch nodes",
+              "score": 227.5,
+              "detail": "157 lines, 6 branch nodes",
               "weight": 1.3
             },
             {
               "file": "engine/dossier.py",
               "symbol": "generate_submission_package_markdown",
-              "line": 259,
+              "line": 290,
               "kind": "py_complexity",
               "score": 180.6,
               "detail": "126 lines, 1 branch nodes",
               "weight": 1.4
             },
             {
-              "file": "engine/dashboard_api.py",
-              "symbol": "do_POST",
-              "line": 493,
+              "file": "engine/dossier.py",
+              "symbol": "generate_dossier_markdown",
+              "line": 201,
               "kind": "py_complexity",
-              "score": 167.0,
-              "detail": "122 lines, 15 branch nodes",
-              "weight": 1.0
+              "score": 172.2,
+              "detail": "87 lines, 12 branch nodes",
+              "weight": 1.4
             }
           ],
           "recent_errors": []
@@ -88,7 +95,7 @@
           "checks": [
             {
               "check": "py_compile",
-              "files": 31,
+              "files": 37,
               "ok": true,
               "returncode": 0,
               "output": ""
@@ -100,22 +107,22 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 10127,
+        "latency_ms": 9540,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Patch: optimize the ingest lane1_fast_cashflow function by reducing the number of branch nodes\ndef ingest_lane1_fast_cashflow(self, data):\n    # Simplify the logic to reduce branch nodes\n    if data['status'] == 'active':\n      "
+      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow(self):\n    # Simplify logic to reduce complexity\n    if self.is_valid_cashflow():\n        self.process_cashflow()\n    else:\n        self.log_er"
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-487416",
+        "repo": "smith-wt-wt-check-475098",
         "ok": true,
         "checks": [
           {
             "check": "py_compile",
-            "files": 31,
+            "files": 37,
             "ok": true,
             "returncode": 0,
             "output": ""

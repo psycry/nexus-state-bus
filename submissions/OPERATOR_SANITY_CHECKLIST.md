@@ -1,7 +1,7 @@
 # Operator Sanity-Check & Continuity Checklist
 
-- **Generated At:** `2026-11-24T20:11:06Z`
-- **Continuity Mode:** `ACTIVE_COLLAB` (`hours_since_operator=0.14h` | `force_local_only=False` | `max_cloud_burst=True`)
+- **Generated At:** `2026-11-25T01:43:48Z`
+- **Continuity Mode:** `ACTIVE_COLLAB` (`hours_since_operator=5.68h` | `force_local_only=False` | `max_cloud_burst=True`)
 - **QA Gate Summary:** `4` packages checked (`FAIL=0`, `WARN=0`)
 - **OCI Free-Tier Guard:** `zero_overage_compliant=True` | `scale_mode=CONSERVE_LOCAL_FIRST`
 
@@ -16,8 +16,8 @@
 
 | External ID | Solicitation | Deadline | Days Left | Max Ceiling | QA Status |
 | :--- | :--- | :--- | ---: | ---: | :--- |
-| `SBIR-2026-CIVIC-SHELTER-01` | `HHS-2027-ACL-NIDILRR-BISA-0308` | `2026-12-16` | `22d` | `$100,000.00` | `PASS` |
-| `NSF-SBIR-2026-AGENTIC-AI` | `NSF 26-510` | `2027-03-04` | `100d` | `$305,000.00` | `PASS` |
+| `SBIR-2026-CIVIC-SHELTER-01` | `HHS-2027-ACL-NIDILRR-BISA-0308` | `2026-12-16` | `21d` | `$100,000.00` | `PASS` |
+| `NSF-SBIR-2026-AGENTIC-AI` | `NSF 26-510` | `2027-03-04` | `99d` | `$305,000.00` | `PASS` |
 
 ## 3. Fast-Cashflow PR Wedge & SOW Readiness (`$20,500.00` Projected)
 

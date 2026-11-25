@@ -1,22 +1,7 @@
 {
-  "generated_at": "2026-11-24T02:26:53Z",
-  "api_url": "http://127.0.0.1:3000",
-  "ok": true,
+  "generated_at": "2026-11-24T20:13:56Z",
+  "ok": false,
   "tokens_spent": 0,
-  "active_regime": "TREND",
-  "total_weights": 60,
-  "sampled_weights": 0,
-  "shadow_signals_count": 0,
-  "bottom_quartile": [],
-  "failure_modes_by_lane_sha_regime": [],
-  "failing_groups_count": 0,
-  "proposed_candidates": [],
-  "existing_candidates_count": 0,
-  "submitted_candidates": [],
-  "replay_evaluation": {
-    "ok": true,
-    "evaluated": 0,
-    "results": [],
-    "candidates": []
-  }
+  "api_url": "http://127.0.0.1:3000",
+  "error": "Phronarch /edge-weights unreachable: HTTP Error 401: Unauthorized"
 }
