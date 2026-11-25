@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T17:01:22Z",
+  "timestamp": "2026-11-25T17:06:24Z",
   "all_healthy": true,
   "recoveries_triggered": 0,
   "checks": [
@@ -32,7 +32,7 @@
       "kind": "filesystem",
       "healthy": true,
       "used_pct": 17.35,
-      "free_gb": 768.17,
+      "free_gb": 768.16,
       "action": "NONE"
     }
   ],
