@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2",
-  "generated_at": "2026-11-25T02:43:14Z",
+  "generated_at": "2026-11-25T09:04:54Z",
   "entity": "Digital Nomad LLC",
   "engine_name": "Autonomous Agent Business Engine",
   "db_online": true,
@@ -78,6 +78,7 @@
     "T-065",
     "T-066",
     "T-067",
+    "T-088",
     "T-051",
     "T-052",
     "T-053",
@@ -558,6 +559,13 @@
       "timestamp": "2026-11-23 10:55",
       "phase": "Phase 6",
       "description": "`[ANTIGRAVITY_IDE]` Deep-Dive Audit, Pre-Market/Open/Close Chop Hardening & `$100` Crypto Floor Unblock (`psycry/phronarch` `e06f323`): (1) Audited recent `[AGY_THIN]` commits (`a7a3bb3`..`e86d24f`) and both Alpaca paper accounts (`PA3WN7HTI` Agent Smith `$95,717.40` vs `PA3EWBDW6` Phronarch `$100.43`); (2) Implemented `classifyMarketSessionPhase` (`PRE_MARKET` 04:00\u201309:30 ET, `REGULAR` 09:30\u201316:00 ET, `AFTER_HOURS` 16:00\u201320:00 ET, `CLOSED`), `reconcilePaperLedgerBaseline` (suppressing false missing-trade alerts on MTM moves), 15m open-chop buffer (`09:30\u201309:45 ET`), 15m pre-close EOD flatten (`15:45\u201316:00 ET`), and wired `getConflictingPositionSymbol` (`BITI`<->`IBIT`, `PSQ`<->`QQQ`, `SH`<->`SPYM`) + 30m `ALPACA_REENTRY_COOLDOWN_MS` into `runAlpacaInverseCycle`; (3) Ran 14-day 15m backtest (`scratch/backtest_premarket_chop.ts`: `39.7%` 09:30\u201309:45 ET whipsaw rate, `284.9 bps` mean overnight gap); (4) Unblocked `$100` BTC/crypto trading by decoupling venue-specific fees (`getVenueFeeRates`: `0.20%` paper maker / `0.16%` Kraken / Coinbase tier), adding `[SENTIMENT_FALLBACK]` telemetry, and expanding 4h/15m recovery swing triggers; (5) Configured `[AGY_THIN]` vs `[ANTIGRAVITY_IDE]` provenance tagging & write-scope gate (`auto_improve.py`, `router_bridge.py`, `ledger_sync.py`, `agent.rs`); verified `verify_alpaca` (`48/48 PASS`), `verify_t040` (`5/5 PASS`), `verify_live_exec` (`3/3 PASS`), and `make test` (`28/28` Python + Hive + `8/8` Rust PASS)",
+      "status": "DONE"
+    },
+    {
+      "id": "T-088",
+      "timestamp": "2026-11-25 04:03",
+      "phase": "Phase 6",
+      "description": "`[ANTIGRAVITY_IDE]` Overnight Runtime Forensics & Deep-Dive Alpha/Resilience v3 (`phronarch` `25e2428`, `agent_smith` `3707a4b`, `hive` `ea248b5` live on `THE-HIVE`): (1) Calibrated crypto `trailActivationPct` (`~0.64%` CB / `~0.56%` Kraken), `BREAKEVEN_GUARD` (`+5bps` net floor), `FREE_ROLL` (`>=+0.85%`), conservative `fillableMarkPrice`, and capital/structure-gated `DEAD_MONEY_EXIT` (replay delta `+$0.5902` across `#54..#81`); (2) Fixed `BBO_QUEUE_COLLAPSE_SCRATCH` price-drift/TFI check + passive exit on `>30bps` taker venues (`#81` fix), added `TECH_15M` `SELL_PRESSURE`/micro-bounce gate (`#79/#80` fix) + `18bps` scalp spread cap (`SHIB` 1-tick quantization veto); (3) Fixed `T-074` signed caution-vote (`-1`) EWMA reward & live-only failure-mode rollup, hydrated `AMZN`/`MSFT` `DIP_SWING` ownership + `-0.75%` `09:30\u201309:45 ET` open-auction stop cushion, completed `T-082` `ACTIVE_ENVIRONMENT` stamping across all SQLite tables, routed equity RSS headlines to Alpaca catalyst cache, purged `App.tsx` `Math.random()`, and added `>=85%` `/` disk auto-prune (`self_heal.py`) + Phronarch token/CF tunnel auto-discovery (`phronarch_alpha_audit.py` & `hive/self_improve.py`)",
       "status": "DONE"
     },
     {

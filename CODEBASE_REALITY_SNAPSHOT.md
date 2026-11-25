@@ -1,6 +1,6 @@
 # Agent Smith & Hive — Grounded Codebase & Capability Snapshot
 
-- **Generated At:** `2026-11-25T02:43:16Z` (auto-refreshed by `engine/reality_snapshot.py`)
+- **Generated At:** `2026-11-25T09:05:02Z` (auto-refreshed by `engine/reality_snapshot.py`)
 - **Purpose:** Give Gemini (Cloud Architect) an accurate, zero-hype inventory of what actually exists in `psycry/agent_smith` and `psycry/hive`, what is running right now, and what is **not** implemented.
 - **Rule:** Never assume a staged or R&D item in the Google Doc Master Ledger is implemented in code unless it appears under **Implemented & Running** below.
 
@@ -27,8 +27,8 @@
 | Component | Language | Files | Lines of Code | Role |
 | :--- | :--- | ---: | ---: | :--- |
 | `agent_smith/claw-mcp-server/src` | Rust | 24 | 5,186 | MCP server (`v0.2.0`), `TaskRouter`, HumSynth DSP (`audio/`), Discord/CLI C2, sandboxing |
-| `agent_smith/engine` | Python | 25 | 5,885 | Lead ingestion, 768-dim `pgvector` scoring, KEOV, dossiers, QA, ledger sync, dashboard API |
-| `hive/hive` | Python | 15 | 2,194 | Provider adapters, `self_improve` worktree runner, `CONTEXT_CAPSULE.md`, IPC |
+| `agent_smith/engine` | Python | 25 | 5,963 | Lead ingestion, 768-dim `pgvector` scoring, KEOV, dossiers, QA, ledger sync, dashboard API |
+| `hive/hive` | Python | 15 | 2,229 | Provider adapters, `self_improve` worktree runner, `CONTEXT_CAPSULE.md`, IPC |
 
 ## 2b. Recently Implemented Master Ledger Modules
 

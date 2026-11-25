@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T02:42:21Z",
+  "timestamp": "2026-11-25T09:03:25Z",
   "all_healthy": true,
   "recoveries_triggered": 0,
   "checks": [
@@ -25,6 +25,14 @@
       "target": "agent-smith-dashboard.service",
       "kind": "systemd_user",
       "healthy": true,
+      "action": "NONE"
+    },
+    {
+      "target": "disk:/",
+      "kind": "filesystem",
+      "healthy": true,
+      "used_pct": 18.04,
+      "free_gb": 762.3,
       "action": "NONE"
     }
   ],
