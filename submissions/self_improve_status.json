@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T20:13:45Z",
+  "generated_at": "2026-11-25T01:46:26Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
@@ -8,21 +8,21 @@
   "agy_cli_available": true,
   "agy_dispatched": false,
   "agy_output_tail": "",
-  "cloud_runs_date": "2026-11-24",
+  "cloud_runs_date": "2026-11-25",
   "cloud_runs_today": 1,
   "max_cloud_per_day": 3,
   "phronarch_alpha_audit": {
-    "generated_at": "2026-11-24T20:13:56Z",
+    "generated_at": "2026-11-25T01:46:52Z",
     "ok": false,
     "tokens_spent": 0,
     "api_url": "http://127.0.0.1:3000",
-    "error": "Phronarch /edge-weights unreachable: HTTP Error 401: Unauthorized"
+    "error": "Phronarch /edge-weights unreachable: <urlopen error [Errno 111] Connection refused>"
   },
   "result": {
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "c4a48a7aedfad2c0",
+      "diff_hash": "42a8bd4c7a5bf555",
       "scans": [
         {
           "repo": "agent_smith",
@@ -107,17 +107,17 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 9540,
+        "latency_ms": 23503,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow(self):\n    # Simplify logic to reduce complexity\n    if self.is_valid_cashflow():\n        self.process_cashflow()\n    else:\n        self.log_er"
+      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow():\n    # Simplify logic to reduce branch nodes\n    # Example: Replace complex conditional with a single if-else\n    if condition:\n        # Sim"
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-475098",
+        "repo": "smith-wt-wt-check-40764",
         "ok": true,
         "checks": [
           {

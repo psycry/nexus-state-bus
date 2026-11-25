@@ -1,7 +1,7 @@
 # Operator Sanity-Check & Continuity Checklist
 
-- **Generated At:** `2026-11-25T01:43:48Z`
-- **Continuity Mode:** `ACTIVE_COLLAB` (`hours_since_operator=5.68h` | `force_local_only=False` | `max_cloud_burst=True`)
+- **Generated At:** `2026-11-25T02:00:52Z`
+- **Continuity Mode:** `ACTIVE_COLLAB` (`hours_since_operator=5.97h` | `force_local_only=False` | `max_cloud_burst=True`)
 - **QA Gate Summary:** `4` packages checked (`FAIL=0`, `WARN=0`)
 - **OCI Free-Tier Guard:** `zero_overage_compliant=True` | `scale_mode=CONSERVE_LOCAL_FIRST`
 

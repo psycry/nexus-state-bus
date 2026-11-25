@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-11-24T20:13:56Z",
+  "generated_at": "2026-11-25T01:46:52Z",
   "ok": false,
   "tokens_spent": 0,
   "api_url": "http://127.0.0.1:3000",
-  "error": "Phronarch /edge-weights unreachable: HTTP Error 401: Unauthorized"
+  "error": "Phronarch /edge-weights unreachable: <urlopen error [Errno 111] Connection refused>"
 }
