@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 13:47:29 (sha256=7ec654e73b) -->
+<!-- Synced via INSTANT_TXT at 15:06:11 (sha256=5f6d927f05) -->
 
 Nexus State Bus — Master Ledger Status Overview • [LOCK_STATUS]: UNLOCKED (Ready for [AGY_A1] / [ANTIGRAVITY_IDE] lock acquisition) • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [AGY_A1] (OCI Ampere A1 THE-HIVE — also referred to as "iPad AGY" when accessed remotely via iPad), [AGY_MOBILE] (Samsung Galaxy A16 5G / Mobile Thin Triage, formerly [AGY_THIN]), [AGENT_SMITH] (OCI A1 C2), [GEMINI_CLOUD] (Cloud Architect), [OPERATOR_PSYCRY] (Human Operator) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
 
@@ -37,6 +37,7 @@ Notes
 
 * [GEMINI_CLOUD] BITI and SETH are non-fractionable -1x inverse ETFs for Bitcoin and Ethereum used for short selling; while currently enabled, their whole-share minimum pricing and high trading costs may require disabling them in the future.
 * [ANTIGRAVITY_IDE] 2026-11-25 Deep-Dive Alpha & Resilience v1-v4 (T-088 & T-089 — phronarch 3b8bb75/52714db, agent_smith c34a9ca, hive ea248b5 live on THE-HIVE; 09:10Z deploy + manual docker builder prune verified; Alpaca +2.05% alpha vs SPY -2.52%): Calibrated crypto trailActivation (~0.64% CB / ~0.56% Kraken), net-green BREAKEVEN_GUARD (#88/#93), FREE_ROLL, 3s real-time monitor, neutral-TFI anti-flicker scratch (#81/#94), 18bps scalp spread cap, post-exit 45m/3h 2-loss cooldown & anti-stacking (#95+#96 ETH), and severe-selloff waterfall gates; fixed T-074 single-EWMA (30-50 trade half-life), signed caution (-1) rewards, deferred closeTrade realized+markout attribution & live DB recalibration; hydrated DIP_SWING ownership + -0.75% 09:30-09:45 ET open-auction stop cushion (MSFT saved) + SETH quote-mid fallback & explicit ENTRY SKIPPED diagnostics; completed T-081..T-089, purged UI Math.random(), added >=85% / disk auto-prune, made sync_ledger.py Python 3.9 + rebase-safe, and gated phronarch-scout Reddit on OAuth client_credentials with cloud-ASN HTTP 403 skip/circuit-breaker.
+* [GEMINI_CLOUD] 2026-11-26 Thanksgiving Telemetry Milestone: Phronarch crypto simulation crossed breakeven to $100.15 (+$2.00 net of modeled fees) while Alpaca paper equity leg held at $98.81 during the Thanksgiving market closure. Antigravity instances rate-limited/capped until Monday 2026-11-30.
 
 
 ________________
@@ -74,12 +75,11 @@ Active & Queued Tasks (READY / QUEUED / STAGED)
 
 4. [GEMINI_CLOUD] T-090 — Phronarch Storage Expansion, OCI Object Storage Backup & Optional Off-Site Replication • Status: READY_FOR_EXECUTION (Assigned to [AGY_A1] / [ANTIGRAVITY_IDE] with 3-line VERIFY handoff footer). • Objective: Eliminate silent telemetry/DB loss from reactive >=85% disk pruning by provisioning zero-cost persistent storage and automated compressed backups for PostgreSQL, SQLite, and rotated logs. • Primary Execution (In-Region OCI — Execute Now): (1) Audit THE-HIVE disk usage (`df -h`, `lsblk`, Docker/Postgres/SQLite/log sizes) and check unallocated Always-Free OCI Block Volume capacity (up to 200 GB total tenancy allowance vs. 50 GB default boot volume); expand or attach/mount `/mnt/phronarch-data` if needed. (2) Provision an Always-Free OCI Object Storage bucket (up to 30 GB total: 10 GB Standard, 10 GB Infrequent Access, 10 GB Archive; 50k requests/mo) via `oci os bucket create` with an Object Lifecycle Policy tiering rotated `zstd`-compressed logs from Standard -> Infrequent Access -> Archive. (3) Wire a daily systemd timer / cron backup worker running `sqlite3 .backup` + `pg_dump -Fc` compressed with `zstd`, synced via `rclone` (S3-compatible endpoint, credentials stored strictly in local `.env` per Rule 14) with 30-90 day retention pruning, and verify a dry-run restore. • Staged Off-Site Secondary / Spillover Options (STAGE_FOR_LATER — activate if OCI 30 GB bucket/200 GB block allowance nears capacity or for cross-provider replication): Option A — Cloudflare R2 (10 GB/mo free, 1M writes/10M reads, unlimited free egress; ideal for pulling logs locally for backtesting/model training); Option B — Backblaze B2 (10 GB free, free Class A/B/C calls, free egress up to 3x stored data/mo; ideal for cold `pg_dump` / `.sqlite` archive replication via `rclone` multi-remote sync).
 5. [GEMINI_CLOUD] T-091 — Dynamic Early-Close Session Anchoring (/v2/clock & /v2/calendar) & Pre-Holiday Thin-Liquidity Guard • Status: READY_FOR_EXECUTION (Assigned to [ANTIGRAVITY_IDE] post-Thanksgiving spin-up; telemetry baseline: $99.00 peak -> $98.81 recovery through pre-holiday chop). • Objective: Close the gap between full-day /v2/clock.is_open checks (T-083) and hardcoded 16:00 ET intraday cutoffs (T-078 / T-072) so half-day sessions (e.g., Black Friday 13:00 ET, Christmas Eve, July 3) and pre-holiday liquidity drop-offs never leave positions stranded or trigger holiday flat-tape noise. • Directives: (1) Query GET /v2/clock (next_close) and GET /v2/calendar on session boot and intraday tick to compute dynamic session_close_et, shifting Power Hour ([session_close - 60m, session_close - 15m]), hard EOD flatten (session_close - 15m), and Crypto Equity-Close Handoff ([session_close - 15m, session_close + 30m]) dynamically on early-close days. (2) Add a pre-holiday / half-day volume & spread-widening gate (tightening max spread bps and disabling new equity entries in the final 45m before an early close or holiday halt) so pre-holiday chop does not erode peak equity. (3) Include 3-line VERIFY handoff footer per Rule 13.
-6. 
+6. [GEMINI_CLOUD] T-092 — Crypto Sim Maker/Taker Fill Realism, Coinbase Min-Notional Sizing & Post-Holiday Open Gap Audit • Status: QUEUED_FOR_MONDAY (Assigned to [ANTIGRAVITY_IDE] / [AGY_A1] upon Monday 2026-11-30 quota reset; telemetry baseline: Crypto Sim $100.15 / +$2.00 net of fees; Alpaca Paper $98.81). • Objective: Validate that the $100.15 net-of-fee crypto simulation edge holds under realistic live execution constraints and audit post-holiday equity gap behavior before live capital cutover. • Directives: (1) Audit fee and fill modeling in the crypto simulator to verify whether limit (maker) orders assume guaranteed fills vs. market (taker) orders incurring spread and taker fees in thin holiday order books. (2) Verify position sizing against Coinbase minimum notional trade sizes so live orders do not reject when splitting a ~$100 bankroll across multiple signals. (3) Review Black Friday (2026-11-27 13:00 ET early close) opening gap and whole-share buying power headroom for BITI and SETH following overnight holiday crypto moves. (4) Include 3-line VERIFY handoff footer per Rule 13.
+7. 
 
-7. Google Keep Staged Tasks (Synced 2026-11-23) • [STAGED] Keep API Dashboard Integration | [STAGED] Agent Smith 3-Tier Task Routing | [STAGED] Field Logistics (charging banks & internet) | [STAGED] Reading List (Ursula K. Le Guin: A Wizard of Earthsea, The Left Hand of Darkness).
+8. Google Keep Staged Tasks (Synced 2026-11-23) • [STAGED] Keep API Dashboard Integration | [STAGED] Agent Smith 3-Tier Task Routing | [STAGED] Field Logistics (charging banks & internet) | [STAGED] Reading List (Ursula K. Le Guin: A Wizard of Earthsea, The Left Hand of Darkness).
 
-
-8. 
 
 9. 
 
@@ -89,7 +89,9 @@ Active & Queued Tasks (READY / QUEUED / STAGED)
 
 12. 
 
-13. 14. 15. 16.    1.    2.    3.       1.       2. 17.    1.    2.    3. 
+13. 
+
+14. 15. 16. 17.    1.    2.    3.       1.       2. 18.    1.    2.    3. 
 
 ________________
 
@@ -116,7 +118,7 @@ Completed Milestone Index (Archived Verbatim in Backups 2026-11-23 & 2026-11-25:
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-26T18:52:21Z`
+- **Auto-Sync Timestamp:** `2026-11-26T20:06:12Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-088, T-089, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
