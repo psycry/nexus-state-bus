@@ -1,28 +1,229 @@
 {
-  "generated_at": "2026-11-27T07:44:07Z",
+  "generated_at": "2026-11-27T09:44:07Z",
   "ok": true,
   "returncode": 0,
   "repo": "/home/psycry/Projects/agent_smith",
   "prefer": "agy",
-  "gate_reason": "offloading important code work to agy (0/3 today)",
+  "gate_reason": "offloading important code work to agy (1/3 today)",
   "agy_cli_available": true,
   "agy_dispatched": true,
-  "agy_output_tail": "Line [L468](file:///home/psycry/Projects/agent_smith/engine/ingest.py#L468) calls `re.sub(...)` without `import re` in [L8-L16](file:///home/psycry/Projects/agent_smith/engine/ingest.py#L8-L16). Because it sits inside `try ... except Exception: pass` ([L458-L475](file:///home/psycry/Projects/agent_smith/engine/ingest.py#L458-L475)), the `NameError` is silently swallowed and `fetchOpportunity` synopsis / `award_ceiling_usd` enrichment never populates.\n- **Recommended Follow-Up:** Add `import re`, extract `_fetch_grants_gov_details(client, opp_id)`, and log exceptions instead of swallowing them.",
+  "agy_output_tail": " a shared `_upsert_batch` helper), keeping `ingest_lane1_fast_cashflow` and `ingest_lane2_grants_rfps` as thin orchestrators.\n3. Move static curated lead/grant/blocklist definitions to module-level constants or a dedicated data/config module (`engine/curated_leads.py` or JSON).\n4. Replace `except Exception: pass` with structured warning logs (`logging` / stderr telemetry) so degraded feeds surface explicitly.\n5. Add unit tests (mocked HTTP responses) covering Grants.gov `fetchOpportunity` HTML/ceiling parsing, RemoteOK `est_val=0.0`, and GitHub honeypot filtering, then verify with `make test`.",
   "cloud_runs_date": "2026-11-27",
-  "cloud_runs_today": 1,
+  "cloud_runs_today": 2,
   "max_cloud_per_day": 3,
   "phronarch_alpha_audit": {
-    "generated_at": "2026-11-27T07:45:46Z",
-    "ok": false,
-    "tokens_spent": 0,
+    "generated_at": "2026-11-27T09:45:24Z",
     "api_url": "http://127.0.0.1:3000",
-    "error": "Phronarch /edge-weights unreachable: <urlopen error [Errno 111] Connection refused>"
+    "ok": true,
+    "tokens_spent": 0,
+    "active_regime": "CHOP",
+    "total_weights": 60,
+    "sampled_weights": 19,
+    "shadow_signals_count": 118,
+    "bottom_quartile": [
+      {
+        "edge_id": "volatility_parity",
+        "regime": "TREND",
+        "weight": 0.9613,
+        "ewma_net_bps": -1.761,
+        "sample_count": 10,
+        "win_count": 0,
+        "last_reward_bps": -11.715,
+        "updated_at": "2026-11-27 00:43:11"
+      },
+      {
+        "edge_id": "momentum_ema_trend",
+        "regime": "CHOP",
+        "weight": 0.9788,
+        "ewma_net_bps": -0.947,
+        "sample_count": 3,
+        "win_count": 0,
+        "last_reward_bps": -12.426,
+        "updated_at": "2026-11-27 08:04:25"
+      },
+      {
+        "edge_id": "momentum_ema_trend",
+        "regime": "TREND",
+        "weight": 0.9779,
+        "ewma_net_bps": -0.94,
+        "sample_count": 3,
+        "win_count": 0,
+        "last_reward_bps": -1.465,
+        "updated_at": "2026-11-26 18:12:13"
+      },
+      {
+        "edge_id": "volatility_parity",
+        "regime": "CHOP",
+        "weight": 0.9784,
+        "ewma_net_bps": -0.888,
+        "sample_count": 4,
+        "win_count": 0,
+        "last_reward_bps": -12.426,
+        "updated_at": "2026-11-27 08:04:25"
+      },
+      {
+        "edge_id": "mtf_alignment",
+        "regime": "CHOP",
+        "weight": 0.9828,
+        "ewma_net_bps": -0.85,
+        "sample_count": 2,
+        "win_count": 0,
+        "last_reward_bps": -49.419,
+        "updated_at": "2026-11-26 14:52:01"
+      }
+    ],
+    "failure_modes_by_lane_sha_regime": [
+      {
+        "strategyLane": "CORE_REGIME",
+        "gitSha": "68c20ae",
+        "regime": "CHOP",
+        "signals": 46,
+        "liveSignals": 6,
+        "shadowSignals": 40,
+        "avgNetRewardBps": -21.393,
+        "losingSignals": 3
+      },
+      {
+        "strategyLane": "CORE_REGIME",
+        "gitSha": "68c20ae",
+        "regime": "HIGH_VOL_NEWS",
+        "signals": 3,
+        "liveSignals": 3,
+        "shadowSignals": 0,
+        "avgNetRewardBps": 5.973,
+        "losingSignals": 1
+      },
+      {
+        "strategyLane": "CORE_REGIME",
+        "gitSha": "68c20ae",
+        "regime": "TREND",
+        "signals": 87,
+        "liveSignals": 9,
+        "shadowSignals": 78,
+        "avgNetRewardBps": 7.435,
+        "losingSignals": 1
+      },
+      {
+        "strategyLane": "DIP_SWING",
+        "gitSha": "68c20ae",
+        "regime": "HIGH_VOL_NEWS",
+        "signals": 2,
+        "liveSignals": 2,
+        "shadowSignals": 0,
+        "avgNetRewardBps": 67.12,
+        "losingSignals": 1
+      },
+      {
+        "strategyLane": "CATALYST_SWING",
+        "gitSha": "68c20ae",
+        "regime": "CHOP",
+        "signals": 2,
+        "liveSignals": 2,
+        "shadowSignals": 0,
+        "avgNetRewardBps": null,
+        "losingSignals": 0
+      },
+      {
+        "strategyLane": "CATALYST_SWING",
+        "gitSha": "68c20ae",
+        "regime": "TREND",
+        "signals": 1,
+        "liveSignals": 1,
+        "shadowSignals": 0,
+        "avgNetRewardBps": 74.4,
+        "losingSignals": 0
+      }
+    ],
+    "failing_groups_count": 4,
+    "proposed_candidates": [
+      {
+        "name": "t074-volatility_parity-trend-tight",
+        "edgeId": "volatility_parity",
+        "regime": "TREND",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "TREND",
+          "observed_ewma_net_bps": -1.761,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-1.76, weight=0.9613"
+      },
+      {
+        "name": "t074-momentum_ema_trend-chop-tight",
+        "edgeId": "momentum_ema_trend",
+        "regime": "CHOP",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "CHOP",
+          "observed_ewma_net_bps": -0.947,
+          "min_net_edge_bps_boost": 4.0,
+          "min_rvol": 1.25,
+          "rsi_range": [
+            48,
+            62
+          ]
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=momentum_ema_trend, regime=CHOP, ewma_net_bps=-0.95, weight=0.9788"
+      },
+      {
+        "name": "t074-momentum_ema_trend-trend-tight",
+        "edgeId": "momentum_ema_trend",
+        "regime": "TREND",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "TREND",
+          "observed_ewma_net_bps": -0.94,
+          "min_net_edge_bps_boost": 4.0,
+          "min_rvol": 1.25,
+          "rsi_range": [
+            48,
+            62
+          ]
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=momentum_ema_trend, regime=TREND, ewma_net_bps=-0.94, weight=0.9779"
+      },
+      {
+        "name": "t074-volatility_parity-chop-tight",
+        "edgeId": "volatility_parity",
+        "regime": "CHOP",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "CHOP",
+          "observed_ewma_net_bps": -0.888,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=CHOP, ewma_net_bps=-0.89, weight=0.9784"
+      },
+      {
+        "name": "t074-mtf_alignment-chop-tight",
+        "edgeId": "mtf_alignment",
+        "regime": "CHOP",
+        "strategyLane": "CORE_REGIME",
+        "params": {
+          "regime": "CHOP",
+          "observed_ewma_net_bps": -0.85,
+          "min_net_edge_bps_boost": 4.0,
+          "confidence_floor": 0.7,
+          "require_regime_alignment": true
+        },
+        "notes": "Auto-proposed by zero-token alpha audit: edge=mtf_alignment, regime=CHOP, ewma_net_bps=-0.85, weight=0.9828"
+      }
+    ],
+    "existing_candidates_count": 0,
+    "submitted_candidates": [],
+    "replay_evaluation": {
+      "skipped": true
+    }
   },
   "result": {
     "iteration": {
       "ok": true,
       "verify_ok": true,
-      "diff_hash": "a248a590620ecc43",
+      "diff_hash": "6dbbf5b6fac1ec74",
       "scans": [
         {
           "repo": "agent_smith",
@@ -107,17 +308,17 @@
         "ok": true,
         "provider": "ollama",
         "model": "qwen2.5-coder:1.5b",
-        "latency_ms": 23477,
+        "latency_ms": 10656,
         "fallback_used": false
       },
-      "proposal_preview": "```python\n# Agent Smith (it/its), operating under Argon (he/him) and Gemini (she/her). Given this bounded code hotspot and recent control-plane telemetry, propose one concrete, minimal patch (max 6 lines) preserving all HITL safety gates an"
+      "proposal_preview": "```python\n# Patch to optimize ingest_lane1_fast_cashflow\ndef optimize_ingest_lane1_fast_cashflow(self):\n    # Simplify logic to reduce complexity\n    # Example: Replace nested loops with a single loop\n    for item in self.data:\n        # Pr"
     },
     "worktree_test": {
       "ok": true,
       "repo": "agent_smith",
       "branch": "hive/auto-wt-check",
       "verify": {
-        "repo": "smith-wt-wt-check-47583",
+        "repo": "smith-wt-wt-check-494013",
         "ok": true,
         "checks": [
           {

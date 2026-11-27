@@ -1,7 +1,208 @@
 {
-  "generated_at": "2026-11-27T07:45:46Z",
-  "ok": false,
-  "tokens_spent": 0,
+  "generated_at": "2026-11-27T09:45:24Z",
   "api_url": "http://127.0.0.1:3000",
-  "error": "Phronarch /edge-weights unreachable: <urlopen error [Errno 111] Connection refused>"
+  "ok": true,
+  "tokens_spent": 0,
+  "active_regime": "CHOP",
+  "total_weights": 60,
+  "sampled_weights": 19,
+  "shadow_signals_count": 118,
+  "bottom_quartile": [
+    {
+      "edge_id": "volatility_parity",
+      "regime": "TREND",
+      "weight": 0.9613,
+      "ewma_net_bps": -1.761,
+      "sample_count": 10,
+      "win_count": 0,
+      "last_reward_bps": -11.715,
+      "updated_at": "2026-11-27 00:43:11"
+    },
+    {
+      "edge_id": "momentum_ema_trend",
+      "regime": "CHOP",
+      "weight": 0.9788,
+      "ewma_net_bps": -0.947,
+      "sample_count": 3,
+      "win_count": 0,
+      "last_reward_bps": -12.426,
+      "updated_at": "2026-11-27 08:04:25"
+    },
+    {
+      "edge_id": "momentum_ema_trend",
+      "regime": "TREND",
+      "weight": 0.9779,
+      "ewma_net_bps": -0.94,
+      "sample_count": 3,
+      "win_count": 0,
+      "last_reward_bps": -1.465,
+      "updated_at": "2026-11-26 18:12:13"
+    },
+    {
+      "edge_id": "volatility_parity",
+      "regime": "CHOP",
+      "weight": 0.9784,
+      "ewma_net_bps": -0.888,
+      "sample_count": 4,
+      "win_count": 0,
+      "last_reward_bps": -12.426,
+      "updated_at": "2026-11-27 08:04:25"
+    },
+    {
+      "edge_id": "mtf_alignment",
+      "regime": "CHOP",
+      "weight": 0.9828,
+      "ewma_net_bps": -0.85,
+      "sample_count": 2,
+      "win_count": 0,
+      "last_reward_bps": -49.419,
+      "updated_at": "2026-11-26 14:52:01"
+    }
+  ],
+  "failure_modes_by_lane_sha_regime": [
+    {
+      "strategyLane": "CORE_REGIME",
+      "gitSha": "68c20ae",
+      "regime": "CHOP",
+      "signals": 46,
+      "liveSignals": 6,
+      "shadowSignals": 40,
+      "avgNetRewardBps": -21.393,
+      "losingSignals": 3
+    },
+    {
+      "strategyLane": "CORE_REGIME",
+      "gitSha": "68c20ae",
+      "regime": "HIGH_VOL_NEWS",
+      "signals": 3,
+      "liveSignals": 3,
+      "shadowSignals": 0,
+      "avgNetRewardBps": 5.973,
+      "losingSignals": 1
+    },
+    {
+      "strategyLane": "CORE_REGIME",
+      "gitSha": "68c20ae",
+      "regime": "TREND",
+      "signals": 87,
+      "liveSignals": 9,
+      "shadowSignals": 78,
+      "avgNetRewardBps": 7.435,
+      "losingSignals": 1
+    },
+    {
+      "strategyLane": "DIP_SWING",
+      "gitSha": "68c20ae",
+      "regime": "HIGH_VOL_NEWS",
+      "signals": 2,
+      "liveSignals": 2,
+      "shadowSignals": 0,
+      "avgNetRewardBps": 67.12,
+      "losingSignals": 1
+    },
+    {
+      "strategyLane": "CATALYST_SWING",
+      "gitSha": "68c20ae",
+      "regime": "CHOP",
+      "signals": 2,
+      "liveSignals": 2,
+      "shadowSignals": 0,
+      "avgNetRewardBps": null,
+      "losingSignals": 0
+    },
+    {
+      "strategyLane": "CATALYST_SWING",
+      "gitSha": "68c20ae",
+      "regime": "TREND",
+      "signals": 1,
+      "liveSignals": 1,
+      "shadowSignals": 0,
+      "avgNetRewardBps": 74.4,
+      "losingSignals": 0
+    }
+  ],
+  "failing_groups_count": 4,
+  "proposed_candidates": [
+    {
+      "name": "t074-volatility_parity-trend-tight",
+      "edgeId": "volatility_parity",
+      "regime": "TREND",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "TREND",
+        "observed_ewma_net_bps": -1.761,
+        "min_net_edge_bps_boost": 4.0,
+        "confidence_floor": 0.7,
+        "require_regime_alignment": true
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=TREND, ewma_net_bps=-1.76, weight=0.9613"
+    },
+    {
+      "name": "t074-momentum_ema_trend-chop-tight",
+      "edgeId": "momentum_ema_trend",
+      "regime": "CHOP",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "CHOP",
+        "observed_ewma_net_bps": -0.947,
+        "min_net_edge_bps_boost": 4.0,
+        "min_rvol": 1.25,
+        "rsi_range": [
+          48,
+          62
+        ]
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=momentum_ema_trend, regime=CHOP, ewma_net_bps=-0.95, weight=0.9788"
+    },
+    {
+      "name": "t074-momentum_ema_trend-trend-tight",
+      "edgeId": "momentum_ema_trend",
+      "regime": "TREND",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "TREND",
+        "observed_ewma_net_bps": -0.94,
+        "min_net_edge_bps_boost": 4.0,
+        "min_rvol": 1.25,
+        "rsi_range": [
+          48,
+          62
+        ]
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=momentum_ema_trend, regime=TREND, ewma_net_bps=-0.94, weight=0.9779"
+    },
+    {
+      "name": "t074-volatility_parity-chop-tight",
+      "edgeId": "volatility_parity",
+      "regime": "CHOP",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "CHOP",
+        "observed_ewma_net_bps": -0.888,
+        "min_net_edge_bps_boost": 4.0,
+        "confidence_floor": 0.7,
+        "require_regime_alignment": true
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=volatility_parity, regime=CHOP, ewma_net_bps=-0.89, weight=0.9784"
+    },
+    {
+      "name": "t074-mtf_alignment-chop-tight",
+      "edgeId": "mtf_alignment",
+      "regime": "CHOP",
+      "strategyLane": "CORE_REGIME",
+      "params": {
+        "regime": "CHOP",
+        "observed_ewma_net_bps": -0.85,
+        "min_net_edge_bps_boost": 4.0,
+        "confidence_floor": 0.7,
+        "require_regime_alignment": true
+      },
+      "notes": "Auto-proposed by zero-token alpha audit: edge=mtf_alignment, regime=CHOP, ewma_net_bps=-0.85, weight=0.9828"
+    }
+  ],
+  "existing_candidates_count": 0,
+  "submitted_candidates": [],
+  "replay_evaluation": {
+    "skipped": true
+  }
 }
