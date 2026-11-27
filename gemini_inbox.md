@@ -1,4 +1,4 @@
-<!-- Synced via INSTANT_TXT at 03:22:22 (sha256=4200b808a3) -->
+<!-- Synced via INSTANT_TXT at 03:25:21 (sha256=b5cb9380ac) -->
 
 Nexus State Bus — Master Ledger Status Overview • [LOCK_STATUS]: UNLOCKED (Ready for [AGY_A1] / [ANTIGRAVITY_IDE] lock acquisition) • Active Phase: Phase 6 (Phronarch Live Paper + Dynamic Universe + Intraday Rhythm + Strategy-Lane Telemetry) • Primary Agents: [ANTIGRAVITY_IDE] (Local Garuda Rig), [AGY_A1] (OCI Ampere A1 THE-HIVE — also referred to as "iPad AGY" when accessed remotely via iPad), [AGY_MOBILE] (Samsung Galaxy A16 5G / Mobile Thin Triage, formerly [AGY_THIN]), [AGENT_SMITH] (OCI A1 C2), [GEMINI_CLOUD] (Cloud Architect), [OPERATOR_PSYCRY] (Human Operator) • Shared Bridge: Google Doc Master Ledger (Canonical) <-> GitHub State Bus (psycry/nexus-state-bus) • Pipeline Valuation & Financial Model: $35,000.00 Active Commercial & Engineering Pipeline ($12,000.00 Quant-Stream SOW / $15,000–$23,000 Vocode-MIDI Target) | Option A Solo-Founder OpEx (~$20k–$40k/yr) • Infrastructure: Garuda Linux (local workstation) | OCI Ampere A1 THE-HIVE (4 OCPUs, 24 GB RAM, Always-Free) | Live A1 HTTPS Tunnel via cf_proxy.py
 
@@ -64,7 +64,7 @@ ________________
 Active & Queued Tasks (READY / QUEUED / STAGED)
 
 
-1. [GEMINI_CLOUD] T-071 — Kraken Pro Primary Execution & SETH (-1x ETH) Watchlist Slot • Status: PARTIALLY_STAGED (T-080 7699374 live & verified on THE-HIVE 2026-11-25: ALPACA_INVERSE_SYMBOLS=BITI,SETH,PSQ,SH active in phronarch-execution & phronarch-scout + COINBASE_EXECUTION_ENABLED=false read-only guard in live_exec.ts + KRAKEN_MAKER_BPS=16 / KRAKEN_TAKER_BPS=26 in getVenueFeeRates). BLOCKED ON: Kraken Pro KYC & API keys (Query+Trade, withdrawals disabled, IP-whitelisted to THE-HIVE). • Sub-Task T-071.1 (DEPENDS_ON: T-071): Keep Coinbase public L1/order-book feed active in read-only telemetry mode (COINBASE_EXECUTION_ENABLED=false) once EXCHANGE_ID=kraken is live.
+1. [GEMINI_CLOUD] T-071 — Kraken Pro Primary Execution & SETH (-1x ETH) Watchlist Slot • Status: PARTIALLY_STAGED (T-080 7699374 live & verified on THE-HIVE 2026-11-25: ALPACA_INVERSE_SYMBOLS=BITI,SETH,PSQ,SH active in phronarch-execution & phronarch-scout + COINBASE_EXECUTION_ENABLED=false read-only guard in live_exec.ts + KRAKEN_MAKER_BPS=16 / KRAKEN_TAKER_BPS=26 in getVenueFeeRates). BLOCKED ON: Kraken Pro KYC & API keys (Query+Trade, withdrawals disabled, IP-whitelisted to THE-HIVE). • Sub-Task T-071.1 (DEPENDS_ON: T-071): Keep Coinbase public L1/order-book feed active in read-only telemetry mode (COINBASE_EXECUTION_ENABLED=false) once EXCHANGE_ID=kraken is live. • Pre-Live Statistical & Multi-Regime Readiness Gate (Applies to T-071 Kraken Live & T-060 Step 5 Alpaca Live Cutover): Before flipping LIVE_TRADING_ENABLED=true or ALPACA_PAPER=false on real capital, verify: (a) T-092 fill-realism & min-notional audit is DONE, (b) >= 5 full trading days and >= 30 post-patch resolved trades across both TREND and CHOP regimes, and (c) positive net-of-fee expectancy and markouts post-slippage audit so live cutover is backed by multi-regime statistical validation rather than a short holiday window.
 
 
 2. [GEMINI_CLOUD] T-072 — Gated -2x Inverse Crypto Intraday Mode (SBIT & ETHD) • Status: QUEUED (DEPENDS_ON: T-071 & positive -1x BITI/SETH Power Hour post-fill markout verification). • Guardrails: REGULAR U.S. hours only (10:00–11:30 ET & 14:00–15:30 ET), hard same-day auto-close by 15:45 ET, verified T+1 settled buying power, fractionable, <=25 bps spread.
@@ -119,7 +119,7 @@ Completed Milestone Index (Archived Verbatim in Backups 2026-11-23 & 2026-11-25:
 
 # ⚡ [AGENT_SMITH] Antigravity (Argon) Automated Closed-Loop Telemetry — `T-054` (`COMPLETED`)
 
-- **Auto-Sync Timestamp:** `2026-11-27T08:22:23Z`
+- **Auto-Sync Timestamp:** `2026-11-27T08:25:22Z`
 - **Authoring Node Provenance:** `[AGENT_SMITH]` (`Gemini 4 Argon` — Local Garuda Rig `THE-HIVE`)
 - **Latest Milestone Flip:** `T-054` $\rightarrow$ **`DONE`** (Completed: `T-001, T-002, T-003, T-004, T-005, T-006, T-007, T-008, T-009, T-010, T-011, T-012, T-013, T-014, T-015, T-016, T-017, T-018, T-019, T-020, T-021, T-022, T-023, T-024, T-025, T-026, T-027, T-028, T-029, T-030, T-031, T-032, T-033, T-034, T-035, T-036, T-037, T-038, T-040, T-041, T-042, T-043, T-044, T-040, T-041, T-045, T-046, T-047, T-048, T-049, T-050, T-051, T-052, T-053, T-054, T-055, T-056, T-057, T-058, T-059, T-060, T-061, T-062, T-063, T-064, T-065, T-066, T-067, T-088, T-089, T-051, T-052, T-053, T-054`)
 - **Ledger Sync Mode:** `GITHUB_STATE_BUS_CANONICAL (GDOC_WEBHOOK_URL/OAUTH unset -> published to psycry/nexus-state-bus)`
